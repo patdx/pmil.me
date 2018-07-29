@@ -19,8 +19,8 @@ const IndexPage = ({ data }: any) => (
             software developer in Osaka, Japan.
           </p>
           <p>
-            I previously studied mechanical engineering, and I
-            have experience in QA, IT and software
+            I previously studied mechanical engineering, and
+            I have experience in QA, IT and software
             development.
           </p>
           <p>

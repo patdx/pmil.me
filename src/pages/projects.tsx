@@ -30,6 +30,11 @@ export const Card = ({ node }: { node: any }) => (
 
 export default ({ data }: { data: any }) => (
   <div className="container">
+    <div className="columns">
+      <div className="column">
+        Here are some older projects I've worked on!
+      </div>
+    </div>
     <div className="columns is-multiline">
       {data.allMarkdownRemark.edges.map(({ node }: any) => (
         <Card key={node.id} node={node} />
