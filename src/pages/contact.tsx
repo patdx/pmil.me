@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Layout } from '../components/layout'
 
 interface LinkProps {
   to: string
@@ -45,9 +46,11 @@ export const Link = ({ to, icon, text }: LinkProps) => (
 )
 
 export default () => (
-  <div className="container">
-    <div className="columns is-multiline">
-      {links.map(Link)}
+  <Layout>
+    <div className="container">
+      <div className="columns is-multiline">
+        {links.map(Link)}
+      </div>
     </div>
-  </div>
+  </Layout>
 )

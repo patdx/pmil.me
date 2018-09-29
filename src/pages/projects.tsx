@@ -1,6 +1,8 @@
 import * as React from 'react'
 import GatsbyLink from 'gatsby-link'
 import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
+import { Layout } from '../components/layout'
 
 export const Card = ({ node }: { node: any }) => (
   <div className="column is-one-third">
@@ -29,18 +31,22 @@ export const Card = ({ node }: { node: any }) => (
 )
 
 export default ({ data }: { data: any }) => (
-  <div className="container">
-    <div className="columns">
-      <div className="column">
-        Here are some older projects I've worked on!
+  <Layout>
+    <div className="container">
+      <div className="columns">
+        <div className="column">
+          Here are some older projects I've worked on!
+        </div>
+      </div>
+      <div className="columns is-multiline">
+        {data.allMarkdownRemark.edges.map(
+          ({ node }: any) => (
+            <Card key={node.id} node={node} />
+          )
+        )}
       </div>
     </div>
-    <div className="columns is-multiline">
-      {data.allMarkdownRemark.edges.map(({ node }: any) => (
-        <Card key={node.id} node={node} />
-      ))}
-    </div>
-  </div>
+  </Layout>
 )
 
 export const query = graphql`

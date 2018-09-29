@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
 
 /** add even spacing between elements */
 export const ContentWrapper = ({ children }: any) => (
