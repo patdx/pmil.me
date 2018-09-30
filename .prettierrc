@@ -2,7 +2,7 @@
   "printWidth": 60,
   "overrides": [
     {
-      "files": "README.md",
+      "files": "*.md",
       "options": {
         "proseWrap": "always"
       }

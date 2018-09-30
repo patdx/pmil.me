@@ -63,7 +63,7 @@ export const query = graphql`
             technologies
             imageUrl {
               childImageSharp {
-                sizes(maxWidth: 200, maxHeight: 200) {
+                sizes(maxWidth: 500, maxHeight: 500) {
                   ...GatsbyImageSharpSizes_noBase64
                 }
               }
