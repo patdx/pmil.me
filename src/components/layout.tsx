@@ -1,17 +1,17 @@
-import 'font-awesome/css/font-awesome.css'
-import { graphql, Link, StaticQuery } from 'gatsby'
-import * as React from 'react'
-import Helmet from 'react-helmet'
-import './layout.scss'
+import "font-awesome/css/font-awesome.css";
+import { graphql, Link, StaticQuery } from "gatsby";
+import * as React from "react";
+import Helmet from "react-helmet";
+import "./layout.scss";
 
 export const TabLink = ({
   to,
   children,
-  activeStrategy,
+  activeStrategy
 }: {
-  to: any
-  children: any
-  activeStrategy: 'isCurrent' | 'isPartiallyCurrent'
+  to: any;
+  children: any;
+  activeStrategy: "isCurrent" | "isPartiallyCurrent";
 }) => (
   <li>
     <Link
@@ -19,9 +19,9 @@ export const TabLink = ({
       getProps={props =>
         props[activeStrategy]
           ? {
-              className: 'has-text-weight-semibold',
+              className: "has-text-weight-semibold",
               // bulma sets 0.9 opacity, reset to 1 on full selection
-              style: { opacity: 1 },
+              style: { opacity: 1 }
             }
           : null
       }
@@ -29,12 +29,12 @@ export const TabLink = ({
       {children}
     </Link>
   </li>
-)
+);
 
 export const Layout = ({
-  children,
+  children
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) => (
   <React.Fragment>
     <StaticQuery
@@ -51,11 +51,11 @@ export const Layout = ({
         <Helmet
           title={data.site.siteMetadata.title}
           meta={[
-            { name: 'description', content: 'Sample' },
+            { name: "description", content: "Sample" },
             {
-              name: 'keywords',
-              content: 'sample, something',
-            },
+              name: "keywords",
+              content: "sample, something"
+            }
           ]}
         />
       )}
@@ -93,4 +93,4 @@ export const Layout = ({
     </section>
     <section className="section">{children}</section>
   </React.Fragment>
-)
+);

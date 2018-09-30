@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Layout } from '../components/layout'
+import * as React from "react";
+import { Layout } from "../components/layout";
 
 const NotFoundPage = () => (
   <Layout>
@@ -8,6 +8,6 @@ const NotFoundPage = () => (
       <p>Sorry, this page doesn't exist.</p>
     </div>
   </Layout>
-)
+);
 
-export default NotFoundPage
+export default NotFoundPage;
