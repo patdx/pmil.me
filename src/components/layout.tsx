@@ -1,21 +1,23 @@
+import 'font-awesome/css/font-awesome.css'
+import { graphql, Link, StaticQuery } from 'gatsby'
 import * as React from 'react'
 import Helmet from 'react-helmet'
-import GatsbyLink from 'gatsby-link'
+import './layout.scss'
 
-import './index.scss'
-import 'font-awesome/css/font-awesome.css'
-import { StaticQuery, graphql } from 'gatsby'
-
-interface LayoutProps {
-  children: JSX.Element
-}
-
-export const TabLink = ({ to, children }: any) => (
+export const TabLink = ({
+  to,
+  children,
+  activeStrategy,
+}: {
+  to: any
+  children: any
+  activeStrategy: 'isCurrent' | 'isPartiallyCurrent'
+}) => (
   <li>
-    <GatsbyLink
+    <Link
       to={to}
-      getProps={({ isCurrent }) =>
-        isCurrent
+      getProps={props =>
+        props[activeStrategy]
           ? {
               className: 'has-text-weight-semibold',
               // bulma sets 0.9 opacity, reset to 1 on full selection
@@ -25,11 +27,15 @@ export const TabLink = ({ to, children }: any) => (
       }
     >
       {children}
-    </GatsbyLink>
+    </Link>
   </li>
 )
 
-export const Layout = ({ children }: LayoutProps) => (
+export const Layout = ({
+  children,
+}: {
+  children: React.ReactNode
+}) => (
   <React.Fragment>
     <StaticQuery
       query={graphql`
@@ -57,21 +63,30 @@ export const Layout = ({ children }: LayoutProps) => (
     <section className="hero is-primary is-bold">
       <div className="hero-body">
         <div className="container">
-          <GatsbyLink to="/">
+          <Link to="/">
             <h1 className="title">Patrick Miller</h1>
             <h2 className="subtitle">Software developer</h2>
-          </GatsbyLink>
+          </Link>
         </div>
       </div>
       <div className="hero-foot">
         <nav className="tabs is-centered">
           <ul>
-            <TabLink to="/">
-              {/* activeOnlyWhenExact={true} */}
+            <TabLink to="/" activeStrategy="isCurrent">
               About
             </TabLink>
-            <TabLink to="/projects">Projects</TabLink>
-            <TabLink to="/contact">Contact</TabLink>
+            <TabLink
+              to="/projects"
+              activeStrategy="isPartiallyCurrent" // Projects has subpages
+            >
+              Projects
+            </TabLink>
+            <TabLink
+              to="/contact"
+              activeStrategy="isCurrent"
+            >
+              Contact
+            </TabLink>
           </ul>
         </nav>
       </div>

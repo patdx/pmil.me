@@ -12,7 +12,7 @@ const IndexPage = ({ data }: any) => (
       >
         <div className="column is-one-third">
           <Img
-            sizes={data.profileImage.childImageSharp.sizes}
+            fluid={data.profileImage.childImageSharp.fluid}
           />
         </div>
         <div className="column">
@@ -46,8 +46,8 @@ export const query = graphql`
       relativePath: { eq: "img/patrick-arashiyama.jpg" }
     ) {
       childImageSharp {
-        sizes {
-          ...GatsbyImageSharpSizes_noBase64
+        fluid {
+          ...GatsbyImageSharpFluid_noBase64
         }
       }
     }

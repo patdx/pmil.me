@@ -1,12 +1,11 @@
 import * as React from 'react'
-import GatsbyLink from 'gatsby-link'
 import Img from 'gatsby-image'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { Layout } from '../components/layout'
 
 export const Card = ({ node }: { node: any }) => (
   <div className="column is-one-third">
-    <GatsbyLink to={node.fields.slug}>
+    <Link to={node.fields.slug}>
       <div className="card">
         <div className="card-image">
           <Img
@@ -26,7 +25,7 @@ export const Card = ({ node }: { node: any }) => (
           <p>{node.frontmatter.technologies}</p>
         </div>
       </div>
-    </GatsbyLink>
+    </Link>
   </div>
 )
 

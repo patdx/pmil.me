@@ -14,9 +14,9 @@ const {
 exports.onCreateNode = ({
   node,
   getNode,
-  boundActionCreators,
+  actions,
 }) => {
-  const { createNodeField } = boundActionCreators
+  const { createNodeField } = actions
   if (node.internal.type === `MarkdownRemark`) {
     const slug = createFilePath({
       node,
@@ -33,9 +33,9 @@ exports.onCreateNode = ({
 
 exports.createPages = ({
   graphql,
-  boundActionCreators,
+  actions,
 }) => {
-  const { createPage } = boundActionCreators
+  const { createPage } = actions
   return new Promise((resolve, reject) => {
     graphql(`
       {
