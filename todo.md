@@ -1,4 +1,3 @@
-- connect to netlify
 - add animations
 - fit markdown screenshots
 - reorganize projects list

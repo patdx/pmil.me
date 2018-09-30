@@ -1,7 +1,7 @@
-import * as React from 'react'
-import Img from 'gatsby-image'
-import { graphql, Link } from 'gatsby'
-import { Layout } from '../components/layout'
+import { graphql, Link } from "gatsby";
+import Img from "gatsby-image";
+import * as React from "react";
+import { Layout } from "../components/layout";
 
 export const Card = ({ node }: { node: any }) => (
   <div className="column is-one-third">
@@ -27,7 +27,7 @@ export const Card = ({ node }: { node: any }) => (
       </div>
     </Link>
   </div>
-)
+);
 
 export default ({ data }: { data: any }) => (
   <Layout>
@@ -46,7 +46,7 @@ export default ({ data }: { data: any }) => (
       </div>
     </div>
   </Layout>
-)
+);
 
 export const query = graphql`
   query IndexQuery {
@@ -63,7 +63,7 @@ export const query = graphql`
             technologies
             imageUrl {
               childImageSharp {
-                sizes(maxWidth: 200, maxHeight: 200) {
+                sizes(maxWidth: 500, maxHeight: 500) {
                   ...GatsbyImageSharpSizes_noBase64
                 }
               }
@@ -77,4 +77,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;
