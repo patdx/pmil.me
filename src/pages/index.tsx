@@ -19,17 +19,20 @@ const IndexPage = ({ data }: any) => (
           <div className="content">
             <p>
               Hello! My name is Patrick Miller. I work as a
-              software developer in Osaka, Japan.
+              software engineer in Osaka, Japan.
             </p>
             <p>
-              I previously studied mechanical engineering,
-              and I have experience in QA, IT and software
-              development.
+              I work on web and mobile applications using
+              Angular, Ionic 4, Electron, etc.
             </p>
             <p>
-              Here are some various projects that might be
-              interesting. Feel free to contact me! Thank
-              you.
+              I also have past experience in QA, IT and
+              mechanical engineering.
+            </p>
+            <p>
+              Here are some various older projects that
+              might be interesting. Feel free to contact me!
+              Thank you.
             </p>
           </div>
         </div>
