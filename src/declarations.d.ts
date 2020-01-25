@@ -1,3 +1,3 @@
-declare module "humanize-url" {
+declare module 'humanize-url' {
   export default function humanizeUrl(url: string): string;
 }

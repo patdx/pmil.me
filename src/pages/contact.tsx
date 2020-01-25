@@ -1,5 +1,5 @@
-import * as React from "react";
-import { Layout } from "../components/layout";
+import * as React from 'react';
+import { Layout } from '../components/layout';
 
 interface LinkProps {
   to: string;
@@ -9,25 +9,25 @@ interface LinkProps {
 
 const links: LinkProps[] = [
   {
-    to: "mailto:pamiller.pdx@gmail.com",
-    icon: "fa-envelope",
-    text: "pamiller.pdx@gmail.com"
+    to: 'mailto:pamiller.pdx@gmail.com',
+    icon: 'fa-envelope',
+    text: 'pamiller.pdx@gmail.com',
   },
   {
-    to: "https://github.com/patdx",
-    icon: "fa-github",
-    text: "Github"
+    to: 'https://github.com/patdx',
+    icon: 'fa-github',
+    text: 'Github',
   },
   {
-    to: "https://www.linkedin.com/in/pamiller",
-    icon: "fa-linkedin",
-    text: "LinkedIn"
+    to: 'https://www.linkedin.com/in/pamiller',
+    icon: 'fa-linkedin',
+    text: 'LinkedIn',
   },
   {
-    to: "http://codepen.io/patdx/",
-    icon: "fa-codepen",
-    text: "CodePen"
-  }
+    to: 'http://codepen.io/patdx/',
+    icon: 'fa-codepen',
+    text: 'CodePen',
+  },
 ];
 
 export const Link = ({ to, icon, text }: LinkProps) => (

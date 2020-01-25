@@ -1,27 +1,27 @@
-import { graphql } from "gatsby";
-import Img from "gatsby-image";
-import * as React from "react";
-import { Layout } from "../components/layout";
-import humanizeUrl from "humanize-url";
-import classNames from "classnames";
+import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
+import * as React from 'react';
+import { Layout } from '../components/layout';
+import humanizeUrl from 'humanize-url';
+import classNames from 'classnames';
 
 /** add even spacing between elements */
 export const ContentWrapper = ({
   children,
-  columnClassnames
+  columnClassnames,
 }: {
   children: any;
   columnClassnames?: any;
 }) => (
   <div className="columns">
-    <div className={classNames("column", columnClassnames)}>
+    <div className={classNames('column', columnClassnames)}>
       {children}
     </div>
   </div>
 );
 
 export default ({
-  data: { markdownRemark: post }
+  data: { markdownRemark: post },
 }: {
   data: any;
 }) => (
@@ -49,9 +49,9 @@ export default ({
                     target="_blank"
                     className="button is-large is-primary"
                     style={{
-                      flexDirection: "column",
-                      margin: "auto",
-                      height: "unset"
+                      flexDirection: 'column',
+                      margin: 'auto',
+                      height: 'unset',
                     }}
                   >
                     <div>
@@ -78,7 +78,7 @@ export default ({
                   <div
                     className="content"
                     dangerouslySetInnerHTML={{
-                      __html: post.html
+                      __html: post.html,
                     }}
                   />
                 </ContentWrapper>

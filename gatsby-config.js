@@ -1,27 +1,27 @@
 module.exports = {
   siteMetadata: {
-    title: "Patrick Miller"
+    title: 'Patrick Miller',
   },
   plugins: [
-    "gatsby-plugin-react-helmet",
+    'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-plugin-sass`,
       options: {
-        implementation: require("sass")
-      }
+        implementation: require('sass'),
+      },
     },
-    "gatsby-plugin-typescript",
+    'gatsby-plugin-typescript',
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `data`,
-        path: `${__dirname}/src/data/`
-      }
+        path: `${__dirname}/src/data/`,
+      },
     },
     {
-      resolve: "gatsby-transformer-remark",
+      resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
           {
@@ -30,11 +30,11 @@ module.exports = {
               // It's important to specify the maxWidth (in pixels) of
               // the content container as this plugin uses this as the
               // base for generating different widths of each image.
-              maxWidth: 590
-            }
-          }
-        ]
-      }
-    }
-  ]
+              maxWidth: 590,
+            },
+          },
+        ],
+      },
+    },
+  ],
 };

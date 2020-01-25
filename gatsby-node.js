@@ -8,7 +8,7 @@
 
 const path = require(`path`);
 const {
-  createFilePath
+  createFilePath,
 } = require(`gatsby-source-filesystem`);
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
@@ -17,12 +17,12 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     const slug = createFilePath({
       node,
       getNode,
-      basePath: `pages`
+      basePath: `pages`,
     });
     createNodeField({
       node,
       name: `slug`,
-      value: slug
+      value: slug,
     });
   }
 };
@@ -52,8 +52,8 @@ exports.createPages = ({ graphql, actions }) => {
             ),
             context: {
               // Data passed to context is available in page queries as GraphQL variables.
-              slug: node.fields.slug
-            }
+              slug: node.fields.slug,
+            },
           });
         }
       );
