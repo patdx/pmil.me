@@ -1,10 +1,10 @@
 {
-  "name": "patdx.github.io",
+  "name": "pmil.me",
   "description": "Personal Website",
   "author": "Patrick Miller",
   "repository": {
     "type": "git",
-    "url": "https://github.com/patdx/patdx.github.io"
+    "url": "https://github.com/patdx/pmil.me"
   },
   "version": "2.0.0",
   "scripts": {
@@ -15,33 +15,33 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "bulma": "^0.7.4",
+    "bulma": "^0.8.0",
     "classnames": "^2.2.6",
     "font-awesome": "^4.7.0",
-    "gatsby": "^2.0.118",
-    "gatsby-image": "^2.0.29",
-    "gatsby-plugin-react-helmet": "^3.0.6",
-    "gatsby-plugin-sass": "^2.0.10",
-    "gatsby-plugin-sharp": "^2.0.20",
-    "gatsby-plugin-typescript": "^2.0.7",
-    "gatsby-remark-images": "^3.0.3",
-    "gatsby-source-filesystem": "^2.0.20",
-    "gatsby-transformer-remark": "^2.2.4",
-    "gatsby-transformer-sharp": "^2.1.13",
-    "humanize-url": "^2.0.0",
-    "node-sass": "^4.11.0",
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1",
-    "react-helmet": "^5.2.0"
+    "gatsby": "^2.19.5",
+    "gatsby-image": "^2.2.39",
+    "gatsby-plugin-react-helmet": "^3.1.21",
+    "gatsby-plugin-sass": "^2.1.27",
+    "gatsby-plugin-sharp": "^2.4.0",
+    "gatsby-plugin-typescript": "^2.1.26",
+    "gatsby-remark-images": "^3.1.42",
+    "gatsby-source-filesystem": "^2.1.46",
+    "gatsby-transformer-remark": "^2.6.48",
+    "gatsby-transformer-sharp": "^2.3.13",
+    "humanize-url": "^2.1.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^5.2.1",
+    "sass": "^1.25.0"
   },
   "devDependencies": {
-    "@types/classnames": "^2.2.7",
-    "@types/prop-types": "^15.5.8",
-    "@types/react": "^16.8.2",
-    "@types/react-helmet": "^5.0.8",
-    "prettier": "^1.16.4",
-    "prettier-package-json": "^2.0.1",
-    "typescript": "^3.3.3"
+    "@types/classnames": "^2.2.9",
+    "@types/prop-types": "^15.7.3",
+    "@types/react": "^16.9.19",
+    "@types/react-helmet": "^5.0.15",
+    "prettier": "^1.19.1",
+    "prettier-package-json": "^2.1.3",
+    "typescript": "^3.7.5"
   },
   "keywords": [
     "gatsby"

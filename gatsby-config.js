@@ -4,7 +4,12 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-react-helmet",
-    "gatsby-plugin-sass",
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        implementation: require("sass")
+      }
+    },
     "gatsby-plugin-typescript",
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
