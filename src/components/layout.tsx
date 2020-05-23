@@ -1,7 +1,7 @@
 import 'font-awesome/css/font-awesome.css';
 import { graphql, Link, StaticQuery } from 'gatsby';
 import * as React from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import './layout.scss';
 
 export const TabLink = ({
@@ -16,7 +16,7 @@ export const TabLink = ({
   <li>
     <Link
       to={to}
-      getProps={props =>
+      getProps={(props) =>
         props[activeStrategy]
           ? {
               className: 'has-text-weight-semibold',
@@ -47,7 +47,7 @@ export const Layout = ({
           }
         }
       `}
-      render={data => (
+      render={(data) => (
         <Helmet
           title={data.site.siteMetadata.title}
           meta={[
