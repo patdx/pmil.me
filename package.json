@@ -12,9 +12,7 @@
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md}\"",
     "format:package-json": "prettier-package-json --write ./package.json",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "bulma": "^0.8.2",
@@ -34,7 +32,6 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
-    "snyk": "^1.323.2",
     "sass": "^1.26.5"
   },
   "devDependencies": {
