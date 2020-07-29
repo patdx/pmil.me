@@ -1,6 +1,5 @@
 {
   "extends": [
-    "config:base"
-  ],
-  "automerge": true
+    "config:base", "github>patdx/renovate-config"
+  ]
 }
