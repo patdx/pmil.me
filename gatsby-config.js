@@ -36,5 +36,13 @@ module.exports = {
         ],
       },
     },
+    // {
+    //   resolve: 'gatsby-plugin-seo',
+    //   options: {
+    //     siteName: 'Patrick Miller',
+    //     defaultSiteImage: 'src/data/img/patrick-arashiyama.jpg',
+    //     siteUrl: 'https://pmil.me/',
+    //   },
+    // },
   ],
 };

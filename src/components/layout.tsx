@@ -1,8 +1,9 @@
 import 'font-awesome/css/font-awesome.css';
 import { graphql, Link, StaticQuery } from 'gatsby';
 import * as React from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import './layout.scss';
+import image from '../data/img/patrick-arashiyama.jpg';
 
 export const TabLink = ({
   to,
@@ -16,7 +17,7 @@ export const TabLink = ({
   <li>
     <Link
       to={to}
-      getProps={props =>
+      getProps={(props) =>
         props[activeStrategy]
           ? {
               className: 'has-text-weight-semibold',
@@ -47,15 +48,50 @@ export const Layout = ({
           }
         }
       `}
-      render={data => (
+      render={(data) => (
         <Helmet
           title={data.site.siteMetadata.title}
           meta={[
-            { name: 'description', content: 'Sample' },
             {
-              name: 'keywords',
-              content: 'sample, something',
+              name: `description`,
+              content: 'Portfolio of Patrick Miller',
             },
+            {
+              property: `og:title`,
+              content: 'Patrick Miller',
+            },
+            {
+              property: `og:description`,
+              content: 'Portfolio of Patrick Miller',
+            },
+            {
+              property: `og:type`,
+              content: `website`,
+            },
+            {
+              property: 'og:image',
+              content: image,
+            },
+            {
+              property: 'og:url',
+              content: 'https://pmil.me',
+            },
+            // {
+            //   name: `twitter:card`,
+            //   content: `summary`,
+            // },
+            // {
+            //   name: `twitter:creator`,
+            //   content: site.siteMetadata.author,
+            // },
+            // {
+            //   name: `twitter:title`,
+            //   content: title,
+            // },
+            // {
+            //   name: `twitter:description`,
+            //   content: metaDescription,
+            // },
           ]}
         />
       )}
