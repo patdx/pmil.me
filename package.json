@@ -9,7 +9,7 @@
   "version": "2.0.0",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md}\"",
     "format:package-json": "prettier-package-json --write ./package.json",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -46,5 +46,9 @@
   "keywords": [
     "gatsby"
   ],
-  "snyk": true
+  "snyk": true,
+  "resolutions": {
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
+  }
 }

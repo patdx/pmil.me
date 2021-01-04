@@ -9,9 +9,9 @@ export const Card = ({ node }: { node: any }) => (
       <div className="card">
         <div className="card-image">
           <Img
-            sizes={
+            fluid={
               node.frontmatter.imageUrl.childImageSharp
-                .sizes
+                .fluid
             }
           />
         </div>
@@ -63,8 +63,8 @@ export const query = graphql`
             technologies
             imageUrl {
               childImageSharp {
-                sizes(maxWidth: 500, maxHeight: 500) {
-                  ...GatsbyImageSharpSizes_noBase64
+                fluid(maxWidth: 500, maxHeight: 500) {
+                  ...GatsbyImageSharpFluid
                 }
               }
             }
