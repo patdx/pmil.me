@@ -1,3 +1,0 @@
-- add animations
-- fit markdown screenshots
-- reorganize projects list
