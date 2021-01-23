@@ -1,10 +1,11 @@
-import classNames from "classnames";
-import { FC } from "react";
-import Container from "../components/container";
-import Header from "../components/header";
-import Layout from "../components/layout";
-import Head from "next/head";
-import { NextSeo } from "next-seo";
+import classNames from 'classnames';
+import { FC } from 'react';
+import Container from '../components/container';
+import Header from '../components/header';
+import Layout from '../components/layout';
+import Head from 'next/head';
+import Image from 'next/image';
+import { NextSeo } from 'next-seo';
 // import markdownStyles from "../components/markdown-styles.module.css";
 
 const Index: FC = () => {
@@ -15,7 +16,7 @@ const Index: FC = () => {
         <Container className="grid gap-4 py-4">
           <Header></Header>
           <div className="bg-gray-100 rounded-md p-8 shadow-lg grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className={classNames("col-span-2", "prose")}>
+            <div className={classNames('col-span-2', 'prose')}>
               <p>
                 Hello! My name is Patrick Miller. I work as a software engineer
                 in Osaka, Japan.
@@ -34,9 +35,13 @@ const Index: FC = () => {
               </p>
             </div>
             <div>
-              <div className="aspect-w-1 aspect-h-1">
-                <img src="/assets/img/patrick-arashiyama.jpg"></img>
-              </div>
+              <Image
+                layout="responsive"
+                width={3024}
+                height={3024}
+                src="/assets/img/patrick.jpg"
+                alt="Picture of Patrick Miller"
+              />
             </div>
           </div>
         </Container>

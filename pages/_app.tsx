@@ -15,7 +15,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
           images: [
             {
-              url: '/assets/img/patrick-arashiyama.jpg',
+              url: '/assets/img/patrick.jpg',
             },
           ],
         }}
