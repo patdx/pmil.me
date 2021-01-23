@@ -1,7 +1,9 @@
 ---
 title: Coffee Stand
-description:
+excerpt:
 technologies: SolidWorks, Laser Cutting, Coffee
 externalUrl: https://github.com/patdx/coffee-stand
-imageUrl: coffee-stand-200x160.jpg
+coverImage: '/assets/blog2/coffee-stand-200x160.jpg'
+ogImage:
+  url: '/assets/blog2/coffee-stand-200x160.jpg'
 ---

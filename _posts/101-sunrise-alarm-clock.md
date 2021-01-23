@@ -1,7 +1,9 @@
 ---
 title: Sunrise Alarm Clock
-description:
+excerpt:
 technologies: Arduino, C++
 externalUrl: https://github.com/patdx/sunrise-alarm-clock
-imageUrl: sunrise-alarm-clock-200x160.png
+coverImage: '/assets/blog2/sunrise-alarm-clock-200x160.png'
+ogImage:
+  url: '/assets/blog2/sunrise-alarm-clock-200x160.png'
 ---

@@ -1,7 +1,9 @@
 ---
 title: Wanikani Hints
-description:
+excerpt:
 technologies: Javascript, Greasemonkey
 externalUrl: https://github.com/patdx/wanikani-hints
-imageUrl: wanikani-hints-200x160.png
+coverImage: '/assets/blog2/wanikani-hints-200x160.png'
+ogImage:
+  url: '/assets/blog2/wanikani-hints-200x160.png'
 ---

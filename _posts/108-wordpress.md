@@ -1,8 +1,10 @@
 ---
 title: Wordpress
-description: Various projects
+excerpt: Various projects
 technologies: Wordpress, HTML, CSS
-imageUrl: wordpress.png
+coverImage: '/assets/blog2/wordpress.png'
+ogImage:
+  url: '/assets/blog2/wordpress.png'
 layout: project
 ---
 

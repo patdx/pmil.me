@@ -1,7 +1,9 @@
 ---
 title: Motor Controller
-description: University Project
+excerpt: University Project
 technologies: Arduino, C++, SolidWorks
 externalUrl: https://github.com/UPCeramicKnee/motor-controller
-imageUrl: motor-controller-200x160.png
+coverImage: '/assets/blog2/motor-controller-200x160.png'
+ogImage:
+  url: '/assets/blog2/motor-controller-200x160.png'
 ---

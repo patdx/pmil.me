@@ -1,11 +1,13 @@
 ---
 title: Train Check
-description:
+excerpt:
   Check train delays in real time using online API
 technologies: React, JS, HTML, Responsive Design
 linkToProjectPage: true
 externalUrl: https://train-check.now.sh/
-imageUrl: traincheck-screenshot.png
+coverImage: '/assets/blog2/traincheck-screenshot.png'
+ogImage:
+  url: '/assets/blog2/traincheck-screenshot.png'
 layout: project
 ---
 

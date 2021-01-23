@@ -1,7 +1,9 @@
 ---
 title: Weather Machine
-description:
+excerpt:
 technologies: Javascript
 externalUrl: http://codepen.io/patdx/full/bBPyRx/
-imageUrl: weather-machine-200x160.png
+coverImage: '/assets/blog2/weather-machine-200x160.png'
+ogImage:
+  url: '/assets/blog2/weather-machine-200x160.png'
 ---
