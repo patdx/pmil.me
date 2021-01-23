@@ -1,8 +1,10 @@
-import classNames from "classnames";
+// import classNames from "classnames";
 import { FC } from "react";
 import Container from "../components/container";
 import Header from "../components/header";
 import Layout from "../components/layout";
+import Head from "next/head";
+import { NextSeo } from "next-seo";
 
 interface LinkProps {
   to: string;
@@ -35,25 +37,29 @@ const LINKS: LinkProps[] = [
 
 const Contact: FC = () => {
   return (
-    <Layout>
-      <Container className="grid gap-4 pt-4">
-        <Header></Header>
-        <div className="grid gap-2 sm:grid-cols-2">
-          {LINKS.map(({ to, icon, text }, index) => (
-            <a
-              href={to}
-              target="_blank"
-              className="bg-blue-200 hover:bg-blue-400 rounded-md h-8 flex justify-center items-center"
-            >
-              <span className="icon is-large">
-                <i className={`fa fa-lg ${icon}`} />
-              </span>
-              <span>{text}</span>
-            </a>
-          ))}
-        </div>
-      </Container>
-    </Layout>
+    <>
+      <NextSeo title="Contact | Patrick Miller" />
+      <Layout>
+        <Container className="grid gap-4 pt-4">
+          <Header></Header>
+          <div className="grid gap-2 sm:grid-cols-2">
+            {LINKS.map(({ to, icon, text }, index) => (
+              <a
+                key={index}
+                href={to}
+                target="_blank"
+                className="bg-blue-200 hover:bg-blue-400 rounded-md h-16 flex justify-center items-center"
+              >
+                <span className="icon is-large">
+                  <i className={`fa fa-lg ${icon}`} />
+                </span>
+                <span>{text}</span>
+              </a>
+            ))}
+          </div>
+        </Container>
+      </Layout>
+    </>
   );
 };
 

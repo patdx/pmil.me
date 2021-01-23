@@ -1,4 +1,3 @@
-- Fix project pages and add column layout
 - Fix headers/meta data
 
 FUTURE IMPROVEMENTS:

@@ -2,6 +2,7 @@ import DateFormatter from "./date-formatter";
 import CoverImage from "./cover-image";
 import Link from "next/link";
 import Author from "../types/author";
+import classNames from "classnames";
 
 type Props = {
   title: string;
@@ -21,21 +22,27 @@ const PostPreview = ({
   slug,
 }: Props) => {
   return (
-    <div>
-      <div className="mb-5">
-        <CoverImage slug={slug} title={title} src={coverImage} />
-      </div>
-      <h3 className="text-3xl mb-3 leading-snug">
-        <Link as={`/projects/${slug}`} href="/projects/[slug]">
-          <a className="hover:underline">{title}</a>
-        </Link>
-      </h3>
-      <div className="text-lg mb-4">
-        <DateFormatter dateString={date} />
-      </div>
-      <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
-      {/* <Avatar name={author?.name} picture={author?.picture} /> */}
-    </div>
+    <Link as={`/projects/${slug}`} href="/projects/[slug]">
+      <a
+        className={classNames(
+          "aspect-w-1 aspect-h-1 rounded-md overflow-hidden",
+          "hover:shadow-medium transition-shadow duration-200",
+          "shadow-small"
+        )}
+      >
+        <img
+          src={coverImage}
+          alt={`Cover Image for ${title}`}
+          className={classNames("object-cover")}
+        />
+        <div className="flex items-end">
+          <div className="flex-1 bg-black opacity-80 text-white p-2">
+            <h3 className="font-bold">{title}</h3>
+            <p>{excerpt}</p>
+          </div>
+        </div>
+      </a>
+    </Link>
   );
 };
 

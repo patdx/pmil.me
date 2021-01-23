@@ -2,9 +2,9 @@
 title: Wordpress
 excerpt: Various projects
 technologies: Wordpress, HTML, CSS
-coverImage: '/assets/blog2/wordpress.png'
+coverImage: "/assets/projects/wordpress.png"
 ogImage:
-  url: '/assets/blog2/wordpress.png'
+  url: "/assets/projects/wordpress.png"
 layout: project
 ---
 
@@ -25,6 +25,6 @@ college.
 
 ## Screenshots
 
-![](./wordpress/bmes-500x500.png)
+![](/assets/projects/wordpress/bmes-500x500.png)
 
-![](./wordpress/ceramicknee-500x500.png)
+![](/assets/projects/wordpress/ceramicknee-500x500.png)

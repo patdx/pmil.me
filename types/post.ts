@@ -11,6 +11,8 @@ type PostType = {
     url: string;
   };
   content: string;
+  technologies: string;
+  externalUrl: string;
 };
 
 export default PostType;
