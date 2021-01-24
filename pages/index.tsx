@@ -15,22 +15,23 @@ const Index: FC = () => {
       <Layout>
         <Container className="grid gap-4 py-4">
           <Header></Header>
-          <div className="bg-gray-100 rounded-md p-8 shadow-lg grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {/* <div className="rounded-md p-8 shadow-lg grid grid-cols-1 sm:grid-cols-3 gap-4 border-gray-200 border"></div> */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-y-4 sm:gap-x-4">
             <div className={classNames('col-span-2', 'prose')}>
               <p>
-                Hello! My name is Patrick Miller. I work as a software engineer
-                in Osaka, Japan.
+                Hello! My name is Patrick Miller. I have been working as a
+                software engineer in Osaka, Japan for several years.
               </p>
               <p>
-                I work on web and mobile applications using Angular, Ionic 4,
-                Electron, etc.
+                I work on web and hybrid mobile applications using Angular,
+                Ionic, Electron, React, etc.
               </p>
               <p>
                 I also have past experience in QA, IT and mechanical
                 engineering.
               </p>
               <p>
-                Here are some various older projects that might be interesting.
+                Here are some various hobby projects that might be interesting.
                 Feel free to contact me! Thank you.
               </p>
             </div>
@@ -39,6 +40,7 @@ const Index: FC = () => {
                 layout="responsive"
                 width={3024}
                 height={3024}
+                className="rounded-lg"
                 src="/assets/img/patrick.jpg"
                 alt="Picture of Patrick Miller"
               />
