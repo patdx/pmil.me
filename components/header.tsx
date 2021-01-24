@@ -1,38 +1,45 @@
-import Link from "next/link";
+import classNames from 'classnames';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const LINKS = [
   {
-    title: "About",
-    url: "/",
+    title: 'About',
+    url: '/',
   },
   {
-    title: "Projects",
-    url: "/projects",
+    title: 'Projects',
+    url: '/projects',
   },
   {
-    title: "Contact",
-    url: "/contact",
+    title: 'Contact',
+    url: '/contact',
   },
 ];
 
 const Header = () => {
+  const router = useRouter();
+
   return (
-    <>
-      <div className="grid gap-2 text-center sm:grid-cols-3 sm:mx-16">
-        {LINKS.map((link, index) => (
-          <Link href={link.url} key={index}>
-            <a className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg flex justify-center items-center hover:shadow h-12">
+    <div className="grid text-center grid-cols-3 divide-x divide-blue-100 sm:w-96 sm:mx-auto">
+      {LINKS.map((link, index) => (
+        <div className="px-2" key={index}>
+          <Link href={link.url}>
+            {/* bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg flex justify-center items-center hover:shadow h-12 */}
+            <a
+              className={classNames(
+                'h-12 flex justify-center items-center hover:bg-blue-200 text-blue-900 hover:text-black rounded',
+                {
+                  'font-bold': router.pathname === link.url,
+                }
+              )}
+            >
               {link.title}
             </a>
           </Link>
-        ))}
-      </div>
-      {/* <h2 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8">
-        <Link href="/">
-          <a className="hover:underline">Blog</a>
-        </Link>
-      </h2> */}
-    </>
+        </div>
+      ))}
+    </div>
   );
 };
 
