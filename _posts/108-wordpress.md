@@ -2,14 +2,13 @@
 title: Wordpress
 excerpt: Various projects
 technologies: Wordpress, HTML, CSS
-coverImage: "/assets/projects/wordpress.png"
+coverImage: '/assets/images/projects/wordpress.png'
 ogImage:
-  url: "/assets/projects/wordpress.png"
+  url: '/assets/images/projects/wordpress.png'
 layout: project
 ---
 
-I managed some Wordpress websites and online social media in
-college.
+I managed some Wordpress websites and online social media in college.
 
 - [Biomedical Engineering Club](https://sites.up.edu/bmesup/)
 
@@ -25,6 +24,6 @@ college.
 
 ## Screenshots
 
-![](/assets/projects/wordpress/bmes-500x500.png)
+![](/assets/images/projects/wordpress/bmes-500x500.png)
 
-![](/assets/projects/wordpress/ceramicknee-500x500.png)
+![](/assets/images/projects/wordpress/ceramicknee-500x500.png)
