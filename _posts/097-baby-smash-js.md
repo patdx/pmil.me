@@ -4,9 +4,9 @@ excerpt: Web app for entertaining babies
 technologies: React, Three.js, react-three-fiber, PWA
 linkToProjectPage: true
 externalUrl: https://github.com/patdx/baby-smash-js
-coverImage: '/assets/projects/baby-smash.png'
+coverImage: '/assets/images/projects/baby-smash.png'
 ogImage:
-  url: '/assets/projects/baby-smash.png'
+  url: '/assets/images/projects/baby-smash.png'
 layout: project
 ---
 
