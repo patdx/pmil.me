@@ -1,16 +1,15 @@
+import humanizeUrl from 'humanize-url';
 import { NextSeo } from 'next-seo';
 import ErrorPage from 'next/error';
 import { useRouter } from 'next/router';
 import Container from '../../components/container';
 import CoverImage from '../../components/cover-image';
-import Header from '../../components/header';
 import Layout from '../../components/layout';
 import PostBody from '../../components/post-body';
 import PostTitle from '../../components/post-title';
 import { getAllPosts, getPostBySlug } from '../../lib/api';
 import markdownToHtml from '../../lib/markdownToHtml';
 import PostType from '../../types/post';
-import humanizeUrl from 'humanize-url';
 
 type Props = {
   post: PostType;
@@ -32,7 +31,6 @@ const Post = ({ post, morePosts, preview }: Props) => {
     <>
       <Layout preview={preview}>
         <Container className="grid gap-4 py-4">
-          <Header />
           {router.isFallback ? (
             <PostTitle>Loading…</PostTitle>
           ) : (

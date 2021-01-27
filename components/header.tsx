@@ -21,7 +21,7 @@ const Header = () => {
   const router = useRouter();
 
   return (
-    <div className="grid text-center grid-cols-3 divide-x divide-blue-100 sm:w-96 sm:mx-auto">
+    <div className="p-4 grid text-center grid-cols-3 divide-x divide-blue-100 sm:w-96 sm:mx-auto">
       {LINKS.map((link, index) => (
         <div className="px-2" key={index}>
           <Link href={link.url}>
