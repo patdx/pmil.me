@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Author from '../types/author';
+import { Author } from '../types/author';
 import classNames from 'classnames';
 import Image from 'next/image';
 

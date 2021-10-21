@@ -3,7 +3,7 @@ import Container from '../components/container';
 import Layout from '../components/layout';
 import PostPreview from '../components/post-preview';
 import { getAllPosts } from '../lib/api';
-import Post from '../types/post';
+import { Post } from '../types/post';
 
 type Props = {
   allPosts: Post[];

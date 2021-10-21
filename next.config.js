@@ -1,8 +1,8 @@
 module.exports = {
+  esmExternals: true,
   images: {
     domains: ['pmil.me'],
   },
-
   headers: async () => {
     return [
       {

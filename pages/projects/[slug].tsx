@@ -8,8 +8,8 @@ import Layout from '../../components/layout';
 import PostBody from '../../components/post-body';
 import PostTitle from '../../components/post-title';
 import { getAllPosts, getPostBySlug } from '../../lib/api';
-import markdownToHtml from '../../lib/markdownToHtml';
-import PostType from '../../types/post';
+import { markdownToHtml } from '../../lib/markdown-to-html';
+import { Post as PostType } from '../../types/post';
 
 type Props = {
   post: PostType;
