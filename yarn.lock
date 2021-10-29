@@ -4154,7 +4154,7 @@ fsevents@~2.3.2:
     react-icons: 4.3.1
     remark: 14.0.1
     remark-html: 15.0.0
-    tailwindcss: 2.2.17
+    tailwindcss: 2.2.18
     typescript: 4.4.4
   languageName: unknown
   linkType: soft
@@ -5511,9 +5511,9 @@ resolve@^1.20.0:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:2.2.17":
-  version: 2.2.17
-  resolution: "tailwindcss@npm:2.2.17"
+"tailwindcss@npm:2.2.18":
+  version: 2.2.18
+  resolution: "tailwindcss@npm:2.2.18"
   dependencies:
     arg: ^5.0.1
     bytes: ^3.0.0
@@ -5553,7 +5553,7 @@ resolve@^1.20.0:
   bin:
     tailwind: lib/cli.js
     tailwindcss: lib/cli.js
-  checksum: a0bff1a014f5283676faca321a60c6e97c5512d42f3fe89aae04dffde2b1425c47b7cc3562ee16a9d748fb5cb3a2b8782845c6d8c815de293c4ed6c035b024b0
+  checksum: e6a64fbf69402b2ded873273722a5264562af874b3072940f2e16d957d6e0df2162923424a1a50200612a1386039881ca900fb473ad13da0c70a0546f58b7da0
   languageName: node
   linkType: hard
 
