@@ -5,15 +5,15 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@csstools/postcss-cascade-layers@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "@csstools/postcss-cascade-layers@npm:1.0.1"
+"@csstools/postcss-cascade-layers@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@csstools/postcss-cascade-layers@npm:1.0.2"
   dependencies:
     "@csstools/selector-specificity": ^1.0.0
     postcss-selector-parser: ^6.0.10
   peerDependencies:
     postcss: ^8.3
-  checksum: 2a98d44b60967f306b13e7a7bf5fcde92fdfb42ba21a9cf0e8db1011f3e4389a7d6a9cf113e0c94926d3653a5552103d18dd3fa3c7ee5ac1a1a239ed33b59cdc
+  checksum: d958280e2ee1f1bd2e82e89416763150c367959d4cc8cbc959de4ab8ffac7d3ff9c71faf6f07454d6c7fc7295f7a085f75b92106e5481a6df6d834d587846e69
   languageName: node
   linkType: hard
 
@@ -128,6 +128,17 @@ __metadata:
   peerDependencies:
     postcss: ^8.3
   checksum: 48e9c20a84f58555c0c26889db76d3cef90413e6b4e47c6d2f3895afd713181405ce2afcf3230447ee139e56fe19d568c665de0c7a19d0c16dc834f439b71d72
+  languageName: node
+  linkType: hard
+
+"@csstools/postcss-trigonometric-functions@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@csstools/postcss-trigonometric-functions@npm:1.0.0"
+  dependencies:
+    postcss-value-parser: ^4.2.0
+  peerDependencies:
+    postcss: ^8.4
+  checksum: e22684d0e7da2c27cd5ee129f70eee69410bbbdd36c240e6389709d82a0b4b8e22b7b3c0c5aeedb1d1146303fa261a7b6fee80a16644c45da32b6418ae0fc555
   languageName: node
   linkType: hard
 
@@ -948,10 +959,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cssdb@npm:^6.6.1":
-  version: 6.6.1
-  resolution: "cssdb@npm:6.6.1"
-  checksum: 5348fe6690d615f4ebda428e4b379402e4286f6669532b61c5896470b09aef4b62dc53dfb414585b0dd0b52af557e308044a54be24bc65d935fe2fa782046aa2
+"cssdb@npm:^6.6.2":
+  version: 6.6.2
+  resolution: "cssdb@npm:6.6.2"
+  checksum: 4e8d4f5ce27b3aa1a954149d418791ca01f6ce50ac5fefe0edd1594d1bf13dc2b07280b4b4cc00df73e97068e964e9f5644891bdeabc5fb5b1e4186466a29b0d
   languageName: node
   linkType: hard
 
@@ -2479,7 +2490,7 @@ fsevents@~2.3.2:
     next: 12.1.6
     next-seo: 5.4.0
     postcss: 8.4.14
-    postcss-preset-env: 7.6.0
+    postcss-preset-env: 7.7.0
     prettier: 2.6.2
     react: 18.1.0
     react-dom: 18.1.0
@@ -2513,14 +2524,14 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"postcss-color-functional-notation@npm:^4.2.2":
-  version: 4.2.2
-  resolution: "postcss-color-functional-notation@npm:4.2.2"
+"postcss-color-functional-notation@npm:^4.2.3":
+  version: 4.2.3
+  resolution: "postcss-color-functional-notation@npm:4.2.3"
   dependencies:
     postcss-value-parser: ^4.2.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 77cc5d5526c3228737f2642472546498f0d963b8617c7cae453423331ecb868712ed1557007eab0cd5ff183d60bba24fa2e4bc83e550ddd45f1399e354704b81
+  checksum: 1be72dd64b99a33dd8827aec0373067568721cc06d1e059d72d9680280d06546fe67bc30ed508c89c7878a9bf8ac455ec8f12af9335dcfee45a4be872476abf1
   languageName: node
   linkType: hard
 
@@ -2741,15 +2752,15 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"postcss-nesting@npm:^10.1.6":
-  version: 10.1.6
-  resolution: "postcss-nesting@npm:10.1.6"
+"postcss-nesting@npm:^10.1.7":
+  version: 10.1.7
+  resolution: "postcss-nesting@npm:10.1.7"
   dependencies:
     "@csstools/selector-specificity": 1.0.0
     postcss-selector-parser: ^6.0.10
   peerDependencies:
     postcss: ^8.4
-  checksum: 137cb42eaf41b0f1f536f02811fbbe4b7c5ebc5db6987ece6f881a0a15090738d87def35e2e1843a2c68bf7f2b20cbd0a36139d7530bdcf699505db7b0099a67
+  checksum: 610bf1f32ea235ea825b943dbe50cf0fcf5077a63272bee45e66761ffe4f665cf460f3b7ba171fb758a5082aa2893bc7c834d5cb9e6eb6759bb2c65f0141daa1
   languageName: node
   linkType: hard
 
@@ -2789,11 +2800,11 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"postcss-preset-env@npm:7.6.0":
-  version: 7.6.0
-  resolution: "postcss-preset-env@npm:7.6.0"
+"postcss-preset-env@npm:7.7.0":
+  version: 7.7.0
+  resolution: "postcss-preset-env@npm:7.7.0"
   dependencies:
-    "@csstools/postcss-cascade-layers": ^1.0.1
+    "@csstools/postcss-cascade-layers": ^1.0.2
     "@csstools/postcss-color-function": ^1.1.0
     "@csstools/postcss-font-format-keywords": ^1.0.0
     "@csstools/postcss-hwb-function": ^1.0.1
@@ -2803,16 +2814,17 @@ fsevents@~2.3.2:
     "@csstools/postcss-oklab-function": ^1.1.0
     "@csstools/postcss-progressive-custom-properties": ^1.3.0
     "@csstools/postcss-stepped-value-functions": ^1.0.0
+    "@csstools/postcss-trigonometric-functions": ^1.0.0
     "@csstools/postcss-unset-value": ^1.0.1
     autoprefixer: ^10.4.7
     browserslist: ^4.20.3
     css-blank-pseudo: ^3.0.3
     css-has-pseudo: ^3.0.4
     css-prefers-color-scheme: ^6.0.3
-    cssdb: ^6.6.1
+    cssdb: ^6.6.2
     postcss-attribute-case-insensitive: ^5.0.0
     postcss-clamp: ^4.1.0
-    postcss-color-functional-notation: ^4.2.2
+    postcss-color-functional-notation: ^4.2.3
     postcss-color-hex-alpha: ^8.0.3
     postcss-color-rebeccapurple: ^7.0.2
     postcss-custom-media: ^8.0.0
@@ -2830,7 +2842,7 @@ fsevents@~2.3.2:
     postcss-lab-function: ^4.2.0
     postcss-logical: ^5.0.4
     postcss-media-minmax: ^5.0.0
-    postcss-nesting: ^10.1.6
+    postcss-nesting: ^10.1.7
     postcss-opacity-percentage: ^1.1.2
     postcss-overflow-shorthand: ^3.0.3
     postcss-page-break: ^3.0.4
@@ -2841,7 +2853,7 @@ fsevents@~2.3.2:
     postcss-value-parser: ^4.2.0
   peerDependencies:
     postcss: ^8.4
-  checksum: 9709359ee04209a39ea4d46fb42de95a44d3a314568c6c57cf3650827fda37e5cf56000a932a8d16cf2d006f05dbf413c323c0bbdc2f28c1242604346f60777b
+  checksum: 3f9ce3a3f733b8ba28359b475a0b357e4940ac9cf775cf76e900322bbabd686fe642e0ce96cc992e0b6aac97f04acfc68056dde4efabada7cd211427e1fab419
   languageName: node
   linkType: hard
 
