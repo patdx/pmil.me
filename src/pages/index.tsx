@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { FC } from 'react';
 import Container from '../components/container';
 import Layout from '../components/layout';
+import patrickJpg from '../../assets/patrick.jpg';
 
 const Index: FC = () => {
   return (
@@ -37,7 +38,7 @@ const Index: FC = () => {
                 width={3024}
                 height={3024}
                 className="rounded-lg"
-                src="/assets/images/home/patrick.jpg"
+                src={patrickJpg}
                 alt="Picture of Patrick Miller"
               />
             </div>

@@ -1,6 +1,6 @@
 ---
 title: Baby Smash JS
-excerpt: Web app for entertaining babies
+excerpt: Play with the alphabet
 technologies: React, Three.js, react-three-fiber, PWA
 linkToProjectPage: true
 externalUrl: https://github.com/patdx/baby-smash-js
@@ -13,6 +13,11 @@ layout: project
 ## About
 
 This is an application to entertain babies.
+
+Inspired by the classics:
+
+- [Baby Smash](https://www.hanselman.com/babysmash/)
+- [AlphaBaby](http://alphababy.sourceforge.net/)
 
 You can throw letters around the screen and they will be read out loud by your
 computer's speech synthesizer (results may vary depending on your browser and

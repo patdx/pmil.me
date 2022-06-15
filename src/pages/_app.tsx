@@ -1,6 +1,12 @@
 import { AppProps } from 'next/app';
 import { DefaultSeo } from 'next-seo';
+import patrickJpg from '../../assets/patrick.jpg';
 import '../styles/index.css';
+import { StaticImageData } from 'next/image';
+
+const resolveSrc = (image: string | StaticImageData): string => {
+  return typeof image === 'string' ? image : image.src;
+};
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -15,7 +21,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
           images: [
             {
-              url: '/assets/img/patrick.jpg',
+              url: resolveSrc(patrickJpg),
             },
           ],
         }}
