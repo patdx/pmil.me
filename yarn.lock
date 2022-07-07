@@ -336,16 +336,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tailwindcss/typography@npm:0.5.2":
-  version: 0.5.2
-  resolution: "@tailwindcss/typography@npm:0.5.2"
+"@tailwindcss/typography@npm:0.5.3":
+  version: 0.5.3
+  resolution: "@tailwindcss/typography@npm:0.5.3"
   dependencies:
     lodash.castarray: ^4.4.0
     lodash.isplainobject: ^4.0.6
     lodash.merge: ^4.6.2
   peerDependencies:
     tailwindcss: "*"
-  checksum: f6c27e32c9b48b0e906561d1e9dd3eec8fd5efc9792fd691269ceaa9d30d35bc715023215ec83ff8e5475c38af69e164d577672d935813b70e04b1c820b2ea8e
+  checksum: 4e19e332f78c04cdbda12b33b7d4edfcd69a190bfa4aa8c5c4fc7eed8a615a0a560e03f4c841ed7e86e539c2fdbf8fab9b1bd6a7bebffb230c1d04df7831a4cd
   languageName: node
   linkType: hard
 
@@ -2634,7 +2634,7 @@ fsevents@~2.3.2:
   resolution: "pmil-me-website@workspace:."
   dependencies:
     "@tailwindcss/aspect-ratio": 0.4.0
-    "@tailwindcss/typography": 0.5.2
+    "@tailwindcss/typography": 0.5.3
     "@types/classnames": 2.3.1
     "@types/jest": 28.1.4
     "@types/node": 16.11.43
