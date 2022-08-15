@@ -33,7 +33,7 @@
   "devDependencies": {
     "@types/classnames": "2.3.1",
     "@types/jest": "28.1.7",
-    "@types/node": "16.11.48",
+    "@types/node": "16.11.49",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
     "autoprefixer": "10.4.8",
