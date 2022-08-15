@@ -2723,16 +2723,16 @@ fsevents@~2.3.2:
     react-dom: 18.2.0
     react-icons: 4.4.0
     rehype-external-links: 2.0.0
-    rehype-preset-minify: ^6.0.0
-    rehype-stringify: ^9.0.3
+    rehype-preset-minify: 6.0.0
+    rehype-stringify: 9.0.3
     remark: 14.0.2
     remark-html: 15.0.1
-    remark-parse: ^10.0.1
-    remark-rehype: ^10.1.0
-    remark-stringify: ^10.0.2
+    remark-parse: 10.0.1
+    remark-rehype: 10.1.0
+    remark-stringify: 10.0.2
     tailwindcss: 3.1.8
     typescript: 4.7.4
-    unified: ^10.1.2
+    unified: 10.1.2
   languageName: unknown
   linkType: soft
 
@@ -3524,7 +3524,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"rehype-preset-minify@npm:^6.0.0":
+"rehype-preset-minify@npm:6.0.0":
   version: 6.0.0
   resolution: "rehype-preset-minify@npm:6.0.0"
   dependencies:
@@ -3665,7 +3665,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"rehype-stringify@npm:^9.0.3":
+"rehype-stringify@npm:9.0.3":
   version: 9.0.3
   resolution: "rehype-stringify@npm:9.0.3"
   dependencies:
@@ -3689,6 +3689,17 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"remark-parse@npm:10.0.1":
+  version: 10.0.1
+  resolution: "remark-parse@npm:10.0.1"
+  dependencies:
+    "@types/mdast": ^3.0.0
+    mdast-util-from-markdown: ^1.0.0
+    unified: ^10.0.0
+  checksum: 505088e564ab53ff054433368adbb7b551f69240c7d9768975529837a86f1d0f085e72d6211929c5c42db315273df4afc94f3d3a8662ffdb69468534c6643d29
+  languageName: node
+  linkType: hard
+
 "remark-parse@npm:^10.0.0":
   version: 10.0.0
   resolution: "remark-parse@npm:10.0.0"
@@ -3700,18 +3711,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"remark-parse@npm:^10.0.1":
-  version: 10.0.1
-  resolution: "remark-parse@npm:10.0.1"
-  dependencies:
-    "@types/mdast": ^3.0.0
-    mdast-util-from-markdown: ^1.0.0
-    unified: ^10.0.0
-  checksum: 505088e564ab53ff054433368adbb7b551f69240c7d9768975529837a86f1d0f085e72d6211929c5c42db315273df4afc94f3d3a8662ffdb69468534c6643d29
-  languageName: node
-  linkType: hard
-
-"remark-rehype@npm:^10.1.0":
+"remark-rehype@npm:10.1.0":
   version: 10.1.0
   resolution: "remark-rehype@npm:10.1.0"
   dependencies:
@@ -3723,6 +3723,17 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"remark-stringify@npm:10.0.2":
+  version: 10.0.2
+  resolution: "remark-stringify@npm:10.0.2"
+  dependencies:
+    "@types/mdast": ^3.0.0
+    mdast-util-to-markdown: ^1.0.0
+    unified: ^10.0.0
+  checksum: 25424201e698353f6c0afc9ec29a8cac1dac8c06750d92214e3216bd76ac37902a0ba3702ac2a11c1040938a667b3bc22d6949af1d35e8fc81a3572643cdc263
+  languageName: node
+  linkType: hard
+
 "remark-stringify@npm:^10.0.0":
   version: 10.0.1
   resolution: "remark-stringify@npm:10.0.1"
@@ -3731,17 +3742,6 @@ fsevents@~2.3.2:
     mdast-util-to-markdown: ^1.0.0
     unified: ^10.0.0
   checksum: 984f0ad3bb3e6143295b457739e762a02c9dd4c8e27c25f7fef7ae13e269af239f858b0a1c6d8767d01b49894f2329cb6028964e3446186fcb977170187602b2
-  languageName: node
-  linkType: hard
-
-"remark-stringify@npm:^10.0.2":
-  version: 10.0.2
-  resolution: "remark-stringify@npm:10.0.2"
-  dependencies:
-    "@types/mdast": ^3.0.0
-    mdast-util-to-markdown: ^1.0.0
-    unified: ^10.0.0
-  checksum: 25424201e698353f6c0afc9ec29a8cac1dac8c06750d92214e3216bd76ac37902a0ba3702ac2a11c1040938a667b3bc22d6949af1d35e8fc81a3572643cdc263
   languageName: node
   linkType: hard
 
@@ -4178,6 +4178,21 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"unified@npm:10.1.2":
+  version: 10.1.2
+  resolution: "unified@npm:10.1.2"
+  dependencies:
+    "@types/unist": ^2.0.0
+    bail: ^2.0.0
+    extend: ^3.0.0
+    is-buffer: ^2.0.0
+    is-plain-obj: ^4.0.0
+    trough: ^2.0.0
+    vfile: ^5.0.0
+  checksum: 053e7c65ede644607f87bd625a299e4b709869d2f76ec8138569e6e886903b6988b21cd9699e471eda42bee189527be0a9dac05936f1d069a5e65d0125d5d756
+  languageName: node
+  linkType: hard
+
 "unified@npm:^10.0.0":
   version: 10.1.0
   resolution: "unified@npm:10.1.0"
@@ -4190,21 +4205,6 @@ fsevents@~2.3.2:
     trough: ^2.0.0
     vfile: ^5.0.0
   checksum: b7e1d8dcf61d139ff57df1d393b177098a7fa53bddd47dd8c44cdfe983557d653719fd0ba3668a0be89a4a6189907327d56c2d13b21361e3d07b74f51b0d98ef
-  languageName: node
-  linkType: hard
-
-"unified@npm:^10.1.2":
-  version: 10.1.2
-  resolution: "unified@npm:10.1.2"
-  dependencies:
-    "@types/unist": ^2.0.0
-    bail: ^2.0.0
-    extend: ^3.0.0
-    is-buffer: ^2.0.0
-    is-plain-obj: ^4.0.0
-    trough: ^2.0.0
-    vfile: ^5.0.0
-  checksum: 053e7c65ede644607f87bd625a299e4b709869d2f76ec8138569e6e886903b6988b21cd9699e471eda42bee189527be0a9dac05936f1d069a5e65d0125d5d756
   languageName: node
   linkType: hard
 
