@@ -2908,7 +2908,7 @@ fsevents@~2.3.2:
     react: 18.2.0
     react-dom: 18.2.0
     react-icons: 4.4.0
-    rehype-external-links: 2.0.0
+    rehype-external-links: 2.0.1
     rehype-preset-minify: 6.0.0
     rehype-stringify: 9.0.3
     remark: 14.0.2
@@ -3514,9 +3514,9 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"rehype-external-links@npm:2.0.0":
-  version: 2.0.0
-  resolution: "rehype-external-links@npm:2.0.0"
+"rehype-external-links@npm:2.0.1":
+  version: 2.0.1
+  resolution: "rehype-external-links@npm:2.0.1"
   dependencies:
     "@types/hast": ^2.0.0
     extend: ^3.0.0
@@ -3524,7 +3524,7 @@ fsevents@~2.3.2:
     space-separated-tokens: ^2.0.0
     unified: ^10.0.0
     unist-util-visit: ^4.0.0
-  checksum: 702cb886cc61eaa5aab084430a9b8730c92e53613c7b20f44d6428da7ed2cf7a635aa2e49992743098ca3877bf38649df08f232f55994b84435fd5d4c27626d2
+  checksum: 56d3a49d1f7bff62bebfb2fdd2c15f8d39a26323090fb8935c202e3c2e3cce217a7d5c4c4b684b09e5a4c896c5b586931c71ec9eaabe1120693b44e3cf0704ce
   languageName: node
   linkType: hard
 
