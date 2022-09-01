@@ -409,12 +409,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tailwindcss/aspect-ratio@npm:0.4.0":
-  version: 0.4.0
-  resolution: "@tailwindcss/aspect-ratio@npm:0.4.0"
+"@tailwindcss/aspect-ratio@npm:0.4.1":
+  version: 0.4.1
+  resolution: "@tailwindcss/aspect-ratio@npm:0.4.1"
   peerDependencies:
     tailwindcss: ">=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1"
-  checksum: 106ee15ce10445006a0b6cfb70bf37fc9b47b4e4e146455e61ed6c0c6b6d18255175d8f6991df9ee686d9b5afe4edc3158a22266f22a6b6e8878fd73212efef5
+  checksum: 93befdb35474fa1664cdb79b202744eaa91062645e5f6e7d906a8c96d3d6439c48186ef7cdefcca435f676986ca4031bac4e5a34a0c9bfe4a4dae452a4ae5ef0
   languageName: node
   linkType: hard
 
@@ -2865,7 +2865,7 @@ fsevents@~2.3.2:
   version: 0.0.0-use.local
   resolution: "pmil-me-website@workspace:."
   dependencies:
-    "@tailwindcss/aspect-ratio": 0.4.0
+    "@tailwindcss/aspect-ratio": 0.4.1
     "@tailwindcss/typography": 0.5.4
     "@types/classnames": 2.3.1
     "@types/jest": 29.0.0
