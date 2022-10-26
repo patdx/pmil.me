@@ -3,7 +3,7 @@ import humanizeUrl from 'humanize-url';
 // import { useRouter } from 'next/router';
 import Container from '../../../components/container';
 import CoverImage from '../../../components/cover-image';
-import Layout from '../../../components/layout';
+
 import PostBody from '../../../components/post-body';
 import PostTitle from '../../../components/post-title';
 import { getAllPosts, getPostBySlug } from '../../../lib/api';
@@ -13,6 +13,11 @@ import { markdownToHtml } from '../../../lib/markdown-to-html';
 const Post = async ({ params }: { params: { slug: string } }) => {
   if (!params.slug) {
     console.log('missing slug');
+    return null;
+  }
+
+  if (params.slug === '[slug]') {
+    console.warn(`invalid slug "[slug]"`);
     return null;
   }
 
