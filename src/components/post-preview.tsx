@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import { Author } from '../types/author';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import Image from 'next/image';
 
 type Props = {
@@ -8,7 +7,7 @@ type Props = {
   coverImage?: string;
   date: string;
   excerpt: string;
-  author: Author;
+  author: string;
   slug: string;
 };
 
@@ -30,27 +29,29 @@ const PostPreview = ({
   );
 
   return (
-    <Link as={`/projects/${slug}`} href="/projects/[slug]">
-      <a
-        className={classNames(
-          'aspect-w-1 aspect-h-1 rounded-md overflow-hidden',
-          'hover:shadow-medium',
-          'shadow-small',
-          'group'
-        )}
-      >
-        {coverImage ? (
-          <Image
-            layout="fill"
-            src={coverImage}
-            alt={`Cover Image for ${title}`}
-            objectFit="cover"
-            quality={100}
-          />
-        ) : undefined}
-
-        {inner}
-      </a>
+    <Link
+      as={`/projects/${slug}`}
+      href="/projects/[slug]"
+      className={clsx(
+        'aspect-w-1 aspect-h-1 rounded-md overflow-hidden',
+        'hover:shadow-medium',
+        'shadow-small',
+        'group'
+      )}
+    >
+      {coverImage ? (
+        <Image
+          src={coverImage}
+          alt={`Cover Image for ${title}`}
+          quality={100}
+          fill
+          sizes="100vw"
+          style={{
+            objectFit: 'cover',
+          }}
+        />
+      ) : undefined}
+      {inner}
     </Link>
   );
 };

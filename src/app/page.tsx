@@ -1,19 +1,19 @@
-import classNames from 'classnames';
-import { NextSeo } from 'next-seo';
+import clsx from 'clsx';
+// import { NextSeo } from 'next-seo';
 import Image from 'next/image';
 import { FC } from 'react';
 import Container from '../components/container';
 import Layout from '../components/layout';
 import patrickJpg from '../../assets/patrick.jpg';
 
-const Index: FC = () => {
+const IndexPage: FC = () => {
   return (
     <>
-      <NextSeo title="Patrick Miller" />
-      <Layout>
+      {/* <NextSeo title="Patrick Miller" /> */}
+      {/* <Layout> */}
         <Container className="grid gap-4 py-4">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-y-4 sm:gap-x-4">
-            <div className={classNames('col-span-2', 'prose')}>
+            <div className={clsx('col-span-2', 'prose')}>
               <p>
                 Hello! My name is Patrick Miller. I have been working as a
                 full-stack software engineer in Osaka, Japan for several years.
@@ -34,19 +34,23 @@ const Index: FC = () => {
             </div>
             <div>
               <Image
-                layout="responsive"
                 width={3024}
                 height={3024}
                 className="rounded-lg"
                 src={patrickJpg}
                 alt="Picture of Patrick Miller"
+                sizes="100vw"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                }}
               />
             </div>
           </div>
         </Container>
-      </Layout>
+      {/* </Layout> */}
     </>
   );
 };
 
-export default Index;
+export default IndexPage;

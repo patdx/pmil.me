@@ -6,7 +6,8 @@ type Props = {
 
 const PostBody = ({ content }: Props) => {
   return (
-    <div className="prose" dangerouslySetInnerHTML={{ __html: content }} />
+    // <div className="prose" dangerouslySetInnerHTML={{ __html: content }} />
+    <pre className="prose whitespace-pre-wrap">{content}</pre>
   );
 };
 

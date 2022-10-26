@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import clsx from 'clsx';
 import { ReactNode, FunctionComponent } from 'react';
 
 const Container: FunctionComponent<{
@@ -6,7 +6,7 @@ const Container: FunctionComponent<{
   className?: string;
 }> = ({ children, className }) => {
   return (
-    <div className={classNames('container mx-auto px-5 max-w-6xl', className)}>
+    <div className={clsx('container mx-auto px-5 max-w-6xl', className)}>
       {children}
     </div>
   );

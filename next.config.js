@@ -1,5 +1,8 @@
+/** @type {import('next').NextConfig} */
 module.exports = {
-  esmExternals: true,
+  experimental: {
+    appDir: true,
+  },
   images: {
     domains: ['pmil.me'],
   },
