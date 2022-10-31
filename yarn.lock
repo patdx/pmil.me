@@ -2572,14 +2572,14 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"next-seo@npm:5.8.0":
-  version: 5.8.0
-  resolution: "next-seo@npm:5.8.0"
+"next-seo@npm:5.13.0":
+  version: 5.13.0
+  resolution: "next-seo@npm:5.13.0"
   peerDependencies:
     next: ^8.1.1-canary.54 || >=9.0.0
     react: ">=16.0.0"
     react-dom: ">=16.0.0"
-  checksum: 203288a44beba6dbc8218fc638675c48e4b3e807cc867f3274cc2af90fbfce9955f3b0c1a87a4f91bff7a287ed8184af8a33b52f0314d12ff940a882eb81d7aa
+  checksum: f566dfe6bafa18953789fc7bb0f466432c64121a80bc40e32a82d3d4e5d8cc16cc217ca5f6a4bf088f530b263d97cb6e6b237b7bdb6ffcfa16d01008d007a291
   languageName: node
   linkType: hard
 
@@ -2843,7 +2843,7 @@ fsevents@~2.3.2:
     gray-matter: 4.0.3
     humanize-url: 3.0.0
     next: 13.0.0
-    next-seo: 5.8.0
+    next-seo: 5.13.0
     postcss: 8.4.18
     postcss-preset-env: 7.8.2
     prettier: 2.7.1
