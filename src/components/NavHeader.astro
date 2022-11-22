@@ -1,18 +1,18 @@
 ---
-import clsx from "clsx";
+import HeaderLink from './HeaderLink.astro';
 
 const LINKS = [
   {
-    title: "About",
-    url: "/",
+    title: 'About',
+    url: '/',
   },
   {
-    title: "Projects",
-    url: "/projects",
+    title: 'Projects',
+    url: '/projects',
   },
   {
-    title: "Contact",
-    url: "/contact",
+    title: 'Contact',
+    url: '/contact',
   },
 ];
 ---
@@ -23,20 +23,7 @@ const LINKS = [
   {
     LINKS.map((link) => (
       <div class="px-2">
-        <a
-          href={link.url}
-          class={clsx(
-            "h-12 flex justify-center items-center hover:bg-blue-200 text-blue-900 hover:text-black rounded"
-            // pathname === link.url && 'font-bold'
-            // // {
-            // //   'font-bold': router.pathname === link.url,
-            // // }
-          )}
-        >
-          {/* bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg flex justify-center items-center hover:shadow h-12 */}
-
-          {link.title}
-        </a>
+        <HeaderLink href={link.url}>{link.title}</HeaderLink>
       </div>
     ))
   }

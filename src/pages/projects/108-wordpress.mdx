@@ -2,11 +2,11 @@
 title: Wordpress
 excerpt: Various projects
 technologies: Wordpress, HTML, CSS
-coverImage: '/images/projects/wordpress.png'
-ogImage:
-  url: '/images/projects/wordpress.png'
 layout: ../../layouts/ProjectLayout.astro
 ---
+
+import { Image } from '@astrojs/image/components';
+export const coverImage = import('./images/wordpress.png');
 
 I managed some Wordpress websites and online social media in college.
 
@@ -24,6 +24,6 @@ I managed some Wordpress websites and online social media in college.
 
 ## Screenshots
 
-![](/images/projects/wordpress/bmes-500x500.png)
+<Image src={import('./images/wordpress/bmes-500x500.png')} />
 
-![](/images/projects/wordpress/ceramicknee-500x500.png)
+<Image src={import('./images/wordpress/ceramicknee-500x500.png')} />

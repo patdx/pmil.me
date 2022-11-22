@@ -17,14 +17,14 @@ const { coverImage, title, excerpt, href } = Astro.props;
 <a
   href={href}
   class={clsx(
-    'aspect-w-1 aspect-h-1 rounded-md overflow-hidden',
+    'aspect-w-1 aspect-h-1 rounded-md',
     'shadow-lg hover:shadow-xl group',
-    'bg-gray-100 transition hover:scale-105'
+    'bg-gray-100 transition'
   )}
 >
   {
     coverImage ? (
-      <img
+      <Image
         src={coverImage}
         alt={`Cover Image for ${title}`}
         quality={100}
@@ -33,12 +33,13 @@ const { coverImage, title, excerpt, href } = Astro.props;
         style={{
           objectFit: 'cover',
         }}
+        class="rounded-md group-hover:blur-sm  transition"
       />
     ) : undefined
   }
   <div class="flex items-end">
     <div
-      class="flex-1 bg-white opacity-90 text-black px-2 py-4 border border-gray-200 rounded-b-md shadow group-hover:opacity-100 group-hover:border-gray-300 text-3xl sm:text-lg transition"
+      class="flex-1 bg-white opacity-90 text-black px-2 py-4 border border-gray-200 rounded-b-md shadow group-hover:opacity-100 group-hover:border-gray-300 text-3xl sm:text-lg transition group-hover:scale-105 backdrop-blur"
     >
       <h3 class="font-bold">{title}</h3>
       <p>{excerpt}</p>
