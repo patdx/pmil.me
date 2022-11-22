@@ -2,9 +2,9 @@
 title: Wordpress
 excerpt: Various projects
 technologies: Wordpress, HTML, CSS
-coverImage: "/assets/images/projects/wordpress.png"
+coverImage: '/images/projects/wordpress.png'
 ogImage:
-  url: "/assets/images/projects/wordpress.png"
+  url: '/images/projects/wordpress.png'
 layout: ../../layouts/ProjectLayout.astro
 ---
 
@@ -24,6 +24,6 @@ I managed some Wordpress websites and online social media in college.
 
 ## Screenshots
 
-![](/assets/images/projects/wordpress/bmes-500x500.png)
+![](/images/projects/wordpress/bmes-500x500.png)
 
-![](/assets/images/projects/wordpress/ceramicknee-500x500.png)
+![](/images/projects/wordpress/ceramicknee-500x500.png)

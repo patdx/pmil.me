@@ -1,7 +1,7 @@
 ---
-import Container from "../components/Container.astro";
-import PostPreview from "../components/PostPreview.astro";
-import App from "../layouts/App.astro";
+import Container from '../components/Container.astro';
+import PostPreview from '../components/PostPreview.astro';
+import App from '../layouts/App.astro';
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
 const posts = await Astro.glob<{
@@ -14,7 +14,7 @@ const posts = await Astro.glob<{
     author: string;
     slug: string;
   };
-}>("./projects/*.{md,mdx}");
+}>('./projects/*.{md,mdx}');
 
 // .sort(
 //   (a, b) =>
@@ -31,9 +31,7 @@ const posts = await Astro.glob<{
       >
         {
           posts.map((post) => (
-            <>
-              <PostPreview {...post.frontmatter} href={post.url} />
-            </>
+            <PostPreview {...post.frontmatter} href={post.url} />
           ))
         }
       </div>

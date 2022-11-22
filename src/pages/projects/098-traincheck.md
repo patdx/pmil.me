@@ -4,9 +4,9 @@ excerpt: Check train delays in real time using online API
 technologies: React, JS, HTML, Responsive Design
 linkToProjectPage: true
 externalUrl: https://train-check.now.sh/
-coverImage: "/assets/images/projects/traincheck-screenshot.png"
+coverImage: '/images/projects/traincheck-screenshot.png'
 ogImage:
-  url: "/assets/images/projects/traincheck-screenshot.png"
+  url: '/images/projects/traincheck-screenshot.png'
 layout: ../../layouts/ProjectLayout.astro
 ---
 

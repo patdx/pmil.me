@@ -5,9 +5,9 @@ technologies: Solid JS
 linkToProjectPage: false
 externalUrl: https://github.com/patdx/subtitle-app
 layout: ../../layouts/ProjectLayout.astro
-# coverImage: '/assets/images/projects/baby-smash.png'
+# coverImage: '/images/projects/baby-smash.png'
 # ogImage:
-#   url: '/assets/images/projects/baby-smash.png'
+#   url: '/images/projects/baby-smash.png'
 ---
 
 This is an open-source application to play a subtitle file as if it were a

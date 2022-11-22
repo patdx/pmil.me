@@ -4,9 +4,9 @@ excerpt: Play with the alphabet
 technologies: React, Three.js, react-three-fiber, PWA
 linkToProjectPage: true
 externalUrl: https://github.com/patdx/baby-smash-js
-coverImage: "/assets/images/projects/baby-smash.png"
+coverImage: '/images/projects/baby-smash.png'
 ogImage:
-  url: "/assets/images/projects/baby-smash.png"
+  url: '/images/projects/baby-smash.png'
 layout: ../../layouts/ProjectLayout.astro
 ---
 

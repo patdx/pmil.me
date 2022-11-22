@@ -1,6 +1,6 @@
 ---
-import clsx from "clsx";
-import { Image } from "@astrojs/image/components";
+import clsx from 'clsx';
+import { Image } from '@astrojs/image/components';
 
 type Props = {
   title: string;
@@ -17,10 +17,9 @@ const { coverImage, title, excerpt, href } = Astro.props;
 <a
   href={href}
   class={clsx(
-    "aspect-w-1 aspect-h-1 rounded-md overflow-hidden",
-    "hover:shadow-medium",
-    "shadow-small",
-    "group"
+    'aspect-w-1 aspect-h-1 rounded-md overflow-hidden',
+    'shadow-lg hover:shadow-xl group',
+    'bg-gray-100 transition hover:scale-105'
   )}
 >
   {
@@ -32,14 +31,14 @@ const { coverImage, title, excerpt, href } = Astro.props;
         fill
         sizes="100vw"
         style={{
-          objectFit: "cover",
+          objectFit: 'cover',
         }}
       />
     ) : undefined
   }
   <div class="flex items-end">
     <div
-      class="flex-1 bg-white opacity-90 text-black px-2 py-4 border border-gray-200 rounded-b-md shadow group-hover:opacity-100 group-hover:border-gray-300 text-3xl sm:text-lg"
+      class="flex-1 bg-white opacity-90 text-black px-2 py-4 border border-gray-200 rounded-b-md shadow group-hover:opacity-100 group-hover:border-gray-300 text-3xl sm:text-lg transition"
     >
       <h3 class="font-bold">{title}</h3>
       <p>{excerpt}</p>

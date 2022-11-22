@@ -5,9 +5,9 @@ technologies: React, Mobx
 linkToProjectPage: true
 externalUrl: https://github.com/patdx/mobx-spreadsheet
 layout: ../../layouts/ProjectLayout.astro
-# coverImage: '/assets/images/projects/baby-smash.png'
+# coverImage: '/images/projects/baby-smash.png'
 # ogImage:
-#   url: '/assets/images/projects/baby-smash.png'
+#   url: '/images/projects/baby-smash.png'
 ---
 
 Experiment to create a basic spreadsheet app using JavaScript in the browser.

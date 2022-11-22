@@ -3,10 +3,10 @@
 // import Header from "../components/Header.astro";
 // import Footer from "../components/Footer.astro";
 // import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
-import App from "../layouts/App.astro";
-import Container from "../components/Container.astro";
-import { Image } from "@astrojs/image/components";
-import patrickJpg from "../assets/patrick.jpg";
+import App from '../layouts/App.astro';
+import Container from '../components/Container.astro';
+import { Picture } from '@astrojs/image/components';
+import patrickJpg from '../assets/patrick.jpg';
 ---
 
 <App>
@@ -29,16 +29,15 @@ import patrickJpg from "../assets/patrick.jpg";
         </p>
       </div>
       <div>
-        <Image
-          width={3024}
-          height={3024}
+        <Picture
+          widths={[400, 800, 1200]}
           class="rounded-lg"
           src={patrickJpg}
           alt="Picture of Patrick Miller"
           sizes="100vw"
           style={{
-            width: "100%",
-            height: "auto",
+            width: '100%',
+            height: 'auto',
           }}
         />
       </div>
