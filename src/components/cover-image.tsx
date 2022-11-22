@@ -1,36 +1,29 @@
-import cn from 'clsx';
-import Link from 'next/link';
+import cn from "clsx";
 
 type Props = {
   title: string;
   src?: string;
-  slug?: string;
+  href?: string;
 };
 
-const CoverImage = ({ title, src, slug }: Props) => {
+const CoverImage = ({ title, src, href }: Props) => {
   const image = src ? (
     <img
       src={src}
       alt={`Cover Image for ${title}`}
-      className={cn('shadow-small', {
-        'hover:shadow-medium transition-shadow duration-200': slug,
-      })}
+      className={cn(
+        "shadow-small",
+        href && "hover:shadow-medium transition-shadow duration-200"
+      )}
     />
   ) : undefined;
-  return (
-    <div className="sm:mx-0">
-      {slug ? (
-        <Link
-          as={`/projects/${slug}`}
-          href="/projects/[slug]"
-          aria-label={title}
-        >
-          {image}
-        </Link>
-      ) : (
-        image
-      )}
-    </div>
+
+  return href ? (
+    <a className="block sm:mx-0" href={href} aria-label={title}>
+      {image}
+    </a>
+  ) : (
+    <div className="sm:mx-0">{image}</div>
   );
 };
 

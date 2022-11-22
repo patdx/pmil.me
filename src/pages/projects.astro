@@ -1,0 +1,42 @@
+---
+import Container from "../components/Container.astro";
+import PostPreview from "../components/PostPreview.astro";
+import App from "../layouts/App.astro";
+
+// Use Astro.glob() to fetch all posts, and then sort them by date.
+const posts = await Astro.glob<{
+  url: string;
+  frontmatter: {
+    title: string;
+    coverImage?: string;
+    date: string;
+    excerpt: string;
+    author: string;
+    slug: string;
+  };
+}>("./projects/*.{md,mdx}");
+
+// .sort(
+//   (a, b) =>
+//     new Date(b.frontmatter.pubDate).valueOf() -
+//     new Date(a.frontmatter.pubDate).valueOf()
+// );
+---
+
+<App>
+  <Container class="grid gap-4 py-4">
+    <section>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-3 gap-4 container mx-auto max-w-4xl"
+      >
+        {
+          posts.map((post) => (
+            <>
+              <PostPreview {...post.frontmatter} href={post.url} />
+            </>
+          ))
+        }
+      </div>
+    </section>
+  </Container>
+</App>
