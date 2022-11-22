@@ -32,5 +32,6 @@
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/typography": "^0.5.8",
     "astro-robots-txt": "^0.3.10"
-  }
+  },
+  "packageManager": "yarn@3.3.0"
 }
