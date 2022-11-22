@@ -1,60 +1,41 @@
 ---
-import type { IconType } from "react-icons";
-import {
-  IoLogoCodepen,
-  IoLogoGithub,
-  IoLogoLinkedin,
-  IoMail,
-} from "react-icons/io5/index.js";
-import Container from "../components/Container.astro";
+import Container from '../components/Container.astro';
+import IoMail from '~icons/ion/mail';
+import IoLogoGithub from '~icons/ion/logo-github';
+import IoLogoLinkedin from '~icons/ion/logo-linkedin';
+import App from '../layouts/App.astro';
 
-import App from "../layouts/App.astro";
-
-interface LinkProps {
-  to: string;
-  Icon: IconType;
-  text: string;
-}
-
-const LINKS: LinkProps[] = [
-  {
-    to: "mailto:pamiller.pdx@gmail.com",
-    Icon: IoMail,
-    text: "pamiller.pdx@gmail.com",
-  },
-  {
-    to: "https://github.com/patdx",
-    Icon: IoLogoGithub,
-    text: "Github",
-  },
-  {
-    to: "https://www.linkedin.com/in/pamiller",
-    Icon: IoLogoLinkedin,
-    text: "LinkedIn",
-  },
-  {
-    to: "http://codepen.io/patdx/",
-    Icon: IoLogoCodepen,
-    text: "CodePen",
-  },
-];
+// size="1.5em"
 ---
 
 <App>
   <Container class="grid gap-4 py-4">
     <div class="flex flex-col gap-4 w-full max-w-lg mx-auto">
-      {
-        LINKS.map(({ to, Icon, text }) => (
-          <a
-            href={to}
-            target="_blank"
-            class="flex gap-2 border hover:bg-white shadow-none hover:shadow-lg rounded-md h-16 justify-center items-center transition-shadow transition-colors"
-          >
-            <Icon size="1.5em" />
-            <span>{text}</span>
-          </a>
-        ))
-      }
+      <a
+        href="mailto:pamiller.pdx@gmail.com"
+        target="_blank"
+        class="flex gap-2 border hover:bg-white shadow-none hover:shadow-lg rounded-md h-16 justify-center items-center transition-shadow transition-colors"
+      >
+        <IoMail />
+        <span>pamiller.pdx@gmail.com</span>
+      </a>
+      <a
+        href="https://github.com/patdx"
+        target="_blank"
+        class="flex gap-2 border hover:bg-white shadow-none hover:shadow-lg rounded-md h-16 justify-center items-center transition-shadow transition-colors"
+      >
+        <IoLogoGithub />
+        <span>Github</span>
+      </a>
+
+      <a
+        href="https://www.linkedin.com/in/pamiller"
+        target="_blank"
+        class="flex gap-2 border hover:bg-white shadow-none hover:shadow-lg rounded-md h-16 justify-center items-center transition-shadow transition-colors"
+      >
+        <IoLogoLinkedin />
+        <span>LinkedIn</span>
+      </a>
     </div>
   </Container>
 </App>

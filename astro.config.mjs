@@ -1,16 +1,9 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-
-// https://astro.build/config
+import Icons from 'unplugin-icons/vite';
 import tailwind from '@astrojs/tailwind';
-
-// https://astro.build/config
 import image from '@astrojs/image';
-
-// https://astro.build/config
-import react from '@astrojs/react';
-
 import robotsTxt from 'astro-robots-txt';
 
 // https://astro.build/config
@@ -26,7 +19,15 @@ export default defineConfig({
     image({
       serviceEntryPoint: '@astrojs/image/sharp',
     }),
-    react(),
+
     robotsTxt(),
   ],
+  vite: {
+    plugins: [
+      Icons({
+        compiler: 'astro',
+        scale: 1.5,
+      }),
+    ],
+  },
 });
