@@ -11,6 +11,8 @@ import image from '@astrojs/image';
 // https://astro.build/config
 import react from '@astrojs/react';
 
+import robotsTxt from 'astro-robots-txt';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://pmil.me/',
@@ -25,5 +27,6 @@ export default defineConfig({
       serviceEntryPoint: '@astrojs/image/sharp',
     }),
     react(),
+    robotsTxt(),
   ],
 });
