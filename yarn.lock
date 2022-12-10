@@ -573,7 +573,7 @@ __metadata:
     clsx: 1.2.1
     humanize-url: 3.0.0
     prettier: 2.8.1
-    prettier-plugin-tailwindcss: 0.2.0
+    prettier-plugin-tailwindcss: 0.2.1
     sharp: 0.31.2
     tailwindcss: 3.2.4
     unplugin-icons: 0.14.14
@@ -5189,12 +5189,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-tailwindcss@npm:0.2.0":
-  version: 0.2.0
-  resolution: "prettier-plugin-tailwindcss@npm:0.2.0"
+"prettier-plugin-tailwindcss@npm:0.2.1":
+  version: 0.2.1
+  resolution: "prettier-plugin-tailwindcss@npm:0.2.1"
   peerDependencies:
     prettier: ">=2.2.0"
-  checksum: 427cd16e5c664e45965d0742e524ccf9b345bcb91a28d77bf03fa8e249eb0ecf6412ef6e91fb628b7773c8b60b1ed2c47d00211034918ddd4456f27305b9d5e7
+  checksum: 5a04b26f50baea552aaff938b6413bf66d0050c3ca5a0d5bc432a7efc8f8e4ba194a23b1aabd4d39d36228afaf368ba2bce24ebb87f4972459a3679eff6942e8
   languageName: node
   linkType: hard
 
