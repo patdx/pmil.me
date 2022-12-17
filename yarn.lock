@@ -53,10 +53,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/compiler@npm:^0.30.0":
-  version: 0.30.1
-  resolution: "@astrojs/compiler@npm:0.30.1"
-  checksum: a2b5ec18dc3dd60954c865cd605f6d874ef23fba5c9aaf03565700ceb61e3ccdd851e0ab83c59503666760c58985d7309a6e2e2dea37c22553ab25a8cc2df956
+"@astrojs/compiler@npm:^0.31.0":
+  version: 0.31.1
+  resolution: "@astrojs/compiler@npm:0.31.1"
+  checksum: d1ed3aeeffd2b2f8332a5f27df2111aaddaf3a32a6fae211e5beb1d70014d3bc0948db4ee676fb5e661b532706fec6677e3455b87c2f0a2ff28c4ca4d995fc34
   languageName: node
   linkType: hard
 
@@ -568,7 +568,7 @@ __metadata:
     "@iconify-json/ion": 1.1.4
     "@tailwindcss/aspect-ratio": 0.4.2
     "@tailwindcss/typography": 0.5.8
-    astro: 1.6.14
+    astro: 1.7.1
     astro-robots-txt: 0.3.10
     clsx: 1.2.1
     humanize-url: 3.0.0
@@ -652,7 +652,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jridgewell/sourcemap-codec@npm:1.4.14, @jridgewell/sourcemap-codec@npm:^1.4.10":
+"@jridgewell/sourcemap-codec@npm:1.4.14, @jridgewell/sourcemap-codec@npm:^1.4.10, @jridgewell/sourcemap-codec@npm:^1.4.13":
   version: 1.4.14
   resolution: "@jridgewell/sourcemap-codec@npm:1.4.14"
   checksum: 61100637b6d173d3ba786a5dff019e1a74b1f394f323c1fee337ff390239f053b87266c7a948777f4b1ee68c01a8ad0ab61e5ff4abb5a012a0b091bec391ab97
@@ -1257,11 +1257,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:1.6.14":
-  version: 1.6.14
-  resolution: "astro@npm:1.6.14"
+"astro@npm:1.7.1":
+  version: 1.7.1
+  resolution: "astro@npm:1.7.1"
   dependencies:
-    "@astrojs/compiler": ^0.30.0
+    "@astrojs/compiler": ^0.31.0
     "@astrojs/language-server": ^0.28.3
     "@astrojs/markdown-remark": ^1.1.3
     "@astrojs/telemetry": ^1.0.1
@@ -1283,8 +1283,9 @@ __metadata:
     cookie: ^0.5.0
     debug: ^4.3.4
     deepmerge-ts: ^4.2.2
+    devalue: ^4.2.0
     diff: ^5.1.0
-    es-module-lexer: ^0.10.5
+    es-module-lexer: ^1.1.0
     execa: ^6.1.0
     fast-glob: ^3.2.11
     github-slugger: ^1.4.0
@@ -1293,7 +1294,7 @@ __metadata:
     html-escaper: ^3.0.3
     import-meta-resolve: ^2.1.0
     kleur: ^4.1.4
-    magic-string: ^0.25.9
+    magic-string: ^0.27.0
     mime: ^3.0.0
     ora: ^6.1.0
     path-browserify: ^1.0.1
@@ -1323,7 +1324,7 @@ __metadata:
     zod: ^3.17.3
   bin:
     astro: astro.js
-  checksum: fd759a059bcf80ee346604cab92e965dfb2d8474b3f2fa617516a9a30de6dbb25eceec0095f126acb5e27560f9186b643efa7968d7d30fc642392ba67e59fab4
+  checksum: 287f14cf1bc9e396b5dbb4a05a5a585ed7aa805089fa18e595c7f26e1c342e965ff341c9b8c403b7581db9e92392c44c98074ac0442770ba5133119782f656e7
   languageName: node
   linkType: hard
 
@@ -1936,6 +1937,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"devalue@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "devalue@npm:4.2.0"
+  checksum: 29f29f72255b6330030773e02def96aa118dc410f5f2d2d389d674068bd2a698668421a0d2176d7c98e7941cbe5d535a251002d589ecc222f6e2b16783351b3d
+  languageName: node
+  linkType: hard
+
 "didyoumean@npm:^1.2.2":
   version: 1.2.2
   resolution: "didyoumean@npm:1.2.2"
@@ -2038,6 +2046,13 @@ __metadata:
   version: 0.10.5
   resolution: "es-module-lexer@npm:0.10.5"
   checksum: d2f9debd9d913323322095934653e0558bb8220177645eb76d316b4afd911e8d83ffee0b748b0faa9f3ce1560db3eee4a0ac68d6c2f750c11f4250adce84cf02
+  languageName: node
+  linkType: hard
+
+"es-module-lexer@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "es-module-lexer@npm:1.1.0"
+  checksum: 3e9f5019b69c6b2f04eb8478c4fdb4ed72cb8b4c97511b5dd39c1f498386ed8f5083c32067c15efcfabc7e8460cb65ed4627dd32405475715a898009922f41fa
   languageName: node
   linkType: hard
 
@@ -3724,6 +3739,15 @@ __metadata:
   dependencies:
     sourcemap-codec: ^1.4.8
   checksum: 9a0e55a15c7303fc360f9572a71cffba1f61451bc92c5602b1206c9d17f492403bf96f946dfce7483e66822d6b74607262e24392e87b0ac27b786e69a40e9b1a
+  languageName: node
+  linkType: hard
+
+"magic-string@npm:^0.27.0":
+  version: 0.27.0
+  resolution: "magic-string@npm:0.27.0"
+  dependencies:
+    "@jridgewell/sourcemap-codec": ^1.4.13
+  checksum: 273faaa50baadb7a2df6e442eac34ad611304fc08fe16e24fe2e472fd944bfcb73ffb50d2dc972dc04e92784222002af46868cb9698b1be181c81830fd95a13e
   languageName: node
   linkType: hard
 
