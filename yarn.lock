@@ -185,12 +185,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/rss@npm:1.1.0":
-  version: 1.1.0
-  resolution: "@astrojs/rss@npm:1.1.0"
+"@astrojs/rss@npm:1.2.1":
+  version: 1.2.1
+  resolution: "@astrojs/rss@npm:1.2.1"
   dependencies:
     fast-xml-parser: ^4.0.8
-  checksum: e172d2aa3ca9bfbca8541a107483b9b71495140b38d6eba33b1bc133ff3bdde6f5f34e87c0967edc9ea77ba324fc685c1801bdc8b33501ea571d7160ba18b4d7
+  checksum: b531da26d8b2fdab43e81ea0c5d2fe7c04043635ad67c2ab1f0f77850aee24c7a56038f787c99a8e57743ade7d34414d171cd36b07f87780cd46e6c95d470b53
   languageName: node
   linkType: hard
 
@@ -562,7 +562,7 @@ __metadata:
   dependencies:
     "@astrojs/image": 0.12.1
     "@astrojs/mdx": 0.13.0
-    "@astrojs/rss": 1.1.0
+    "@astrojs/rss": 1.2.1
     "@astrojs/sitemap": 1.0.0
     "@astrojs/tailwind": 2.1.3
     "@iconify-json/ion": 1.1.4
