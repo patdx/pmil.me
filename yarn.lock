@@ -22,7 +22,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@antfu/install-pkg@npm:^0.1.0, @antfu/install-pkg@npm:^0.1.1":
+"@antfu/install-pkg@npm:^0.1.1":
   version: 0.1.1
   resolution: "@antfu/install-pkg@npm:0.1.1"
   dependencies:
@@ -39,10 +39,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@antfu/utils@npm:^0.6.3":
-  version: 0.6.3
-  resolution: "@antfu/utils@npm:0.6.3"
-  checksum: bcc990767263d064703982322276e9df18bd813bb3e167d78c16068d9c5719f6e54111304eda371c55fca233ec085f6269c7b1f9a7ca1bd40f6eb343c99e6091
+"@antfu/utils@npm:^0.7.2":
+  version: 0.7.2
+  resolution: "@antfu/utils@npm:0.7.2"
+  checksum: ada98dde0a06bc10129ad7bc9d0007c1cf7e36eeb9e8ca93ea5173bc1e1d351afee8511c9e8e182b3105b787ce0ce813afc4ab283b511374f1e56a085f60a2c6
   languageName: node
   linkType: hard
 
@@ -576,7 +576,7 @@ __metadata:
     prettier-plugin-tailwindcss: 0.2.1
     sharp: 0.31.2
     tailwindcss: 3.2.4
-    unplugin-icons: 0.14.14
+    unplugin-icons: 0.14.15
   languageName: unknown
   linkType: soft
 
@@ -603,17 +603,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify/utils@npm:^2.0.2":
-  version: 2.0.2
-  resolution: "@iconify/utils@npm:2.0.2"
+"@iconify/utils@npm:^2.0.3":
+  version: 2.0.4
+  resolution: "@iconify/utils@npm:2.0.4"
   dependencies:
-    "@antfu/install-pkg": ^0.1.0
+    "@antfu/install-pkg": ^0.1.1
     "@antfu/utils": ^0.5.2
     "@iconify/types": ^2.0.0
     debug: ^4.3.4
-    kolorist: ^1.5.1
+    kolorist: ^1.6.0
     local-pkg: ^0.4.2
-  checksum: cbf7e17c9f543488853db39f8fa619594538ae7bd23b49f7fb73770fdf2aed3741acf1bd595d262beeb26efad662441b2854e3f88aa17d559af18638196b6ae0
+  checksum: f39a925f939922572c8573395599f22d9158ae53c38dd92de583c6e7e82da6f1c4abb347972d1ee25b29633de4832b996c7e5b2d73606023dda34927ef85196c
   languageName: node
   linkType: hard
 
@@ -3613,7 +3613,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"kolorist@npm:^1.5.1, kolorist@npm:^1.6.0":
+"kolorist@npm:^1.6.0":
   version: 1.6.0
   resolution: "kolorist@npm:1.6.0"
   checksum: 4d898b782ceaaac3a51d9820a13563fcd0ed516d5493374a0e04ceda93ed4d74f9e267e8da5fb4453e508099b9f6b22e38ac1bff92fdc227081f460c003401c0
@@ -6422,17 +6422,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unplugin-icons@npm:0.14.14":
-  version: 0.14.14
-  resolution: "unplugin-icons@npm:0.14.14"
+"unplugin-icons@npm:0.14.15":
+  version: 0.14.15
+  resolution: "unplugin-icons@npm:0.14.15"
   dependencies:
     "@antfu/install-pkg": ^0.1.1
-    "@antfu/utils": ^0.6.3
-    "@iconify/utils": ^2.0.2
+    "@antfu/utils": ^0.7.2
+    "@iconify/utils": ^2.0.3
     debug: ^4.3.4
     kolorist: ^1.6.0
     local-pkg: ^0.4.2
-    unplugin: ^1.0.0
+    unplugin: ^1.0.1
   peerDependencies:
     "@svgr/core": ">=5.5.0"
     "@vue/compiler-sfc": ^3.0.2
@@ -6447,19 +6447,19 @@ __metadata:
       optional: true
     vue-template-es2015-compiler:
       optional: true
-  checksum: 726ba1fa430511850a1c512bdb853b815caa2cdb3004cf3893509d20896f1709f723c75d3f0699f8e72cdc148ba6f652c63770989c3e255d63bf089303fef74d
+  checksum: a460a3e213c2e6b4fc36e43f9b5cd5e5ece2ef64c7775a51223c6ad477a2a1e1a1f0f16c76eb0ee79615d53d1c9e43c44d5de5fe2bb0e3b69056baf3b55a60fc
   languageName: node
   linkType: hard
 
-"unplugin@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "unplugin@npm:1.0.0"
+"unplugin@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "unplugin@npm:1.0.1"
   dependencies:
     acorn: ^8.8.1
     chokidar: ^3.5.3
     webpack-sources: ^3.2.3
-    webpack-virtual-modules: ^0.4.6
-  checksum: eaaaf738d8707f2965702eb4a196731516e115ea5bee8fcc75f7a4538266eb0e5e727379db3cb55e4b0fd7d4bdbc4fc957b79bc3b757f2607bf1e84f1fd3bacd
+    webpack-virtual-modules: ^0.5.0
+  checksum: b6bf00dcc79e71cd55d2b4dd39ec7c8ec40b071dc10c14e29095df5dccb13ad0ca1cf14e5da38bb16b8704f8eface750b7a3be9ee7ca2574ce31096ee966b356
   languageName: node
   linkType: hard
 
@@ -6720,10 +6720,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-virtual-modules@npm:^0.4.6":
-  version: 0.4.6
-  resolution: "webpack-virtual-modules@npm:0.4.6"
-  checksum: cb056ba8c50b35436ae43149554b051b80065b0cf79f2d528ca692ddf344a422ac71c415adb9da83dc3acc6e7e58f518388cc1cd11cb4fa29dc04f2c4494afe3
+"webpack-virtual-modules@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "webpack-virtual-modules@npm:0.5.0"
+  checksum: 22b59257b55c89d11ae295b588b683ee9fdf3aeb591bc7b6f88ac1d69cb63f4fcb507666ea986866dfae161a1fa534ad6fb4e2ea91bbcd0a6d454368d7d4c64b
   languageName: node
   linkType: hard
 
