@@ -31,5 +31,5 @@
     "prettier-plugin-tailwindcss": "0.2.1",
     "unplugin-icons": "0.14.15"
   },
-  "packageManager": "yarn@3.3.0"
+  "packageManager": "yarn@3.3.1"
 }
