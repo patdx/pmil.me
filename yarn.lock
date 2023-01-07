@@ -32,13 +32,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@antfu/utils@npm:^0.5.2":
-  version: 0.5.2
-  resolution: "@antfu/utils@npm:0.5.2"
-  checksum: 9b91446b2dbb823abeeba1cc33d6ebf701a462923408ad4751fbe162da46ae0669c774c2b5435fc77691dc207ce5de5945e693d5163e07d6ef42e376b04c7af4
-  languageName: node
-  linkType: hard
-
 "@antfu/utils@npm:^0.7.2":
   version: 0.7.2
   resolution: "@antfu/utils@npm:0.7.2"
@@ -577,7 +570,7 @@ __metadata:
     prettier-plugin-tailwindcss: 0.2.1
     sharp: 0.31.3
     tailwindcss: 3.2.4
-    unplugin-icons: 0.14.15
+    unplugin-icons: 0.15.1
   languageName: unknown
   linkType: soft
 
@@ -604,17 +597,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify/utils@npm:^2.0.3":
-  version: 2.0.4
-  resolution: "@iconify/utils@npm:2.0.4"
+"@iconify/utils@npm:^2.0.9":
+  version: 2.0.10
+  resolution: "@iconify/utils@npm:2.0.10"
   dependencies:
     "@antfu/install-pkg": ^0.1.1
-    "@antfu/utils": ^0.5.2
+    "@antfu/utils": ^0.7.2
     "@iconify/types": ^2.0.0
     debug: ^4.3.4
     kolorist: ^1.6.0
     local-pkg: ^0.4.2
-  checksum: f39a925f939922572c8573395599f22d9158ae53c38dd92de583c6e7e82da6f1c4abb347972d1ee25b29633de4832b996c7e5b2d73606023dda34927ef85196c
+  checksum: 5e6c00aa4df594980100693b1a00d59718678c71d19ec4c8ed8e88a8cf7b1a567a6ca85540c981d19c11209b0a68512009e2bd2cd1033d61bddd5d4065192706
   languageName: node
   linkType: hard
 
@@ -6456,20 +6449,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unplugin-icons@npm:0.14.15":
-  version: 0.14.15
-  resolution: "unplugin-icons@npm:0.14.15"
+"unplugin-icons@npm:0.15.1":
+  version: 0.15.1
+  resolution: "unplugin-icons@npm:0.15.1"
   dependencies:
     "@antfu/install-pkg": ^0.1.1
     "@antfu/utils": ^0.7.2
-    "@iconify/utils": ^2.0.3
+    "@iconify/utils": ^2.0.9
     debug: ^4.3.4
     kolorist: ^1.6.0
     local-pkg: ^0.4.2
     unplugin: ^1.0.1
   peerDependencies:
     "@svgr/core": ">=5.5.0"
-    "@vue/compiler-sfc": ^3.0.2
+    "@vue/compiler-sfc": ^3.0.2 || ^2.7.0
     vue-template-compiler: ^2.6.12
     vue-template-es2015-compiler: ^1.9.0
   peerDependenciesMeta:
@@ -6481,7 +6474,7 @@ __metadata:
       optional: true
     vue-template-es2015-compiler:
       optional: true
-  checksum: a460a3e213c2e6b4fc36e43f9b5cd5e5ece2ef64c7775a51223c6ad477a2a1e1a1f0f16c76eb0ee79615d53d1c9e43c44d5de5fe2bb0e3b69056baf3b55a60fc
+  checksum: 188e2e2ef43e0f9857f502e4cc22dff154ff2465c5ae7c17e8466cdfe33bef50bd40f5e5db91cd0ff3a24bbba6946b4352edda587049ffcee4a759d09f8482a2
   languageName: node
   linkType: hard
 
