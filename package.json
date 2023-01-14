@@ -26,7 +26,7 @@
     "@iconify-json/ion": "1.1.6",
     "@tailwindcss/aspect-ratio": "0.4.2",
     "@tailwindcss/typography": "0.5.9",
-    "astro-robots-txt": "0.3.10",
+    "astro-robots-txt": "0.3.11",
     "prettier": "2.8.2",
     "prettier-plugin-tailwindcss": "0.2.1",
     "unplugin-icons": "0.15.1"
