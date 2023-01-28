@@ -29,7 +29,7 @@
     "astro-robots-txt": "0.3.11",
     "prettier": "2.8.3",
     "prettier-plugin-tailwindcss": "0.2.2",
-    "unplugin-icons": "0.15.1"
+    "unplugin-icons": "0.15.2"
   },
   "packageManager": "yarn@3.3.1"
 }
