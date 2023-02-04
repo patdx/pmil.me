@@ -173,18 +173,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/tailwind@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@astrojs/tailwind@npm:3.0.0"
+"@astrojs/tailwind@npm:3.0.1":
+  version: 3.0.1
+  resolution: "@astrojs/tailwind@npm:3.0.1"
   dependencies:
     "@proload/core": ^0.3.2
     autoprefixer: ^10.4.7
     postcss: ^8.4.14
     postcss-load-config: ^4.0.1
   peerDependencies:
-    astro: ^2.0.0
+    astro: ^2.0.4
     tailwindcss: ^3.0.24
-  checksum: 706ea627afcdb717f5da1ca1d00263a4d08d5fef5f1c757fad04ad2c61d5a5f9fff94ce4519d22a5f46683fa01edb2ca5130f46182b1a8b038feb6f0b7adac92
+  checksum: 304d656abad66bd2fe4944066e782cd1b69a06e382c5a586dcd7a89ce7177effceeff3605ba8f8ab1a8513bf092eabec42b81543f24a50121f36a47f0ee8fa6d
   languageName: node
   linkType: hard
 
@@ -667,7 +667,7 @@ __metadata:
     "@astrojs/mdx": 0.15.1
     "@astrojs/rss": 2.1.0
     "@astrojs/sitemap": 1.0.1
-    "@astrojs/tailwind": 3.0.0
+    "@astrojs/tailwind": 3.0.1
     "@iconify-json/ion": 1.1.7
     "@tailwindcss/aspect-ratio": 0.4.2
     "@tailwindcss/typography": 0.5.9
