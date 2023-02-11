@@ -27,7 +27,7 @@
     "@tailwindcss/aspect-ratio": "0.4.2",
     "@tailwindcss/typography": "0.5.9",
     "astro-robots-txt": "0.3.12",
-    "prettier": "2.8.3",
+    "prettier": "2.8.4",
     "prettier-plugin-tailwindcss": "0.2.2",
     "unplugin-icons": "0.15.2"
   },
