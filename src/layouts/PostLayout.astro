@@ -1,0 +1,43 @@
+---
+import type { MarkdownLayoutProps } from 'astro';
+import Container from '../components/Container.astro';
+import App from './App.astro';
+
+type Props = MarkdownLayoutProps<{
+  title: string;
+  date: string;
+}>;
+
+const {
+  frontmatter: { title, date },
+  url,
+} = Astro.props;
+---
+
+<App>
+  <Container class="grid gap-4 py-4">
+    <article class="mb-32">
+      {
+        /* <NextSeo
+        title={`${post.title} | Patrick Miller`}
+        openGraph={{
+          images: post.ogImage ? [{ url: post.ogImage.url }] : [],
+        }}
+      /> */
+      }
+      <h1
+        class="mb-4 text-center text-6xl font-bold leading-tight tracking-tighter md:text-left md:text-7xl md:leading-none lg:text-8xl"
+      >
+        <a href={url}>{title}</a>
+      </h1>
+
+      <div class="mb-8 font-bold">{date}</div>
+
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div class="col-span-2 grid content-start gap-4">
+          <div class="prose"><slot /></div>
+        </div>
+      </div>
+    </article>
+  </Container>
+</App>
