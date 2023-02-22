@@ -3,7 +3,7 @@ title: Reactivity in Swift?
 date: '2023-02-18'
 ---
 
-I mostly work with Javascript, but I've become in charge of some Swift code
+I mostly work with JavaScript, but I've become in charge of some Swift code
 recently.
 
 I also realized today that Swift has some built in mechanisms for observing
@@ -48,7 +48,7 @@ However, I am running into a bug because the Swift implementation emits a change
 event for _every_ intermediate step. Is there a good way to perform multiple
 modifications, similar to a `batch` (SolidJS) or `action` (MobX)?
 
-Here is what happens when I call setTracks():
+Here is what happens when I call `setTracks()`:
 
 ```sh
 > swift run
