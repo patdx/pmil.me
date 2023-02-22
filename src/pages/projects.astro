@@ -27,7 +27,7 @@ const posts = await Astro.glob<{
   <Container class="grid gap-4 py-4">
     <section>
       <div
-        class="grid grid-cols-1 sm:grid-cols-3 gap-4 container mx-auto max-w-4xl"
+        class="container mx-auto grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-3"
       >
         {
           posts.map((post) => (

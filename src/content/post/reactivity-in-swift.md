@@ -1,7 +1,6 @@
 ---
 title: Reactivity in Swift?
 date: '2023-02-18'
-layout: ../../layouts/PostLayout.astro
 ---
 
 I mostly work with Javascript, but I've become in charge of some Swift code

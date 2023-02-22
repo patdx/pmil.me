@@ -34,13 +34,13 @@ const {
       /> */
       }
       <h1
-        class="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight md:leading-none mb-12 text-center md:text-left"
+        class="mb-12 text-center text-6xl font-bold leading-tight tracking-tighter md:text-left md:text-7xl md:leading-none lg:text-8xl"
       >
         {title}
       </h1>
 
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div class="col-span-2 grid gap-4 content-start">
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div class="col-span-2 grid content-start gap-4">
           <div class="prose"><slot /></div>
           {
             Boolean(externalUrl) && (
@@ -56,7 +56,7 @@ const {
             )
           }
         </div>
-        <div class="col-span-1 grid gap-4 grid-cols-1 content-start">
+        <div class="col-span-1 grid grid-cols-1 content-start gap-4">
           {
             coverImage ? (
               <CoverImage title={title} src={coverImage} href={url} />

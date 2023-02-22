@@ -1,22 +1,10 @@
 ---
+import { getCollection } from 'astro:content';
 import Container from '../components/Container.astro';
-import PostPreview from '../components/PostPreview.astro';
 import App from '../layouts/App.astro';
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
-const posts = await Astro.glob<{
-  url: string;
-  frontmatter: {
-    title: string;
-    date: string;
-  };
-}>('./posts/*.{md,mdx}');
-
-// .sort(
-//   (a, b) =>
-//     new Date(b.frontmatter.pubDate).valueOf() -
-//     new Date(a.frontmatter.pubDate).valueOf()
-// );
+const posts = await getCollection('post');
 ---
 
 <App>
@@ -26,13 +14,11 @@ const posts = await Astro.glob<{
         {
           posts.map((post) => (
             <a
-              href={post.url.replace(/\.html$/, '')}
+              href={`/posts/${post.slug}`}
               class="block p-1 transition hover:bg-gray-200 active:bg-gray-300"
             >
-              <span class="font-bold tabular-nums">
-                {post.frontmatter.date}
-              </span>{' '}
-              {post.frontmatter.title}
+              <span class="font-bold tabular-nums">{post.data.date}</span>{' '}
+              {post.data.title}
             </a>
           ))
         }

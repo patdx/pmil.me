@@ -1,0 +1,49 @@
+---
+import Container from '../../components/Container.astro';
+import App from '../../layouts/App.astro';
+import { CollectionEntry, getCollection } from 'astro:content';
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const postEntries = await getCollection('post');
+  return postEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<'post'>;
+}
+
+// 2. When it's time to render, you can get the entry directly from the prop
+const { entry } = Astro.props;
+const { slug, data } = entry;
+const { date, title } = data;
+const { Content } = await entry.render();
+
+const url = `/posts/${slug}`;
+---
+
+<App>
+  <Container class="grid gap-4 py-4 overflow-x-hidden w-screen">
+    <!-- <article class="mb-32"> -->
+    {
+      /* <NextSeo
+        title={`${post.title} | Patrick Miller`}
+        openGraph={{
+          images: post.ogImage ? [{ url: post.ogImage.url }] : [],
+        }}
+      /> */
+    }
+    <h1
+      class="mb-4 text-center text-6xl font-bold leading-tight tracking-tighter md:text-left md:text-7xl md:leading-none lg:text-8xl"
+    >
+      <a href={url}>{title}</a>
+    </h1>
+
+    <div class="mb-8 font-bold">{date}</div>
+
+    <div class="prose w-[calc(100vw-2.5rem)]"><Content /></div>
+    <!-- </article> -->
+  </Container>
+</App>
