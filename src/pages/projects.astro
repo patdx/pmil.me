@@ -1,7 +1,7 @@
 ---
 import Container from '../components/Container.astro';
 import PostPreview from '../components/PostPreview.astro';
-import App from '../layouts/App.astro';
+import { App } from '../layouts/App';
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
 const posts = await Astro.glob<{

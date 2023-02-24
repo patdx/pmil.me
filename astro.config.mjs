@@ -7,6 +7,9 @@ import image from '@astrojs/image';
 import robotsTxt from 'astro-robots-txt';
 
 // https://astro.build/config
+import solidJs from '@astrojs/solid-js';
+
+// https://astro.build/config
 export default defineConfig({
   site: 'https://pmil.me/',
   build: {
@@ -19,8 +22,8 @@ export default defineConfig({
     image({
       serviceEntryPoint: '@astrojs/image/sharp',
     }),
-
     robotsTxt(),
+    solidJs(),
   ],
   vite: {
     plugins: [
