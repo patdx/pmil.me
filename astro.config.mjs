@@ -10,6 +10,12 @@ import robotsTxt from 'astro-robots-txt';
 import solidJs from '@astrojs/solid-js';
 
 // https://astro.build/config
+// import cloudflare from '@astrojs/cloudflare';
+
+// https://astro.build/config
+// import node from '@astrojs/node';
+
+// https://astro.build/config
 export default defineConfig({
   site: 'https://pmil.me/',
   build: {
