@@ -1,0 +1,113 @@
+diff --git a/src/server.ts b/src/server.ts
+index a4626d7523d9e0e20c5938eed5bbbe2ebc7bd0a1..16e0174c640a6a650faa5ede74402e1e74e4599c 100644
+--- a/src/server.ts
++++ b/src/server.ts
+@@ -1,54 +1,65 @@
+-import { createComponent, renderToString, ssr } from 'solid-js/web';
+-import { getContext, incrementId } from './context.js';
+-import type { RendererContext } from './types';
++import { createComponent, renderToStringAsync, ssr } from "solid-js/web";
++import { getContext, incrementId } from "./context.js";
++import type { RendererContext } from "./types";
+ 
+-const slotName = (str: string) => str.trim().replace(/[-_]([a-z])/g, (_, w) => w.toUpperCase());
++const slotName = (str: string) =>
++  str.trim().replace(/[-_]([a-z])/g, (_, w) => w.toUpperCase());
+ 
+-function check(this: RendererContext, Component: any, props: Record<string, any>, children: any) {
+-	if (typeof Component !== 'function') return false;
+-	const { html } = renderToStaticMarkup.call(this, Component, props, children);
+-	return typeof html === 'string';
++function check(
++  this: RendererContext,
++  Component: any,
++  props: Record<string, any>,
++  children: any
++) {
++  if (typeof Component !== "function") return false;
++  const { html } = renderToStaticMarkup.call(this, Component, props, children);
++  return typeof html === "string";
+ }
+ 
+-function renderToStaticMarkup(
+-	this: RendererContext,
+-	Component: any,
+-	props: Record<string, any>,
+-	{ default: children, ...slotted }: any,
+-	metadata?: undefined | Record<string, any>
++async function renderToStaticMarkup(
++  this: RendererContext,
++  Component: any,
++  props: Record<string, any>,
++  { default: children, ...slotted }: any,
++  metadata?: undefined | Record<string, any>
+ ) {
+-	const renderId = metadata?.hydrate ? incrementId(getContext(this.result)) : '';
++  const renderId = metadata?.hydrate
++    ? incrementId(getContext(this.result))
++    : "";
+ 
+-	const html = renderToString(
+-		() => {
+-			const slots: Record<string, any> = {};
+-			for (const [key, value] of Object.entries(slotted)) {
+-				const name = slotName(key);
+-				slots[name] = ssr(`<astro-slot name="${name}">${value}</astro-slot>`);
+-			}
+-			// Note: create newProps to avoid mutating `props` before they are serialized
+-			const newProps = {
+-				...props,
+-				...slots,
+-				// In Solid SSR mode, `ssr` creates the expected structure for `children`.
+-				children: children != null ? ssr(`<astro-slot>${children}</astro-slot>`) : children,
+-			};
++  const html = await renderToStringAsync(
++    () => {
++      const slots: Record<string, any> = {};
++      for (const [key, value] of Object.entries(slotted)) {
++        const name = slotName(key);
++        slots[name] = ssr(`<astro-slot name="${name}">${value}</astro-slot>`);
++      }
++      // Note: create newProps to avoid mutating `props` before they are serialized
++      const newProps = {
++        ...props,
++        ...slots,
++        // In Solid SSR mode, `ssr` creates the expected structure for `children`.
++        children:
++          children != null
++            ? ssr(`<astro-slot>${children}</astro-slot>`)
++            : children,
++      };
+ 
+-			return createComponent(Component, newProps);
+-		},
+-		{
+-			renderId,
+-		}
+-	);
+-	return {
+-		attrs: {
+-			'data-solid-render-id': renderId,
+-		},
+-		html,
+-	};
++      return createComponent(Component, newProps);
++    },
++    {
++      renderId,
++    }
++  );
++  return {
++    attrs: {
++      "data-solid-render-id": renderId,
++    },
++    html,
++  };
+ }
+ 
+ export default {
+-	check,
+-	renderToStaticMarkup,
++  check,
++  renderToStaticMarkup,
+ };

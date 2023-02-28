@@ -1,46 +1,15 @@
 ---
-import { Container } from '../components/Container';
-import PostPreview from '../components/PostPreview.astro';
+import { getCollection } from 'astro:content';
 import { App } from '../layouts/App';
+import { Projects } from './_projects';
 
-// Use Astro.glob() to fetch all posts, and then sort them by date.
-const posts = await Astro.glob<{
-  url: string;
-  coverImage?: any;
-  frontmatter: {
-    title: string;
-    date: string;
-    excerpt: string;
-    author: string;
-    slug: string;
-  };
-}>('./projects/*.{md,mdx}');
-
-// .sort(
-//   (a, b) =>
-//     new Date(b.frontmatter.pubDate).valueOf() -
-//     new Date(a.frontmatter.pubDate).valueOf()
-// );
+const projects = await getCollection('project');
 ---
 
 <App>
-  <Container class="grid gap-4 py-4">
-    <section>
-      <div
-        class="container mx-auto grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-3"
-      >
-        {
-          posts.map((post) => (
-            <>
-              <PostPreview
-                {...post.frontmatter}
-                coverImage={post.coverImage}
-                href={post.url}
-              />
-            </>
-          ))
-        }
-      </div>
-    </section>
-  </Container>
+  <Projects projects={projects} />
+  <!-- astro seems to deopt to not use tailwind
+  unless there is at least one non-solidjs component in the page
+  -->
+  <div></div>
 </App>
