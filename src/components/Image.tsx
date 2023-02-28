@@ -4,13 +4,14 @@ import type {
   ImageComponentRemoteImageProps,
 } from '@astrojs/image/components';
 import { Component, createResource, Suspense } from 'solid-js';
+import { NoHydration } from 'solid-js/web';
 
-const images = import.meta.glob('../content/project/images/**/*');
+const images = import.meta.glob('../content/project/_images/**/*');
 
-export const ProjectImage: Component<
-  ImageComponentLocalImageProps | ImageComponentRemoteImageProps
-> = (props) => {
-  const src = `../content/project/images/${props.src}`;
+export const ProjectImage: Component<ImageComponentLocalImageProps> = (
+  props
+) => {
+  const src = `../content/project/_images/${props.src}`;
 
   const srcPromise = images[src]?.();
   console.log('importing...', src, srcPromise);
@@ -23,9 +24,12 @@ export const ProjectImage: Component<
 export const Image: Component<
   ImageComponentLocalImageProps | ImageComponentRemoteImageProps
 > = (props) => {
+  // Adding NoHydration keeps the resource from serializing itself into the HTML.
   return (
     <Suspense>
-      <ImageInner {...props} />
+      <NoHydration>
+        <ImageInner {...props} />
+      </NoHydration>
     </Suspense>
   );
 };
@@ -38,9 +42,9 @@ const ImageInner: Component<
     return null;
   }
 
-  const [image] = createResource(() =>
-    getImage({ src: props.src, alt: 'Cover' })
-  );
+  const [image] = createResource(() => getImage(props), {
+    // deferStream: true,
+  });
 
   return <img {...(image() as any)} loading="lazy" decoding="async" />;
 };

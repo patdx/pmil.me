@@ -1,29 +1,15 @@
 ---
 import { getCollection } from 'astro:content';
-import { Container } from '../components/Container';
-import { PostPreview } from '../components/PostPreview';
 import { App } from '../layouts/App';
+import { Projects } from './_projects';
 
 const projects = await getCollection('project');
 ---
 
 <App>
-  <Container class="grid gap-4 py-4">
-    <section>
-      <div
-        class="container mx-auto grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-3"
-      >
-        {
-          projects.map((project) => (
-            <>
-              <PostPreview
-                {...project.data}
-                href={`/projects/${project.slug}`}
-              />
-            </>
-          ))
-        }
-      </div>
-    </section>
-  </Container>
+  <Projects projects={projects} />
+  <!-- astro seems to deopt to not use tailwind
+  unless there is at least one non-solidjs component in the page
+  -->
+  <div></div>
 </App>

@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import { Component, createResource, Show, Suspense } from 'solid-js';
-import { Image, ProjectImage } from './Image';
+import { Component, Suspense } from 'solid-js';
+import { ProjectImage } from './Image';
 
 export const CoverImage: Component<{
   title: string;
@@ -29,10 +29,6 @@ export const CoverImage: Component<{
     </Suspense>
   );
 };
-
-const images = import.meta.glob('../content/project/images/**/*');
-
-console.log(images);
 
 const CoverImageInner: Component<{
   title: string;

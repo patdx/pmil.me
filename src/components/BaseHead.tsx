@@ -1,4 +1,4 @@
-import type { Component } from 'solid-js';
+import { Component, Show } from 'solid-js';
 
 export const BaseHead: Component<{
   title?: string;
@@ -39,9 +39,16 @@ export const BaseHead: Component<{
 
       {/* <!-- Open Graph / Facebook --> */}
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={props.url} />
-      <meta property="og:title" content={props.title} />
-      <meta property="og:description" content={props.description} />
+      <Show when={props.url}>
+        <meta property="og:url" content={props.url} />
+      </Show>
+      <Show when={props.title}>
+        <meta property="og:title" content={props.title} />
+      </Show>
+      <Show when={props.description}>
+        <meta property="og:description" content={props.description} />
+      </Show>
+
       {props.image && (
         <meta
           property="og:image"
