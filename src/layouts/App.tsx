@@ -14,12 +14,17 @@ export const App: ParentComponent = (props) => (
     </head>
     <body>
       <div class="min-h-screen">
-        {/* <AstroProvider value={Astro}> */}
         <NavHeader />
-        {/* </AstroProvider> */}
-        {/* <slot /> */}
         {props.children}
       </div>
     </body>
   </html>
 );
+
+//      {/* <AstroProvider value={Astro}> */}
+// {
+//   /* </AstroProvider> */
+// }
+// {
+//   /* <slot /> */
+// }
