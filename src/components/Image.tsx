@@ -26,11 +26,11 @@ export const Image: Component<
 > = (props) => {
   // Adding NoHydration keeps the resource from serializing itself into the HTML.
   return (
-    <Suspense>
-      <NoHydration>
+    <NoHydration>
+      <Suspense>
         <ImageInner {...props} />
-      </NoHydration>
-    </Suspense>
+      </Suspense>
+    </NoHydration>
   );
 };
 
@@ -42,9 +42,15 @@ const ImageInner: Component<
     return null;
   }
 
-  const [image] = createResource(() => getImage(props), {
-    // deferStream: true,
-  });
+  const [image] = createResource(
+    async () => {
+      const result = await getImage(props);
+      return result;
+    },
+    {
+      // deferStream: true,
+    }
+  );
 
   return <img {...(image() as any)} loading="lazy" decoding="async" />;
 };

@@ -186,13 +186,13 @@ __metadata:
 
 "@astrojs/solid-js@patch:@astrojs/solid-js@npm%3A2.0.2#./.yarn/patches/@astrojs-solid-js-npm-2.0.2-bccf2155a9.patch::locator=%40example%2Fblog%40workspace%3A.":
   version: 2.0.2
-  resolution: "@astrojs/solid-js@patch:@astrojs/solid-js@npm%3A2.0.2#./.yarn/patches/@astrojs-solid-js-npm-2.0.2-bccf2155a9.patch::version=2.0.2&hash=c7e106&locator=%40example%2Fblog%40workspace%3A."
+  resolution: "@astrojs/solid-js@patch:@astrojs/solid-js@npm%3A2.0.2#./.yarn/patches/@astrojs-solid-js-npm-2.0.2-bccf2155a9.patch::version=2.0.2&hash=2f1afb&locator=%40example%2Fblog%40workspace%3A."
   dependencies:
     babel-preset-solid: ^1.4.2
     vitefu: ^0.2.4
   peerDependencies:
     solid-js: ^1.4.3
-  checksum: ee7c53822a11ede9a23e695bc66c33a0a1cdded97ece7c71d882cd6c8862f9323330faa069e4c0373c607594017084b89afeb5da9d5a463770463c50ddc08813
+  checksum: f4c8968ebb3f2699c1e5717fca1f4432bc924afcc626bb797c8cffe0350f29f2ef5e21dc31c730cb804dfd812eaace2ebcd78516575a8e0f4fb89c997672a8d4
   languageName: node
   linkType: hard
 
@@ -227,12 +227,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/webapi@npm:^2.0.2":
-  version: 2.0.2
-  resolution: "@astrojs/webapi@npm:2.0.2"
+"@astrojs/webapi@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "@astrojs/webapi@npm:2.0.3"
   dependencies:
     undici: 5.20.0
-  checksum: ce1b5f492dbd9b7050a92b65964f7384e1864eb07181d79c37bb4d6c1047121f38aac0f941a8f7eb88cd11d25c85ba2c2562afa84e6e7ad5d45a85c08a2bed00
+  checksum: a05921796da2e41748e78f42a809fcb8b17c425cee81f579a77d4b6af9a465092fbff6039539fdc8904f4d873c3ec8fbc2d1c6c12b855d27ddbf3d2746bc8aa9
   languageName: node
   linkType: hard
 
@@ -709,7 +709,7 @@ __metadata:
     "@iconify-json/ion": 1.1.8
     "@tailwindcss/aspect-ratio": 0.4.2
     "@tailwindcss/typography": 0.5.9
-    astro: 2.0.17
+    astro: 2.0.18
     astro-robots-txt: 0.4.0
     clsx: 1.2.1
     humanize-url: 3.0.0
@@ -1376,15 +1376,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:2.0.17":
-  version: 2.0.17
-  resolution: "astro@npm:2.0.17"
+"astro@npm:2.0.18":
+  version: 2.0.18
+  resolution: "astro@npm:2.0.18"
   dependencies:
     "@astrojs/compiler": ^1.2.0
     "@astrojs/language-server": ^0.28.3
     "@astrojs/markdown-remark": ^2.0.1
     "@astrojs/telemetry": ^2.0.1
-    "@astrojs/webapi": ^2.0.2
+    "@astrojs/webapi": ^2.0.3
     "@babel/core": ^7.18.2
     "@babel/generator": ^7.18.2
     "@babel/parser": ^7.18.4
@@ -1434,7 +1434,7 @@ __metadata:
     zod: ^3.17.3
   bin:
     astro: astro.js
-  checksum: 21007d7cc9b6d98c7efbe550d18182024b039eedacc90211c8b6d4e2cb61199027c418e802cf8096d71017bae8a52c13663cbff4a256abf15185ad61a690aa5b
+  checksum: 560014819292aff9b0982ccc752a6d32b050572fae1ff2eb90b03c46186b7d95e08fbc6201ac4ab245576f53cb624726d3c5227cc0ad6f32e0367c5bfa56a2da
   languageName: node
   linkType: hard
 
