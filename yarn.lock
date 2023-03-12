@@ -172,27 +172,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/solid-js@npm:2.0.2":
-  version: 2.0.2
-  resolution: "@astrojs/solid-js@npm:2.0.2"
+"@astrojs/solid-js@npm:2.1.0":
+  version: 2.1.0
+  resolution: "@astrojs/solid-js@npm:2.1.0"
   dependencies:
     babel-preset-solid: ^1.4.2
     vitefu: ^0.2.4
   peerDependencies:
     solid-js: ^1.4.3
-  checksum: 3670ab9fc66ce39717401949c6a742ded4f47916271216a3e5168ff09159cd06cca882ee75836383429f6f4254adaa2d03c4ca855b56cf7400429ae5cd11aeaa
-  languageName: node
-  linkType: hard
-
-"@astrojs/solid-js@patch:@astrojs/solid-js@npm%3A2.0.2#./.yarn/patches/@astrojs-solid-js-npm-2.0.2-bccf2155a9.patch::locator=%40example%2Fblog%40workspace%3A.":
-  version: 2.0.2
-  resolution: "@astrojs/solid-js@patch:@astrojs/solid-js@npm%3A2.0.2#./.yarn/patches/@astrojs-solid-js-npm-2.0.2-bccf2155a9.patch::version=2.0.2&hash=2f1afb&locator=%40example%2Fblog%40workspace%3A."
-  dependencies:
-    babel-preset-solid: ^1.4.2
-    vitefu: ^0.2.4
-  peerDependencies:
-    solid-js: ^1.4.3
-  checksum: f4c8968ebb3f2699c1e5717fca1f4432bc924afcc626bb797c8cffe0350f29f2ef5e21dc31c730cb804dfd812eaace2ebcd78516575a8e0f4fb89c997672a8d4
+  checksum: 04f10063c2f7c6ec923b6318e26158f7b58b089fa798c181b91df4213e37d8efd9631a7c7e0fed6b62f005373e8837406ebfca5200078c200c0f64c005678907
   languageName: node
   linkType: hard
 
@@ -704,7 +692,7 @@ __metadata:
     "@astrojs/mdx": 0.17.2
     "@astrojs/rss": 2.2.0
     "@astrojs/sitemap": 1.2.0
-    "@astrojs/solid-js": 2.0.2
+    "@astrojs/solid-js": 2.1.0
     "@astrojs/tailwind": 3.1.0
     "@iconify-json/ion": 1.1.8
     "@tailwindcss/aspect-ratio": 0.4.2
