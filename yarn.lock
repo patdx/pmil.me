@@ -118,6 +118,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@astrojs/markdown-remark@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@astrojs/markdown-remark@npm:2.1.0"
+  dependencies:
+    "@astrojs/prism": ^2.1.0
+    github-slugger: ^1.4.0
+    image-size: ^1.0.2
+    import-meta-resolve: ^2.1.0
+    rehype-raw: ^6.1.1
+    rehype-stringify: ^9.0.3
+    remark-gfm: ^3.0.1
+    remark-parse: ^10.0.1
+    remark-rehype: ^10.1.0
+    remark-smartypants: ^2.0.0
+    shiki: ^0.11.1
+    unified: ^10.1.2
+    unist-util-visit: ^4.1.0
+    vfile: ^5.3.2
+  peerDependencies:
+    astro: ^2.1.0
+  checksum: d62d7aee5fa7374640e874d59dcb781361d48bddcee8558c541f1514a152dee1f6ad70dc8221483cd7a7a7e60cfc32a675ab326903f2f834f043ce607a3fc771
+  languageName: node
+  linkType: hard
+
 "@astrojs/mdx@npm:0.17.2":
   version: 0.17.2
   resolution: "@astrojs/mdx@npm:0.17.2"
@@ -149,6 +173,15 @@ __metadata:
   dependencies:
     prismjs: ^1.28.0
   checksum: 71080d863a3216c58a1b8936070d05a26bac5457c8b35dede8dc4bd87480defa9234c71415c1c52c36bfaf96dcfac7cb1c1786593b31279400d34dfd0b9d95e0
+  languageName: node
+  linkType: hard
+
+"@astrojs/prism@npm:^2.1.0":
+  version: 2.1.1
+  resolution: "@astrojs/prism@npm:2.1.1"
+  dependencies:
+    prismjs: ^1.28.0
+  checksum: 396314ba0bb816d32e3916146d7e7518641ad247adbc18af76676ed0cfd5833f017f1696a05bc12f113cf1b2bdd102b49f61e068ef5d20d81b746b4bbb687d80
   languageName: node
   linkType: hard
 
@@ -199,9 +232,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/telemetry@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "@astrojs/telemetry@npm:2.0.1"
+"@astrojs/telemetry@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@astrojs/telemetry@npm:2.1.0"
   dependencies:
     ci-info: ^3.3.1
     debug: ^4.3.4
@@ -211,16 +244,16 @@ __metadata:
     is-wsl: ^2.2.0
     undici: ^5.20.0
     which-pm-runs: ^1.1.0
-  checksum: c335ae9b731a0f3e65a74962f5b0bfc78e88867ffc66a4a9d29ed6cd0718d1d328e90139b499379e7fe14c2c6d00c5c3c75ec2b8ea4c6cca30d52b9c14509714
+  checksum: b6ab473dc13361c2552bb5b4b33810765476253b78ef92a4049e4165548455acb4a9c87d7fa6fc52c11868a1120a5d73f7504233e92d5e7b287fb003f5841cbd
   languageName: node
   linkType: hard
 
-"@astrojs/webapi@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "@astrojs/webapi@npm:2.0.3"
+"@astrojs/webapi@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@astrojs/webapi@npm:2.1.0"
   dependencies:
     undici: 5.20.0
-  checksum: a05921796da2e41748e78f42a809fcb8b17c425cee81f579a77d4b6af9a465092fbff6039539fdc8904f4d873c3ec8fbc2d1c6c12b855d27ddbf3d2746bc8aa9
+  checksum: 49e398896c38ac630700262a6d88dabd974dbe4b3444f1e9eb6323033a3614eaa46d7f3748f08530c7d9f724d9170940110568cc14958a302652c21efd97ea55
   languageName: node
   linkType: hard
 
@@ -697,7 +730,7 @@ __metadata:
     "@iconify-json/ion": 1.1.8
     "@tailwindcss/aspect-ratio": 0.4.2
     "@tailwindcss/typography": 0.5.9
-    astro: 2.0.18
+    astro: 2.1.3
     astro-robots-txt: 0.4.0
     clsx: 1.2.1
     humanize-url: 3.0.0
@@ -1364,15 +1397,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:2.0.18":
-  version: 2.0.18
-  resolution: "astro@npm:2.0.18"
+"astro@npm:2.1.3":
+  version: 2.1.3
+  resolution: "astro@npm:2.1.3"
   dependencies:
     "@astrojs/compiler": ^1.2.0
     "@astrojs/language-server": ^0.28.3
-    "@astrojs/markdown-remark": ^2.0.1
-    "@astrojs/telemetry": ^2.0.1
-    "@astrojs/webapi": ^2.0.3
+    "@astrojs/markdown-remark": ^2.1.0
+    "@astrojs/telemetry": ^2.1.0
+    "@astrojs/webapi": ^2.1.0
     "@babel/core": ^7.18.2
     "@babel/generator": ^7.18.2
     "@babel/parser": ^7.18.4
@@ -1383,6 +1416,7 @@ __metadata:
     "@types/yargs-parser": ^21.0.0
     acorn: ^8.8.1
     boxen: ^6.2.1
+    chokidar: ^3.5.3
     ci-info: ^3.3.1
     common-ancestor-path: ^1.0.1
     cookie: ^0.5.0
@@ -1397,6 +1431,7 @@ __metadata:
     github-slugger: ^2.0.0
     gray-matter: ^4.0.3
     html-escaper: ^3.0.3
+    image-size: ^1.0.2
     kleur: ^4.1.4
     magic-string: ^0.27.0
     mime: ^3.0.0
@@ -1420,9 +1455,14 @@ __metadata:
     vitefu: ^0.2.4
     yargs-parser: ^21.0.1
     zod: ^3.17.3
+  peerDependencies:
+    sharp: ^0.31.3
+  peerDependenciesMeta:
+    sharp:
+      optional: true
   bin:
     astro: astro.js
-  checksum: 560014819292aff9b0982ccc752a6d32b050572fae1ff2eb90b03c46186b7d95e08fbc6201ac4ab245576f53cb624726d3c5227cc0ad6f32e0367c5bfa56a2da
+  checksum: 4b98ffbc9a51ed43b8b5f57393c61eee35c56fe9835f6ce0b88da7838f502fb5aa9a571f3ccdc5fb04c54eded260449b29ed104f6120769c031853e5dca55457
   languageName: node
   linkType: hard
 
