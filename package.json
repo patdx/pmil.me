@@ -11,13 +11,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/image": "0.16.2",
+    "@astrojs/image": "0.16.4",
     "@astrojs/mdx": "0.18.2",
-    "@astrojs/rss": "2.3.1",
+    "@astrojs/rss": "2.3.2",
     "@astrojs/sitemap": "1.2.1",
     "@astrojs/solid-js": "2.1.0",
     "@astrojs/tailwind": "3.1.1",
-    "astro": "2.1.7",
+    "astro": "2.1.9",
     "clsx": "1.2.1",
     "humanize-url": "3.0.0",
     "sharp": "0.32.0",
