@@ -858,7 +858,7 @@ __metadata:
     prettier: 2.8.7
     prettier-plugin-tailwindcss: 0.2.7
     sharp: 0.32.0
-    solid-js: 1.7.1
+    solid-js: 1.7.3
     tailwindcss: 3.3.1
     unplugin-icons: 0.16.1
     vite-node: 0.29.8
@@ -6023,13 +6023,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"solid-js@npm:1.7.1":
-  version: 1.7.1
-  resolution: "solid-js@npm:1.7.1"
+"solid-js@npm:1.7.3":
+  version: 1.7.3
+  resolution: "solid-js@npm:1.7.3"
   dependencies:
     csstype: ^3.1.0
     seroval: ^0.5.0
-  checksum: ddc316d924e841020b2fbefab566cf8c4ec5274ef5d67d44aaae3c727175731c80b5761986cd19e152ff96d10b7602facd2857cff239d3cd1a74710cd291ea68
+  checksum: 052a3148b6d0960312793781435005c16a7a80c2271e2bf2370ec22ec57ffd77e3e4a41335c1bd785ab36500adef86da79536445983efbed404db860e11593d4
   languageName: node
   linkType: hard
 
