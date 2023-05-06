@@ -32,9 +32,9 @@
     "prettier": "2.8.8",
     "prettier-plugin-tailwindcss": "0.2.8",
     "unplugin-icons": "0.16.1",
-    "vite-node": "0.30.1"
+    "vite-node": "0.31.0"
   },
-  "packageManager": "yarn@3.5.0",
+  "packageManager": "yarn@3.5.1",
   "resolutions": {
     "@astrojs/solid-js@2.0.2": "patch:@astrojs/solid-js@npm%3A2.0.2#./.yarn/patches/@astrojs-solid-js-npm-2.0.2-bccf2155a9.patch"
   }
