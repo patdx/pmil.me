@@ -25,14 +25,14 @@
     "tailwindcss": "3.3.2"
   },
   "devDependencies": {
-    "@iconify-json/ion": "1.1.10",
+    "@iconify-json/ion": "1.1.11",
     "@tailwindcss/aspect-ratio": "0.4.2",
     "@tailwindcss/typography": "0.5.9",
     "astro-robots-txt": "0.5.0",
     "prettier": "2.8.8",
     "prettier-plugin-tailwindcss": "0.3.0",
-    "unplugin-icons": "0.16.2",
-    "vite-node": "0.31.4"
+    "unplugin-icons": "0.16.3",
+    "vite-node": "0.32.0"
   },
   "packageManager": "yarn@3.6.0",
   "resolutions": {

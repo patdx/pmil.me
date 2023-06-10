@@ -39,13 +39,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@antfu/utils@npm:^0.7.2":
-  version: 0.7.2
-  resolution: "@antfu/utils@npm:0.7.2"
-  checksum: ada98dde0a06bc10129ad7bc9d0007c1cf7e36eeb9e8ca93ea5173bc1e1d351afee8511c9e8e182b3105b787ce0ce813afc4ab283b511374f1e56a085f60a2c6
-  languageName: node
-  linkType: hard
-
 "@antfu/utils@npm:^0.7.4":
   version: 0.7.4
   resolution: "@antfu/utils@npm:0.7.4"
@@ -1101,7 +1094,7 @@ __metadata:
     "@astrojs/sitemap": 1.3.3
     "@astrojs/solid-js": 2.2.0
     "@astrojs/tailwind": 3.1.3
-    "@iconify-json/ion": 1.1.10
+    "@iconify-json/ion": 1.1.11
     "@tailwindcss/aspect-ratio": 0.4.2
     "@tailwindcss/typography": 0.5.9
     astro: 2.5.7
@@ -1113,8 +1106,8 @@ __metadata:
     sharp: 0.32.1
     solid-js: 1.7.6
     tailwindcss: 3.3.2
-    unplugin-icons: 0.16.2
-    vite-node: 0.31.4
+    unplugin-icons: 0.16.3
+    vite-node: 0.32.0
   languageName: unknown
   linkType: soft
 
@@ -1125,12 +1118,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify-json/ion@npm:1.1.10":
-  version: 1.1.10
-  resolution: "@iconify-json/ion@npm:1.1.10"
+"@iconify-json/ion@npm:1.1.11":
+  version: 1.1.11
+  resolution: "@iconify-json/ion@npm:1.1.11"
   dependencies:
     "@iconify/types": "*"
-  checksum: 31f0f34a14488199e5b53169e879cab1ce870c7a39900ba5da6fdf867b5059da760308ccb9dd4b819f8c6233c376e4d6f60da7ec42173da2c88800dd69805df5
+  checksum: d46ad2635ac3f144f5bfe3cca0701e06b6bf5f2c5c1a93bc69c64f10fdaa6c23ef519899e936d5ae880a3040a8742c54ea876f912a05956120ca1a6cf4296628
   languageName: node
   linkType: hard
 
@@ -1141,17 +1134,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify/utils@npm:^2.1.5":
-  version: 2.1.5
-  resolution: "@iconify/utils@npm:2.1.5"
+"@iconify/utils@npm:^2.1.6":
+  version: 2.1.6
+  resolution: "@iconify/utils@npm:2.1.6"
   dependencies:
     "@antfu/install-pkg": ^0.1.1
-    "@antfu/utils": ^0.7.2
+    "@antfu/utils": ^0.7.4
     "@iconify/types": ^2.0.0
     debug: ^4.3.4
-    kolorist: ^1.7.0
+    kolorist: ^1.8.0
     local-pkg: ^0.4.3
-  checksum: 042ec9f026d2d23e63e2ee30cea9079ff392b654ec5aa981d6603743dff3f48dd59c41f882b162dbd8c574372c5933d0404b42e03ac7142280aba73c41da3b7c
+  checksum: 6fbdca280cc19d0ac1c1206db9800453478d61abb1ad5fbaca46b8c64a5d4208dfc1c663fdf8f1462a17e7b3f98547b7dd56b427712959ccc4a855fdf91031df
   languageName: node
   linkType: hard
 
@@ -3931,13 +3924,6 @@ __metadata:
   version: 4.1.5
   resolution: "kleur@npm:4.1.5"
   checksum: 1dc476e32741acf0b1b5b0627ffd0d722e342c1b0da14de3e8ae97821327ca08f9fb944542fb3c126d90ac5f27f9d804edbe7c585bf7d12ef495d115e0f22c12
-  languageName: node
-  linkType: hard
-
-"kolorist@npm:^1.7.0":
-  version: 1.7.0
-  resolution: "kolorist@npm:1.7.0"
-  checksum: 0eb64d22a204be11ddd7d2017525bf2603de38b15c571f79d6f0c5f1c869b8adfd40c3aa71c12e0cfe5496c25b2bbe891267cbc11f5b3fbc858d74ae79bac293
   languageName: node
   linkType: hard
 
@@ -6888,13 +6874,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unplugin-icons@npm:0.16.2":
-  version: 0.16.2
-  resolution: "unplugin-icons@npm:0.16.2"
+"unplugin-icons@npm:0.16.3":
+  version: 0.16.3
+  resolution: "unplugin-icons@npm:0.16.3"
   dependencies:
     "@antfu/install-pkg": ^0.1.1
     "@antfu/utils": ^0.7.4
-    "@iconify/utils": ^2.1.5
+    "@iconify/utils": ^2.1.6
     debug: ^4.3.4
     kolorist: ^1.8.0
     local-pkg: ^0.4.3
@@ -6913,7 +6899,7 @@ __metadata:
       optional: true
     vue-template-es2015-compiler:
       optional: true
-  checksum: 98b7d6818877b72580657ce38d7499bee79f369944ef8d63dff4d9eb767080cd3a658eaa2eeacb8e897a842bab8537c1a945746d98d0c6400790c04f8219dd57
+  checksum: f7530c56dc2bb2eb763e14f26e7010de98b7ce33d74bd5660691c3d8e5fcfb8dfab8d57ad75206ca910132fd4528f3d3cfc4c93f830c9695ca1c44006a8ef939
   languageName: node
   linkType: hard
 
@@ -7026,9 +7012,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-node@npm:0.31.4":
-  version: 0.31.4
-  resolution: "vite-node@npm:0.31.4"
+"vite-node@npm:0.32.0":
+  version: 0.32.0
+  resolution: "vite-node@npm:0.32.0"
   dependencies:
     cac: ^6.7.14
     debug: ^4.3.4
@@ -7038,7 +7024,7 @@ __metadata:
     vite: ^3.0.0 || ^4.0.0
   bin:
     vite-node: vite-node.mjs
-  checksum: 822457481fd58915eb41f18237d99ce163f7a45cc57ba0739876f6201f287c904ed00439c351a1a0fef82e4f256db06f4ae238c0519d4121e1ad14bc5dd4a39f
+  checksum: ce1c45e7d903afc001a08b3bc3159d268e8422e28ec7ffa8e4a4f99d18c9f4e447db989a6e0a8e168d3a4f4e6eb0b954f2b51ef1a85f29cc3f7f561045ff0bbe
   languageName: node
   linkType: hard
 
