@@ -53,16 +53,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/compiler@npm:^1.5.0":
-  version: 1.5.1
-  resolution: "@astrojs/compiler@npm:1.5.1"
-  checksum: 90b32391535d5e8f2896e67bb8bce307f4e09108537763fa0bcdc5e1c924453dad1fdcdb27a9c1aff83f8a97334b0e0f531352dc6edea6feea5e2f70a9520e55
+"@astrojs/compiler@npm:^1.5.3":
+  version: 1.5.5
+  resolution: "@astrojs/compiler@npm:1.5.5"
+  checksum: c119210f46beefefbb77d46c1e60a66b5605ab7cdceb51596a14910c2c0f1da1bd5cb9b5ab3b92f71d803bbd1d1895a955bd30e2893557cd32038d4a86f24597
   languageName: node
   linkType: hard
 
-"@astrojs/image@npm:0.17.1":
-  version: 0.17.1
-  resolution: "@astrojs/image@npm:0.17.1"
+"@astrojs/image@npm:0.17.2":
+  version: 0.17.2
+  resolution: "@astrojs/image@npm:0.17.2"
   dependencies:
     "@altano/tiny-async-pool": ^1.0.2
     http-cache-semantics: ^4.1.1
@@ -71,12 +71,12 @@ __metadata:
     magic-string: ^0.27.0
     mime: ^3.0.0
   peerDependencies:
-    astro: ^2.7.0
+    astro: ^2.7.3
     sharp: ">=0.31.0"
   peerDependenciesMeta:
     sharp:
       optional: true
-  checksum: 77f8bb68d1960fbfcf9c3bd4ccdb3134fc48154dcbff334d860b2351ff31d4f8565613112e47bf70d7b078ab193442b255eeade05475421f606c30aaa17bbb5d
+  checksum: 29210756f97f671c754ec7f10276547009d05c6d9ef19810d3828ff050d2ba55f7f61e9bb27b38e960c7ef8b9d0276d112f5807fa955ebc26ebb04452141ff71
   languageName: node
   linkType: hard
 
@@ -1060,7 +1060,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@example/blog@workspace:."
   dependencies:
-    "@astrojs/image": 0.17.1
+    "@astrojs/image": 0.17.2
     "@astrojs/mdx": 0.19.7
     "@astrojs/rss": 2.4.3
     "@astrojs/sitemap": 1.3.3
@@ -1069,7 +1069,7 @@ __metadata:
     "@iconify-json/ion": 1.1.11
     "@tailwindcss/aspect-ratio": 0.4.2
     "@tailwindcss/typography": 0.5.9
-    astro: 2.7.2
+    astro: 2.8.0
     astro-robots-txt: 0.5.0
     clsx: 1.2.1
     humanize-url: 3.0.0
@@ -1696,11 +1696,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:2.7.2":
-  version: 2.7.2
-  resolution: "astro@npm:2.7.2"
+"astro@npm:2.8.0":
+  version: 2.8.0
+  resolution: "astro@npm:2.8.0"
   dependencies:
-    "@astrojs/compiler": ^1.5.0
+    "@astrojs/compiler": ^1.5.3
     "@astrojs/internal-helpers": ^0.1.1
     "@astrojs/language-server": ^1.0.0
     "@astrojs/markdown-remark": ^2.2.1
@@ -1753,6 +1753,7 @@ __metadata:
     vfile: ^5.3.7
     vite: ^4.3.9
     vitefu: ^0.2.4
+    which-pm: ^2.0.0
     yargs-parser: ^21.1.1
     zod: ^3.20.6
   peerDependencies:
@@ -1762,7 +1763,7 @@ __metadata:
       optional: true
   bin:
     astro: astro.js
-  checksum: 44c6424e4f2b33652280a7539751ea9354d536d5265be5db2d9a1634ae2059d73a3645b746d2b1fc7eb75dc2194656c3dbcd3c59124e5652a4159d4d61235249
+  checksum: e075a1aef5e93ac70eeaddb0b1b30dbd4d3ef620e305af786beb4edbf06bd75e81d2107a948bf7c5270ec3e5591e45b778c196eee52ae67d5ce29a4d88bbf854
   languageName: node
   linkType: hard
 
@@ -7289,7 +7290,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"which-pm@npm:2.0.0":
+"which-pm@npm:2.0.0, which-pm@npm:^2.0.0":
   version: 2.0.0
   resolution: "which-pm@npm:2.0.0"
   dependencies:
