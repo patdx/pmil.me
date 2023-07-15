@@ -178,13 +178,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/sitemap@npm:1.3.3":
-  version: 1.3.3
-  resolution: "@astrojs/sitemap@npm:1.3.3"
+"@astrojs/sitemap@npm:1.4.0":
+  version: 1.4.0
+  resolution: "@astrojs/sitemap@npm:1.4.0"
   dependencies:
     sitemap: ^7.1.1
     zod: ^3.17.3
-  checksum: 791a21935a806bdb2b4660e0ddc944514d6caaa6199e155a565753a7509f368df7e306e54c16bc554a865b1e62bcfa7bf2d88e44b8eb43dedfbf5117a5e01d76
+  checksum: ef0360d7b49861b4a41ace6d5708ce3d57f7937f36299169bc31a4cf1eff45149f1e8879e3bbbfed0a738062bdec5e4b31d483b5ed4bbd08d35c2872e6bc90a3
   languageName: node
   linkType: hard
 
@@ -1063,13 +1063,13 @@ __metadata:
     "@astrojs/image": 0.17.2
     "@astrojs/mdx": 0.19.7
     "@astrojs/rss": 2.4.3
-    "@astrojs/sitemap": 1.3.3
+    "@astrojs/sitemap": 1.4.0
     "@astrojs/solid-js": 2.2.0
     "@astrojs/tailwind": 4.0.0
     "@iconify-json/ion": 1.1.11
     "@tailwindcss/aspect-ratio": 0.4.2
     "@tailwindcss/typography": 0.5.9
-    astro: 2.8.0
+    astro: 2.8.3
     astro-robots-txt: 0.5.0
     clsx: 1.2.1
     humanize-url: 3.0.0
@@ -1696,9 +1696,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:2.8.0":
-  version: 2.8.0
-  resolution: "astro@npm:2.8.0"
+"astro@npm:2.8.3":
+  version: 2.8.3
+  resolution: "astro@npm:2.8.3"
   dependencies:
     "@astrojs/compiler": ^1.5.3
     "@astrojs/internal-helpers": ^0.1.1
@@ -1763,7 +1763,7 @@ __metadata:
       optional: true
   bin:
     astro: astro.js
-  checksum: e075a1aef5e93ac70eeaddb0b1b30dbd4d3ef620e305af786beb4edbf06bd75e81d2107a948bf7c5270ec3e5591e45b778c196eee52ae67d5ce29a4d88bbf854
+  checksum: 13a461670a775751aea289e6f2d50f142c2a0012ccaf7716c190c858d9388cccce79def17d086659643a2c3e9cb0564431e1b34571e9c5b4da91361848a4f01a
   languageName: node
   linkType: hard
 
