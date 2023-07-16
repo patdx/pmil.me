@@ -18,7 +18,7 @@
     "@astrojs/solid-js": "2.2.0",
     "@astrojs/tailwind": "4.0.0",
     "astro": "2.8.3",
-    "clsx": "1.2.1",
+    "clsx": "2.0.0",
     "humanize-url": "3.0.0",
     "sharp": "0.32.3",
     "solid-js": "1.7.8",
