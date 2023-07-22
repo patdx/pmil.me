@@ -60,10 +60,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/compiler@npm:^1.5.3":
-  version: 1.5.5
-  resolution: "@astrojs/compiler@npm:1.5.5"
-  checksum: c119210f46beefefbb77d46c1e60a66b5605ab7cdceb51596a14910c2c0f1da1bd5cb9b5ab3b92f71d803bbd1d1895a955bd30e2893557cd32038d4a86f24597
+"@astrojs/compiler@npm:^1.6.0":
+  version: 1.6.1
+  resolution: "@astrojs/compiler@npm:1.6.1"
+  checksum: ba13b8cf89dee7b219bdb11ad011176ce174ff2b193f3402a6747137c0e23c1ef444ebf61a12b39ba5ec79b93fdca57147dc9ba05d4325354dcd43c4fee19cd3
   languageName: node
   linkType: hard
 
@@ -1076,7 +1076,7 @@ __metadata:
     "@iconify-json/ion": 1.1.11
     "@tailwindcss/aspect-ratio": 0.4.2
     "@tailwindcss/typography": 0.5.9
-    astro: 2.8.3
+    astro: 2.9.1
     astro-robots-txt: 0.5.0
     clsx: 2.0.0
     humanize-url: 3.0.0
@@ -1362,6 +1362,13 @@ __metadata:
   dependencies:
     "@types/ms": "*"
   checksum: 0a7b89d8ed72526858f0b61c6fd81f477853e8c4415bb97f48b1b5545248d2ae389931680b94b393b993a7cfe893537a200647d93defe6d87159b96812305adc
+  languageName: node
+  linkType: hard
+
+"@types/dom-view-transitions@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@types/dom-view-transitions@npm:1.0.1"
+  checksum: 0246473f485cb415e1f14a08e6a0d3ff85f29abdb2b6f7ca7f0247b2a3a7356a8fe8567a4c73b1503dc02ad92c1d9d8a373eb7b8fca9c1dad545dca57423e866
   languageName: node
   linkType: hard
 
@@ -1703,11 +1710,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:2.8.3":
-  version: 2.8.3
-  resolution: "astro@npm:2.8.3"
+"astro@npm:2.9.1":
+  version: 2.9.1
+  resolution: "astro@npm:2.9.1"
   dependencies:
-    "@astrojs/compiler": ^1.5.3
+    "@astrojs/compiler": ^1.6.0
     "@astrojs/internal-helpers": ^0.1.1
     "@astrojs/language-server": ^1.0.0
     "@astrojs/markdown-remark": ^2.2.1
@@ -1720,6 +1727,7 @@ __metadata:
     "@babel/traverse": ^7.22.5
     "@babel/types": ^7.22.5
     "@types/babel__core": ^7.20.1
+    "@types/dom-view-transitions": ^1.0.1
     "@types/yargs-parser": ^21.0.0
     acorn: ^8.9.0
     boxen: ^6.2.1
@@ -1743,6 +1751,7 @@ __metadata:
     kleur: ^4.1.4
     magic-string: ^0.27.0
     mime: ^3.0.0
+    network-information-types: ^0.1.1
     ora: ^6.3.1
     p-limit: ^4.0.0
     path-to-regexp: ^6.2.1
@@ -1770,7 +1779,7 @@ __metadata:
       optional: true
   bin:
     astro: astro.js
-  checksum: 13a461670a775751aea289e6f2d50f142c2a0012ccaf7716c190c858d9388cccce79def17d086659643a2c3e9cb0564431e1b34571e9c5b4da91361848a4f01a
+  checksum: 78a47f72324375cd14f7d269afa7147224845bfe3d987937387024691defeae864d54141af80f2418941a2c3e6c3155b3dc8d64ae647b4f2ed02da273872042f
   languageName: node
   linkType: hard
 
@@ -5022,6 +5031,15 @@ __metadata:
   version: 0.6.3
   resolution: "negotiator@npm:0.6.3"
   checksum: b8ffeb1e262eff7968fc90a2b6767b04cfd9842582a9d0ece0af7049537266e7b2506dfb1d107a32f06dd849ab2aea834d5830f7f4d0e5cb7d36e1ae55d021d9
+  languageName: node
+  linkType: hard
+
+"network-information-types@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "network-information-types@npm:0.1.1"
+  peerDependencies:
+    typescript: ">= 3.0.0"
+  checksum: 14ecc1e24b53fb6895c2920d353299a965d0501952f1e507b9fa9c1cdab7341257957b4c6d5c95e569e855c49f4c6274f69fce4ceb65983235aa7531e70dc3b6
   languageName: node
   linkType: hard
 
