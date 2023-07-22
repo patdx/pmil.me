@@ -185,13 +185,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/sitemap@npm:1.4.0":
-  version: 1.4.0
-  resolution: "@astrojs/sitemap@npm:1.4.0"
+"@astrojs/sitemap@npm:2.0.1":
+  version: 2.0.1
+  resolution: "@astrojs/sitemap@npm:2.0.1"
   dependencies:
     sitemap: ^7.1.1
     zod: ^3.17.3
-  checksum: ef0360d7b49861b4a41ace6d5708ce3d57f7937f36299169bc31a4cf1eff45149f1e8879e3bbbfed0a738062bdec5e4b31d483b5ed4bbd08d35c2872e6bc90a3
+  checksum: f92e957d90f5af4a21bd1a2369cdbdbda0121db551329d7e80965d411733a830ff11263f3638742e6b8899e689dd9ed09a45f83ac67e0f355e8fec1a9534ef92
   languageName: node
   linkType: hard
 
@@ -1070,7 +1070,7 @@ __metadata:
     "@astrojs/image": 0.17.2
     "@astrojs/mdx": 0.19.7
     "@astrojs/rss": 2.4.3
-    "@astrojs/sitemap": 1.4.0
+    "@astrojs/sitemap": 2.0.1
     "@astrojs/solid-js": 2.2.0
     "@astrojs/tailwind": 4.0.0
     "@iconify-json/ion": 1.1.11
