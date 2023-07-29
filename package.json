@@ -17,7 +17,7 @@
     "@astrojs/sitemap": "2.0.1",
     "@astrojs/solid-js": "2.2.0",
     "@astrojs/tailwind": "4.0.0",
-    "astro": "2.9.1",
+    "astro": "2.9.6",
     "clsx": "2.0.0",
     "humanize-url": "3.0.0",
     "sharp": "0.32.4",
