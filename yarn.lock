@@ -1073,7 +1073,7 @@ __metadata:
     "@astrojs/sitemap": 2.0.1
     "@astrojs/solid-js": 2.2.0
     "@astrojs/tailwind": 4.0.0
-    "@iconify-json/ion": 1.1.11
+    "@iconify-json/ion": 1.1.12
     "@tailwindcss/aspect-ratio": 0.4.2
     "@tailwindcss/typography": 0.5.9
     astro: 2.10.1
@@ -1097,12 +1097,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify-json/ion@npm:1.1.11":
-  version: 1.1.11
-  resolution: "@iconify-json/ion@npm:1.1.11"
+"@iconify-json/ion@npm:1.1.12":
+  version: 1.1.12
+  resolution: "@iconify-json/ion@npm:1.1.12"
   dependencies:
     "@iconify/types": "*"
-  checksum: d46ad2635ac3f144f5bfe3cca0701e06b6bf5f2c5c1a93bc69c64f10fdaa6c23ef519899e936d5ae880a3040a8742c54ea876f912a05956120ca1a6cf4296628
+  checksum: 99ff25bc610c6c0eb69bb3f2aa621000846dfc51bd1916e81c748aec5849ef1dc25187ce4336aa34c18894b701278458067ad9aa7daa00dcac763e7fc227ab7b
   languageName: node
   linkType: hard
 
