@@ -175,13 +175,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/rss@npm:2.4.3":
-  version: 2.4.3
-  resolution: "@astrojs/rss@npm:2.4.3"
+"@astrojs/rss@npm:2.4.4":
+  version: 2.4.4
+  resolution: "@astrojs/rss@npm:2.4.4"
   dependencies:
-    fast-xml-parser: ^4.0.8
+    fast-xml-parser: ^4.2.5
     kleur: ^4.1.5
-  checksum: b5a01373572859ebc25beb9db0be1da8b81198828b873d9ea218d0af632d07565b12d57c4cad013ca83afa9560ef365ae72dfff1cd839f55c3b809bc3d6d9866
+  checksum: e71b6145a4fcb856a11f826eca3856199d8701d0893cac044bbbaeca53c7dc00c120d9d3b2bb1fd3d24a41bc86a74bad2571e52a9f30d9345091769b58235b4c
   languageName: node
   linkType: hard
 
@@ -1069,14 +1069,14 @@ __metadata:
   dependencies:
     "@astrojs/image": 0.17.3
     "@astrojs/mdx": 0.19.7
-    "@astrojs/rss": 2.4.3
+    "@astrojs/rss": 2.4.4
     "@astrojs/sitemap": 2.0.1
     "@astrojs/solid-js": 2.2.0
     "@astrojs/tailwind": 4.0.0
     "@iconify-json/ion": 1.1.12
     "@tailwindcss/aspect-ratio": 0.4.2
     "@tailwindcss/typography": 0.5.9
-    astro: 2.10.1
+    astro: 2.10.7
     astro-robots-txt: 0.5.0
     clsx: 2.0.0
     humanize-url: 3.0.0
@@ -1717,9 +1717,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:2.10.1":
-  version: 2.10.1
-  resolution: "astro@npm:2.10.1"
+"astro@npm:2.10.7":
+  version: 2.10.7
+  resolution: "astro@npm:2.10.7"
   dependencies:
     "@astrojs/compiler": ^1.8.0
     "@astrojs/internal-helpers": ^0.1.2
@@ -1786,7 +1786,7 @@ __metadata:
       optional: true
   bin:
     astro: astro.js
-  checksum: 1fad46de4e1f36cbbd1a7e336bcce5ae9cf02b0967e0936614e753f2a8402edb77b158f43645eed88614cd6cfa5715f44b10f63d4238719a8f1e897df1977065
+  checksum: 5bed1b5815c425ddb655e9d9b1c0205ef6c9c81391838baa1d2a9d14fb91bcd64450c5d33059866a1db8de2ced0f6e58786e460e0c200b59202f08133e946be3
   languageName: node
   linkType: hard
 
@@ -2973,14 +2973,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-xml-parser@npm:^4.0.8":
-  version: 4.0.12
-  resolution: "fast-xml-parser@npm:4.0.12"
+"fast-xml-parser@npm:^4.2.5":
+  version: 4.2.7
+  resolution: "fast-xml-parser@npm:4.2.7"
   dependencies:
     strnum: ^1.0.5
   bin:
     fxparser: src/cli/cli.js
-  checksum: afb800fdc39d3c53ce0be76dd57afafc5556790a798524c98bdb984af2adc0d35360d05d1360cdb37db3f6de1fa754ae5596f16934c60b490b22ffb47948846d
+  checksum: d8b0c9e04756f6c43fa0399428f30149acadae21350e42e26e8fe98e24e6afa6b9b00aa554453795036b00e9fee974a1b556fe2ba18be391d51a9bf1ab790e7c
   languageName: node
   linkType: hard
 
