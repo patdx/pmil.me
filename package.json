@@ -20,7 +20,7 @@
     "astro": "2.10.12",
     "clsx": "2.0.0",
     "humanize-url": "3.0.0",
-    "sharp": "0.32.4",
+    "sharp": "0.32.5",
     "solid-js": "1.7.11",
     "tailwindcss": "3.3.3"
   },
@@ -29,12 +29,12 @@
     "@tailwindcss/aspect-ratio": "0.4.2",
     "@tailwindcss/typography": "0.5.9",
     "astro-robots-txt": "0.5.0",
-    "prettier": "3.0.1",
-    "prettier-plugin-tailwindcss": "0.5.2",
+    "prettier": "3.0.2",
+    "prettier-plugin-tailwindcss": "0.5.3",
     "unplugin-icons": "0.16.5",
-    "vite-node": "0.34.1"
+    "vite-node": "0.34.2"
   },
-  "packageManager": "yarn@3.6.1",
+  "packageManager": "yarn@3.6.2",
   "resolutions": {
     "@astrojs/solid-js@2.0.2": "patch:@astrojs/solid-js@npm%3A2.0.2#./.yarn/patches/@astrojs-solid-js-npm-2.0.2-bccf2155a9.patch"
   }
