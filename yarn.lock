@@ -1076,7 +1076,7 @@ __metadata:
     "@iconify-json/ion": 1.1.12
     "@tailwindcss/aspect-ratio": 0.4.2
     "@tailwindcss/typography": 0.5.9
-    astro: 2.10.12
+    astro: 2.10.14
     astro-robots-txt: 0.5.0
     clsx: 2.0.0
     humanize-url: 3.0.0
@@ -1717,9 +1717,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:2.10.12":
-  version: 2.10.12
-  resolution: "astro@npm:2.10.12"
+"astro@npm:2.10.14":
+  version: 2.10.14
+  resolution: "astro@npm:2.10.14"
   dependencies:
     "@astrojs/compiler": ^1.8.0
     "@astrojs/internal-helpers": ^0.1.2
@@ -1786,7 +1786,7 @@ __metadata:
       optional: true
   bin:
     astro: astro.js
-  checksum: 22e4fb55b1e98e9fb8eb918a699c518fd3fe149867d46e389d8d6ba0244f9e8c36e99e735ab3e286d0b87ab1a0de97dbbc5726b883be8731948ad31692f78c12
+  checksum: 2b5e6b64cceada306b50cec3ba518541483017f8f733fbb07b8da5e2ca23ea8b1bae6c2827886a8a8000be1b4e88f6baf12cc96f08a21b4ce1c00c7e1f7ae864
   languageName: node
   linkType: hard
 
