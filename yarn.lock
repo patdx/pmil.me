@@ -1086,7 +1086,7 @@ __metadata:
     solid-js: 1.7.11
     tailwindcss: 3.3.3
     unplugin-icons: 0.16.5
-    vite-node: 0.34.2
+    vite-node: 0.34.3
   languageName: unknown
   linkType: soft
 
@@ -7170,9 +7170,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-node@npm:0.34.2":
-  version: 0.34.2
-  resolution: "vite-node@npm:0.34.2"
+"vite-node@npm:0.34.3":
+  version: 0.34.3
+  resolution: "vite-node@npm:0.34.3"
   dependencies:
     cac: ^6.7.14
     debug: ^4.3.4
@@ -7182,7 +7182,7 @@ __metadata:
     vite: ^3.0.0 || ^4.0.0
   bin:
     vite-node: vite-node.mjs
-  checksum: 7861ab0b55ca01a417f2afbe9d55cf39e9cb25183a7508aeec9c4f19ae2b112d823d1fccaf66012479a805f75889c1bfdfe28b5410768a671437096bc0a8fd3e
+  checksum: 366c4f3fb7c038e2180abc6b18cfbac3b8684cd878eaf7ebf1ffb07d95d2ea325713fc575a7949a13bb00cfe264acbc28c02e2836b8647e1f443fe631c17805a
   languageName: node
   linkType: hard
 
