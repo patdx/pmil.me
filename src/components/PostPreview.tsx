@@ -1,6 +1,5 @@
 import clsx from 'clsx';
-import { Component, Show } from 'solid-js';
-
+import { type Component, Show } from 'solid-js';
 import { ProjectImage } from './Image';
 
 export const PostPreview: Component<{

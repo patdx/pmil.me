@@ -1,16 +1,14 @@
-import { getImage } from '@astrojs/image';
-import type {
-  ImageComponentLocalImageProps,
-  ImageComponentRemoteImageProps,
-} from '@astrojs/image/components';
-import { Component, createResource, Suspense } from 'solid-js';
+import {
+  getImage,
+  type LocalImageProps,
+  type RemoteImageProps,
+} from 'astro:assets';
+import { type Component, createResource, Suspense } from 'solid-js';
 import { NoHydration } from 'solid-js/web';
 
 const images = import.meta.glob('../content/project/_images/**/*');
 
-export const ProjectImage: Component<ImageComponentLocalImageProps> = (
-  props
-) => {
+export const ProjectImage: Component<LocalImageProps> = (props) => {
   const src = `../content/project/_images/${props.src}`;
 
   const srcPromise = images[src]?.();
@@ -21,9 +19,7 @@ export const ProjectImage: Component<ImageComponentLocalImageProps> = (
   return <Image {...props} src={srcPromise} />;
 };
 
-export const Image: Component<
-  ImageComponentLocalImageProps | ImageComponentRemoteImageProps
-> = (props) => {
+export const Image: Component<LocalImageProps | RemoteImageProps> = (props) => {
   // Adding NoHydration keeps the resource from serializing itself into the HTML.
   return (
     <NoHydration>
@@ -34,9 +30,7 @@ export const Image: Component<
   );
 };
 
-const ImageInner: Component<
-  ImageComponentLocalImageProps | ImageComponentRemoteImageProps
-> = (props) => {
+const ImageInner: Component<LocalImageProps | RemoteImageProps> = (props) => {
   if (!props.src) {
     console.warn(`ImageInner: No src`);
     return null;
@@ -45,6 +39,7 @@ const ImageInner: Component<
   const [image] = createResource(
     async () => {
       const result = await getImage(props);
+      console.log('Got image', result);
       return result;
     },
     {

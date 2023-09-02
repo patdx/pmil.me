@@ -1,5 +1,5 @@
 import type { CollectionEntry } from 'astro:content';
-import { Component, For } from 'solid-js';
+import { type Component, For } from 'solid-js';
 import { Container } from '../components/Container';
 import { PostPreview } from '../components/PostPreview';
 
