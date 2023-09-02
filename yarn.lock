@@ -39,17 +39,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@antfu/utils@npm:^0.7.4":
-  version: 0.7.4
-  resolution: "@antfu/utils@npm:0.7.4"
-  checksum: f5c1107c9aec0bda43a7021f3a9adb4bed113467a40590a9cecd3998408a5c04b0fb68be53438f56487153eaf6278fa128dbe4e0be88b7af65212fe0497e4fdd
-  languageName: node
-  linkType: hard
-
 "@antfu/utils@npm:^0.7.5":
   version: 0.7.5
   resolution: "@antfu/utils@npm:0.7.5"
   checksum: df6451ded84b8ea8ad951434a7e146361f160c4a42904853749e45c214c24aedd9cb2e906c699ca32b4f780f2afb6413f8ca753f017c52f30267ff5064b66e31
+  languageName: node
+  linkType: hard
+
+"@antfu/utils@npm:^0.7.6":
+  version: 0.7.6
+  resolution: "@antfu/utils@npm:0.7.6"
+  checksum: 92bf38ded4364e237c401e546eef3dbcc383186e1515e1e1c5c505d19ae12d8702cac7527b94c28f12ab6063d26969798297980619d42aba76771d8f3bc7f620
   languageName: node
   linkType: hard
 
@@ -1080,12 +1080,12 @@ __metadata:
     astro-robots-txt: 0.5.0
     clsx: 2.0.0
     humanize-url: 3.0.0
-    prettier: 3.0.2
-    prettier-plugin-tailwindcss: 0.5.3
+    prettier: 3.0.3
+    prettier-plugin-tailwindcss: 0.5.4
     sharp: 0.32.5
     solid-js: 1.7.11
     tailwindcss: 3.3.3
-    unplugin-icons: 0.16.5
+    unplugin-icons: 0.16.6
     vite-node: 0.34.3
   languageName: unknown
   linkType: soft
@@ -1113,17 +1113,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify/utils@npm:^2.1.7":
-  version: 2.1.7
-  resolution: "@iconify/utils@npm:2.1.7"
+"@iconify/utils@npm:^2.1.9":
+  version: 2.1.9
+  resolution: "@iconify/utils@npm:2.1.9"
   dependencies:
     "@antfu/install-pkg": ^0.1.1
-    "@antfu/utils": ^0.7.4
+    "@antfu/utils": ^0.7.5
     "@iconify/types": ^2.0.0
     debug: ^4.3.4
     kolorist: ^1.8.0
     local-pkg: ^0.4.3
-  checksum: 0a0bcae0b7afe77572b02aeb31374733863075b530ae1702a72049e25b84856b788159ea49817689540c4ae1f4d24e08debac6ae3ba7b8d790e74b4f95161919
+  checksum: bda17d5777cb9b10104a3993ed549106414b206618f86e749e76edea6dde111c99c85a4a403f268033ff5e75a7e7d9ced080ad87a3070c807b29ccad81570d3c
   languageName: node
   linkType: hard
 
@@ -5632,9 +5632,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-tailwindcss@npm:0.5.3":
-  version: 0.5.3
-  resolution: "prettier-plugin-tailwindcss@npm:0.5.3"
+"prettier-plugin-tailwindcss@npm:0.5.4":
+  version: 0.5.4
+  resolution: "prettier-plugin-tailwindcss@npm:0.5.4"
   peerDependencies:
     "@ianvs/prettier-plugin-sort-imports": "*"
     "@prettier/plugin-pug": "*"
@@ -5681,16 +5681,16 @@ __metadata:
       optional: true
     prettier-plugin-twig-melody:
       optional: true
-  checksum: c20843d9739bf8ac4608166841484276dc73040ba02fef5dfee2f78f6e10957ad09c161fefb01e120fec24c0f982a34339212ad1fa70ec2b75472f6f853667d9
+  checksum: b4380e03a9f7aaf25f5d352fd145618497b5e9281bbd8c1a43e90a9a72daaf0585f8ac8bf5608e41481441caa4eb568c74556164a384de6a5533a196edab52b0
   languageName: node
   linkType: hard
 
-"prettier@npm:3.0.2":
-  version: 3.0.2
-  resolution: "prettier@npm:3.0.2"
+"prettier@npm:3.0.3":
+  version: 3.0.3
+  resolution: "prettier@npm:3.0.3"
   bin:
     prettier: bin/prettier.cjs
-  checksum: 118b59ddb6c80abe2315ab6d0f4dd1b253be5cfdb20622fa5b65bb1573dcd362e6dd3dcf2711dd3ebfe64aecf7bdc75de8a69dc2422dcd35bdde7610586b677a
+  checksum: e10b9af02b281f6c617362ebd2571b1d7fc9fb8a3bd17e371754428cda992e5e8d8b7a046e8f7d3e2da1dcd21aa001e2e3c797402ebb6111b5cd19609dd228e0
   languageName: node
   linkType: hard
 
@@ -7017,17 +7017,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unplugin-icons@npm:0.16.5":
-  version: 0.16.5
-  resolution: "unplugin-icons@npm:0.16.5"
+"unplugin-icons@npm:0.16.6":
+  version: 0.16.6
+  resolution: "unplugin-icons@npm:0.16.6"
   dependencies:
     "@antfu/install-pkg": ^0.1.1
-    "@antfu/utils": ^0.7.5
-    "@iconify/utils": ^2.1.7
+    "@antfu/utils": ^0.7.6
+    "@iconify/utils": ^2.1.9
     debug: ^4.3.4
     kolorist: ^1.8.0
     local-pkg: ^0.4.3
-    unplugin: ^1.3.2
+    unplugin: ^1.4.0
   peerDependencies:
     "@svgr/core": ">=7.0.0"
     "@svgx/core": ^1.0.1
@@ -7045,19 +7045,19 @@ __metadata:
       optional: true
     vue-template-es2015-compiler:
       optional: true
-  checksum: a7aba3be40810686299467cb8111c2b3f9a1ff70bdebd0cacfca3ac8aeb72d9f029ed35ee516c5f0770115c18a49bd119e634a4a417a8b7c6b74061cd92d08e0
+  checksum: 20ff688e7088a596ab6fe4aa495e8dcc62b403a8520ba4f32502060880740eedd4acd0392d8b3b32506a2d325c589958c0e8e7e00a9f9f5105bb10517a023791
   languageName: node
   linkType: hard
 
-"unplugin@npm:^1.3.2":
-  version: 1.3.2
-  resolution: "unplugin@npm:1.3.2"
+"unplugin@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "unplugin@npm:1.4.0"
   dependencies:
     acorn: ^8.9.0
     chokidar: ^3.5.3
     webpack-sources: ^3.2.3
     webpack-virtual-modules: ^0.5.0
-  checksum: b075f4c58615168d880077848f504f13a23085bcbab6bf2c98036ce4c0eb7de58d79dd369cf08b65bcfe7f5a181f38ac9dd444ff88c349360f0e2b2678d68e48
+  checksum: 49f586b07988397aa130b44710e8017a0472e825d08a218557031f08d694788b3ee61d686e67af153cb39b73132e2616c2f135222b83ff8aa2f7a89027f74600
   languageName: node
   linkType: hard
 
