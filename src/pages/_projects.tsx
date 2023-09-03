@@ -4,7 +4,7 @@ import { Container } from '../components/Container';
 import { PostPreview } from '../components/PostPreview';
 
 export const Projects: Component<{
-  projects: CollectionEntry<'project'>[];
+  projects: CollectionEntry<'project'>[]; // really the coverImage is the GetImageResult
 }> = (props) => {
   return (
     <Container class="grid gap-4 py-4">

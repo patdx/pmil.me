@@ -6,7 +6,8 @@ import tailwind from '@astrojs/tailwind';
 import robotsTxt from 'astro-robots-txt';
 
 // https://astro.build/config
-import solidJs from './src/solid-integration/index';
+// import solidJs from './src/solid-integration/index';
+import solidJs from '@astrojs/solid-js';
 
 // https://astro.build/config
 // import cloudflare from '@astrojs/cloudflare';

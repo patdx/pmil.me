@@ -2,8 +2,8 @@
 import 'tailwindcss/tailwind.css';
 
 import humanizeUrl from 'humanize-url';
-
-import { CollectionEntry, getCollection } from 'astro:content';
+import {getImage} from "astro:assets"
+import { type CollectionEntry, getCollection } from 'astro:content';
 import { App } from '../../layouts/App';
 import { Container } from '../../components/Container';
 import { CoverImage } from '../../components/CoverImage';
@@ -22,10 +22,13 @@ interface Props {
 
 const { entry } = Astro.props;
 const { slug, data } = entry;
-const { title, coverImage, externalUrl, technologies } = data;
+const { title, externalUrl, technologies } = data;
 const { Content } = await entry.render();
 
 const url = `/posts/${slug}`;
+
+const coverImage = data.coverImage ? await getImage({src: data.coverImage})  : undefined
+
 ---
 
 <App>
@@ -65,7 +68,7 @@ const url = `/posts/${slug}`;
         <div class="col-span-1 grid grid-cols-1 content-start gap-4">
           {
             coverImage ? (
-              <CoverImage title={title} src={coverImage} href={url} />
+              <CoverImage title={title} href={url} {...coverImage} />
             ) : undefined
           }
           {Boolean(technologies) && <p>{technologies}</p>}

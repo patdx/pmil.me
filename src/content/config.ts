@@ -8,9 +8,9 @@ const postCollection = defineCollection({
 });
 
 const projectCollection = defineCollection({
-  schema: z.object({
+  schema: ({image}) => z.object({
     title: z.string(),
-    coverImage: z.string().optional(),
+    coverImage: image().optional(),
     // date: z.string().optional(),
     excerpt: z.string().nullish(),
     // author: z.string().optional(),
