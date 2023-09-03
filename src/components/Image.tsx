@@ -1,29 +1,8 @@
-import { getImage } from '@astrojs/image';
-import type {
-  ImageComponentLocalImageProps,
-  ImageComponentRemoteImageProps,
-} from '@astrojs/image/components';
-import { Component, createResource, Suspense } from 'solid-js';
+import type { GetImageResult } from 'astro';
+import { Suspense, type Component } from 'solid-js';
 import { NoHydration } from 'solid-js/web';
 
-const images = import.meta.glob('../content/project/_images/**/*');
-
-export const ProjectImage: Component<ImageComponentLocalImageProps> = (
-  props
-) => {
-  const src = `../content/project/_images/${props.src}`;
-
-  const srcPromise = images[src]?.();
-  console.log('importing...', src, srcPromise);
-
-  if (!srcPromise) return 'No picture';
-
-  return <Image {...props} src={srcPromise} />;
-};
-
-export const Image: Component<
-  ImageComponentLocalImageProps | ImageComponentRemoteImageProps
-> = (props) => {
+export const Image: Component<GetImageResult & {alt: string; fit: string; class: string; sizes?: string}> = (props) => {
   // Adding NoHydration keeps the resource from serializing itself into the HTML.
   return (
     <NoHydration>
@@ -34,23 +13,22 @@ export const Image: Component<
   );
 };
 
-const ImageInner: Component<
-  ImageComponentLocalImageProps | ImageComponentRemoteImageProps
-> = (props) => {
+const ImageInner: Component<GetImageResult & {alt: string; fit: string; class: string; sizes?: string}> = (props) => {
   if (!props.src) {
     console.warn(`ImageInner: No src`);
     return null;
   }
 
-  const [image] = createResource(
-    async () => {
-      const result = await getImage(props);
-      return result;
-    },
-    {
-      // deferStream: true,
-    }
-  );
+  // const [image] = createResource(
+  //   async () => {
+  //     const result = await getImage(props);
+  //     console.log('Got image', result);
+  //     return result;
+  //   },
+  //   {
+  //     // deferStream: true,
+  //   }
+  // );
 
-  return <img {...(image() as any)} loading="lazy" decoding="async" />;
+  return <img {...(props as any)} loading="lazy" decoding="async" />;
 };

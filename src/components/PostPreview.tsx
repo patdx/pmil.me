@@ -1,11 +1,11 @@
 import clsx from 'clsx';
-import { Component, Show } from 'solid-js';
-
-import { ProjectImage } from './Image';
+import { type Component, Show } from 'solid-js';
+import { Image } from './Image';
+import type { GetImageResult } from 'astro';
 
 export const PostPreview: Component<{
   title: string;
-  coverImage?: string | undefined;
+  coverImage?: GetImageResult;
   excerpt?: string | null;
   href: string;
 }> = (props) => {
@@ -19,8 +19,8 @@ export const PostPreview: Component<{
       )}
     >
       {props.coverImage ? (
-        <ProjectImage
-          src={props.coverImage as any}
+        <Image
+          {...props.coverImage}
           alt={`Cover Image for ${props.title}`}
           sizes="100vw"
           class="rounded-md object-cover transition group-hover:blur-sm"

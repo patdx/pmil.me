@@ -1,7 +1,7 @@
 ---
 import { App } from '../layouts/App';
 import { Container } from '../components/Container';
-import { Picture } from '@astrojs/image/components';
+import { Image } from 'astro:assets';
 import patrickJpg from '../assets/patrick.jpg';
 ---
 
@@ -25,8 +25,8 @@ import patrickJpg from '../assets/patrick.jpg';
         </p>
       </div>
       <div>
-        <Picture
-          widths={[400, 800, 1200]}
+        <!-- widths={[400, 800, 1200]} -->
+        <Image
           class="rounded-lg"
           src={patrickJpg}
           alt="Picture of Patrick Miller"

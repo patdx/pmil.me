@@ -3,6 +3,13 @@
   "compilerOptions": {
     "exactOptionalPropertyTypes": false,
     "jsx": "preserve",
-    "jsxImportSource": "solid-js"
-  }
+    "jsxImportSource": "solid-js",
+    "baseUrl": "."
+  },
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "./src/**/*.astro",
+    ".astro/types.d.ts"
+  ]
 }

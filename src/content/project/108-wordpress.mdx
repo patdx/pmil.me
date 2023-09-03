@@ -2,10 +2,10 @@
 title: Wordpress
 excerpt: Various projects
 technologies: Wordpress, HTML, CSS
-coverImage: wordpress.png
+coverImage: ./_images/wordpress.png
 ---
 
-import { Image } from '@astrojs/image/components';
+import { Image } from 'astro:assets';
 
 I managed some Wordpress websites and online social media in college.
 
@@ -23,6 +23,9 @@ I managed some Wordpress websites and online social media in college.
 
 ## Screenshots
 
-<Image src={import('./_images/wordpress/bmes-500x500.png')} />
+<Image src={import('./_images/wordpress/bmes-500x500.png')} alt="BMES" />
 
-<Image src={import('./_images/wordpress/ceramicknee-500x500.png')} />
+<Image
+  src={import('./_images/wordpress/ceramicknee-500x500.png')}
+  alt="Ceramic Knee"
+/>

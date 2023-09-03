@@ -3,10 +3,10 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import Icons from 'unplugin-icons/vite';
 import tailwind from '@astrojs/tailwind';
-import image from '@astrojs/image';
 import robotsTxt from 'astro-robots-txt';
 
 // https://astro.build/config
+// import solidJs from './src/solid-integration/index';
 import solidJs from '@astrojs/solid-js';
 
 // https://astro.build/config
@@ -23,11 +23,9 @@ export default defineConfig({
   },
   integrations: [
     mdx(),
+    solidJs(),
     sitemap(),
     tailwind(),
-    image({
-      serviceEntryPoint: '@astrojs/image/sharp',
-    }),
     robotsTxt(),
     solidJs(),
   ],
