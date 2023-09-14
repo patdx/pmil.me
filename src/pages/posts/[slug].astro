@@ -42,8 +42,8 @@ const url = `/posts/${slug}`;
     </h1>
 
     <div class="mb-8 font-bold">{date}</div>
-
-    <div class="prose w-[calc(100vw-2.5rem)]"><Content /></div>
+    <!-- w-[calc(100vw-2.5rem)] -->
+    <div class="prose max-w-full overflow-x-hidden"><Content /></div>
     <!-- </article> -->
   </Container>
 </App>
