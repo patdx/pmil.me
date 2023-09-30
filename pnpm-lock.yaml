@@ -62,8 +62,8 @@ devDependencies:
     specifier: 0.17.0
     version: 0.17.0
   vite-node:
-    specifier: 0.34.5
-    version: 0.34.5
+    specifier: 0.34.6
+    version: 0.34.6
 
 packages:
 
@@ -4335,8 +4335,8 @@ packages:
       vfile-message: 3.1.4
     dev: false
 
-  /vite-node@0.34.5:
-    resolution: {integrity: sha512-RNZ+DwbCvDoI5CbCSQSyRyzDTfFvFauvMs6Yq4ObJROKlIKuat1KgSX/Ako5rlDMfVCyMcpMRMTkJBxd6z8YRA==}
+  /vite-node@0.34.6:
+    resolution: {integrity: sha512-nlBMJ9x6n7/Amaz6F3zJ97EBwR2FkzhBRxF5e+jE6LA3yi6Wtc2lyTij1OnDMIr34v5g/tVQtsVAzhT0jc5ygA==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
     dependencies:
