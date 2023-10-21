@@ -13,10 +13,10 @@
   "dependencies": {
     "@astrojs/mdx": "1.1.2",
     "@astrojs/rss": "3.0.0",
-    "@astrojs/sitemap": "3.0.1",
+    "@astrojs/sitemap": "3.0.2",
     "@astrojs/solid-js": "3.0.2",
     "@astrojs/tailwind": "5.0.2",
-    "astro": "3.3.0",
+    "astro": "3.3.2",
     "clsx": "2.0.0",
     "humanize-url": "3.0.0",
     "sharp": "0.32.6",
