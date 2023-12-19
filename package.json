@@ -21,7 +21,7 @@
     "humanize-url": "3.0.0",
     "sharp": "0.33.1",
     "solid-js": "1.8.7",
-    "tailwindcss": "3.3.7"
+    "tailwindcss": "3.4.0"
   },
   "devDependencies": {
     "@iconify-json/ion": "1.1.15",
@@ -31,7 +31,7 @@
     "prettier": "3.1.1",
     "prettier-plugin-tailwindcss": "0.5.9",
     "unplugin-icons": "0.18.1",
-    "vite-node": "1.0.4"
+    "vite-node": "1.1.0"
   },
   "packageManager": "pnpm@8.12.1"
 }
