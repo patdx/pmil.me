@@ -19,7 +19,7 @@ dependencies:
     version: 4.0.1(solid-js@1.8.8)(vite@5.0.10)
   '@astrojs/tailwind':
     specifier: 5.1.0
-    version: 5.1.0(astro@4.1.1)(tailwindcss@3.4.0)
+    version: 5.1.0(astro@4.1.1)(tailwindcss@3.4.1)
   astro:
     specifier: 4.1.1
     version: 4.1.1
@@ -36,8 +36,8 @@ dependencies:
     specifier: 1.8.8
     version: 1.8.8
   tailwindcss:
-    specifier: 3.4.0
-    version: 3.4.0
+    specifier: 3.4.1
+    version: 3.4.1
 
 devDependencies:
   '@iconify-json/ion':
@@ -45,10 +45,10 @@ devDependencies:
     version: 1.1.15
   '@tailwindcss/aspect-ratio':
     specifier: 0.4.2
-    version: 0.4.2(tailwindcss@3.4.0)
+    version: 0.4.2(tailwindcss@3.4.1)
   '@tailwindcss/typography':
     specifier: 0.5.10
-    version: 0.5.10(tailwindcss@3.4.0)
+    version: 0.5.10(tailwindcss@3.4.1)
   astro-robots-txt:
     specifier: 1.0.0
     version: 1.0.0
@@ -56,8 +56,8 @@ devDependencies:
     specifier: 3.1.1
     version: 3.1.1
   prettier-plugin-tailwindcss:
-    specifier: 0.5.10
-    version: 0.5.10(prettier@3.1.1)
+    specifier: 0.5.11
+    version: 0.5.11(prettier@3.1.1)
   unplugin-icons:
     specifier: 0.18.1
     version: 0.18.1
@@ -186,7 +186,7 @@ packages:
       - vite
     dev: false
 
-  /@astrojs/tailwind@5.1.0(astro@4.1.1)(tailwindcss@3.4.0):
+  /@astrojs/tailwind@5.1.0(astro@4.1.1)(tailwindcss@3.4.1):
     resolution: {integrity: sha512-BJoCDKuWhU9FT2qYg+fr6Nfb3qP4ShtyjXGHKA/4mHN94z7BGcmauQK23iy+YH5qWvTnhqkd6mQPQ1yTZTe9Ig==}
     peerDependencies:
       astro: ^3.0.0 || ^4.0.0
@@ -196,7 +196,7 @@ packages:
       autoprefixer: 10.4.15(postcss@8.4.32)
       postcss: 8.4.32
       postcss-load-config: 4.0.2(postcss@8.4.32)
-      tailwindcss: 3.4.0
+      tailwindcss: 3.4.1
     transitivePeerDependencies:
       - ts-node
     dev: false
@@ -1112,15 +1112,15 @@ packages:
     requiresBuild: true
     optional: true
 
-  /@tailwindcss/aspect-ratio@0.4.2(tailwindcss@3.4.0):
+  /@tailwindcss/aspect-ratio@0.4.2(tailwindcss@3.4.1):
     resolution: {integrity: sha512-8QPrypskfBa7QIMuKHg2TA7BqES6vhBrDLOv8Unb6FcFyd3TjKbc6lcmb9UPQHxfl24sXoJ41ux/H7qQQvfaSQ==}
     peerDependencies:
       tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
     dependencies:
-      tailwindcss: 3.4.0
+      tailwindcss: 3.4.1
     dev: true
 
-  /@tailwindcss/typography@0.5.10(tailwindcss@3.4.0):
+  /@tailwindcss/typography@0.5.10(tailwindcss@3.4.1):
     resolution: {integrity: sha512-Pe8BuPJQJd3FfRnm6H0ulKIGoMEQS+Vq01R6M5aCrFB/ccR/shT+0kXLjouGC1gFLm9hopTFN+DMP0pfwRWzPw==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders'
@@ -1129,7 +1129,7 @@ packages:
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       postcss-selector-parser: 6.0.10
-      tailwindcss: 3.4.0
+      tailwindcss: 3.4.1
     dev: true
 
   /@types/acorn@4.0.6:
@@ -3520,8 +3520,8 @@ packages:
       which-pm: 2.0.0
     dev: false
 
-  /prettier-plugin-tailwindcss@0.5.10(prettier@3.1.1):
-    resolution: {integrity: sha512-9UGSejqFxGG6brYjFfTYlJ8zs4L/lvZg1AngFfaC5Fs1otSskASv5IWKmjPu5MlABQUtTKtMArKyYr/hWpXSUg==}
+  /prettier-plugin-tailwindcss@0.5.11(prettier@3.1.1):
+    resolution: {integrity: sha512-AvI/DNyMctyyxGOjyePgi/gqj5hJYClZ1avtQvLlqMT3uDZkRbi4HhGUpok3DRzv9z7Lti85Kdj3s3/1CeNI0w==}
     engines: {node: '>=14.21.3'}
     peerDependencies:
       '@ianvs/prettier-plugin-sort-imports': '*'
@@ -4090,8 +4090,8 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  /tailwindcss@3.4.0:
-    resolution: {integrity: sha512-VigzymniH77knD1dryXbyxR+ePHihHociZbXnLZHUyzf2MMs2ZVqlUrZ3FvpXP8pno9JzmILt1sZPD19M3IxtA==}
+  /tailwindcss@3.4.1:
+    resolution: {integrity: sha512-qAYmXRfk3ENzuPBakNK0SRrUDipP8NQnEY6772uDhflcQz5EhRdD7JNZxyrFHVQNCwULPBn6FNPp9brpO7ctcA==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
