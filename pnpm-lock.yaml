@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@astrojs/mdx':
-    specifier: 2.0.6
-    version: 2.0.6(astro@4.2.3)
+    specifier: 2.1.0
+    version: 2.1.0(astro@4.2.4)
   '@astrojs/rss':
     specifier: 4.0.3
     version: 4.0.3
@@ -19,10 +19,10 @@ dependencies:
     version: 4.0.1(solid-js@1.8.12)(vite@5.0.10)
   '@astrojs/tailwind':
     specifier: 5.1.0
-    version: 5.1.0(astro@4.2.3)(tailwindcss@3.4.1)
+    version: 5.1.0(astro@4.2.4)(tailwindcss@3.4.1)
   astro:
-    specifier: 4.2.3
-    version: 4.2.3
+    specifier: 4.2.4
+    version: 4.2.4
   clsx:
     specifier: 2.1.0
     version: 2.1.0
@@ -126,8 +126,8 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx@2.0.6(astro@4.2.3):
-    resolution: {integrity: sha512-PY6FYN5TN8dsRFSzcPIt5ofJ/w+v+5GtUUyDYbznu8zmFWlL9TkTLJ9U1zaQ3s2Qh6r1cAeLdEYjW/hW+vZzlw==}
+  /@astrojs/mdx@2.1.0(astro@4.2.4):
+    resolution: {integrity: sha512-QIH2BLYWz2/QVChE4W7Z8a2SOhDmMDvL89rOoZkZ8CnSneu03+VvUse1K8ObrC877SPSct9cNWe55K05vgQ+VQ==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       astro: ^4.0.0
@@ -135,7 +135,7 @@ packages:
       '@astrojs/markdown-remark': 4.2.0
       '@mdx-js/mdx': 3.0.0
       acorn: 8.11.2
-      astro: 4.2.3
+      astro: 4.2.4
       es-module-lexer: 1.4.1
       estree-util-visit: 2.0.0
       github-slugger: 2.0.0
@@ -186,13 +186,13 @@ packages:
       - vite
     dev: false
 
-  /@astrojs/tailwind@5.1.0(astro@4.2.3)(tailwindcss@3.4.1):
+  /@astrojs/tailwind@5.1.0(astro@4.2.4)(tailwindcss@3.4.1):
     resolution: {integrity: sha512-BJoCDKuWhU9FT2qYg+fr6Nfb3qP4ShtyjXGHKA/4mHN94z7BGcmauQK23iy+YH5qWvTnhqkd6mQPQ1yTZTe9Ig==}
     peerDependencies:
       astro: ^3.0.0 || ^4.0.0
       tailwindcss: ^3.0.24
     dependencies:
-      astro: 4.2.3
+      astro: 4.2.4
       autoprefixer: 10.4.15(postcss@8.4.32)
       postcss: 8.4.32
       postcss-load-config: 4.0.2(postcss@8.4.32)
@@ -1307,8 +1307,8 @@ packages:
       zod: 3.22.2
     dev: true
 
-  /astro@4.2.3:
-    resolution: {integrity: sha512-6bfSogmcwMdaTRAxuhJ7aISGin/T3ovI/69JWPRYOHBkPZxA/EfsNQOI2TiRHFJSF9XtoMnFlgvT+iYapkhOwg==}
+  /astro@4.2.4:
+    resolution: {integrity: sha512-z1f52lXkHf71M5HSLKrd5G1PH5/Zfq4kMp0iUT7Na5VHcPDma/NYFPFPewDxqV6UPmyxupj3xuooFaN3j8zaow==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
@@ -1370,8 +1370,8 @@ packages:
       tsconfck: 3.0.0
       unist-util-visit: 5.0.0
       vfile: 6.0.1
-      vite: 5.0.10
-      vitefu: 0.2.5(vite@5.0.10)
+      vite: 5.0.12
+      vitefu: 0.2.5(vite@5.0.12)
       which-pm: 2.1.1
       yargs-parser: 21.1.1
       zod: 3.22.4
@@ -4753,6 +4753,41 @@ packages:
     optionalDependencies:
       fsevents: 2.3.3
 
+  /vite@5.0.12:
+    resolution: {integrity: sha512-4hsnEkG3q0N4Tzf1+t6NdN9dg/L3BM+q8SWgbSPnJvrgH2kgdyzfVJwbR1ic69/4uMJJ/3dqDZZE5/WwqW8U1w==}
+    engines: {node: ^18.0.0 || >=20.0.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': ^18.0.0 || >=20.0.0
+      less: '*'
+      lightningcss: ^1.21.0
+      sass: '*'
+      stylus: '*'
+      sugarss: '*'
+      terser: ^5.4.0
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      less:
+        optional: true
+      lightningcss:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+    dependencies:
+      esbuild: 0.19.8
+      postcss: 8.4.32
+      rollup: 4.6.1
+    optionalDependencies:
+      fsevents: 2.3.3
+    dev: false
+
   /vitefu@0.2.5(vite@5.0.10):
     resolution: {integrity: sha512-SgHtMLoqaeeGnd2evZ849ZbACbnwQCIwRH57t18FxcXoZop0uQu0uzlIhJBlF/eWVzuce0sHeqPcDo+evVcg8Q==}
     peerDependencies:
@@ -4762,6 +4797,17 @@ packages:
         optional: true
     dependencies:
       vite: 5.0.10
+    dev: false
+
+  /vitefu@0.2.5(vite@5.0.12):
+    resolution: {integrity: sha512-SgHtMLoqaeeGnd2evZ849ZbACbnwQCIwRH57t18FxcXoZop0uQu0uzlIhJBlF/eWVzuce0sHeqPcDo+evVcg8Q==}
+    peerDependencies:
+      vite: ^3.0.0 || ^4.0.0 || ^5.0.0
+    peerDependenciesMeta:
+      vite:
+        optional: true
+    dependencies:
+      vite: 5.0.12
     dev: false
 
   /web-namespaces@2.0.1:
