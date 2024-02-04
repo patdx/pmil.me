@@ -29,9 +29,9 @@
     "@tailwindcss/aspect-ratio": "0.4.2",
     "@tailwindcss/typography": "0.5.10",
     "astro-robots-txt": "1.0.0",
-    "prettier": "3.2.4",
+    "prettier": "3.2.5",
     "prettier-plugin-tailwindcss": "0.5.11",
-    "unplugin-icons": "0.18.3",
+    "unplugin-icons": "0.18.4",
     "vite-node": "1.2.2"
   },
   "packageManager": "pnpm@8.15.1"
