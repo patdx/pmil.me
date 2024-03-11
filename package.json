@@ -12,12 +12,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "2.1.1",
+    "@astrojs/mdx": "2.2.0",
     "@astrojs/rss": "4.0.5",
     "@astrojs/sitemap": "3.1.1",
     "@astrojs/solid-js": "4.0.1",
     "@astrojs/tailwind": "5.1.0",
-    "astro": "4.4.15",
+    "astro": "4.5.0",
     "clsx": "2.1.0",
     "humanize-url": "3.0.0",
     "sharp": "0.33.2",
