@@ -32,7 +32,7 @@
     "prettier": "3.2.5",
     "prettier-plugin-tailwindcss": "0.5.14",
     "unplugin-icons": "0.19.0",
-    "vite-node": "1.5.3"
+    "vite-node": "1.6.0"
   },
   "packageManager": "pnpm@9.0.6"
 }
