@@ -5,19 +5,23 @@ import { App } from '../layouts/App';
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
 const posts = await getCollection('post');
+
+const sorted = posts.sort(
+  (a, b) => new Date(b.data.date) - new Date(a.data.date)
+);
 ---
 
 <App>
-  <Container class="grid gap-4 py-4">
+  <Container class='grid gap-4 py-4'>
     <section>
-      <div class="container mx-auto max-w-4xl">
+      <div class='container mx-auto max-w-4xl'>
         {
-          posts.map((post) => (
+          sorted.map((post) => (
             <a
               href={`/posts/${post.slug}`}
-              class="block p-1 transition hover:bg-gray-200 active:bg-gray-300"
+              class='block p-1 transition hover:bg-gray-200 active:bg-gray-300'
             >
-              <span class="font-bold tabular-nums">{post.data.date}</span>{' '}
+              <span class='font-bold tabular-nums'>{post.data.date}</span>{' '}
               {post.data.title}
             </a>
           ))
