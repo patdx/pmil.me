@@ -10,6 +10,11 @@ export const Projects: Component<{
     <Container class="grid gap-4 py-4">
       <section>
         <div class="container mx-auto grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-3">
+          <PostPreview
+            title="GitHub Projects"
+            href="https://github.com/patdx?tab=repositories"
+            excerpt="Check out my GitHub for more projects and experiments."
+          />
           <For each={props.projects}>
             {(project) => (
               <PostPreview

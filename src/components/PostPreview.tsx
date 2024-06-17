@@ -25,8 +25,10 @@ export const PostPreview: Component<{
           sizes="100vw"
           class="rounded-md object-cover transition group-hover:blur-sm"
         />
-      ) : undefined}
-      <div class="flex items-end">
+      ) : null}
+      <div
+        class={clsx('flex', props.coverImage ? 'items-end' : 'items-stretch')}
+      >
         <div class="flex-1 rounded-b-md border border-gray-200 bg-white px-2 py-4 text-3xl text-black opacity-90 shadow backdrop-blur transition group-hover:scale-105 group-hover:border-gray-300 group-hover:opacity-100 sm:text-lg">
           <h3 class="font-bold">{props.title}</h3>
           <Show when={props.excerpt}>

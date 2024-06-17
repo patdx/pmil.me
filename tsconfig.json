@@ -6,7 +6,9 @@
     "moduleResolution": "Bundler",
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "verbatimModuleSyntax": true,
+    "noEmit": true
   },
   "include": [
     "./src/**/*.ts",
