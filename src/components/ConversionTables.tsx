@@ -94,24 +94,22 @@ export const AndroidTable = () => {
             <td align="center">Yes</td>
           </tr>
           <tr>
-            <td>
-              <sdcard>/</sdcard>
-            </td>
+            <td>{'<sdcard>/'}</td>
             <td>externalRootDirectory</td>
             <td>sdcard</td>
             <td align="center">EXTERNAL_STORAGE</td>
             <td>Yes</td>
             <td>Generally no access. Only acess files the app created</td>
             <td>Environment.getExternalStorageDirectory()</td>
-            <td align="center">r/w</td>
+            <td class="text-center" align="center">
+              r/w
+            </td>
             <td align="center">Yes</td>
             <td align="center">No</td>
             <td align="center">No</td>
           </tr>
           <tr>
-            <td>
-              <sdcard>/Android/data/{'<app-id>'}/</sdcard>
-            </td>
+            <td>{'<sdcard>/Android/data/<app-id>/'}</td>
             <td>externalApplicationStorageDirectory</td>
             <td>-</td>
             <td align="center"></td>
@@ -124,9 +122,7 @@ export const AndroidTable = () => {
             <td align="center">No</td>
           </tr>
           <tr>
-            <td>
-              <sdcard>/Android/data/{'<app-id>'}/cache</sdcard>
-            </td>
+            <td>{'<sdcard>/Android/data/<app-id>/cache'}</td>
             <td>externalCacheDirectory</td>
             <td>cache-external</td>
             <td align="center"></td>
@@ -139,9 +135,7 @@ export const AndroidTable = () => {
             <td align="center">No</td>
           </tr>
           <tr>
-            <td>
-              <sdcard>/Android/data/{'<app-id>'}/files</sdcard>
-            </td>
+            <td>{'<sdcard>/Android/data/<app-id>/files/'}</td>
             <td>externalDataDirectory</td>
             <td>files-external</td>
             <td align="center">EXTERNAL</td>
@@ -154,14 +148,12 @@ export const AndroidTable = () => {
             <td align="center">No</td>
           </tr>
           <tr>
-            <td>
-              <sdcard>/Documents</sdcard>
-            </td>
+            <td>{'<sdcard>/Documents'}</td>
             <td></td>
             <td></td>
             <td align="center">DOCUMENTS</td>
             <td>Yes</td>
-            <td>Generally no access. Only acess files the app created</td>
+            <td>Generally no access. Only access files the app created</td>
             <td>
               Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)
             </td>
@@ -196,7 +188,7 @@ export const IosTable = () => {
         </thead>
         <tbody>
           <tr>
-            <td>/var/mobile/Applications/{'<uuid>'}/</td>
+            <td>{'/var/mobile/Applications/<uuid>/'}</td>
             <td>applicationStorageDirectory</td>
             <td>-</td>
             <td align="center"></td>
@@ -208,7 +200,7 @@ export const IosTable = () => {
             <td align="center">Yes</td>
           </tr>
           <tr>
-            <td>/var/mobile/Applications/{'<uuid>'}/appname.app/</td>
+            <td>{'/var/mobile/Applications/<uuid>/appname.app/'}</td>
             <td>applicationDirectory</td>
             <td>bundle</td>
             <td align="center"></td>
@@ -220,7 +212,7 @@ export const IosTable = () => {
             <td align="center">Yes</td>
           </tr>
           <tr>
-            <td>/var/mobile/Applications/{'<uuid>'}/appname.app/www/</td>
+            <td>{'/var/mobile/Applications/<uuid>/appname.app/www/'}</td>
             <td>-</td>
             <td>-</td>
             <td align="center"></td>
@@ -232,7 +224,7 @@ export const IosTable = () => {
             <td align="center">Yes</td>
           </tr>
           <tr>
-            <td>/var/mobile/Applications/{'<uuid>'}/Documents/</td>
+            <td>{'/var/mobile/Applications/<uuid>/Documents/'}</td>
             <td>documentsDirectory</td>
             <td>documents</td>
             <td align="center">DOCUMENTS, DATA, EXTERNAL, EXTERNAL_STORAGE</td>
@@ -244,7 +236,7 @@ export const IosTable = () => {
             <td align="center">Yes</td>
           </tr>
           <tr>
-            <td>/var/mobile/Applications/{'<uuid>'}/Documents/NoCloud/</td>
+            <td>{'/var/mobile/Applications/<uuid>/Documents/NoCloud/'}</td>
             <td>-</td>
             <td>documents-nosync</td>
             <td align="center"></td>
@@ -256,7 +248,7 @@ export const IosTable = () => {
             <td align="center">Yes</td>
           </tr>
           <tr>
-            <td>/var/mobile/Applications/{'<uuid>'}/Library/</td>
+            <td>{'/var/mobile/Applications/<uuid>/Library/'}</td>
             <td>-</td>
             <td>library</td>
             <td align="center">LIBRARY</td>
@@ -268,7 +260,7 @@ export const IosTable = () => {
             <td align="center">Yes</td>
           </tr>
           <tr>
-            <td>/var/mobile/Applications/{'<uuid>'}/Library/NoCloud/</td>
+            <td>{'/var/mobile/Applications/<uuid>/Library/NoCloud/'}</td>
             <td>dataDirectory</td>
             <td>library-nosync</td>
             <td align="center"></td>
@@ -280,7 +272,7 @@ export const IosTable = () => {
             <td align="center">Yes</td>
           </tr>
           <tr>
-            <td>/var/mobile/Applications/{'<uuid>'}/Library/Cloud/</td>
+            <td>{'/var/mobile/Applications/<uuid>/Library/Cloud/'}</td>
             <td>syncedDataDirectory</td>
             <td>-</td>
             <td align="center"></td>
@@ -292,7 +284,7 @@ export const IosTable = () => {
             <td align="center">Yes</td>
           </tr>
           <tr>
-            <td>/var/mobile/Applications/{'<uuid>'}/Library/Caches/</td>
+            <td>{'/var/mobile/Applications/<uuid>/Library/Caches/'}</td>
             <td>cacheDirectory</td>
             <td>cache</td>
             <td align="center">CACHE</td>
@@ -304,7 +296,7 @@ export const IosTable = () => {
             <td align="center">Yes</td>
           </tr>
           <tr>
-            <td>/var/mobile/Applications/{'<uuid>'}/tmp/</td>
+            <td>{'/var/mobile/Applications/<uuid>/tmp/'}</td>
             <td>tempDirectory</td>
             <td>-</td>
             <td align="center"></td>
