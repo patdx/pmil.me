@@ -33,8 +33,8 @@ Install Fcitx5 and the Japanese input method:
 sudo dnf install fcitx5 fcitx5-autostart fcitx5-anthy fcitx5-configtool
 ```
 
-Note that `fcitx5-autostart` mainly just puts a scripts in your
-`/etc/profile.d/` directory like this:
+Note that `fcitx5-autostart` package is a custom Fedora package that basically
+just puts a script in your `/etc/profile.d/` directory like this:
 
 ```sh
 if [ ! "$XDG_SESSION_TYPE" = "tty" ]   # if this is a gui session (not tty)
