@@ -8,6 +8,12 @@
       "options": {
         "parser": "json-stringify"
       }
+    },
+    {
+      "files": "*.md",
+      "options": {
+        "proseWrap": "never"
+      }
     }
   ]
 }
