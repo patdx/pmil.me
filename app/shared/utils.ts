@@ -1,3 +1,20 @@
+/** from vite-imagetools */
+export interface OutputMetadata {
+	src: string; // URL of the generated image
+	width: number; // Width of the image
+	height: number; // Height of the image
+	format: string; // Format of the generated image
+
+	// The following options are the same as sharps input options
+	space: string; // Name of colour space interpretation
+	channels: number; // Number of bands e.g. 3 for sRGB, 4 for CMYK
+	density: number; //  Number of pixels per inch
+	depth: string; // Name of pixel depth format
+	hasAlpha: boolean; // presence of an alpha transparency channel
+	hasProfile: boolean; // presence of an embedded ICC profile
+	isProgressive: boolean; // indicating whether the image is interlaced using a progressive scan
+}
+
 export function getCollection(name: string) {
 	return [] as any;
 }
@@ -21,49 +38,4 @@ function compare<T>(a: T, b: T): number {
 	if (a < b) return -1;
 	if (a > b) return 1;
 	return 0;
-}
-
-// below types temporarily taken from astro
-type ImageInputFormat = 'jpeg' | 'png' | 'webp' | 'avif' | 'gif' | 'svg';
-export type ImageQualityPreset = 'low' | 'mid' | 'high' | 'max' | (string & {});
-export type ImageQuality = ImageQualityPreset | number;
-
-export type ImageMetadata = {
-	src: string;
-	width: number;
-	height: number;
-	format: ImageInputFormat;
-	orientation?: number;
-};
-type ImageOutputFormat = 'jpeg' | 'png' | 'webp' | 'avif' | 'gif' | 'svg';
-
-export type ImageTransform = {
-	src: ImageMetadata | string;
-	width?: number | undefined;
-	widths?: number[] | undefined;
-	densities?: (number | `${number}x`)[] | undefined;
-	height?: number | undefined;
-	quality?: ImageQuality | undefined;
-	format?: ImageOutputFormat | undefined;
-	[key: string]: any;
-};
-
-export type UnresolvedSrcSetValue = {
-	transform: ImageTransform;
-	descriptor?: string;
-	attributes?: Record<string, any>;
-};
-export type SrcSetValue = UnresolvedSrcSetValue & {
-	url: string;
-};
-
-export interface GetImageResult {
-	rawOptions: ImageTransform;
-	options: ImageTransform;
-	src: string;
-	srcSet: {
-		values: SrcSetValue[];
-		attribute: string;
-	};
-	attributes: Record<string, any>;
 }

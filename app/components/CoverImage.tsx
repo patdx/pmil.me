@@ -1,37 +1,33 @@
 import clsx from 'clsx';
 import type { FC } from 'react';
-import type { GetImageResult } from '~/shared/utils';
+import { loadProjectImage } from '~/content/project/project-images';
 
-export const CoverImage: FC<
-	{
-		title: string;
-		href?: string;
-	} & GetImageResult
-> = (props) => {
-	return (
-		<Suspense>
-			{props.href ? (
-				<a className="block sm:mx-0" href={props.href} aria-label={props.title}>
-					<CoverImageInner {...props} />
-				</a>
-			) : (
-				<div className="sm:mx-0">
-					<CoverImageInner {...props} />
-				</div>
-			)}
-		</Suspense>
+export const CoverImage: FC<{
+	src: string;
+	title: string;
+	href?: string;
+}> = (props) => {
+	return props.href ? (
+		<Link className="block sm:mx-0" to={props.href} aria-label={props.title}>
+			<CoverImageInner {...props} />
+		</Link>
+	) : (
+		<div className="sm:mx-0">
+			<CoverImageInner {...props} />
+		</div>
 	);
 };
 
-const CoverImageInner: FC<
-	{
-		title: string;
-		href?: string;
-	} & GetImageResult
-> = (props) => {
+const CoverImageInner: FC<{
+	src: string;
+	title: string;
+	href?: string;
+}> = (props) => {
+	const src = loadProjectImage(props.src);
+
 	return (
-		<Image2
-			{...props}
+		<Image3
+			src={src}
 			alt={`Cover Image for ${props.title}`}
 			fit="fill"
 			className={clsx(

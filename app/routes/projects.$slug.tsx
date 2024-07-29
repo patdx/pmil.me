@@ -2,11 +2,15 @@ import { type LoaderFunctionArgs, json } from '@remix-run/cloudflare';
 import { useLoaderData } from '@remix-run/react';
 import humanizeUrl from 'humanize-url';
 import { z } from 'zod';
-import { getContentForSlug, getContentMeta } from '~/content/content';
+import {
+	type ProjectSchema,
+	getContentForSlug,
+	getContentMeta,
+} from '~/content/content';
 
 export async function loader({ params }: LoaderFunctionArgs) {
 	const { slug } = z.object({ slug: z.string() }).parse(params);
-	const project = await getContentMeta('project', slug);
+	const project = await getContentMeta<ProjectSchema>('project', slug);
 	if (!project) throw new Response('Not found', { status: 404 });
 	const { frontmatter } = project;
 	return json({ slug, frontmatter });
@@ -15,15 +19,9 @@ export async function loader({ params }: LoaderFunctionArgs) {
 export default function ProjectPage() {
 	const { slug, frontmatter } = useLoaderData<typeof loader>();
 
-	const url = `/posts/${slug}`;
+	const url = `/projects/${slug}`;
 
-	// const coverImage = data.coverImage
-	// 	? await getImage({ src: data.coverImage })
-	// 	: undefined;
-
-	const coverImage = null as any;
-
-	const { title, externalUrl, technologies } = frontmatter;
+	const { title, externalUrl, technologies, coverImage } = frontmatter;
 
 	const Content = getContentForSlug('project', slug);
 
@@ -60,7 +58,7 @@ export default function ProjectPage() {
 					</div>
 					<div className="col-span-1 grid grid-cols-1 content-start gap-4">
 						{coverImage ? (
-							<CoverImage title={title} href={url} {...coverImage} />
+							<CoverImage title={title} href={url} src={coverImage} />
 						) : undefined}
 						{Boolean(technologies) && <p>{technologies}</p>}
 					</div>

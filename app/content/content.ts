@@ -10,20 +10,14 @@ export const PostSchema = z.object({
 });
 export type PostSchema = z.infer<typeof PostSchema>;
 
-// TODO
-const image = () => z.any();
-
 export const ProjectSchema = z.object({
-	slug: z.string(),
-	data: z.object({
-		title: z.string(),
-		coverImage: image().optional(),
-		// date: z.string().optional(),
-		excerpt: z.string().nullish(),
-		// author: z.string().optional(),
-		externalUrl: z.string().optional(),
-		technologies: z.string().optional(),
-	}),
+	title: z.string(),
+	coverImage: z.string().optional(),
+	// date: z.string().optional(),
+	excerpt: z.string().nullish(),
+	// author: z.string().optional(),
+	externalUrl: z.string().optional(),
+	technologies: z.string().optional(),
 });
 export type ProjectSchema = z.infer<typeof ProjectSchema>;
 
@@ -34,11 +28,11 @@ export type PostModule = {
 	default: MDXContent;
 };
 
-export type ContentMeta = {
+export type ContentMeta<T = PostSchema | ProjectSchema> = {
 	id: string;
 	type: string;
 	slug: string;
-	frontmatter: PostSchema | ProjectSchema;
+	frontmatter: T;
 };
 
 const allFrontmatters = import.meta.glob<PostSchema | ProjectSchema>(
@@ -49,7 +43,7 @@ const allFrontmatters = import.meta.glob<PostSchema | ProjectSchema>(
 	},
 );
 
-const slugToFrontmatter: Record<string, ContentMeta> = {};
+const slugToFrontmatter: Record<string, ContentMeta<unknown>> = {};
 
 for (const [file, frontmatter] of Object.entries(allFrontmatters)) {
 	const { id, type, slug } = fileToSlug(file);
@@ -61,35 +55,29 @@ for (const [file, frontmatter] of Object.entries(allFrontmatters)) {
 	};
 }
 
-export const getAllContentMeta = async (type: 'post' | 'project') => {
-	const out: ContentMeta[] = [];
+export async function getAllContentMeta<T>(
+	type: 'post' | 'project',
+): Promise<ContentMeta<T>[]> {
+	const out: ContentMeta<T>[] = [];
 	for (const item of Object.values(slugToFrontmatter)) {
 		if (item.type === type) {
-			out.push(item);
+			out.push(item as any);
 		}
 	}
 
 	return out;
+}
 
-	// const build = await import('virtual:remix/server-build');
-	// const posts = Object.entries(allFrontmatters).map(([file, post]) => {
-	// 	const slug = path.parse(file).name;
-
-	// 	return {
-	// 		slug,
-	// 		frontmatter: PostSchema.parse(post),
-	// 	};
-	// });
-
-	// return sortBy(posts, (post) => post.frontmatter.date, 'desc');
-};
-
-export async function getContentMeta(type: 'post' | 'project', slug: string) {
+export async function getContentMeta<T>(
+	type: 'post' | 'project',
+	slug: string,
+): Promise<ContentMeta<T> | null> {
 	const post =
 		Object.values(slugToFrontmatter).find(
 			(post) => post.type === type && post.slug === slug,
 		) ?? null;
-	return post ?? null;
+
+	return (post as any) ?? null;
 }
 
 const allPosts = import.meta.glob<PostModule>('./*/*.{md,mdx}');
@@ -98,8 +86,6 @@ const slugToPost: Record<string, () => Promise<PostModule>> = {};
 
 for (const [file, post] of Object.entries(allPosts)) {
 	const { id } = fileToSlug(file);
-
-	console.log(id);
 
 	// const slug = file.split('/').pop();
 	// if (!slug) throw new Error(`No slug for ${file}`);
@@ -132,3 +118,9 @@ function fileToSlug(file: string) {
 		slug,
 	};
 }
+
+import { projectImages } from './project/project-images';
+
+export const getProjectImages = async () => {
+	return projectImages;
+};

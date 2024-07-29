@@ -1,4 +1,7 @@
-import patrickJpg from '../assets/patrick.jpg';
+import { Image3 } from '~/components/Image';
+import patrickJpg from '../assets/patrick.jpg?w=400&h=400&rotate=90&as=metadata';
+
+console.log('patrickJpg', patrickJpg);
 
 export default function Index() {
 	return (
@@ -22,15 +25,10 @@ export default function Index() {
 				</div>
 				<div>
 					{/* <!-- widths={[400, 800, 1200]} --> */}
-					<Image2
-						className="rounded-lg"
+					<Image3
+						className="rounded-lg w-full h-auto"
 						src={patrickJpg}
 						alt="Picture of Patrick Miller"
-						sizes="100vw"
-						style={{
-							width: '100%',
-							height: 'auto',
-						}}
 					/>
 				</div>
 			</div>

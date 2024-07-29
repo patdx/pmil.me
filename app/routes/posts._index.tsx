@@ -1,6 +1,6 @@
 import { type LoaderFunctionArgs, json } from '@remix-run/cloudflare';
 import { useLoaderData } from '@remix-run/react';
-import { getAllContentMeta } from '~/content/content';
+import { type PostSchema, getAllContentMeta } from '~/content/content';
 import { Container } from '../components/Container';
 
 // https://github.com/pcattori/remix-blog-mdx/blob/main/app/.server/posts.tsx
@@ -9,7 +9,7 @@ import { Container } from '../components/Container';
 // const posts = await getCollection('post');
 
 export async function loader(args: LoaderFunctionArgs) {
-	let posts = await getAllContentMeta('post');
+	let posts = await getAllContentMeta<PostSchema>('post');
 
 	posts = sortBy(posts, (post) => post.frontmatter.date, 'desc');
 

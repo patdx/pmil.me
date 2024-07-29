@@ -1,10 +1,14 @@
 import { type LoaderFunctionArgs, json } from '@remix-run/cloudflare';
 import { useLoaderData } from '@remix-run/react';
 import type { FC } from 'react';
-import { type ContentMeta, getAllContentMeta } from '~/content/content';
+import {
+	type ContentMeta,
+	type ProjectSchema,
+	getAllContentMeta,
+} from '~/content/content';
 
 export async function loader(args: LoaderFunctionArgs) {
-	const projects = await getAllContentMeta('project');
+	const projects = await getAllContentMeta<ProjectSchema>('project');
 	return json({ projects });
 }
 

@@ -12,6 +12,7 @@ declare global {
   const For: typeof import('./app/components/For')['For']
   const HeaderLink: typeof import('./app/components/HeaderLink')['HeaderLink']
   const Image2: typeof import('./app/components/Image')['Image2']
+  const Image3: typeof import('./app/components/Image')['Image3']
   const IosTable: typeof import('./app/components/ConversionTables')['IosTable']
   const Link: typeof import('@remix-run/react')['Link']
   const NavHeader: typeof import('./app/components/NavHeader')['NavHeader']

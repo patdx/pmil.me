@@ -9,6 +9,7 @@ import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 import AutoImport from 'unplugin-auto-import/vite';
 import Icons from 'unplugin-icons/vite';
 import { defineConfig } from 'vite';
+import { imagetools } from 'vite-imagetools';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
@@ -25,12 +26,15 @@ export default defineConfig({
 				],
 			],
 		}),
-		Icons({
-			compiler: 'jsx',
-			jsx: 'react',
-			scale: 1.5,
-		}),
 		AutoImport({
+			include: [
+				/\.[jt]sx?$/,
+				/\.astro$/,
+				/\.vue$/,
+				/\.vue\?vue/,
+				/\.svelte$/,
+				/\.mdx$/,
+			],
 			imports: [
 				'react',
 				{
@@ -43,6 +47,18 @@ export default defineConfig({
 			},
 			dirs: ['app/components', 'app/shared'],
 		}),
+		imagetools({
+			defaultDirectives: new URLSearchParams({
+				as: 'metadata',
+			}),
+			namedExports: false, // we will just use the default export
+		}),
+		Icons({
+			compiler: 'jsx',
+			jsx: 'react',
+			scale: 1.5,
+		}),
+
 		remixCloudflareDevProxy(),
 		remix({
 			ignoredRouteFiles: ['**/*.astro'],

@@ -1,13 +1,17 @@
 import clsx from 'clsx';
 import type { FC } from 'react';
-import type { GetImageResult } from '~/shared/utils';
+import { loadProjectImage } from '~/content/project/project-images';
 
 export const PostPreview: FC<{
 	title: string;
-	coverImage?: GetImageResult;
+	coverImage?: string;
 	excerpt?: string | null;
 	href: string;
 }> = (props) => {
+	const coverImage = props.coverImage
+		? loadProjectImage(props.coverImage)
+		: null;
+
 	return (
 		<Link
 			to={props.href}
@@ -17,9 +21,9 @@ export const PostPreview: FC<{
 				'bg-gray-100 transition',
 			)}
 		>
-			{props.coverImage ? (
-				<Image2
-					{...props.coverImage}
+			{coverImage ? (
+				<Image3
+					src={coverImage}
 					alt={`Cover Image for ${props.title}`}
 					sizes="100vw"
 					className="rounded-md object-cover transition group-hover:blur-sm"
