@@ -9,7 +9,9 @@ import { Container } from '../components/Container';
 // const posts = await getCollection('post');
 
 export async function loader(args: LoaderFunctionArgs) {
-	const posts = await getAllContentMeta('post');
+	let posts = await getAllContentMeta('post');
+
+	posts = sortBy(posts, (post) => post.frontmatter.data, 'desc');
 
 	return json({ posts });
 }
