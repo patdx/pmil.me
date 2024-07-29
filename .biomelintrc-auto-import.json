@@ -1,0 +1,43 @@
+{
+  "javascript": {
+    "globals": [
+      "AndroidTable",
+      "BaseHead",
+      "Container",
+      "CoverImage",
+      "For",
+      "HeaderLink",
+      "Image2",
+      "IosTable",
+      "Link",
+      "NavHeader",
+      "NavLink",
+      "PostPreview",
+      "Show",
+      "Suspense",
+      "createRef",
+      "forwardRef",
+      "getCollection",
+      "getImage",
+      "lazy",
+      "memo",
+      "sortBy",
+      "startTransition",
+      "useCallback",
+      "useContext",
+      "useDebugValue",
+      "useDeferredValue",
+      "useEffect",
+      "useId",
+      "useImperativeHandle",
+      "useInsertionEffect",
+      "useLayoutEffect",
+      "useMemo",
+      "useReducer",
+      "useRef",
+      "useState",
+      "useSyncExternalStore",
+      "useTransition"
+    ]
+  }
+}
