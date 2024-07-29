@@ -1,6 +1,6 @@
 {
   "recommendations": [
-    "astro-build.astro-vscode",
+    "biomejs.biome",
     "valentjn.vscode-ltex"
   ],
   "unwantedRecommendations": []

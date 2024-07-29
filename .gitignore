@@ -26,3 +26,14 @@ pnpm-debug.log*
 !.yarn/versions
 
 .astro
+
+# merging in new .gitignore below:
+
+node_modules
+
+/.cache
+/build
+.env
+.dev.vars
+
+.wrangler
