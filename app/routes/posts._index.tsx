@@ -11,7 +11,7 @@ import { Container } from '../components/Container';
 export async function loader(args: LoaderFunctionArgs) {
 	let posts = await getAllContentMeta('post');
 
-	posts = sortBy(posts, (post) => post.frontmatter.data, 'desc');
+	posts = sortBy(posts, (post) => post.frontmatter.date, 'desc');
 
 	return json({ posts });
 }

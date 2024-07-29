@@ -1,5 +1,5 @@
-import type { GetImageResult } from 'astro';
 import type { FC } from 'react';
+import type { GetImageResult } from '~/shared/utils';
 
 export const Image2: FC<
 	GetImageResult & {

@@ -1,6 +1,6 @@
-import type { GetImageResult } from 'astro';
 import clsx from 'clsx';
 import type { FC } from 'react';
+import type { GetImageResult } from '~/shared/utils';
 
 export const CoverImage: FC<
 	{

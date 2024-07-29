@@ -1,7 +1,5 @@
 # pmil-me
 
-TODO: Check this for the next step: https://github.com/pcattori/remix-blog-mdx/blob/main/app/.server/posts.tsx
-
 ## Development
 
 Run the dev server:
@@ -28,10 +26,6 @@ npm run typegen
 You will need to rerun typegen whenever you make changes to `wrangler.toml`.
 
 ## Deployment
-
-> [!WARNING]
-> Cloudflare does _not_ use `wrangler.toml` to configure deployment bindings.
-> You **MUST** [configure deployment bindings manually in the Cloudflare dashboard][bindings].
 
 First, build your app for production:
 
