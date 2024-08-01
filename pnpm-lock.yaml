@@ -20,10 +20,10 @@ importers:
         version: 2.10.3(@cloudflare/workers-types@4.20240725.0)(typescript@5.5.4)
       '@remix-run/react':
         specifier: 2.10.3
-        version: 2.10.3(react-dom@19.0.0-rc-14a4699f-20240725(react@19.0.0-rc-14a4699f-20240725))(react@19.0.0-rc-14a4699f-20240725)(typescript@5.5.4)
+        version: 2.10.3(react-dom@19.0.0-rc-a7d1240c-20240731(react@19.0.0-rc-a7d1240c-20240731))(react@19.0.0-rc-a7d1240c-20240731)(typescript@5.5.4)
       '@unpic/react':
         specifier: 0.1.14
-        version: 0.1.14(react-dom@19.0.0-rc-14a4699f-20240725(react@19.0.0-rc-14a4699f-20240725))(react@19.0.0-rc-14a4699f-20240725)
+        version: 0.1.14(react-dom@19.0.0-rc-a7d1240c-20240731(react@19.0.0-rc-a7d1240c-20240731))(react@19.0.0-rc-a7d1240c-20240731)
       clsx:
         specifier: 2.1.1
         version: 2.1.1
@@ -41,13 +41,13 @@ importers:
         version: 1.0.1
       react:
         specifier: rc
-        version: 19.0.0-rc-14a4699f-20240725
+        version: 19.0.0-rc-a7d1240c-20240731
       react-dom:
         specifier: rc
-        version: 19.0.0-rc-14a4699f-20240725(react@19.0.0-rc-14a4699f-20240725)
+        version: 19.0.0-rc-a7d1240c-20240731(react@19.0.0-rc-a7d1240c-20240731)
       react-loops:
         specifier: 1.3.0
-        version: 1.3.0(react@19.0.0-rc-14a4699f-20240725)
+        version: 1.3.0(react@19.0.0-rc-a7d1240c-20240731)
       sharp:
         specifier: 0.33.4
         version: 0.33.4
@@ -75,7 +75,7 @@ importers:
         version: 3.0.1(rollup@4.18.0)
       '@remix-run/dev':
         specifier: 2.10.3
-        version: 2.10.3(@remix-run/react@2.10.3(react-dom@19.0.0-rc-14a4699f-20240725(react@19.0.0-rc-14a4699f-20240725))(react@19.0.0-rc-14a4699f-20240725)(typescript@5.5.4))(typescript@5.5.4)(vite@5.3.5)(wrangler@3.67.1(@cloudflare/workers-types@4.20240725.0))
+        version: 2.10.3(@remix-run/react@2.10.3(react-dom@19.0.0-rc-a7d1240c-20240731(react@19.0.0-rc-a7d1240c-20240731))(react@19.0.0-rc-a7d1240c-20240731)(typescript@5.5.4))(typescript@5.5.4)(vite@5.3.5)(wrangler@3.67.1(@cloudflare/workers-types@4.20240725.0))
       '@shikijs/rehype':
         specifier: 1.12.0
         version: 1.12.0
@@ -122,8 +122,8 @@ importers:
         specifier: 0.18.2
         version: 0.18.2(rollup@4.18.0)
       unplugin-icons:
-        specifier: 0.19.0
-        version: 0.19.0(@svgr/core@8.1.0(typescript@5.5.4))
+        specifier: 0.19.1
+        version: 0.19.1(@svgr/core@8.1.0(typescript@5.5.4))
       vite:
         specifier: 5.3.5
         version: 5.3.5
@@ -832,8 +832,8 @@ packages:
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
 
-  '@iconify/utils@2.1.23':
-    resolution: {integrity: sha512-YGNbHKM5tyDvdWZ92y2mIkrfvm5Fvhe6WJSkWu7vvOFhMtYDP0casZpoRz0XEHZCrYsR4stdGT3cZ52yp5qZdQ==}
+  '@iconify/utils@2.1.29':
+    resolution: {integrity: sha512-wCcTsmlJvTi1VWBgcJ7HeuWlh7gLGWY7L9HmbgMfjOfsoo7DADemB2Nqnrw1KvCdEAxLL5wTMBAOP5BesFrtng==}
 
   '@img/sharp-darwin-arm64@0.33.4':
     resolution: {integrity: sha512-p0suNqXufJs9t3RqLBO6vvrgr5OhgbWp76s5gTRvdmxmuv9E1rcaqGUsl3l4mKVmXPkTkTErXediAui4x+8PSA==}
@@ -1708,6 +1708,15 @@ packages:
 
   debug@4.3.5:
     resolution: {integrity: sha512-pt0bNEmneDIvdL1Xsd9oDQ/wrQRkXDT4AUWlNZNPKvW5x/jyO9VFXkJUP07vQ2upmw5PlaITaPKc31jK13V+jg==}
+    engines: {node: '>=6.0'}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
+
+  debug@4.3.6:
+    resolution: {integrity: sha512-O/09Bd4Z1fBrU4VzkhFqVgpPzaGbw6Sm9FEkBT1A/YBXQFGuuSxa1dN2nxgxS34JmKXqYx8CZAwEVoJFImUXIg==}
     engines: {node: '>=6.0'}
     peerDependencies:
       supports-color: '*'
@@ -3119,10 +3128,10 @@ packages:
     resolution: {integrity: sha512-8zGqypfENjCIqGhgXToC8aB2r7YrBX+AQAfIPs/Mlk+BtPTztOvTS01NRW/3Eh60J+a48lt8qsCzirQ6loCVfA==}
     engines: {node: '>= 0.8'}
 
-  react-dom@19.0.0-rc-14a4699f-20240725:
-    resolution: {integrity: sha512-KSkYfNQRXFwuYoXIhLygkILo1NFSU4xkjUnjMzXuo2oyuyJMYQwx/i/EOGBHE+N/3KumG9T6a9xKwR/AMov+yQ==}
+  react-dom@19.0.0-rc-a7d1240c-20240731:
+    resolution: {integrity: sha512-NNXK26qZhw2DE0wWdphAV/zdQW8olRVGr4q/aFn4+BjSsj2qevdB6rUdrJRczUn8w119Jg/+9Z3EfRFfjSOg0w==}
     peerDependencies:
-      react: 19.0.0-rc-14a4699f-20240725
+      react: 19.0.0-rc-a7d1240c-20240731
 
   react-loops@1.3.0:
     resolution: {integrity: sha512-jWMmq75y4llq3jIIiEynGfp26wGTpVxAXHnp44XJotaySrJuD65lU3pAs67j/lfXlERtRcCAst2ca7bpsDWJhA==}
@@ -3146,8 +3155,8 @@ packages:
     peerDependencies:
       react: '>=16.8'
 
-  react@19.0.0-rc-14a4699f-20240725:
-    resolution: {integrity: sha512-aQjMEsPBkRyzy3j5N8b2enjZmBNfidooV8cs0GyymL5uZRLZbXXyHWRJTKrdIjgRKIhzR73DoZYrAYP+/wT1Qw==}
+  react@19.0.0-rc-a7d1240c-20240731:
+    resolution: {integrity: sha512-z1O4z4q9hy4DPUOO2E2VOjJwFOKH/hqZOIKldPGY8DLzxW4pH2JiTm5ma51zRqj7WxVt/5yjDIbY3L9kYTAVcg==}
     engines: {node: '>=0.10.0'}
 
   read-cache@1.0.0:
@@ -3256,8 +3265,8 @@ packages:
   safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
-  scheduler@0.25.0-rc-14a4699f-20240725:
-    resolution: {integrity: sha512-wDsJQOyw+9SeWUqfeaPiJsWmP68G0OrMeOLkV5Uh6LnBW4usDrHyYhIQuj7nd+UUqF3ejbxU25ubT9+R1sIlCw==}
+  scheduler@0.25.0-rc-a7d1240c-20240731:
+    resolution: {integrity: sha512-ci54e3SJGtv7AZJelSo8XLSgnWPIWiZeMYaDQMsf6CLrcjLBbke3Nu+7nwLd36IQ/WDcmp+x7sDfU6ZND236ZA==}
 
   scule@1.3.0:
     resolution: {integrity: sha512-6FtHJEvt+pVMIB9IBY+IcCJ6Z5f1iQnytgyfKMhDKgmzYG+TeH/wx1y3l27rshSbLiSanrR9ffZDrEsmjlQF2g==}
@@ -3650,8 +3659,8 @@ packages:
       '@vueuse/core':
         optional: true
 
-  unplugin-icons@0.19.0:
-    resolution: {integrity: sha512-u5g/gIZPZEj1wUGEQxe9nzftOSqmblhusc+sL3cawIRoIt/xWpE6XYcPOfAeFTYNjSbRrX/3QiX89PFiazgU1w==}
+  unplugin-icons@0.19.1:
+    resolution: {integrity: sha512-a5I+wSOO5lsgc4dB2nEFaSZ4eEgQvSSR8tSR2jT69nTKiVmcK+PPU633zn2FyRf9i6vLapUiQ28GQStfzGURdg==}
     peerDependencies:
       '@svgr/core': '>=7.0.0'
       '@svgx/core': ^1.0.1
@@ -4401,12 +4410,12 @@ snapshots:
 
   '@iconify/types@2.0.0': {}
 
-  '@iconify/utils@2.1.23':
+  '@iconify/utils@2.1.29':
     dependencies:
       '@antfu/install-pkg': 0.1.1
       '@antfu/utils': 0.7.10
       '@iconify/types': 2.0.0
-      debug: 4.3.5
+      debug: 4.3.6
       kolorist: 1.8.0
       local-pkg: 0.5.0
       mlly: 1.7.1
@@ -4651,7 +4660,7 @@ snapshots:
     optionalDependencies:
       typescript: 5.5.4
 
-  '@remix-run/dev@2.10.3(@remix-run/react@2.10.3(react-dom@19.0.0-rc-14a4699f-20240725(react@19.0.0-rc-14a4699f-20240725))(react@19.0.0-rc-14a4699f-20240725)(typescript@5.5.4))(typescript@5.5.4)(vite@5.3.5)(wrangler@3.67.1(@cloudflare/workers-types@4.20240725.0))':
+  '@remix-run/dev@2.10.3(@remix-run/react@2.10.3(react-dom@19.0.0-rc-a7d1240c-20240731(react@19.0.0-rc-a7d1240c-20240731))(react@19.0.0-rc-a7d1240c-20240731)(typescript@5.5.4))(typescript@5.5.4)(vite@5.3.5)(wrangler@3.67.1(@cloudflare/workers-types@4.20240725.0))':
     dependencies:
       '@babel/core': 7.24.9
       '@babel/generator': 7.25.0
@@ -4664,7 +4673,7 @@ snapshots:
       '@mdx-js/mdx': 2.3.0
       '@npmcli/package-json': 4.0.1
       '@remix-run/node': 2.10.3(typescript@5.5.4)
-      '@remix-run/react': 2.10.3(react-dom@19.0.0-rc-14a4699f-20240725(react@19.0.0-rc-14a4699f-20240725))(react@19.0.0-rc-14a4699f-20240725)(typescript@5.5.4)
+      '@remix-run/react': 2.10.3(react-dom@19.0.0-rc-a7d1240c-20240731(react@19.0.0-rc-a7d1240c-20240731))(react@19.0.0-rc-a7d1240c-20240731)(typescript@5.5.4)
       '@remix-run/router': 1.18.0
       '@remix-run/server-runtime': 2.10.3(typescript@5.5.4)
       '@types/mdx': 2.0.13
@@ -4738,14 +4747,14 @@ snapshots:
     optionalDependencies:
       typescript: 5.5.4
 
-  '@remix-run/react@2.10.3(react-dom@19.0.0-rc-14a4699f-20240725(react@19.0.0-rc-14a4699f-20240725))(react@19.0.0-rc-14a4699f-20240725)(typescript@5.5.4)':
+  '@remix-run/react@2.10.3(react-dom@19.0.0-rc-a7d1240c-20240731(react@19.0.0-rc-a7d1240c-20240731))(react@19.0.0-rc-a7d1240c-20240731)(typescript@5.5.4)':
     dependencies:
       '@remix-run/router': 1.18.0
       '@remix-run/server-runtime': 2.10.3(typescript@5.5.4)
-      react: 19.0.0-rc-14a4699f-20240725
-      react-dom: 19.0.0-rc-14a4699f-20240725(react@19.0.0-rc-14a4699f-20240725)
-      react-router: 6.25.0(react@19.0.0-rc-14a4699f-20240725)
-      react-router-dom: 6.25.0(react-dom@19.0.0-rc-14a4699f-20240725(react@19.0.0-rc-14a4699f-20240725))(react@19.0.0-rc-14a4699f-20240725)
+      react: 19.0.0-rc-a7d1240c-20240731
+      react-dom: 19.0.0-rc-a7d1240c-20240731(react@19.0.0-rc-a7d1240c-20240731)
+      react-router: 6.25.0(react@19.0.0-rc-a7d1240c-20240731)
+      react-router-dom: 6.25.0(react-dom@19.0.0-rc-a7d1240c-20240731(react@19.0.0-rc-a7d1240c-20240731))(react@19.0.0-rc-a7d1240c-20240731)
       turbo-stream: 2.2.0
     optionalDependencies:
       typescript: 5.5.4
@@ -5007,11 +5016,11 @@ snapshots:
     dependencies:
       unpic: 3.18.0
 
-  '@unpic/react@0.1.14(react-dom@19.0.0-rc-14a4699f-20240725(react@19.0.0-rc-14a4699f-20240725))(react@19.0.0-rc-14a4699f-20240725)':
+  '@unpic/react@0.1.14(react-dom@19.0.0-rc-a7d1240c-20240731(react@19.0.0-rc-a7d1240c-20240731))(react@19.0.0-rc-a7d1240c-20240731)':
     dependencies:
       '@unpic/core': 0.0.49
-      react: 19.0.0-rc-14a4699f-20240725
-      react-dom: 19.0.0-rc-14a4699f-20240725(react@19.0.0-rc-14a4699f-20240725)
+      react: 19.0.0-rc-a7d1240c-20240731
+      react-dom: 19.0.0-rc-a7d1240c-20240731(react@19.0.0-rc-a7d1240c-20240731)
 
   '@vanilla-extract/babel-plugin-debug-ids@1.0.6':
     dependencies:
@@ -5380,6 +5389,10 @@ snapshots:
       ms: 2.0.0
 
   debug@4.3.5:
+    dependencies:
+      ms: 2.1.2
+
+  debug@4.3.6:
     dependencies:
       ms: 2.1.2
 
@@ -7234,31 +7247,31 @@ snapshots:
       iconv-lite: 0.4.24
       unpipe: 1.0.0
 
-  react-dom@19.0.0-rc-14a4699f-20240725(react@19.0.0-rc-14a4699f-20240725):
+  react-dom@19.0.0-rc-a7d1240c-20240731(react@19.0.0-rc-a7d1240c-20240731):
     dependencies:
-      react: 19.0.0-rc-14a4699f-20240725
-      scheduler: 0.25.0-rc-14a4699f-20240725
+      react: 19.0.0-rc-a7d1240c-20240731
+      scheduler: 0.25.0-rc-a7d1240c-20240731
 
-  react-loops@1.3.0(react@19.0.0-rc-14a4699f-20240725):
+  react-loops@1.3.0(react@19.0.0-rc-a7d1240c-20240731):
     dependencies:
       iterall: 1.3.0
-      react: 19.0.0-rc-14a4699f-20240725
+      react: 19.0.0-rc-a7d1240c-20240731
 
   react-refresh@0.14.2: {}
 
-  react-router-dom@6.25.0(react-dom@19.0.0-rc-14a4699f-20240725(react@19.0.0-rc-14a4699f-20240725))(react@19.0.0-rc-14a4699f-20240725):
+  react-router-dom@6.25.0(react-dom@19.0.0-rc-a7d1240c-20240731(react@19.0.0-rc-a7d1240c-20240731))(react@19.0.0-rc-a7d1240c-20240731):
     dependencies:
       '@remix-run/router': 1.18.0
-      react: 19.0.0-rc-14a4699f-20240725
-      react-dom: 19.0.0-rc-14a4699f-20240725(react@19.0.0-rc-14a4699f-20240725)
-      react-router: 6.25.0(react@19.0.0-rc-14a4699f-20240725)
+      react: 19.0.0-rc-a7d1240c-20240731
+      react-dom: 19.0.0-rc-a7d1240c-20240731(react@19.0.0-rc-a7d1240c-20240731)
+      react-router: 6.25.0(react@19.0.0-rc-a7d1240c-20240731)
 
-  react-router@6.25.0(react@19.0.0-rc-14a4699f-20240725):
+  react-router@6.25.0(react@19.0.0-rc-a7d1240c-20240731):
     dependencies:
       '@remix-run/router': 1.18.0
-      react: 19.0.0-rc-14a4699f-20240725
+      react: 19.0.0-rc-a7d1240c-20240731
 
-  react@19.0.0-rc-14a4699f-20240725: {}
+  react@19.0.0-rc-a7d1240c-20240731: {}
 
   read-cache@1.0.0:
     dependencies:
@@ -7435,7 +7448,7 @@ snapshots:
 
   safer-buffer@2.1.2: {}
 
-  scheduler@0.25.0-rc-14a4699f-20240725: {}
+  scheduler@0.25.0-rc-a7d1240c-20240731: {}
 
   scule@1.3.0: {}
 
@@ -7937,12 +7950,12 @@ snapshots:
     transitivePeerDependencies:
       - rollup
 
-  unplugin-icons@0.19.0(@svgr/core@8.1.0(typescript@5.5.4)):
+  unplugin-icons@0.19.1(@svgr/core@8.1.0(typescript@5.5.4)):
     dependencies:
       '@antfu/install-pkg': 0.3.3
       '@antfu/utils': 0.7.10
-      '@iconify/utils': 2.1.23
-      debug: 4.3.5
+      '@iconify/utils': 2.1.29
+      debug: 4.3.6
       kolorist: 1.8.0
       local-pkg: 0.5.0
       unplugin: 1.12.0
