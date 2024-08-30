@@ -1,5 +1,6 @@
 import { Client, isFullPage } from '@notionhq/client';
 import type {
+	BlockObjectResponse,
 	PageObjectResponse,
 	RichTextItemResponse,
 } from '@notionhq/client/build/src/api-endpoints';
@@ -53,13 +54,11 @@ export async function getPost(context: AppLoadContext, slugOrId: string) {
 		return null;
 	}
 
-	const content = await notion.blocks.children.list({
-		block_id: post.id,
-	});
+	const blocks = await getBlocks(context, post.id);
 
 	return {
 		...normalizePostResponse(post),
-		content: content.results,
+		content: blocks,
 	};
 }
 
@@ -97,14 +96,33 @@ export async function getProject(context: AppLoadContext, slugOrId: string) {
 		return null;
 	}
 
-	const content = await notion.blocks.children.list({
-		block_id: project.id,
-	});
+	const blocks = await getBlocks(context, project.id);
 
 	return {
 		...normalizePage(project),
-		content: content.results,
+		content: blocks,
 	};
+}
+
+export async function getBlocks(
+	context: AppLoadContext,
+	blockId: string
+): Promise<BlockObjectResponse[]> {
+	console.log(`getBlocks(${blockId})`);
+	const notion = getNotion(context);
+
+	const { results } = await notion.blocks.children.list({
+		block_id: blockId,
+		page_size: 100,
+	});
+
+	for (const block of results) {
+		if (block.has_children) {
+			block.children = await getBlocks(context, block.id);
+		}
+	}
+
+	return results as any;
 }
 
 type MultiSelectProperty = Extract<
