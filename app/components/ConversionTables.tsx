@@ -1,3 +1,6 @@
+import fs from 'node:fs';
+import { renderToStaticMarkup } from 'react-dom/server';
+
 const CLASSES = 'overflow-x-auto w-full min-w-0 max-w-full';
 
 export const AndroidTable = () => {
@@ -312,3 +315,13 @@ export const IosTable = () => {
 		</div>
 	);
 };
+
+fs.writeFileSync(
+	'./app/components/android.html',
+	renderToStaticMarkup(<AndroidTable />)
+);
+
+fs.writeFileSync(
+	'./app/components/ios.html',
+	renderToStaticMarkup(<IosTable />)
+);
