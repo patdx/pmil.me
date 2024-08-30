@@ -7,6 +7,8 @@ export {}
 declare global {
   const AndroidTable: typeof import('./app/components/ConversionTables')['AndroidTable']
   const BaseHead: typeof import('./app/components/BaseHead')['BaseHead']
+  const Block: typeof import('./app/components/notion')['Block']
+  const Blocks: typeof import('./app/components/notion')['Blocks']
   const Container: typeof import('./app/components/Container')['Container']
   const CoverImage: typeof import('./app/components/CoverImage')['CoverImage']
   const For: typeof import('./app/components/For')['For']
@@ -28,6 +30,8 @@ declare global {
   const getImage: typeof import('./app/shared/utils')['getImage']
   const lazy: typeof import('react')['lazy']
   const memo: typeof import('react')['memo']
+  const renderBlock: typeof import('./app/components/notion')['renderBlock']
+  const renderNestedList: typeof import('./app/components/notion')['renderNestedList']
   const sortBy: typeof import('./app/shared/utils')['sortBy']
   const startTransition: typeof import('react')['startTransition']
   const useCallback: typeof import('react')['useCallback']

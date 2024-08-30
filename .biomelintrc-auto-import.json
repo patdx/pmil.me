@@ -3,6 +3,8 @@
     "globals": [
       "AndroidTable",
       "BaseHead",
+      "Block",
+      "Blocks",
       "Container",
       "CoverImage",
       "For",

@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import type { FC } from 'react';
-import { loadProjectImage } from '~/content/project/project-images';
 
 export const CoverImage: FC<{
 	src: string;
@@ -23,7 +22,8 @@ const CoverImageInner: FC<{
 	title: string;
 	href?: string;
 }> = (props) => {
-	const src = loadProjectImage(props.src);
+	// const src = loadProjectImage(props.src);
+	return null;
 
 	return (
 		<Image3
@@ -32,7 +32,7 @@ const CoverImageInner: FC<{
 			fit="fill"
 			className={clsx(
 				'shadow-small',
-				props.href && 'hover:shadow-medium transition-shadow duration-200',
+				props.href && 'hover:shadow-medium transition-shadow duration-200'
 			)}
 		/>
 	);
