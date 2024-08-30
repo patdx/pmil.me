@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import type { FC } from 'react';
-import { loadProjectImage } from '~/content/project/project-images';
+// import { loadProjectImage } from '~/content/project/project-images';
 
 export const PostPreview: FC<{
 	title: string;
@@ -8,9 +8,11 @@ export const PostPreview: FC<{
 	excerpt?: string | null;
 	href: string;
 }> = (props) => {
-	const coverImage = props.coverImage
-		? loadProjectImage(props.coverImage)
-		: null;
+	// const coverImage = null;
+	// const coverImage = props.coverImage
+	// 	? loadProjectImage(props.coverImage)
+	// 	: null;
+	const { coverImage } = props;
 
 	return (
 		<Link
@@ -18,7 +20,7 @@ export const PostPreview: FC<{
 			className={clsx(
 				'aspect-w-1 aspect-h-1 rounded-md',
 				'group shadow-lg hover:shadow-xl',
-				'bg-gray-100 transition',
+				'bg-gray-100 transition'
 			)}
 		>
 			{coverImage ? (
@@ -32,7 +34,7 @@ export const PostPreview: FC<{
 			<div
 				className={clsx(
 					'flex',
-					props.coverImage ? 'items-end' : 'items-stretch',
+					props.coverImage ? 'items-end' : 'items-stretch'
 				)}
 			>
 				<div className="flex-1 rounded-b-md border border-gray-200 bg-white px-2 py-4 text-3xl text-black opacity-90 shadow backdrop-blur transition group-hover:scale-105 group-hover:border-gray-300 group-hover:opacity-100 sm:text-lg">

@@ -1,19 +1,26 @@
-import { type LoaderFunctionArgs, json } from '@remix-run/cloudflare';
-import { useLoaderData } from '@remix-run/react';
-import { type PostSchema, getAllContentMeta } from '~/content/content';
-import { Container } from '../components/Container';
+import type { LoaderFunctionArgs } from '@remix-run/cloudflare';
+import { json, useLoaderData } from '@remix-run/react';
+import { getPosts } from '~/.server/notion';
 
-// https://github.com/pcattori/remix-blog-mdx/blob/main/app/.server/posts.tsx
+// https:remix-blog-mdx/blob/main/app/.server/posts.tsx
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
 // const posts = await getCollection('post');
 
 export async function loader(args: LoaderFunctionArgs) {
-	let posts = await getAllContentMeta<PostSchema>('post');
+	const posts = await getPosts(args.context);
 
-	posts = sortBy(posts, (post) => post.frontmatter.date, 'desc');
-
-	return json({ posts });
+	return json({ posts: posts });
+	// const db = createDrizzle(args.context.cloudflare.env.DB);
+	// const posts = await db.query.post.findMany({
+	// 	columns: {
+	// 		slug: true,
+	// 		title: true,
+	// 		date: true,
+	// 	},
+	// 	orderBy: desc(schema.post.date),
+	// });
+	// return json({ posts });
 }
 
 export default function PostsPage() {
@@ -29,10 +36,8 @@ export default function PostsPage() {
 							to={`/posts/${post.slug}`}
 							className="block p-1 transition hover:bg-gray-200 active:bg-gray-300"
 						>
-							<span className="font-bold tabular-nums">
-								{post.frontmatter.date}
-							</span>{' '}
-							{post.frontmatter.title}
+							<span className="font-bold tabular-nums">{post.date}</span>{' '}
+							{post.title}
 						</Link>
 					))}
 				</div>

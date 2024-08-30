@@ -1,24 +1,38 @@
 import { type LoaderFunctionArgs, json } from '@remix-run/cloudflare';
 import { useLoaderData } from '@remix-run/react';
 import { z } from 'zod';
-import { getContentForSlug, getContentMeta } from '~/content/content';
+import { getPost } from '~/.server/notion';
 
-export async function loader({ params }: LoaderFunctionArgs) {
+export async function loader({ params, context }: LoaderFunctionArgs) {
 	const { slug } = z.object({ slug: z.string() }).parse(params);
-	const post = await getContentMeta('post', slug);
+
+	const post = await getPost(context, slug);
+
+	// const db = createDrizzle(context.cloudflare.env.DB);
+
+	// const post = await db.query.post.findFirst({
+	// 	where: eq(schema.post.slug, slug),
+	// 	columns: {
+	// 		slug: true,
+	// 		title: true,
+	// 		date: true,
+	// 		text: true,
+	// 	},
+	// });
+
 	if (!post) throw new Response('Not found', { status: 404 });
-	const { frontmatter } = post;
-	return json({ slug, frontmatter });
+
+	const html = '';
+	// const html = await markdownToHtml(post.text);
+
+	return json({ post: post, html });
 }
 
 export default function PostPage() {
-	const { slug, frontmatter } = useLoaderData<typeof loader>();
+	const { post, html } = useLoaderData<typeof loader>();
+	const { slug, title, date } = post;
 
 	const url = `/posts/${slug}`;
-
-	const { title, date } = frontmatter;
-
-	const Content = getContentForSlug('post', slug);
 
 	return (
 		<Container className="grid gap-4 py-4 overflow-x-hidden w-screen">
@@ -36,9 +50,8 @@ export default function PostPage() {
 			<div className="mb-8 font-bold">{date}</div>
 			{/* <!-- w-[calc(100vw-2.5rem)] --> */}
 			<div className="prose max-w-full overflow-x-hidden">
-				<Content key={slug} />
+				<Blocks blocks={post.content} />
 			</div>
-			{/* <!-- </article> --> */}
 		</Container>
 	);
 }

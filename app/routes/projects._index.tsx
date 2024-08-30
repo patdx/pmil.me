@@ -1,14 +1,11 @@
 import { type LoaderFunctionArgs, json } from '@remix-run/cloudflare';
 import { useLoaderData } from '@remix-run/react';
 import type { FC } from 'react';
-import {
-	type ContentMeta,
-	type ProjectSchema,
-	getAllContentMeta,
-} from '~/content/content';
+import { type NormalizedPage, getProjects } from '~/.server/notion';
 
 export async function loader(args: LoaderFunctionArgs) {
-	const projects = await getAllContentMeta<ProjectSchema>('project');
+	const projects = await getProjects(args.context);
+
 	return json({ projects });
 }
 
@@ -18,7 +15,7 @@ export default function ProjectsPage() {
 }
 
 const Projects: FC<{
-	projects: ContentMeta[]; // really the coverImage is the GetImageResult
+	projects: NormalizedPage[]; // really the coverImage is the GetImageResult
 }> = (props) => {
 	return (
 		<Container className="grid gap-4 py-4">
@@ -31,9 +28,9 @@ const Projects: FC<{
 					/>
 					{props.projects.map((project) => (
 						<PostPreview
-							key={project.slug}
-							{...project.frontmatter}
-							href={`/projects/${project.slug}`}
+							key={project.id}
+							{...project.properties}
+							href={`/projects/${project.id}`}
 						/>
 					))}
 				</div>

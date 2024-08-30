@@ -2,28 +2,24 @@ import { type LoaderFunctionArgs, json } from '@remix-run/cloudflare';
 import { useLoaderData } from '@remix-run/react';
 import humanizeUrl from 'humanize-url';
 import { z } from 'zod';
-import {
-	type ProjectSchema,
-	getContentForSlug,
-	getContentMeta,
-} from '~/content/content';
+import { getProject } from '~/.server/notion';
 
-export async function loader({ params }: LoaderFunctionArgs) {
+export async function loader({ params, context }: LoaderFunctionArgs) {
 	const { slug } = z.object({ slug: z.string() }).parse(params);
-	const project = await getContentMeta<ProjectSchema>('project', slug);
+	// const project = await getContentMeta<ProjectSchema>('project', slug);
+	const project = await getProject(context, slug);
 	if (!project) throw new Response('Not found', { status: 404 });
-	const { frontmatter } = project;
-	return json({ slug, frontmatter });
+
+	return json({ project });
 }
 
 export default function ProjectPage() {
-	const { slug, frontmatter } = useLoaderData<typeof loader>();
+	const { project } = useLoaderData<typeof loader>();
+
+	const { title, externalUrl, technologies, coverImage, slug } =
+		project.properties;
 
 	const url = `/projects/${slug}`;
-
-	const { title, externalUrl, technologies, coverImage } = frontmatter;
-
-	const Content = getContentForSlug('project', slug);
 
 	return (
 		<Container className="grid gap-4 py-4">
@@ -41,7 +37,7 @@ export default function ProjectPage() {
 				<div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
 					<div className="col-span-2 grid content-start gap-4">
 						<div className="prose">
-							<Content key={slug} />
+							<Blocks blocks={project.content} />
 						</div>
 						{!externalUrl ? undefined : (
 							<p>
@@ -60,7 +56,7 @@ export default function ProjectPage() {
 						{coverImage ? (
 							<CoverImage title={title} href={url} src={coverImage} />
 						) : undefined}
-						{Boolean(technologies) && <p>{technologies}</p>}
+						{Boolean(technologies) && <p>{technologies?.join(', ')}</p>}
 					</div>
 				</div>
 			</article>
