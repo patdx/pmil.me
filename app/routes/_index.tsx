@@ -1,8 +1,6 @@
 import { Image3 } from '~/components/Image';
 import patrickJpg from '../assets/patrick.jpg?w=400&h=400&rotate=90&as=metadata';
 
-console.log('patrickJpg', patrickJpg);
-
 export default function Index() {
 	return (
 		<Container className="grid gap-4 py-4">

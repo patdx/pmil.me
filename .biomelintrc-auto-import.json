@@ -2,7 +2,6 @@
   "javascript": {
     "globals": [
       "AndroidTable",
-      "BaseHead",
       "Block",
       "Blocks",
       "Container",
@@ -17,6 +16,7 @@
       "PostPreview",
       "Show",
       "Suspense",
+      "createMeta",
       "createRef",
       "forwardRef",
       "getCollection",
