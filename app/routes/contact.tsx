@@ -1,9 +1,14 @@
+import type { MetaFunction } from '@remix-run/react';
 import IoLogoGithub from '~icons/ion/logo-github';
 import IoLogoLinkedin from '~icons/ion/logo-linkedin';
 import IoMail from '~icons/ion/mail';
 import { Container } from '../components/Container';
 
 // size="1.5em"
+
+export const meta: MetaFunction = ({ data }) => {
+	return createMeta({ title: 'Contact' });
+};
 
 export default function Contact() {
 	return (

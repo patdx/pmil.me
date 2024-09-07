@@ -1,5 +1,5 @@
 import { type LoaderFunctionArgs, json } from '@remix-run/cloudflare';
-import { useLoaderData } from '@remix-run/react';
+import { type MetaFunction, useLoaderData } from '@remix-run/react';
 import type { FC } from 'react';
 import { type NormalizedPage, getProjects } from '~/.server/notion';
 
@@ -8,6 +8,10 @@ export async function loader(args: LoaderFunctionArgs) {
 
 	return json({ projects });
 }
+
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+	return createMeta({ title: 'Projects' });
+};
 
 export default function ProjectsPage() {
 	const { projects } = useLoaderData<typeof loader>();

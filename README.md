@@ -1,46 +1,57 @@
-# pmil-me
+
+# @patdx/site
+
+My personal website built with React, Remix, and deployed on Cloudflare Pages.
+
+Posts are maintained in Notion and fetched using the Notion API.
+
+## Prerequisites
+
+- Node.js >=20.0.0
+- pnpm
+
+## Installation
+
+Clone the repository and install dependencies:
+
+git clone <repository-url>
+cd @patdx/site
+pnpm install
 
 ## Development
 
-Run the dev server:
+Set the NOTION_TOKEN environment variable with your Notion API token.
 
-```sh
-npm run dev
-```
+To run the development server:
 
-To run Wrangler:
-
-```sh
-npm run build
-npm run start
-```
-
-## Typegen
-
-Generate types for your Cloudflare bindings in `wrangler.toml`:
-
-```sh
-npm run typegen
-```
-
-You will need to rerun typegen whenever you make changes to `wrangler.toml`.
+pnpm run dev
 
 ## Deployment
 
-First, build your app for production:
+- build: Build the project for production
+- deploy: Deploy to Cloudflare Pages
 
-```sh
-npm run build
-```
+## Database Management
 
-Then, deploy your app to Cloudflare Pages:
+This project uses Drizzle ORM with Cloudflare D1. To manage your database:
 
-```sh
-npm run deploy
-```
+1. Generate migrations: pnpm run db-gen
+2. Apply migrations: pnpm run db-up
+3. Execute SQL: pnpm run db-exec
 
-[bindings]: https://developers.cloudflare.com/pages/functions/bindings/
+## Deployment
 
-## Styling
+To deploy the website to Cloudflare Pages:
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+pnpm run build
+pnpm run deploy
+
+## Development Dependencies
+
+- @biomejs/biome for linting and formatting
+- vite as the build tool
+- wrangler for Cloudflare Workers CLI
+
+## Contributing
+
+This is a personal website, but if you notice any issues or have suggestions, feel free to open an issue or submit a pull request.

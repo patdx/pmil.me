@@ -1,5 +1,5 @@
 import { type LoaderFunctionArgs, json } from '@remix-run/cloudflare';
-import { useLoaderData } from '@remix-run/react';
+import { type MetaFunction, useLoaderData } from '@remix-run/react';
 import { z } from 'zod';
 import { getPost } from '~/.server/notion';
 
@@ -27,6 +27,10 @@ export async function loader({ params, context }: LoaderFunctionArgs) {
 
 	return json({ post: post, html });
 }
+
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+	return createMeta({ title: data?.post.title });
+};
 
 export default function PostPage() {
 	const { post, html } = useLoaderData<typeof loader>();
