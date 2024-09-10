@@ -1,4 +1,9 @@
-import { Client, isFullPage } from '@notionhq/client';
+import {
+	APIErrorCode,
+	APIResponseError,
+	Client,
+	isFullPage,
+} from '@notionhq/client';
 import type {
 	BlockObjectResponse,
 	PageObjectResponse,
@@ -47,19 +52,30 @@ export async function getPosts(context: AppLoadContext) {
 
 export async function getPost(context: AppLoadContext, slugOrId: string) {
 	const notion = getNotion(context);
-	const post = await notion.pages.retrieve({ page_id: slugOrId });
 
-	if (!isFullPage(post)) {
-		console.log(`Not a full page: ${slugOrId}`);
-		return null;
+	try {
+		const post = await notion.pages.retrieve({ page_id: slugOrId });
+
+		if (!isFullPage(post)) {
+			console.log(`Not a full page: ${slugOrId}`);
+			return null;
+		}
+
+		const blocks = await getBlocks(context, post.id);
+
+		return {
+			...normalizePostResponse(post),
+			content: blocks,
+		};
+	} catch (err) {
+		if (
+			err instanceof APIResponseError &&
+			err.code === APIErrorCode.ObjectNotFound
+		) {
+			return null;
+		}
+		throw err;
 	}
-
-	const blocks = await getBlocks(context, post.id);
-
-	return {
-		...normalizePostResponse(post),
-		content: blocks,
-	};
 }
 
 export async function getProjects(
@@ -89,19 +105,30 @@ export async function getProjects(
 
 export async function getProject(context: AppLoadContext, slugOrId: string) {
 	const notion = getNotion(context);
-	const project = await notion.pages.retrieve({ page_id: slugOrId });
 
-	if (!isFullPage(project)) {
-		console.log(`Not a full page: ${slugOrId}`);
-		return null;
+	try {
+		const project = await notion.pages.retrieve({ page_id: slugOrId });
+
+		if (!isFullPage(project)) {
+			console.log(`Not a full page: ${slugOrId}`);
+			return null;
+		}
+
+		const blocks = await getBlocks(context, project.id);
+
+		return {
+			...normalizePage(project),
+			content: blocks,
+		};
+	} catch (err) {
+		if (
+			err instanceof APIResponseError &&
+			err.code === APIErrorCode.ObjectNotFound
+		) {
+			return null;
+		}
+		throw err;
 	}
-
-	const blocks = await getBlocks(context, project.id);
-
-	return {
-		...normalizePage(project),
-		content: blocks,
-	};
 }
 
 export async function getBlocks(
