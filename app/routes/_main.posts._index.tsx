@@ -24,7 +24,7 @@ export async function loader(args: LoaderFunctionArgs) {
 }
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
-	return createMeta({ title: 'Blog' });
+	return createMeta({ title: 'Blog | Patrick Miller', url: '/posts' });
 };
 
 export default function PostsPage() {

@@ -4,3 +4,4 @@
 export const SITE_TITLE = 'Patrick Miller';
 export const SITE_DESCRIPTION =
 	'Home page of Patrick Miller, full-stack software engineer.';
+export const BASE_URL = 'https://pmil.me';

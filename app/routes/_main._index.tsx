@@ -1,5 +1,10 @@
+import type { MetaFunction } from '@remix-run/react';
 import { Image3 } from '~/components/Image';
 import patrickJpg from '../assets/patrick.jpg?w=400&h=400&rotate=90&as=metadata';
+
+export const meta: MetaFunction = ({ data }) => {
+	return createMeta({ title: 'Patrick Miller', url: '/' });
+};
 
 export default function Index() {
 	return (

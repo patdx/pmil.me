@@ -10,7 +10,7 @@ export async function loader(args: LoaderFunctionArgs) {
 }
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
-	return createMeta({ title: 'Projects' });
+	return createMeta({ title: 'Projects | Patrick Miller', url: '/projects' });
 };
 
 export default function ProjectsPage() {
@@ -34,7 +34,7 @@ const Projects: FC<{
 						<PostPreview
 							key={project.id}
 							{...project.properties}
-							href={`/projects/${project.id}`}
+							href={`/projects/${project.properties.slug ?? project.id}`}
 						/>
 					))}
 				</div>

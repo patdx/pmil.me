@@ -4,7 +4,6 @@ import {
 	Outlet,
 	Scripts,
 	ScrollRestoration,
-	useLocation,
 } from '@remix-run/react';
 import './tailwind.css';
 import type { MetaFunction } from '@remix-run/cloudflare';
@@ -14,16 +13,11 @@ export const meta: MetaFunction = () => {
 };
 
 export function Layout({ children }: { children: React.ReactNode }) {
-	const { pathname } = useLocation();
-	const href = `https://pmil.me${pathname}`;
-
 	return (
 		<html lang="en">
 			<head>
 				<meta charSet="utf-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				{/* TODO: update this when slug url support is added */}
-				<link href={href} rel="canonical" />
 				<link
 					rel="apple-touch-icon"
 					sizes="180x180"

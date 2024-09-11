@@ -11,9 +11,13 @@ import type {
 } from '@notionhq/client/build/src/api-endpoints';
 import type { AppLoadContext } from '@remix-run/cloudflare';
 import { first } from 'lodash-es';
+import { z } from 'zod';
 
-const POSTS_DATABASE_ID = 'c733986f2b6344909f8d81c12332892c';
-const PROJECTS_DATABASE_ID = '2fcde11879144b4cb75362e72893e6d8';
+// A nice referencing for using Notion API:
+// https://www.coryetzkorn.com/blog/how-the-notion-api-powers-my-blog
+
+const POSTS_DATABASE_ID = 'c733986f-2b63-4490-9f8d-81c12332892c';
+const PROJECTS_DATABASE_ID = '2fcde118-7914-4b4c-b753-62e72893e6d8';
 
 function getNotion(context: AppLoadContext): Client {
 	return new Client({
@@ -54,10 +58,45 @@ export async function getPost(context: AppLoadContext, slugOrId: string) {
 	const notion = getNotion(context);
 
 	try {
-		const post = await notion.pages.retrieve({ page_id: slugOrId });
+		let post: PageObjectResponse | null = null;
 
-		if (!isFullPage(post)) {
+		if (z.string().uuid(slugOrId).safeParse(slugOrId).success === true) {
+			const maybePost = await notion.pages.retrieve({ page_id: slugOrId });
+
+			if (isFullPage(maybePost)) {
+				post = maybePost;
+			}
+		}
+
+		if (!post) {
+			const postBySlug = await notion.databases.query({
+				database_id: POSTS_DATABASE_ID,
+				filter: {
+					property: 'slug',
+					rich_text: {
+						equals: slugOrId,
+					},
+				},
+				page_size: 1,
+			});
+
+			const maybePost = postBySlug.results[0];
+
+			if (isFullPage(maybePost)) {
+				post = maybePost;
+			}
+		}
+
+		if (!post) {
 			console.log(`Not a full page: ${slugOrId}`);
+			return null;
+		}
+
+		const isPost =
+			post.parent.type === 'database_id' &&
+			post.parent.database_id === POSTS_DATABASE_ID;
+		if (!isPost) {
+			console.log(`Not a post: ${slugOrId}`);
 			return null;
 		}
 
@@ -107,12 +146,55 @@ export async function getProject(context: AppLoadContext, slugOrId: string) {
 	const notion = getNotion(context);
 
 	try {
-		const project = await notion.pages.retrieve({ page_id: slugOrId });
+		let project: PageObjectResponse | null = null;
 
-		if (!isFullPage(project)) {
+		if (z.string().uuid(slugOrId).safeParse(slugOrId).success === true) {
+			const maybeProject = await notion.pages.retrieve({
+				page_id: slugOrId,
+			});
+
+			if (isFullPage(maybeProject)) {
+				project = maybeProject;
+			}
+		}
+
+		if (!project) {
+			console.log('searching by slug');
+			const projectBySlug = await notion.databases.query({
+				database_id: PROJECTS_DATABASE_ID,
+				filter: {
+					property: 'slug',
+					rich_text: {
+						equals: slugOrId,
+					},
+				},
+				page_size: 1,
+			});
+
+			console.log(projectBySlug);
+
+			const maybeProject = projectBySlug.results[0];
+
+			if (isFullPage(maybeProject)) {
+				project = maybeProject;
+			}
+		}
+
+		if (!project) {
 			console.log(`Not a full page: ${slugOrId}`);
 			return null;
 		}
+
+		const isProject =
+			project.parent.type === 'database_id' &&
+			project.parent.database_id === PROJECTS_DATABASE_ID;
+
+		if (!isProject) {
+			console.log(`Not a project: ${slugOrId}`);
+			return null;
+		}
+
+		console.log(project.parent);
 
 		const blocks = await getBlocks(context, project.id);
 
@@ -242,7 +324,7 @@ export function normalizePostResponse(
 
 	const tags = properties.tags.multi_select.map((tag) => tag.name);
 	const date = properties.date.date?.start ?? null;
-	const slug = post.id; // TODO: support custom slug
+	const slug = properties.slug.rich_text?.[0]?.plain_text ?? post.id; // TODO: support custom slug
 	const title = richTextToPlain(properties.title.title)!;
 
 	return {

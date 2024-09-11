@@ -7,7 +7,7 @@ import { Container } from '../components/Container';
 // size="1.5em"
 
 export const meta: MetaFunction = ({ data }) => {
-	return createMeta({ title: 'Contact' });
+	return createMeta({ title: 'Contact | Patrick Miller', url: '/contact' });
 };
 
 export default function Contact() {

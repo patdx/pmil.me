@@ -6,11 +6,11 @@ import { getPost } from '~/.server/notion';
 export async function loader({ params, context }: LoaderFunctionArgs) {
 	const { slug } = z.object({ slug: z.string() }).parse(params);
 
-	if (z.string().uuid(slug).safeParse(slug).success === false) {
-		// invalid uuid should be not found
-		// if passed on to the Notion API it would trigger an error
-		throw new Response('Not found', { status: 404 });
-	}
+	// if (z.string().uuid(slug).safeParse(slug).success === false) {
+	// 	// invalid uuid should be not found
+	// 	// if passed on to the Notion API it would trigger an error
+	// 	throw new Response('Not found', { status: 404 });
+	// }
 
 	const post = await getPost(context, slug);
 
@@ -35,7 +35,10 @@ export async function loader({ params, context }: LoaderFunctionArgs) {
 }
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
-	return createMeta({ title: data?.post.title });
+	return createMeta({
+		title: data?.post.title,
+		url: `/posts/${data?.post.slug}`,
+	});
 };
 
 export default function PostPage() {

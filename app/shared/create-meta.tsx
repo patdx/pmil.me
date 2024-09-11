@@ -1,5 +1,5 @@
 import type { MetaDescriptor } from '@remix-run/react';
-import { SITE_DESCRIPTION, SITE_TITLE } from '~/config';
+import { BASE_URL, SITE_DESCRIPTION, SITE_TITLE } from '~/config';
 
 export const createMeta = ({
 	title,
@@ -15,27 +15,34 @@ export const createMeta = ({
 	title = title || SITE_TITLE;
 	description = description || SITE_DESCRIPTION;
 
-	return [
+	const canonicalUrl = url ? new URL(url, BASE_URL).toString() : undefined;
+
+	const items: MetaDescriptor[] = [
 		{ title: title },
 		{ name: 'description', content: description },
 		{ name: 'title', content: title },
+		{ tagName: 'link', rel: 'canonical', href: canonicalUrl },
 		{ property: 'og:type', content: 'website' },
-		{ property: 'og:url', content: url },
+		{ property: 'og:url', content: canonicalUrl },
 		{ property: 'og:title', content: title },
 		{ property: 'og:description', content: description },
 		{
 			property: 'og:image',
-			content: image && url ? new URL(image, url).toString() : undefined,
+			content: image ? new URL(image, BASE_URL).toString() : undefined,
 		},
 		{ property: 'twitter:card', content: 'summary_large_image' },
-		{ property: 'twitter:url', content: url },
+		{ property: 'twitter:url', content: canonicalUrl },
 		{ property: 'twitter:title', content: title },
 		{ property: 'twitter:description', content: description },
 		{
 			property: 'twitter:image',
-			content: image && url ? new URL(image, url).toString() : undefined,
+			content: image ? new URL(image, BASE_URL).toString() : undefined,
 		},
-	].filter(
+	];
+
+	console.log(items);
+
+	return items.filter(
 		(item) => item && Object.values(item).every((value) => value != null)
 	);
 };
