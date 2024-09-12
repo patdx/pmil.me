@@ -40,8 +40,6 @@ export const createMeta = ({
 		},
 	];
 
-	console.log(items);
-
 	return items.filter(
 		(item) => item && Object.values(item).every((value) => value != null)
 	);

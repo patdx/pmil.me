@@ -25,13 +25,14 @@ const Projects: FC<{
 		<Container className="grid gap-4 py-4">
 			<section>
 				<div className="container mx-auto grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-3">
-					<PostPreview
+					<ProjectCard
 						title="GitHub Projects"
 						href="https://github.com/patdx?tab=repositories"
 						excerpt="Check out my GitHub for more projects and experiments."
+						icon="code"
 					/>
 					{props.projects.map((project) => (
-						<PostPreview
+						<ProjectCard
 							key={project.id}
 							{...project.properties}
 							href={`/projects/${project.properties.slug ?? project.id}`}
