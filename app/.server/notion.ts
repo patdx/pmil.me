@@ -2,6 +2,7 @@ import {
 	APIErrorCode,
 	APIResponseError,
 	Client,
+	isFullBlock,
 	isFullPage,
 } from '@notionhq/client';
 import type {
@@ -118,7 +119,7 @@ export async function getPost(context: AppLoadContext, slugOrId: string) {
 }
 
 export async function getProjects(
-	context: AppLoadContext
+	context: AppLoadContext,
 ): Promise<NormalizedPage[]> {
 	const notion = getNotion(context);
 	const projects = await notion.databases.query({
@@ -215,7 +216,7 @@ export async function getProject(context: AppLoadContext, slugOrId: string) {
 
 export async function getBlocks(
 	context: AppLoadContext,
-	blockId: string
+	blockId: string,
 ): Promise<BlockObjectResponse[]> {
 	console.log(`getBlocks(${blockId})`);
 	const notion = getNotion(context);
@@ -229,6 +230,39 @@ export async function getBlocks(
 		if (block.has_children) {
 			block.children = await getBlocks(context, block.id);
 		}
+
+		if (isFullBlock(block)) {
+			// console.log(block.type);
+
+			if (block.type === 'paragraph') {
+				for (const item of block.paragraph.rich_text) {
+					if (item.type === 'text') {
+						if (item.href?.startsWith('/')) {
+							console.log(`checking ${item.href}`);
+							const notionPage = await notion.pages.retrieve({
+								page_id: item.href.slice(1),
+							});
+
+							console.log(`found: `, notionPage);
+
+							const normalized = normalizePage(notionPage);
+
+							// TODO: support projects and other lists too
+							item.href = `/posts/${normalized.properties.slug}`;
+							item.text.link = {
+								url: item.href,
+							};
+
+							console.log(item);
+							// 1 + 1;
+						}
+					}
+				}
+			}
+			// block.children = await getBlocks(context, block.id);
+		}
+
+		// if (block.object === 'block') {
 	}
 
 	return results as any;
@@ -292,6 +326,7 @@ function normalizePage(page: PageObjectResponse): NormalizedPage {
 		} else if (value.type === 'title') {
 			properties[key] = richTextToPlain(value.title);
 		} else if (value.type === 'url') {
+			on;
 			properties[key] = value.url;
 		} else if (value.type === 'files') {
 			const file = first(value.files);
@@ -318,7 +353,7 @@ function richTextToPlain(richText: RichTextItemResponse[]): string | null {
 }
 
 export function normalizePostResponse(
-	post: PageObjectResponse
+	post: PageObjectResponse,
 ): PostPropertiesOutput {
 	const properties = post.properties as PostPropertiesInput;
 

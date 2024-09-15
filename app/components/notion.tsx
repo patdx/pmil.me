@@ -149,10 +149,7 @@ export function Block({ block }: BlockProps) {
 			return (
 				<figure>
 					<div className={styles.file}>
-						📎{' '}
-						<Link to={srcFile} passHref>
-							{lastElementInArray.split('?')[0]}
-						</Link>
+						📎 <Link to={srcFile}>{lastElementInArray.split('?')[0]}</Link>
 					</div>
 					{captionFile && <figcaption>{captionFile}</figcaption>}
 				</figure>
@@ -231,7 +228,11 @@ function Text({ title }: { title: TextRichTextItemResponse[] }) {
 				style={color !== 'default' ? { color } : {}}
 				key={index}
 			>
-				{text.link ? <a href={text.link.url}>{text.content}</a> : text.content}
+				{text.link ? (
+					<Link to={text.link.url}>{text.content}</Link>
+				) : (
+					text.content
+				)}
 			</span>
 		);
 	});
