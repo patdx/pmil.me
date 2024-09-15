@@ -12,7 +12,8 @@
 		"types": [
 			"@remix-run/cloudflare",
 			"vite/client",
-			"unplugin-icons/types/react"
+			"unplugin-icons/types/react",
+			"@cloudflare/workers-types"
 		],
 		"isolatedModules": true,
 		"esModuleInterop": true,

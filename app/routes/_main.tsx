@@ -6,7 +6,11 @@ import {
 } from '@remix-run/react';
 
 export const meta: MetaFunction = ({ error }) => {
-	return error ? [{ title: 'Error | Patrick Miller' }] : [];
+	if (error) {
+		return createMeta({ title: 'Error | Patrick Miller' });
+	} else {
+		return [];
+	}
 };
 
 export default function Main() {

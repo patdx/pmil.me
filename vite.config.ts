@@ -1,31 +1,65 @@
-import mdx from '@mdx-js/rollup';
 import {
 	vitePlugin as remix,
 	cloudflareDevProxyVitePlugin as remixCloudflareDevProxy,
 } from '@remix-run/dev';
-import rehypeShiki from '@shikijs/rehype';
-import remarkFrontmatter from 'remark-frontmatter';
-import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 import AutoImport from 'unplugin-auto-import/vite';
 import Icons from 'unplugin-icons/vite';
 import { defineConfig } from 'vite';
+import type { Plugin } from 'vite';
 import { imagetools } from 'vite-imagetools';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
+function makeWasmLoader(wasmPath: string) {
+	const code = /* js */ `import fs from "fs";
+
+const wasmModule = new WebAssembly.Module(fs.readFileSync(${JSON.stringify(wasmPath)}));
+export default wasmModule;
+`;
+	return code;
+}
+
+const cloudflareStyleWasmLoader = () => {
+	let isDev = false;
+
+	return {
+		name: 'cloudflare-style-wasm-loader',
+		enforce: 'pre',
+		config(config, env) {
+			return {
+				build: { rollupOptions: { external: [/.+\.wasm$/i] } },
+			};
+		},
+		configResolved(config) {
+			isDev = config.command === 'serve';
+		},
+		resolveId(id) {
+			if (isDev) return;
+			// prod only
+
+			if (id.endsWith('.wasm?module')) {
+				console.log('Resolving WASM file:', id);
+				return {
+					id: id.slice(0, -1 * '?module'.length),
+					external: true,
+				};
+			}
+		},
+		load(id) {
+			if (!isDev) return;
+			// dev only
+
+			if (id.endsWith('.wasm?module')) {
+				const actualId = id.slice(0, -1 * '?module'.length);
+				console.log('Loading WASM file:', id);
+				return makeWasmLoader(actualId);
+			}
+		},
+	} satisfies Plugin;
+};
+
 export default defineConfig({
 	plugins: [
-		mdx({
-			remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
-			rehypePlugins: [
-				[
-					// syntax highlighting
-					rehypeShiki,
-					{
-						theme: 'github-light',
-					},
-				],
-			],
-		}),
+		cloudflareStyleWasmLoader(),
 		AutoImport({
 			include: [
 				/\.[jt]sx?$/,
@@ -58,7 +92,6 @@ export default defineConfig({
 			jsx: 'react',
 			scale: 1.5,
 		}),
-
 		remixCloudflareDevProxy(),
 		remix({
 			ignoredRouteFiles: ['**/*.astro'],
@@ -74,5 +107,16 @@ export default defineConfig({
 	],
 	build: {
 		target: 'esnext', // support top level await
+	},
+	optimizeDeps: {
+		exclude: [
+			// '@vercel/og', '@resvg/resvg-wasm/index_bg.wasm'
+		],
+	},
+	ssr: {
+		external: [
+			// '@resvg/resvg-wasm/index_bg.wasm',
+			// 'yoga-wasm-web/dist/yoga.wasm',
+		],
 	},
 });
