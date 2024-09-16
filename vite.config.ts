@@ -9,6 +9,12 @@ import type { Plugin } from 'vite';
 import { imagetools } from 'vite-imagetools';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
+declare module '@remix-run/server-runtime' {
+	interface Future {
+		unstable_singleFetch: true; // 👈 enable _types_ for single-fetch
+	}
+}
+
 function makeWasmLoader(wasmPath: string) {
 	const code = /* js */ `import fs from "fs";
 

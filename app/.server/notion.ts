@@ -326,7 +326,6 @@ function normalizePage(page: PageObjectResponse): NormalizedPage {
 		} else if (value.type === 'title') {
 			properties[key] = richTextToPlain(value.title);
 		} else if (value.type === 'url') {
-			on;
 			properties[key] = value.url;
 		} else if (value.type === 'files') {
 			const file = first(value.files);
