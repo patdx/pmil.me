@@ -1,12 +1,14 @@
 name = "pmil-me"
 send_metrics = false
 pages_build_output_dir = "./build/client"
-compatibility_date = "2024-06-03"
+compatibility_date = "2024-10-22"
 
 [[d1_databases]]
-binding = "DB" # i.e. available in your Worker on env.DB
+binding = "DB"
 database_name = "pmil-me"
 database_id = "76aff1fc-6d7a-42fe-9125-0400babb3923"
 migrations_dir = "./app/drizzle/migrations"
 
-
+[[kv_namespaces]]
+binding = "KV"
+id = "ee730fd74ed140328719685bc8492069"

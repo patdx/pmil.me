@@ -1,6 +1,6 @@
 import {
-	vitePlugin as remix,
 	cloudflareDevProxyVitePlugin as remixCloudflareDevProxy,
+	vitePlugin as remix,
 } from '@remix-run/dev';
 import AutoImport from 'unplugin-auto-import/vite';
 import Icons from 'unplugin-icons/vite';
@@ -11,14 +11,16 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 declare module '@remix-run/server-runtime' {
 	interface Future {
-		unstable_singleFetch: true; // 👈 enable _types_ for single-fetch
+		v3_singleFetch: true; // 👈 enable _types_ for single-fetch
 	}
 }
 
 function makeWasmLoader(wasmPath: string) {
 	const code = /* js */ `import fs from "fs";
 
-const wasmModule = new WebAssembly.Module(fs.readFileSync(${JSON.stringify(wasmPath)}));
+const wasmModule = new WebAssembly.Module(fs.readFileSync(${
+		JSON.stringify(wasmPath)
+	}));
 export default wasmModule;
 `;
 	return code;
@@ -105,8 +107,9 @@ export default defineConfig({
 				v3_fetcherPersist: true,
 				v3_relativeSplatPath: true,
 				v3_throwAbortReason: true,
-				unstable_singleFetch: true,
-				unstable_lazyRouteDiscovery: true,
+				v3_singleFetch: true,
+				v3_lazyRouteDiscovery: true,
+				unstable_optimizeDeps: true,
 			},
 		}),
 		tsconfigPaths(),

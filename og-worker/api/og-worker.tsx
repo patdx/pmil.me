@@ -1,7 +1,7 @@
-import { ImageResponse } from '@vercel/og';
+import { ImageResponse } from "@vercel/og";
 
 export const config = {
-	runtime: 'edge',
+	runtime: "edge",
 };
 
 export default async function handler() {
@@ -9,14 +9,14 @@ export default async function handler() {
 		<div
 			style={{
 				fontSize: 40,
-				color: 'black',
-				background: 'white',
-				width: '100%',
-				height: '100%',
-				padding: '50px 200px',
-				textAlign: 'center',
-				justifyContent: 'center',
-				alignItems: 'center',
+				color: "black",
+				background: "white",
+				width: "100%",
+				height: "100%",
+				padding: "50px 200px",
+				textAlign: "center",
+				justifyContent: "center",
+				alignItems: "center",
 			}}
 		>
 			👋 Hello
