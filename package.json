@@ -59,6 +59,7 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@cloudflare/workers-types": "4.20241022.0",
+    "@epic-web/cachified": "5.2.0",
     "@iconify-json/ion": "1.2.1",
     "@libsql/client": "0.14.0",
     "@mdx-js/rollup": "3.1.0",
@@ -75,6 +76,7 @@
     "@types/react": "npm:types-react@rc",
     "@types/react-dom": "npm:types-react-dom@rc",
     "autoprefixer": "10.4.20",
+    "cachified-adapter-cloudflare-kv": "2.3.0",
     "drizzle-kit": "0.26.2",
     "gray-matter": "4.0.3",
     "postcss": "8.4.47",
