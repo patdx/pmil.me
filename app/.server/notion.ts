@@ -32,7 +32,7 @@ function getNotion(context: AppLoadContext): Client {
 function getCacheAdapter(context: AppLoadContext) {
 	return cloudflareKvCacheAdapter({
 		kv: context.cloudflare.env.KV as any,
-		keyPrefix: 'notion-cache',
+		keyPrefix: 'notion-cache2',
 	});
 }
 
