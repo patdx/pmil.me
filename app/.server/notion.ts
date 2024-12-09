@@ -1,3 +1,4 @@
+import { cachified, verboseReporter } from '@epic-web/cachified';
 import {
 	APIErrorCode,
 	APIResponseError,
@@ -11,11 +12,9 @@ import type {
 	RichTextItemResponse,
 } from '@notionhq/client/build/src/api-endpoints';
 import type { AppLoadContext } from '@remix-run/cloudflare';
+import { cloudflareKvCacheAdapter } from 'cachified-adapter-cloudflare-kv';
 import { first } from 'lodash-es';
 import { z } from 'zod';
-import { cloudflareKvCacheAdapter } from 'cachified-adapter-cloudflare-kv';
-import { cachified, verboseReporter } from '@epic-web/cachified';
-import App from '~/root';
 
 // A nice referencing for using Notion API:
 // https://www.coryetzkorn.com/blog/how-the-notion-api-powers-my-blog
@@ -32,7 +31,7 @@ function getNotion(context: AppLoadContext): Client {
 function getCacheAdapter(context: AppLoadContext) {
 	return cloudflareKvCacheAdapter({
 		kv: context.cloudflare.env.KV as any,
-		keyPrefix: 'notion-cache2',
+		keyPrefix: 'notion-cache',
 	});
 }
 
@@ -46,7 +45,8 @@ function getCachifiedDefaults(context: AppLoadContext) {
 		waitUntil: getWaitUntil(context),
 		// ttl: 1000, // 1 second
 		staleWhileRevalidate: 1000 * 60 * 60, // 1 hour
-		forceFresh: import.meta.env.DEV,
+		// forceFresh: import.meta.env.DEV,
+		forceFresh: true,
 	};
 }
 
