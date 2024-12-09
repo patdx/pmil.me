@@ -1,5 +1,5 @@
-import { type LoaderFunctionArgs, json } from '@remix-run/cloudflare';
-import { type MetaFunction, useLoaderData } from '@remix-run/react';
+import { type LoaderFunctionArgs } from 'react-router';
+import { type MetaFunction, useLoaderData } from 'react-router';
 import { z } from 'zod';
 import { getPost } from '~/.server/notion';
 
@@ -31,7 +31,7 @@ export async function loader({ params, context }: LoaderFunctionArgs) {
 	const html = '';
 	// const html = await markdownToHtml(post.text);
 
-	return json({ post: post, html });
+	return ({ post: post, html });
 }
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
@@ -48,21 +48,23 @@ export default function PostPage() {
 	const url = `/posts/${slug}`;
 
 	return (
-		<Container className="grid gap-4 py-4 overflow-x-hidden w-screen">
+		<Container className='grid gap-4 py-4 overflow-x-hidden w-screen'>
 			{/* <!-- <article className="mb-32"> --> */}
-			{/* <NextSeo
+			{
+				/* <NextSeo
 			title={`${post.title} | Patrick Miller`}
 			openGraph={{
 				images: post.ogImage ? [{ url: post.ogImage.url }] : [],
 			}}
-		/> */}
-			<h1 className="mb-4 text-center text-6xl font-bold leading-tight tracking-tighter md:text-left md:text-7xl md:leading-none lg:text-8xl">
+		/> */
+			}
+			<h1 className='mb-4 text-center text-6xl font-bold leading-tight tracking-tighter md:text-left md:text-7xl md:leading-none lg:text-8xl'>
 				<Link to={url}>{title}</Link>
 			</h1>
 
-			<div className="mb-8 font-bold">{date}</div>
+			<div className='mb-8 font-bold'>{date}</div>
 			{/* <!-- w-[calc(100vw-2.5rem)] --> */}
-			<div className="prose max-w-full overflow-x-hidden">
+			<div className='prose max-w-full overflow-x-hidden'>
 				<Blocks blocks={post.content} />
 			</div>
 		</Container>

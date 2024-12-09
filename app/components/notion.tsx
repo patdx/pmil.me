@@ -2,7 +2,7 @@ import type {
 	BlockObjectResponse,
 	TextRichTextItemResponse,
 } from '@notionhq/client/build/src/api-endpoints';
-import { Link } from '@remix-run/react';
+import { Link } from 'react-router';
 
 const styles = {} as any;
 

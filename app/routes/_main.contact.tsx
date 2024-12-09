@@ -1,4 +1,4 @@
-import type { MetaFunction } from '@remix-run/react';
+import type { MetaFunction } from 'react-router';
 import IoLogoGithub from '~icons/ion/logo-github';
 import IoLogoLinkedin from '~icons/ion/logo-linkedin';
 import IoMail from '~icons/ion/mail';

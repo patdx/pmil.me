@@ -1,4 +1,4 @@
-import type { MetaDescriptor } from '@remix-run/react';
+import type { MetaDescriptor } from 'react-router';
 import { BASE_URL, SITE_DESCRIPTION, SITE_TITLE } from '~/config';
 
 export const createMeta = ({

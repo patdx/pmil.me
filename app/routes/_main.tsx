@@ -1,9 +1,4 @@
-import {
-	type MetaFunction,
-	Outlet,
-	isRouteErrorResponse,
-	useRouteError,
-} from '@remix-run/react';
+import { type MetaFunction, Outlet, isRouteErrorResponse, useRouteError } from 'react-router';
 
 export const meta: MetaFunction = ({ error }) => {
 	if (error) {

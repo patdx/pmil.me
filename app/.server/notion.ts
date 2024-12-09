@@ -11,7 +11,7 @@ import type {
 	PageObjectResponse,
 	RichTextItemResponse,
 } from '@notionhq/client/build/src/api-endpoints';
-import type { AppLoadContext } from '@remix-run/cloudflare';
+import type { AppLoadContext } from 'react-router';
 import { cloudflareKvCacheAdapter } from 'cachified-adapter-cloudflare-kv';
 import { first } from 'lodash-es';
 import { z } from 'zod';

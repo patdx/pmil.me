@@ -1,4 +1,4 @@
-import type { MetaFunction } from '@remix-run/react';
+import type { MetaFunction } from 'react-router';
 import { Image3 } from '~/components/Image';
 import patrickJpg from '../assets/patrick.jpg?w=400&h=400&rotate=90&as=metadata';
 

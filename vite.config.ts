@@ -1,19 +1,11 @@
-import {
-	cloudflareDevProxyVitePlugin as remixCloudflareDevProxy,
-	vitePlugin as remix,
-} from '@remix-run/dev';
+// import { cloudflareDevProxyVitePlugin as remixCloudflareDevProxy } from '@react-router/dev';
+import { reactRouter } from '@react-router/dev/vite';
 import AutoImport from 'unplugin-auto-import/vite';
 import Icons from 'unplugin-icons/vite';
 import { defineConfig } from 'vite';
 import type { Plugin } from 'vite';
 import { imagetools } from 'vite-imagetools';
 import tsconfigPaths from 'vite-tsconfig-paths';
-
-declare module '@remix-run/server-runtime' {
-	interface Future {
-		v3_singleFetch: true; // 👈 enable _types_ for single-fetch
-	}
-}
 
 function makeWasmLoader(wasmPath: string) {
 	const code = /* js */ `import fs from "fs";
@@ -81,7 +73,7 @@ export default defineConfig({
 				'react',
 				{
 					react: ['Suspense'],
-					'@remix-run/react': ['Link', 'NavLink'],
+					'react-router': ['Link', 'NavLink'],
 				},
 			],
 			biomelintrc: {
@@ -100,18 +92,8 @@ export default defineConfig({
 			jsx: 'react',
 			scale: 1.5,
 		}),
-		remixCloudflareDevProxy(),
-		remix({
-			ignoredRouteFiles: ['**/*.astro'],
-			future: {
-				v3_fetcherPersist: true,
-				v3_relativeSplatPath: true,
-				v3_throwAbortReason: true,
-				v3_singleFetch: true,
-				v3_lazyRouteDiscovery: true,
-				unstable_optimizeDeps: true,
-			},
-		}),
+		// remixCloudflareDevProxy(),
+		reactRouter(),
 		tsconfigPaths(),
 	],
 	build: {
