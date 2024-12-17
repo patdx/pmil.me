@@ -1,4 +1,3 @@
-// import { cloudflareDevProxyVitePlugin as remixCloudflareDevProxy } from '@react-router/dev';
 import { reactRouter } from '@react-router/dev/vite';
 import AutoImport from 'unplugin-auto-import/vite';
 import Icons from 'unplugin-icons/vite';
@@ -6,6 +5,10 @@ import { defineConfig } from 'vite';
 import type { Plugin } from 'vite';
 import { imagetools } from 'vite-imagetools';
 import tsconfigPaths from 'vite-tsconfig-paths';
+import { vitePluginViteNodeMiniflare } from '@hiogawa/vite-node-miniflare';
+import { cjsInterop } from 'vite-plugin-cjs-interop';
+import commonjs from 'vite-plugin-commonjs';
+import { builtinModules } from 'node:module';
 
 function makeWasmLoader(wasmPath: string) {
 	const code = /* js */ `import fs from "fs";
@@ -57,8 +60,28 @@ const cloudflareStyleWasmLoader = () => {
 	} satisfies Plugin;
 };
 
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
 	plugins: [
+		commonjs({
+			filter(id) {
+				if (id.includes('@notionhq/client')) {
+					console.log('commonjs interop for ' + id);
+					return true;
+				}
+				// console.log(id);
+				return false;
+			},
+		}),
+		// cjsInterop({
+		// 	dependencies: [
+		// 		'**/node_modules/@notionhq/client/**',
+		// 		'@notionhq/client',
+		// 	],
+		// }),
+		vitePluginViteNodeMiniflare({
+			entry: './workers/app.ts',
+		}),
+
 		cloudflareStyleWasmLoader(),
 		AutoImport({
 			include: [
@@ -98,6 +121,11 @@ export default defineConfig({
 	],
 	build: {
 		target: 'esnext', // support top level await
+		rollupOptions: isSsrBuild
+			? {
+				input: './workers/app.ts',
+			}
+			: undefined,
 	},
 	optimizeDeps: {
 		exclude: [
@@ -105,9 +133,26 @@ export default defineConfig({
 		],
 	},
 	ssr: {
+		// target: 'webworker',
+		// noExternal: true,
 		external: [
-			// '@resvg/resvg-wasm/index_bg.wasm',
-			// 'yoga-wasm-web/dist/yoga.wasm',
+			'node:async_hooks', //  '@notionhq/client'
+			...builtinModules,
+			'stream',
+			'node:stream',
 		],
+		resolve: {
+			conditions: ['workerd', 'browser'],
+		},
+		optimizeDeps: {
+			include: [
+				'react',
+				'react/jsx-runtime',
+				'react/jsx-dev-runtime',
+				'react-dom',
+				'react-dom/server',
+				'react-router',
+			],
+		},
 	},
-});
+}));
