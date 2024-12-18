@@ -1,11 +1,7 @@
 import { cachified, verboseReporter } from '@epic-web/cachified';
-import {
-	APIErrorCode,
-	APIResponseError,
-	Client,
-	isFullBlock,
-	isFullPage,
-} from '@notionhq/client';
+import type * as INotion from '@notionhq/client';
+// import * as _Notion from '../../vendor/notion/notion.js';
+import * as _Notion from '@notionhq/client';
 import type {
 	BlockObjectResponse,
 	PageObjectResponse,
@@ -16,14 +12,17 @@ import { cloudflareKvCacheAdapter } from 'cachified-adapter-cloudflare-kv';
 import { first } from 'lodash-es';
 import { z } from 'zod';
 
+const Notion = _Notion as typeof INotion;
+
 // A nice referencing for using Notion API:
 // https://www.coryetzkorn.com/blog/how-the-notion-api-powers-my-blog
 
 const POSTS_DATABASE_ID = 'c733986f-2b63-4490-9f8d-81c12332892c';
 const PROJECTS_DATABASE_ID = '2fcde118-7914-4b4c-b753-62e72893e6d8';
 
-function getNotion(context: AppLoadContext): Client {
-	return new Client({
+function getNotion(context: AppLoadContext): INotion.Client {
+	console.log('context', context);
+	return new Notion.Client({
 		auth: context.cloudflare.env.NOTION_TOKEN,
 	});
 }
@@ -44,6 +43,8 @@ function getCachifiedDefaults(context: AppLoadContext) {
 		cache: getCacheAdapter(context),
 		waitUntil: getWaitUntil(context),
 		// ttl: 1000, // 1 second
+		ttl: 1000 * 60 * 60 * 18, // 18 hour
+		// if cached longer than 1 day the images will get out of date
 		staleWhileRevalidate: 1000 * 60 * 60, // 1 hour
 		// forceFresh: import.meta.env.DEV,
 		forceFresh: true,
@@ -57,6 +58,7 @@ export async function getPosts(context: AppLoadContext) {
 		key: `posts`,
 		getFreshValue: () => {
 			console.log(`getPosts getting fresh value`);
+
 			return notion.databases.query({
 				database_id: POSTS_DATABASE_ID,
 				sorts: [
@@ -80,7 +82,7 @@ export async function getPosts(context: AppLoadContext) {
 	const normalized: PostPropertiesOutput[] = [];
 
 	for (const post of posts.results) {
-		if (isFullPage(post)) {
+		if (Notion.isFullPage(post)) {
 			normalized.push(normalizePostResponse(post));
 		}
 	}
@@ -100,7 +102,7 @@ export async function getPost(context: AppLoadContext, slugOrId: string) {
 				if (z.string().uuid(slugOrId).safeParse(slugOrId).success === true) {
 					const maybePost = await notion.pages.retrieve({ page_id: slugOrId });
 
-					if (isFullPage(maybePost)) {
+					if (Notion.isFullPage(maybePost)) {
 						post = maybePost;
 					}
 				}
@@ -119,7 +121,7 @@ export async function getPost(context: AppLoadContext, slugOrId: string) {
 
 					const maybePost = postBySlug.results[0];
 
-					if (isFullPage(maybePost)) {
+					if (Notion.isFullPage(maybePost)) {
 						post = maybePost;
 					}
 				}
@@ -144,8 +146,8 @@ export async function getPost(context: AppLoadContext, slugOrId: string) {
 				};
 			} catch (err) {
 				if (
-					err instanceof APIResponseError &&
-					err.code === APIErrorCode.ObjectNotFound
+					err instanceof Notion.APIResponseError &&
+					err.code === Notion.APIErrorCode.ObjectNotFound
 				) {
 					return null;
 				}
@@ -177,7 +179,7 @@ export async function getProjects(
 			const normalized: NormalizedPage[] = [];
 
 			for (const project of projects.results) {
-				if (isFullPage(project)) {
+				if (Notion.isFullPage(project)) {
 					normalized.push(normalizePage(project));
 				}
 			}
@@ -202,7 +204,7 @@ export async function getProject(context: AppLoadContext, slugOrId: string) {
 						page_id: slugOrId,
 					});
 
-					if (isFullPage(maybeProject)) {
+					if (Notion.isFullPage(maybeProject)) {
 						project = maybeProject;
 					}
 				}
@@ -224,7 +226,7 @@ export async function getProject(context: AppLoadContext, slugOrId: string) {
 
 					const maybeProject = projectBySlug.results[0];
 
-					if (isFullPage(maybeProject)) {
+					if (Notion.isFullPage(maybeProject)) {
 						project = maybeProject;
 					}
 				}
@@ -252,8 +254,8 @@ export async function getProject(context: AppLoadContext, slugOrId: string) {
 				};
 			} catch (err) {
 				if (
-					err instanceof APIResponseError &&
-					err.code === APIErrorCode.ObjectNotFound
+					err instanceof Notion.APIResponseError &&
+					err.code === Notion.APIErrorCode.ObjectNotFound
 				) {
 					return null;
 				}
@@ -281,7 +283,7 @@ export async function getBlocks(
 			block.children = await getBlocks(context, block.id);
 		}
 
-		if (isFullBlock(block)) {
+		if (Notion.isFullBlock(block)) {
 			// console.log(block.type);
 
 			if (block.type === 'paragraph') {
