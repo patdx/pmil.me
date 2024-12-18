@@ -5,10 +5,12 @@ import { defineConfig } from 'vite';
 import type { Plugin } from 'vite';
 import { imagetools } from 'vite-imagetools';
 import tsconfigPaths from 'vite-tsconfig-paths';
-import { vitePluginViteNodeMiniflare } from '@hiogawa/vite-node-miniflare';
-import { cjsInterop } from 'vite-plugin-cjs-interop';
-import commonjs from 'vite-plugin-commonjs';
-import { builtinModules } from 'node:module';
+import { cloudflareDevProxy } from '@react-router/dev/vite/cloudflare';
+
+// import { vitePluginViteNodeMiniflare } from '@hiogawa/vite-node-miniflare';
+// import { cjsInterop } from 'vite-plugin-cjs-interop';
+// import commonjs from 'vite-plugin-commonjs';
+// import { builtinModules } from 'node:module';
 
 function makeWasmLoader(wasmPath: string) {
 	const code = /* js */ `import fs from "fs";
@@ -62,26 +64,30 @@ const cloudflareStyleWasmLoader = () => {
 
 export default defineConfig(({ isSsrBuild }) => ({
 	plugins: [
-		commonjs({
-			filter(id) {
-				if (id.includes('@notionhq/client')) {
-					console.log('commonjs interop for ' + id);
-					return true;
-				}
-				// console.log(id);
-				return false;
-			},
-		}),
+		// commonjs({
+		// 	filter(id) {
+		// 		if (id.includes('@notionhq/client')) {
+		// 			console.log('commonjs interop for ' + id);
+		// 			return true;
+		// 		}
+		// 		// console.log(id);
+		// 		return false;
+		// 	},
+		// }),
 		// cjsInterop({
 		// 	dependencies: [
 		// 		'**/node_modules/@notionhq/client/**',
 		// 		'@notionhq/client',
 		// 	],
 		// }),
-		vitePluginViteNodeMiniflare({
-			entry: './workers/app.ts',
-		}),
-
+		// vitePluginViteNodeMiniflare({
+		// 	entry: './workers/app.ts',
+		// 	miniflareOptions: (options) => {
+		// 		options.compatibilityDate = '2024-10-22';
+		// 		options.d1Databases;
+		// 	},
+		// }),
+		cloudflareDevProxy(),
 		cloudflareStyleWasmLoader(),
 		AutoImport({
 			include: [
@@ -133,13 +139,13 @@ export default defineConfig(({ isSsrBuild }) => ({
 		],
 	},
 	ssr: {
-		// target: 'webworker',
-		// noExternal: true,
+		target: 'webworker',
+		noExternal: true,
 		external: [
 			'node:async_hooks', //  '@notionhq/client'
-			...builtinModules,
-			'stream',
-			'node:stream',
+			// ...builtinModules,
+			// 'stream',
+			// 'node:stream',
 		],
 		resolve: {
 			conditions: ['workerd', 'browser'],

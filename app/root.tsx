@@ -1,17 +1,18 @@
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
 import type { Route } from './+types/root';
-import stylesheet from './tailwind.css?url';
+// import stylesheet from './tailwind.css?url';
+import './tailwind.css';
 
 export const meta: Route.MetaFunction = () => {
 	return createMeta();
 };
 
-export const link: Route.LinksFunction = () => [
-	{
-		rel: 'stylesheet',
-		href: stylesheet,
-	},
-];
+// export const link: Route.LinksFunction = () => [
+// 	{
+// 		rel: 'stylesheet',
+// 		href: stylesheet,
+// 	},
+// ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
 	return (
