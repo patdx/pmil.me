@@ -21,6 +21,7 @@ declare global {
   const PostPreview: typeof import('./app/components/PostPreview')['default']
   const ProjectCard: typeof import('./app/components/project-card')['ProjectCard']
   const ProjectsPage: typeof import('./app/components/project-card')['ProjectsPage']
+  const ShareButtons: typeof import('./app/components/ShareButtons')['ShareButtons']
   const Show: typeof import('./app/components/Show')['default']
   const Suspense: typeof import('react')['Suspense']
   const createMeta: typeof import('./app/shared/create-meta')['createMeta']
@@ -47,4 +48,10 @@ declare global {
   const useState: typeof import('react')['useState']
   const useSyncExternalStore: typeof import('react')['useSyncExternalStore']
   const useTransition: typeof import('react')['useTransition']
+}
+// for type re-export
+declare global {
+  // @ts-ignore
+  export type { OutputMetadata } from './app/shared/utils'
+  import('./app/shared/utils')
 }

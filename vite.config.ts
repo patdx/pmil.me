@@ -139,8 +139,12 @@ export default defineConfig(({ isSsrBuild }) => ({
 		],
 	},
 	ssr: {
-		target: 'webworker',
-		noExternal: true,
+		...isSsrBuild
+			? {
+				target: 'webworker',
+				noExternal: true,
+			}
+			: {},
 		external: [
 			'node:async_hooks', //  '@notionhq/client'
 			// ...builtinModules,

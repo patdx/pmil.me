@@ -21,7 +21,6 @@ const POSTS_DATABASE_ID = 'c733986f-2b63-4490-9f8d-81c12332892c';
 const PROJECTS_DATABASE_ID = '2fcde118-7914-4b4c-b753-62e72893e6d8';
 
 function getNotion(context: AppLoadContext): INotion.Client {
-	console.log('context', context);
 	return new Notion.Client({
 		auth: context.cloudflare.env.NOTION_TOKEN,
 	});
@@ -47,7 +46,7 @@ function getCachifiedDefaults(context: AppLoadContext) {
 		// if cached longer than 1 day the images will get out of date
 		staleWhileRevalidate: 1000 * 60 * 60, // 1 hour
 		// forceFresh: import.meta.env.DEV,
-		forceFresh: true,
+		// forceFresh: false,
 	};
 }
 
