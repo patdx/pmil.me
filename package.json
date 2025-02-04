@@ -105,7 +105,7 @@
     "vite-plugin-wasm": "3.4.1",
     "vite-tsconfig-paths": "5.1.4",
     "wrangler": "3.99.0",
-    "zx": "8.3.1"
+    "zx": "8.3.2"
   },
   "engines": {
     "node": ">=20.0.0"
