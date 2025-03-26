@@ -37,7 +37,7 @@ export function ProjectCard({
 				<CardTitle>{title}</CardTitle>
 				{excerpt && <CardDescription>{excerpt}</CardDescription>}
 			</CardHeader>
-			<CardContent className="flex-grow">
+			<CardContent className="grow">
 				{coverImage ? (
 					<Image3
 						src={coverImage}
@@ -47,7 +47,7 @@ export function ProjectCard({
 						className="w-full h-48 object-cover rounded-md mb-4"
 					/>
 				) : (
-					<div className="w-full h-48 bg-gradient-to-br from-primary to-secondary rounded-md mb-4 flex items-center justify-center text-primary-foreground">
+					<div className="w-full h-48 bg-linear-to-br from-primary to-secondary rounded-md mb-4 flex items-center justify-center text-primary-foreground">
 						{icon ? (
 							<IconComponent icon={icon} />
 						) : (
@@ -159,7 +159,7 @@ export function ProjectsPage() {
 							<CardTitle>{project.title}</CardTitle>
 							<CardDescription>{project.description}</CardDescription>
 						</CardHeader>
-						<CardContent className="flex-grow">
+						<CardContent className="grow">
 							{project.image ? (
 								<Image3
 									src={project.image}
@@ -169,7 +169,7 @@ export function ProjectsPage() {
 									className="w-full h-48 object-cover rounded-md mb-4"
 								/>
 							) : (
-								<div className="w-full h-48 bg-gradient-to-br from-primary to-secondary rounded-md mb-4 flex items-center justify-center text-primary-foreground">
+								<div className="w-full h-48 bg-linear-to-br from-primary to-secondary rounded-md mb-4 flex items-center justify-center text-primary-foreground">
 									{project.icon ? (
 										<IconComponent icon={project.icon} />
 									) : (
