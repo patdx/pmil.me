@@ -18,8 +18,8 @@ console.log(
 	await cache('notion-projects', () =>
 		notion.databases.retrieve({
 			database_id: DATABASE_ID,
-		})
-	)
+		}),
+	),
 );
 
 await notion.databases.update({
@@ -130,19 +130,19 @@ for (const project of projects) {
 						date: {
 							start: project.date,
 						},
-				  }
+					}
 				: undefined,
 			slug: project.slug
 				? {
 						type: 'rich_text',
 						rich_text: [{ type: 'text', text: { content: project.slug } }],
-				  }
+					}
 				: undefined,
 			externalUrl: project.externalUrl
 				? {
 						type: 'url',
 						url: project.externalUrl,
-				  }
+					}
 				: undefined,
 			technologies: project.technologies
 				? {
@@ -150,7 +150,7 @@ for (const project of projects) {
 						multi_select: project.technologies
 							.split(',')
 							.map((item) => ({ name: item.trim() })),
-				  }
+					}
 				: undefined,
 			coverImage: project.coverImage
 				? {
@@ -164,7 +164,7 @@ for (const project of projects) {
 								},
 							},
 						],
-				  }
+					}
 				: undefined,
 		},
 		children: blocks as any,

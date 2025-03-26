@@ -1,4 +1,9 @@
-import { type MetaFunction, Outlet, isRouteErrorResponse, useRouteError } from 'react-router';
+import {
+	type MetaFunction,
+	Outlet,
+	isRouteErrorResponse,
+	useRouteError,
+} from 'react-router';
 
 export const meta: MetaFunction = ({ error }) => {
 	if (error) {

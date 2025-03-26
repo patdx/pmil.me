@@ -1,7 +1,4 @@
 {
-  "recommendations": [
-    "biomejs.biome",
-    "valentjn.vscode-ltex"
-  ],
-  "unwantedRecommendations": []
+	"recommendations": ["biomejs.biome", "valentjn.vscode-ltex"],
+	"unwantedRecommendations": []
 }

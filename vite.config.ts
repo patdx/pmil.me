@@ -15,9 +15,9 @@ import { cloudflareDevProxy } from '@react-router/dev/vite/cloudflare';
 function makeWasmLoader(wasmPath: string) {
 	const code = /* js */ `import fs from "fs";
 
-const wasmModule = new WebAssembly.Module(fs.readFileSync(${
-		JSON.stringify(wasmPath)
-	}));
+const wasmModule = new WebAssembly.Module(fs.readFileSync(${JSON.stringify(
+		wasmPath,
+	)}));
 export default wasmModule;
 `;
 	return code;
@@ -129,8 +129,8 @@ export default defineConfig(({ isSsrBuild }) => ({
 		target: 'esnext', // support top level await
 		rollupOptions: isSsrBuild
 			? {
-				input: './workers/app.ts',
-			}
+					input: './workers/app.ts',
+				}
 			: undefined,
 	},
 	optimizeDeps: {
@@ -139,12 +139,12 @@ export default defineConfig(({ isSsrBuild }) => ({
 		],
 	},
 	ssr: {
-		...isSsrBuild
+		...(isSsrBuild
 			? {
-				target: 'webworker',
-				noExternal: true,
-			}
-			: {},
+					target: 'webworker',
+					noExternal: true,
+				}
+			: {}),
 		external: [
 			'node:async_hooks', //  '@notionhq/client'
 			// ...builtinModules,

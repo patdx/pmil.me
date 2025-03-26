@@ -318,10 +318,10 @@ export const IosTable = () => {
 
 fs.writeFileSync(
 	'./app/components/android.html',
-	renderToStaticMarkup(<AndroidTable />)
+	renderToStaticMarkup(<AndroidTable />),
 );
 
 fs.writeFileSync(
 	'./app/components/ios.html',
-	renderToStaticMarkup(<IosTable />)
+	renderToStaticMarkup(<IosTable />),
 );

@@ -70,7 +70,7 @@ export function Block({ block }: BlockProps) {
 			return (
 				<h3>
 					<Text title={value.rich_text} />
-				</h3>	
+				</h3>
 			);
 		case 'bulleted_list':
 			return (

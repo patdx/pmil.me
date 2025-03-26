@@ -53,29 +53,32 @@ function getCachifiedDefaults(context: AppLoadContext) {
 export async function getPosts(context: AppLoadContext) {
 	const notion = getNotion(context);
 
-	const posts = await cachified({
-		key: `posts`,
-		getFreshValue: () => {
-			console.log(`getPosts getting fresh value`);
+	const posts = await cachified(
+		{
+			key: `posts`,
+			getFreshValue: () => {
+				console.log(`getPosts getting fresh value`);
 
-			return notion.databases.query({
-				database_id: POSTS_DATABASE_ID,
-				sorts: [
-					{
+				return notion.databases.query({
+					database_id: POSTS_DATABASE_ID,
+					sorts: [
+						{
+							property: 'date',
+							direction: 'descending',
+						},
+					],
+					filter: {
 						property: 'date',
-						direction: 'descending',
+						date: {
+							is_not_empty: true,
+						},
 					},
-				],
-				filter: {
-					property: 'date',
-					date: {
-						is_not_empty: true,
-					},
-				},
-			});
+				});
+			},
+			...getCachifiedDefaults(context),
 		},
-		...getCachifiedDefaults(context),
-	}, verboseReporter());
+		verboseReporter(),
+	);
 	console.log(`getPosts got value (cached or fresh)`);
 
 	const normalized: PostPropertiesOutput[] = [];
@@ -92,69 +95,75 @@ export async function getPosts(context: AppLoadContext) {
 export async function getPost(context: AppLoadContext, slugOrId: string) {
 	const notion = getNotion(context);
 
-	return cachified({
-		key: `post-${slugOrId}`,
-		getFreshValue: async () => {
-			try {
-				let post: PageObjectResponse | null = null;
+	return cachified(
+		{
+			key: `post-${slugOrId}`,
+			getFreshValue: async () => {
+				try {
+					let post: PageObjectResponse | null = null;
 
-				if (z.string().uuid(slugOrId).safeParse(slugOrId).success === true) {
-					const maybePost = await notion.pages.retrieve({ page_id: slugOrId });
+					if (z.string().uuid(slugOrId).safeParse(slugOrId).success === true) {
+						const maybePost = await notion.pages.retrieve({
+							page_id: slugOrId,
+						});
 
-					if (Notion.isFullPage(maybePost)) {
-						post = maybePost;
+						if (Notion.isFullPage(maybePost)) {
+							post = maybePost;
+						}
 					}
-				}
 
-				if (!post) {
-					const postBySlug = await notion.databases.query({
-						database_id: POSTS_DATABASE_ID,
-						filter: {
-							property: 'slug',
-							rich_text: {
-								equals: slugOrId,
+					if (!post) {
+						const postBySlug = await notion.databases.query({
+							database_id: POSTS_DATABASE_ID,
+							filter: {
+								property: 'slug',
+								rich_text: {
+									equals: slugOrId,
+								},
 							},
-						},
-						page_size: 1,
-					});
+							page_size: 1,
+						});
 
-					const maybePost = postBySlug.results[0];
+						const maybePost = postBySlug.results[0];
 
-					if (Notion.isFullPage(maybePost)) {
-						post = maybePost;
+						if (Notion.isFullPage(maybePost)) {
+							post = maybePost;
+						}
 					}
-				}
 
-				if (!post) {
-					console.log(`Not a full page: ${slugOrId}`);
-					return null;
-				}
+					if (!post) {
+						console.log(`Not a full page: ${slugOrId}`);
+						return null;
+					}
 
-				const isPost = post.parent.type === 'database_id' &&
-					post.parent.database_id === POSTS_DATABASE_ID;
-				if (!isPost) {
-					console.log(`Not a post: ${slugOrId}`);
-					return null;
-				}
+					const isPost =
+						post.parent.type === 'database_id' &&
+						post.parent.database_id === POSTS_DATABASE_ID;
+					if (!isPost) {
+						console.log(`Not a post: ${slugOrId}`);
+						return null;
+					}
 
-				const blocks = await getBlocks(context, post.id);
+					const blocks = await getBlocks(context, post.id);
 
-				return {
-					...normalizePostResponse(post),
-					content: blocks,
-				};
-			} catch (err) {
-				if (
-					err instanceof Notion.APIResponseError &&
-					err.code === Notion.APIErrorCode.ObjectNotFound
-				) {
-					return null;
+					return {
+						...normalizePostResponse(post),
+						content: blocks,
+					};
+				} catch (err) {
+					if (
+						err instanceof Notion.APIResponseError &&
+						err.code === Notion.APIErrorCode.ObjectNotFound
+					) {
+						return null;
+					}
+					throw err;
 				}
-				throw err;
-			}
+			},
+			...getCachifiedDefaults(context),
 		},
-		...getCachifiedDefaults(context),
-	}, verboseReporter());
+		verboseReporter(),
+	);
 }
 
 export async function getProjects(
@@ -162,107 +171,114 @@ export async function getProjects(
 ): Promise<NormalizedPage[]> {
 	const notion = getNotion(context);
 
-	return cachified({
-		key: `projects`,
-		getFreshValue: async () => {
-			const projects = await notion.databases.query({
-				database_id: PROJECTS_DATABASE_ID,
-				sorts: [
-					{
-						property: 'slug',
-						direction: 'ascending',
-					},
-				],
-			});
+	return cachified(
+		{
+			key: `projects`,
+			getFreshValue: async () => {
+				const projects = await notion.databases.query({
+					database_id: PROJECTS_DATABASE_ID,
+					sorts: [
+						{
+							property: 'slug',
+							direction: 'ascending',
+						},
+					],
+				});
 
-			const normalized: NormalizedPage[] = [];
+				const normalized: NormalizedPage[] = [];
 
-			for (const project of projects.results) {
-				if (Notion.isFullPage(project)) {
-					normalized.push(normalizePage(project));
+				for (const project of projects.results) {
+					if (Notion.isFullPage(project)) {
+						normalized.push(normalizePage(project));
+					}
 				}
-			}
 
-			return normalized;
+				return normalized;
+			},
+			...getCachifiedDefaults(context),
 		},
-		...getCachifiedDefaults(context),
-	}, verboseReporter());
+		verboseReporter(),
+	);
 }
 
 export async function getProject(context: AppLoadContext, slugOrId: string) {
 	const notion = getNotion(context);
 
-	return cachified({
-		key: `project-${slugOrId}`,
-		getFreshValue: async () => {
-			try {
-				let project: PageObjectResponse | null = null;
+	return cachified(
+		{
+			key: `project-${slugOrId}`,
+			getFreshValue: async () => {
+				try {
+					let project: PageObjectResponse | null = null;
 
-				if (z.string().uuid(slugOrId).safeParse(slugOrId).success === true) {
-					const maybeProject = await notion.pages.retrieve({
-						page_id: slugOrId,
-					});
+					if (z.string().uuid(slugOrId).safeParse(slugOrId).success === true) {
+						const maybeProject = await notion.pages.retrieve({
+							page_id: slugOrId,
+						});
 
-					if (Notion.isFullPage(maybeProject)) {
-						project = maybeProject;
+						if (Notion.isFullPage(maybeProject)) {
+							project = maybeProject;
+						}
 					}
-				}
 
-				if (!project) {
-					console.log('searching by slug');
-					const projectBySlug = await notion.databases.query({
-						database_id: PROJECTS_DATABASE_ID,
-						filter: {
-							property: 'slug',
-							rich_text: {
-								equals: slugOrId,
+					if (!project) {
+						console.log('searching by slug');
+						const projectBySlug = await notion.databases.query({
+							database_id: PROJECTS_DATABASE_ID,
+							filter: {
+								property: 'slug',
+								rich_text: {
+									equals: slugOrId,
+								},
 							},
-						},
-						page_size: 1,
-					});
+							page_size: 1,
+						});
 
-					console.log(projectBySlug);
+						console.log(projectBySlug);
 
-					const maybeProject = projectBySlug.results[0];
+						const maybeProject = projectBySlug.results[0];
 
-					if (Notion.isFullPage(maybeProject)) {
-						project = maybeProject;
+						if (Notion.isFullPage(maybeProject)) {
+							project = maybeProject;
+						}
 					}
+
+					if (!project) {
+						console.log(`Not a full page: ${slugOrId}`);
+						return null;
+					}
+
+					const isProject =
+						project.parent.type === 'database_id' &&
+						project.parent.database_id === PROJECTS_DATABASE_ID;
+
+					if (!isProject) {
+						console.log(`Not a project: ${slugOrId}`);
+						return null;
+					}
+
+					console.log(project.parent);
+
+					const blocks = await getBlocks(context, project.id);
+
+					return {
+						...normalizePage(project),
+						content: blocks,
+					};
+				} catch (err) {
+					if (
+						err instanceof Notion.APIResponseError &&
+						err.code === Notion.APIErrorCode.ObjectNotFound
+					) {
+						return null;
+					}
+					throw err;
 				}
-
-				if (!project) {
-					console.log(`Not a full page: ${slugOrId}`);
-					return null;
-				}
-
-				const isProject = project.parent.type === 'database_id' &&
-					project.parent.database_id === PROJECTS_DATABASE_ID;
-
-				if (!isProject) {
-					console.log(`Not a project: ${slugOrId}`);
-					return null;
-				}
-
-				console.log(project.parent);
-
-				const blocks = await getBlocks(context, project.id);
-
-				return {
-					...normalizePage(project),
-					content: blocks,
-				};
-			} catch (err) {
-				if (
-					err instanceof Notion.APIResponseError &&
-					err.code === Notion.APIErrorCode.ObjectNotFound
-				) {
-					return null;
-				}
-				throw err;
-			}
+			},
+			...getCachifiedDefaults(context),
 		},
-		...getCachifiedDefaults(context),
-	}, verboseReporter());
+		verboseReporter(),
+	);
 }
 
 export async function getBlocks(

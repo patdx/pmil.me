@@ -11,7 +11,7 @@ export async function loader({ params, context }: LoaderFunctionArgs) {
 
 	if (!post) throw new Response('Not found', { status: 404 });
 
-	return ({ post: post });
+	return { post: post };
 }
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
@@ -36,7 +36,7 @@ export function ErrorBoundary() {
 
 	return (
 		<Container>
-			<h1 className='text-2xl font-bold'>Error</h1>
+			<h1 className="text-2xl font-bold">Error</h1>
 			<p>Sorry, this post could not be found.</p>
 		</Container>
 	);
@@ -48,23 +48,23 @@ export default function PostPage() {
 	const formattedDate = date ? formatDate(date) : null;
 
 	return (
-		<article className='max-w-2xl mx-auto px-4'>
-			<header className='mb-12'>
-				<h1 className='mb-6 text-4xl md:text-5xl font-bold leading-snug tracking-tight md:leading-tight'>
+		<article className="max-w-2xl mx-auto px-4">
+			<header className="mb-12">
+				<h1 className="mb-6 text-4xl md:text-5xl font-bold leading-snug tracking-tight md:leading-tight">
 					{title}
 				</h1>
 				{date && (
-					<time dateTime={date} className='text-gray-600 text-lg'>
+					<time dateTime={date} className="text-gray-600 text-lg">
 						{formattedDate}
 					</time>
 				)}
 			</header>
 
-			<div className='prose overflow-x-hidden'>
+			<div className="prose overflow-x-hidden">
 				<Blocks blocks={post.content} />
 			</div>
 
-			<footer className='mt-8 border-t pt-8'>
+			<footer className="mt-8 border-t pt-8">
 				<ShareButtons url={`/posts/${slug}`} title={title} />
 			</footer>
 		</article>

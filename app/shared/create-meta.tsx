@@ -28,7 +28,8 @@ export const createMeta = ({
 
 	// I can't get Vercel OG or similar to run in Cloudflare Pages so hosting it
 	// seperately at pmil-me-og.vercel.app
-	image = image ||
+	image =
+		image ||
 		`https://pmil-me-og.vercel.app/api/og?title=${encodeURIComponent(title)}`;
 
 	const items: MetaDescriptor[] = [

@@ -32,7 +32,7 @@ const CoverImageInner: FC<{
 			fit="fill"
 			className={clsx(
 				'shadow-small',
-				props.href && 'hover:shadow-medium transition-shadow duration-200'
+				props.href && 'hover:shadow-medium transition-shadow duration-200',
 			)}
 		/>
 	);

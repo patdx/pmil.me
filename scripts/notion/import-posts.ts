@@ -14,8 +14,8 @@ console.log(
 	await cache('notion-posts', () =>
 		notion.databases.retrieve({
 			database_id: DATABASE_ID,
-		})
-	)
+		}),
+	),
 );
 
 type Post = {
@@ -29,7 +29,7 @@ type Post = {
 };
 
 const posts = readJson<Post[]>(
-	new URL('../import/import.json', import.meta.url)
+	new URL('../import/import.json', import.meta.url),
 );
 
 console.log(posts);

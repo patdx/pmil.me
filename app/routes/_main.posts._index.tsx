@@ -10,7 +10,7 @@ import { getPosts } from '~/.server/notion';
 export async function loader(args: LoaderFunctionArgs) {
 	const posts = await getPosts(args.context);
 
-	return ({ posts: posts });
+	return { posts: posts };
 	// const db = createDrizzle(args.context.cloudflare.env.DB);
 	// const posts = await db.query.post.findMany({
 	// 	columns: {
@@ -31,16 +31,16 @@ export default function PostsPage() {
 	const { posts } = useLoaderData<typeof loader>();
 
 	return (
-		<Container className='grid gap-4 py-4'>
+		<Container className="grid gap-4 py-4">
 			<section>
-				<div className='container mx-auto max-w-4xl'>
+				<div className="container mx-auto max-w-4xl">
 					{posts.map((post) => (
 						<Link
 							key={post.slug}
 							to={`/posts/${post.slug}`}
-							className='block p-1 transition hover:bg-gray-200 active:bg-gray-300'
+							className="block p-1 transition hover:bg-gray-200 active:bg-gray-300"
 						>
-							<span className='font-bold tabular-nums'>{post.date}</span>{' '}
+							<span className="font-bold tabular-nums">{post.date}</span>{' '}
 							{post.title}
 						</Link>
 					))}
