@@ -29,7 +29,6 @@ const requestHandler = createRequestHandler(
 
 export default {
 	fetch(request, env, ctx) {
-		console.log('hello workers/app.ts');
 		const cloudflare: Cloudflare = {
 			env,
 			cf: request.cf as any,
