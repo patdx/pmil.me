@@ -4,10 +4,10 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "react-router build && cp build/server/index.js build/client/_worker.js",
-    "deploy": "wrangler pages deploy",
+    "build": "react-router build",
+    "deploy": "wrangler deploy",
     "dev": "react-router dev",
-    "start": "wrangler pages dev",
+    "start": "wrangler dev",
     "typecheck": "react-router typegen && tsc",
     "typegen": "wrangler types",
     "update-react": "pnpm install --save-exact react@rc react-dom@rc",
@@ -15,8 +15,8 @@
     "lint:fix": "biome lint --fix",
     "format": "biome format --write",
     "db-gen": "drizzle-kit generate",
-    "db-up": "pnpm wrangler d1 migrations apply pmil-me",
-    "db-exec": "pnpm wrangler d1 execute pmil-me",
+    "db-up": "wrangler d1 migrations apply pmil-me",
+    "db-exec": "wrangler d1 execute pmil-me",
     "build:notion": "rollup --config vendor/notion/rollup.config.ts --configPlugin typescript"
   },
   "dependencies": {
@@ -50,7 +50,7 @@
     "safe-mdx": "0.0.5",
     "satori": "0.12.1",
     "sharp": "0.33.5",
-    "solid-js": "1.9.5",
+    "smol-toml": "1.3.1",
     "tailwind-merge": "3.0.2",
     "tailwindcss": "4.0.17",
     "tailwindcss-animate": "1.0.7",
@@ -86,12 +86,12 @@
     "@types/react-dom": "19.0.4",
     "cachified-adapter-cloudflare-kv": "2.3.0",
     "drizzle-kit": "0.30.5",
+    "esbuild": "0.25.1",
     "gray-matter": "4.0.3",
     "postcss": "8.5.3",
     "remark-frontmatter": "5.0.0",
     "remark-mdx-frontmatter": "5.1.0",
     "rollup": "4.37.0",
-    "tailwindcss": "3.4.17",
     "typescript": "5.8.2",
     "unenv": "1.10.0",
     "unplugin-auto-import": "19.1.2",
@@ -103,7 +103,7 @@
     "vite-plugin-commonjs": "0.10.4",
     "vite-plugin-wasm": "3.4.1",
     "vite-tsconfig-paths": "5.1.4",
-    "wrangler": "4.4.1",
+    "wrangler": "4.5.0",
     "zx": "8.4.1"
   },
   "engines": {
@@ -115,7 +115,8 @@
     ],
     "overrides": {
       "@types/react": "$@types/react",
-      "@types/react-dom": "$@types/react-dom"
+      "@types/react-dom": "$@types/react-dom",
+      "esbuild": "$esbuild"
     }
   },
   "packageManager": "pnpm@10.7.0+sha512.6b865ad4b62a1d9842b61d674a393903b871d9244954f652b8842c2b553c72176b278f64c463e52d40fff8aba385c235c8c9ecf5cc7de4fd78b8bb6d49633ab6"
