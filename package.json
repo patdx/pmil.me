@@ -16,7 +16,7 @@
     "db-gen": "drizzle-kit generate",
     "db-up": "wrangler d1 migrations apply pmil-me",
     "db-exec": "wrangler d1 execute pmil-me",
-    "build:notion": "rollup --config vendor/notion/rollup.config.ts --configPlugin typescript"
+    "build:notion": "NODE_OPTIONS=\"--experimental-strip-types\" rollup --config vendor/notion/rollup.config.ts"
   },
   "dependencies": {
     "@notionhq/client": "2.3.0",
@@ -72,7 +72,6 @@
     "@rollup/plugin-json": "6.1.0",
     "@rollup/plugin-node-resolve": "16.0.1",
     "@rollup/plugin-replace": "6.0.2",
-    "@rollup/plugin-typescript": "12.1.2",
     "@shikijs/rehype": "3.2.1",
     "@svgr/core": "8.1.0",
     "@svgr/plugin-jsx": "8.1.0",

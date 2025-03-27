@@ -8,7 +8,7 @@ import { getProjects, type NormalizedPage } from '~/.server/notion'
 
 export async function loader(args: LoaderFunctionArgs) {
 	const projects = await getProjects(args.context)
-
+	console.log('projects ' + JSON.stringify(projects).length)
 	return { projects }
 }
 

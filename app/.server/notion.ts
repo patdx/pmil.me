@@ -29,7 +29,7 @@ function getNotion(context: AppLoadContext): INotion.Client {
 function getCacheAdapter(context: AppLoadContext) {
 	return cloudflareKvCacheAdapter({
 		kv: context.cloudflare.env.KV as any,
-		keyPrefix: 'notion-cache3',
+		keyPrefix: 'notion-cache',
 	})
 }
 
@@ -42,7 +42,7 @@ function getCachifiedDefaults(context: AppLoadContext) {
 		cache: getCacheAdapter(context),
 		waitUntil: getWaitUntil(context),
 		// ttl: 1000, // 1 second
-		ttl: 1000 * 60 * 60 * 18, // 18 hour
+		ttl: 1000 * 60 * 60, // 1 hour
 		// if cached longer than 1 day the images will get out of date
 		staleWhileRevalidate: 1000 * 60 * 60, // 1 hour
 		// forceFresh: import.meta.env.DEV,
