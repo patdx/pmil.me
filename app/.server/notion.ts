@@ -290,7 +290,7 @@ export async function getBlocks(
 	})
 
 	for (const block of results) {
-		if (block.has_children) {
+		if ('has_children' in block && block.has_children) {
 			block.children = await getBlocks(context, block.id)
 		}
 
