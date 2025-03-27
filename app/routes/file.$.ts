@@ -66,6 +66,7 @@ export async function loader(args: Route.LoaderArgs) {
 
 	const response = await fetch(request, {
 		cf: {
+			cacheEverything: true,
 			cacheTtlByStatus: { '200-299': 31536000, 404: 1, '500-599': 0 },
 			cacheKey: args.request.url,
 		},
