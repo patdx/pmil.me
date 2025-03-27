@@ -2,6 +2,7 @@ import { getNotion } from '~/.server/notion'
 import type { Route } from './+types/file.$'
 import { z } from 'zod'
 import * as Notion from '@notionhq/client'
+import type { CacheStorage } from '@cloudflare/workers-types/experimental'
 
 // https://github.com/justjake/monorepo/blob/main/packages/notion-api/src/lib/assets.ts#L43
 // export type AssetRequest =
@@ -20,68 +21,86 @@ import * as Notion from '@notionhq/client'
 //   | { object: 'user'; id: string; field: 'avatar_url' };
 
 export async function loader(args: Route.LoaderArgs) {
-	const { params } = args
-	const fileId = params.id
+	const cacheKey = args.request.url
+	const cache = (caches as unknown as CacheStorage).default
 
-	const segments = params['*'].split('/')
+	let response = (await cache.match(cacheKey)) as unknown as Response
 
-	const [_page, page_id, _properties, field] = z
-		.tuple([z.literal('page'), z.string(), z.literal('properties'), z.string()])
-		.parse(segments)
+	if (!response) {
+		console.log(
+			`Response for request url: ${cacheKey} not present in cache. Fetching and caching request.`
+		)
+		response = await getFreshValue()
+		// Must use Response constructor to inherit all of response's fields
+		response = new Response(response.body, response)
 
-	const notion = getNotion(args.context)
+		// Cache API respects Cache-Control headers. Setting s-max-age to 10
+		// will limit the response to be in cache for 10 seconds max
 
-	const page = await notion.pages.retrieve({
-		page_id: page_id,
-	})
+		// Any changes made to the response here will be reflected in the cached value
+		// response.headers.append('Cache-Control', 's-maxage=10')
 
-	if (!Notion.isFullPage(page)) {
-		throw new Response('Not a full page', { status: 404 })
+		// cache for 1 year
+		response.headers.append('Cache-Control', 's-maxage=31536000')
+
+		args.context.cloudflare.ctx.waitUntil(cache.put(cacheKey, response.clone()))
+	} else {
+		console.log(`Cache hit for: ${cacheKey}.`)
 	}
-
-	const properties = page.properties
-	const property = properties[field]
-
-	if (!property) {
-		throw new Response('Property not found', { status: 404 })
-	}
-
-	if (property.type !== 'files') {
-		throw new Response('Property is not a file', { status: 404 })
-	}
-
-	const file = property.files[0]
-
-	if (!file) {
-		throw new Response('File not found', { status: 404 })
-	}
-
-	if (file.type !== 'file') {
-		throw new Response('external file not supported', { status: 404 })
-	}
-
-	const fileUrl = file.file.url
-
-	const request = new Request(fileUrl)
-
-	const response = await fetch(request, {
-		cf: {
-			cacheEverything: true,
-			cacheTtlByStatus: { '200-299': 31536000, 404: 1, '500-599': 0 },
-			cacheKey: args.request.url,
-		},
-	})
-
-	if (!response.ok) {
-		return response
-	}
-
-	const newResponse = new Response(response.body, response)
-
-	newResponse.headers.set(
-		'cache-control',
-		'public, max-age=31536000, immutable'
-	)
 
 	return response
+
+	async function getFreshValue() {
+		// TODO: handle security hole of being able to access any file
+		const { params } = args
+
+		const segments = params['*'].split('/')
+
+		const [_page, page_id, _properties, field] = z
+			.tuple([
+				z.literal('page'),
+				z.string(),
+				z.literal('properties'),
+				z.string(),
+			])
+			.parse(segments)
+
+		const notion = getNotion(args.context)
+
+		const page = await notion.pages.retrieve({
+			page_id: page_id,
+		})
+
+		if (!Notion.isFullPage(page)) {
+			throw new Response('Not a full page', { status: 404 })
+		}
+
+		const properties = page.properties
+		const property = properties[field]
+
+		if (!property) {
+			throw new Response('Property not found', { status: 404 })
+		}
+
+		if (property.type !== 'files') {
+			throw new Response('Property is not a file', { status: 404 })
+		}
+
+		const file = property.files[0]
+
+		if (!file) {
+			throw new Response('File not found', { status: 404 })
+		}
+
+		if (file.type !== 'file') {
+			throw new Response('external file not supported', { status: 404 })
+		}
+
+		const fileUrl = file.file.url
+
+		const request = new Request(fileUrl)
+
+		const response = await fetch(request)
+		return response
+	}
 }

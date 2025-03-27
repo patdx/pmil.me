@@ -42,3 +42,4 @@ node_modules
 .react-router/
 tsconfig.tsbuildinfo
 .rollup.cache
+.aider*
