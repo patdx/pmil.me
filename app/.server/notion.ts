@@ -1,40 +1,40 @@
-import { cachified, verboseReporter } from '@epic-web/cachified';
-import type * as INotion from '@notionhq/client';
+import { cachified, verboseReporter } from '@epic-web/cachified'
+import type * as INotion from '@notionhq/client'
 // import * as _Notion from '../../vendor/notion/notion.js';
-import * as _Notion from '@notionhq/client';
+import * as _Notion from '@notionhq/client'
 import type {
 	BlockObjectResponse,
 	PageObjectResponse,
 	RichTextItemResponse,
-} from '@notionhq/client/build/src/api-endpoints';
-import type { AppLoadContext } from 'react-router';
-import { cloudflareKvCacheAdapter } from 'cachified-adapter-cloudflare-kv';
-import { first } from 'lodash-es';
-import { z } from 'zod';
+} from '@notionhq/client/build/src/api-endpoints'
+import type { AppLoadContext } from 'react-router'
+import { cloudflareKvCacheAdapter } from 'cachified-adapter-cloudflare-kv'
+import { first } from 'lodash-es'
+import { z } from 'zod'
 
-const Notion = _Notion as typeof INotion;
+const Notion = _Notion as typeof INotion
 
 // A nice referencing for using Notion API:
 // https://www.coryetzkorn.com/blog/how-the-notion-api-powers-my-blog
 
-const POSTS_DATABASE_ID = 'c733986f-2b63-4490-9f8d-81c12332892c';
-const PROJECTS_DATABASE_ID = '2fcde118-7914-4b4c-b753-62e72893e6d8';
+const POSTS_DATABASE_ID = 'c733986f-2b63-4490-9f8d-81c12332892c'
+const PROJECTS_DATABASE_ID = '2fcde118-7914-4b4c-b753-62e72893e6d8'
 
 function getNotion(context: AppLoadContext): INotion.Client {
 	return new Notion.Client({
 		auth: context.cloudflare.env.NOTION_TOKEN,
-	});
+	})
 }
 
 function getCacheAdapter(context: AppLoadContext) {
 	return cloudflareKvCacheAdapter({
 		kv: context.cloudflare.env.KV as any,
 		keyPrefix: 'notion-cache3',
-	});
+	})
 }
 
 function getWaitUntil(context: AppLoadContext) {
-	return context.cloudflare.ctx.waitUntil.bind(context.cloudflare.ctx);
+	return context.cloudflare.ctx.waitUntil.bind(context.cloudflare.ctx)
 }
 
 function getCachifiedDefaults(context: AppLoadContext) {
@@ -47,17 +47,17 @@ function getCachifiedDefaults(context: AppLoadContext) {
 		staleWhileRevalidate: 1000 * 60 * 60, // 1 hour
 		// forceFresh: import.meta.env.DEV,
 		// forceFresh: false,
-	};
+	}
 }
 
 export async function getPosts(context: AppLoadContext) {
-	const notion = getNotion(context);
+	const notion = getNotion(context)
 
 	const posts = await cachified(
 		{
 			key: `posts`,
 			getFreshValue: () => {
-				console.log(`getPosts getting fresh value`);
+				console.log(`getPosts getting fresh value`)
 
 				return notion.databases.query({
 					database_id: POSTS_DATABASE_ID,
@@ -73,42 +73,42 @@ export async function getPosts(context: AppLoadContext) {
 							is_not_empty: true,
 						},
 					},
-				});
+				})
 			},
 			...getCachifiedDefaults(context),
 		},
-		verboseReporter(),
-	);
-	console.log(`getPosts got value (cached or fresh)`);
+		verboseReporter()
+	)
+	console.log(`getPosts got value (cached or fresh)`)
 
-	const normalized: PostPropertiesOutput[] = [];
+	const normalized: PostPropertiesOutput[] = []
 
 	for (const post of posts.results) {
 		if (Notion.isFullPage(post)) {
-			normalized.push(normalizePostResponse(post));
+			normalized.push(normalizePostResponse(post))
 		}
 	}
 
-	return normalized;
+	return normalized
 }
 
 export async function getPost(context: AppLoadContext, slugOrId: string) {
-	const notion = getNotion(context);
+	const notion = getNotion(context)
 
 	return cachified(
 		{
 			key: `post-${slugOrId}`,
 			getFreshValue: async () => {
 				try {
-					let post: PageObjectResponse | null = null;
+					let post: PageObjectResponse | null = null
 
 					if (z.string().uuid(slugOrId).safeParse(slugOrId).success === true) {
 						const maybePost = await notion.pages.retrieve({
 							page_id: slugOrId,
-						});
+						})
 
 						if (Notion.isFullPage(maybePost)) {
-							post = maybePost;
+							post = maybePost
 						}
 					}
 
@@ -122,54 +122,54 @@ export async function getPost(context: AppLoadContext, slugOrId: string) {
 								},
 							},
 							page_size: 1,
-						});
+						})
 
-						const maybePost = postBySlug.results[0];
+						const maybePost = postBySlug.results[0]
 
 						if (Notion.isFullPage(maybePost)) {
-							post = maybePost;
+							post = maybePost
 						}
 					}
 
 					if (!post) {
-						console.log(`Not a full page: ${slugOrId}`);
-						return null;
+						console.log(`Not a full page: ${slugOrId}`)
+						return null
 					}
 
 					const isPost =
 						post.parent.type === 'database_id' &&
-						post.parent.database_id === POSTS_DATABASE_ID;
+						post.parent.database_id === POSTS_DATABASE_ID
 					if (!isPost) {
-						console.log(`Not a post: ${slugOrId}`);
-						return null;
+						console.log(`Not a post: ${slugOrId}`)
+						return null
 					}
 
-					const blocks = await getBlocks(context, post.id);
+					const blocks = await getBlocks(context, post.id)
 
 					return {
 						...normalizePostResponse(post),
 						content: blocks,
-					};
+					}
 				} catch (err) {
 					if (
 						err instanceof Notion.APIResponseError &&
 						err.code === Notion.APIErrorCode.ObjectNotFound
 					) {
-						return null;
+						return null
 					}
-					throw err;
+					throw err
 				}
 			},
 			...getCachifiedDefaults(context),
 		},
-		verboseReporter(),
-	);
+		verboseReporter()
+	)
 }
 
 export async function getProjects(
-	context: AppLoadContext,
+	context: AppLoadContext
 ): Promise<NormalizedPage[]> {
-	const notion = getNotion(context);
+	const notion = getNotion(context)
 
 	return cachified(
 		{
@@ -183,46 +183,46 @@ export async function getProjects(
 							direction: 'ascending',
 						},
 					],
-				});
+				})
 
-				const normalized: NormalizedPage[] = [];
+				const normalized: NormalizedPage[] = []
 
 				for (const project of projects.results) {
 					if (Notion.isFullPage(project)) {
-						normalized.push(normalizePage(project));
+						normalized.push(normalizePage(project))
 					}
 				}
 
-				return normalized;
+				return normalized
 			},
 			...getCachifiedDefaults(context),
 		},
-		verboseReporter(),
-	);
+		verboseReporter()
+	)
 }
 
 export async function getProject(context: AppLoadContext, slugOrId: string) {
-	const notion = getNotion(context);
+	const notion = getNotion(context)
 
 	return cachified(
 		{
 			key: `project-${slugOrId}`,
 			getFreshValue: async () => {
 				try {
-					let project: PageObjectResponse | null = null;
+					let project: PageObjectResponse | null = null
 
 					if (z.string().uuid(slugOrId).safeParse(slugOrId).success === true) {
 						const maybeProject = await notion.pages.retrieve({
 							page_id: slugOrId,
-						});
+						})
 
 						if (Notion.isFullPage(maybeProject)) {
-							project = maybeProject;
+							project = maybeProject
 						}
 					}
 
 					if (!project) {
-						console.log('searching by slug');
+						console.log('searching by slug')
 						const projectBySlug = await notion.databases.query({
 							database_id: PROJECTS_DATABASE_ID,
 							filter: {
@@ -232,70 +232,70 @@ export async function getProject(context: AppLoadContext, slugOrId: string) {
 								},
 							},
 							page_size: 1,
-						});
+						})
 
-						console.log(projectBySlug);
+						console.log(projectBySlug)
 
-						const maybeProject = projectBySlug.results[0];
+						const maybeProject = projectBySlug.results[0]
 
 						if (Notion.isFullPage(maybeProject)) {
-							project = maybeProject;
+							project = maybeProject
 						}
 					}
 
 					if (!project) {
-						console.log(`Not a full page: ${slugOrId}`);
-						return null;
+						console.log(`Not a full page: ${slugOrId}`)
+						return null
 					}
 
 					const isProject =
 						project.parent.type === 'database_id' &&
-						project.parent.database_id === PROJECTS_DATABASE_ID;
+						project.parent.database_id === PROJECTS_DATABASE_ID
 
 					if (!isProject) {
-						console.log(`Not a project: ${slugOrId}`);
-						return null;
+						console.log(`Not a project: ${slugOrId}`)
+						return null
 					}
 
-					console.log(project.parent);
+					console.log(project.parent)
 
-					const blocks = await getBlocks(context, project.id);
+					const blocks = await getBlocks(context, project.id)
 
 					return {
 						...normalizePage(project),
 						content: blocks,
-					};
+					}
 				} catch (err) {
 					if (
 						err instanceof Notion.APIResponseError &&
 						err.code === Notion.APIErrorCode.ObjectNotFound
 					) {
-						return null;
+						return null
 					}
-					throw err;
+					throw err
 				}
 			},
 			...getCachifiedDefaults(context),
 		},
-		verboseReporter(),
-	);
+		verboseReporter()
+	)
 }
 
 export async function getBlocks(
 	context: AppLoadContext,
-	blockId: string,
+	blockId: string
 ): Promise<BlockObjectResponse[]> {
-	console.log(`getBlocks(${blockId})`);
-	const notion = getNotion(context);
+	console.log(`getBlocks(${blockId})`)
+	const notion = getNotion(context)
 
 	const { results } = await notion.blocks.children.list({
 		block_id: blockId,
 		page_size: 100,
-	});
+	})
 
 	for (const block of results) {
 		if (block.has_children) {
-			block.children = await getBlocks(context, block.id);
+			block.children = await getBlocks(context, block.id)
 		}
 
 		if (Notion.isFullBlock(block)) {
@@ -305,22 +305,22 @@ export async function getBlocks(
 				for (const item of block.paragraph.rich_text) {
 					if (item.type === 'text') {
 						if (item.href?.startsWith('/')) {
-							console.log(`checking ${item.href}`);
+							console.log(`checking ${item.href}`)
 							const notionPage = await notion.pages.retrieve({
 								page_id: item.href.slice(1),
-							});
+							})
 
-							console.log(`found: `, notionPage);
+							console.log(`found: `, notionPage)
 
-							const normalized = normalizePage(notionPage);
+							const normalized = normalizePage(notionPage)
 
 							// TODO: support projects and other lists too
-							item.href = `/posts/${normalized.properties.slug}`;
+							item.href = `/posts/${normalized.properties.slug}`
 							item.text.link = {
 								url: item.href,
-							};
+							}
 
-							console.log(item);
+							console.log(item)
 							// 1 + 1;
 						}
 					}
@@ -332,108 +332,108 @@ export async function getBlocks(
 		// if (block.object === 'block') {
 	}
 
-	return results as any;
+	return results as any
 }
 
 type MultiSelectProperty = Extract<
 	PageObjectResponse['properties'][string],
 	{
-		type: 'multi_select';
+		type: 'multi_select'
 	}
->;
+>
 type DateProperty = Extract<
 	PageObjectResponse['properties'][string],
 	{
-		type: 'date';
+		type: 'date'
 	}
->;
+>
 type RichTextProperty = Extract<
 	PageObjectResponse['properties'][string],
 	{
-		type: 'rich_text';
+		type: 'rich_text'
 	}
->;
+>
 
 type TitleProperty = Extract<
 	PageObjectResponse['properties'][string],
 	{
-		type: 'title';
+		type: 'title'
 	}
->;
+>
 
 type PostPropertiesInput = {
-	tags: MultiSelectProperty;
-	date: DateProperty;
-	slug: RichTextProperty;
-	title: TitleProperty;
-};
+	tags: MultiSelectProperty
+	date: DateProperty
+	slug: RichTextProperty
+	title: TitleProperty
+}
 
 type PostPropertiesOutput = {
-	tags: string[];
-	date: string | null;
-	slug: string;
-	title: string;
-};
+	tags: string[]
+	date: string | null
+	slug: string
+	title: string
+}
 
 export type NormalizedPage = {
-	id: string;
-	properties: Record<string, string | string[] | null>;
-};
+	id: string
+	properties: Record<string, string | string[] | null>
+}
 
 function normalizePage(page: PageObjectResponse): NormalizedPage {
-	const properties: Record<string, string | string[] | null> = {};
+	const properties: Record<string, string | string[] | null> = {}
 
 	for (const [key, value] of Object.entries(page.properties)) {
 		if (value.type === 'multi_select') {
-			properties[key] = value.multi_select.map((item) => item.name);
+			properties[key] = value.multi_select.map((item) => item.name)
 		} else if (value.type === 'date') {
-			properties[key] = value.date?.start ?? null;
+			properties[key] = value.date?.start ?? null
 		} else if (value.type === 'rich_text') {
-			properties[key] = richTextToPlain(value.rich_text);
+			properties[key] = richTextToPlain(value.rich_text)
 		} else if (value.type === 'title') {
-			properties[key] = richTextToPlain(value.title);
+			properties[key] = richTextToPlain(value.title)
 		} else if (value.type === 'url') {
-			properties[key] = value.url;
+			properties[key] = value.url
 		} else if (value.type === 'files') {
-			const file = first(value.files);
+			const file = first(value.files)
 			if (file?.type === 'external') {
-				properties[key] = file.external.url;
+				properties[key] = file.external.url
 			} else if (file?.type === 'file') {
-				properties[key] = file.file.url;
+				properties[key] = file.file.url
 			}
 		} else {
-			console.warn('unknown property type', value.type);
-			console.log(value);
+			console.warn('unknown property type', value.type)
+			console.log(value)
 		}
 	}
 
 	return {
 		id: page.id,
 		properties,
-	};
+	}
 }
 
 function richTextToPlain(richText: RichTextItemResponse[]): string | null {
-	if (richText.length === 0) return null;
-	return richText.map((text) => text.plain_text).join('');
+	if (richText.length === 0) return null
+	return richText.map((text) => text.plain_text).join('')
 }
 
 export function normalizePostResponse(
-	post: PageObjectResponse,
+	post: PageObjectResponse
 ): PostPropertiesOutput {
-	const properties = post.properties as PostPropertiesInput;
+	const properties = post.properties as PostPropertiesInput
 
-	const tags = properties.tags.multi_select.map((tag) => tag.name);
-	const date = properties.date.date?.start ?? null;
-	const slug = properties.slug.rich_text?.[0]?.plain_text ?? post.id; // TODO: support custom slug
-	const title = richTextToPlain(properties.title.title)!;
+	const tags = properties.tags.multi_select.map((tag) => tag.name)
+	const date = properties.date.date?.start ?? null
+	const slug = properties.slug.rich_text?.[0]?.plain_text ?? post.id // TODO: support custom slug
+	const title = richTextToPlain(properties.title.title)!
 
 	return {
 		tags,
 		date,
 		slug,
 		title,
-	};
+	}
 }
 
 //     "rich_text": [

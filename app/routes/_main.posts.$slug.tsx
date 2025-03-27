@@ -1,21 +1,21 @@
-import { type LoaderFunctionArgs, useRouteError } from 'react-router';
-import { type MetaFunction, useLoaderData } from 'react-router';
-import { z } from 'zod';
-import { getPost } from '~/.server/notion';
-import { formatDate } from '~/utils/dates';
+import { type LoaderFunctionArgs, useRouteError } from 'react-router'
+import { type MetaFunction, useLoaderData } from 'react-router'
+import { z } from 'zod'
+import { getPost } from '~/.server/notion'
+import { formatDate } from '~/utils/dates'
 
 export async function loader({ params, context }: LoaderFunctionArgs) {
-	const { slug } = z.object({ slug: z.string() }).parse(params);
+	const { slug } = z.object({ slug: z.string() }).parse(params)
 
-	const post = await getPost(context, slug);
+	const post = await getPost(context, slug)
 
-	if (!post) throw new Response('Not found', { status: 404 });
+	if (!post) throw new Response('Not found', { status: 404 })
 
-	return { post: post };
+	return { post: post }
 }
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
-	if (!data?.post) return [{ title: 'Post Not Found' }];
+	if (!data?.post) return [{ title: 'Post Not Found' }]
 
 	return createMeta({
 		title: data.post.title,
@@ -26,26 +26,26 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 			publishedTime: data.post.date ?? undefined,
 			authors: ['Patrick Miller'],
 		},
-	});
-};
+	})
+}
 
 export function ErrorBoundary() {
-	const error = useRouteError();
+	const error = useRouteError()
 
-	console.error(error);
+	console.error(error)
 
 	return (
 		<Container>
 			<h1 className="text-2xl font-bold">Error</h1>
 			<p>Sorry, this post could not be found.</p>
 		</Container>
-	);
+	)
 }
 
 export default function PostPage() {
-	const { post } = useLoaderData<typeof loader>();
-	const { slug, title, date } = post;
-	const formattedDate = date ? formatDate(date) : null;
+	const { post } = useLoaderData<typeof loader>()
+	const { slug, title, date } = post
+	const formattedDate = date ? formatDate(date) : null
 
 	return (
 		<article className="max-w-2xl mx-auto px-4">
@@ -68,5 +68,5 @@ export default function PostPage() {
 				<ShareButtons url={`/posts/${slug}`} title={title} />
 			</footer>
 		</article>
-	);
+	)
 }

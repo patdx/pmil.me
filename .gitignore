@@ -40,3 +40,4 @@ node_modules
 .vercel
 
 .react-router/
+tsconfig.tsbuildinfo

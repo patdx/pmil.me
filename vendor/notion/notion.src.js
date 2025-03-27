@@ -4,4 +4,4 @@ export {
 	Client,
 	isFullBlock,
 	isFullPage,
-} from '@notionhq/client';
+} from '@notionhq/client'

@@ -1,40 +1,40 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react'
 
 interface ShareButtonsProps {
-	url: string;
-	title: string;
+	url: string
+	title: string
 }
 
 export function ShareButtons({ url, title }: ShareButtonsProps) {
-	const twitterRef = useRef<HTMLAnchorElement>(null);
-	const linkedinRef = useRef<HTMLAnchorElement>(null);
-	const blueskyRef = useRef<HTMLAnchorElement>(null);
+	const twitterRef = useRef<HTMLAnchorElement>(null)
+	const linkedinRef = useRef<HTMLAnchorElement>(null)
+	const blueskyRef = useRef<HTMLAnchorElement>(null)
 
 	useEffect(() => {
-		const fullUrl = `${window.location.origin}${url}`;
+		const fullUrl = `${window.location.origin}${url}`
 		if (twitterRef.current) {
 			twitterRef.current.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-				title,
-			)}&url=${encodeURIComponent(fullUrl)}`;
+				title
+			)}&url=${encodeURIComponent(fullUrl)}`
 		}
 		if (linkedinRef.current) {
 			linkedinRef.current.href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-				fullUrl,
-			)}`;
+				fullUrl
+			)}`
 		}
 		if (blueskyRef.current) {
 			blueskyRef.current.href = `https://bsky.app/intent/compose?text=${encodeURIComponent(
-				`${title}\n\n${fullUrl}`,
-			)}`;
+				`${title}\n\n${fullUrl}`
+			)}`
 		}
-	}, [url, title]);
+	}, [url, title])
 
 	return (
 		<div className="flex gap-4" role="group" aria-label="Share article">
 			<a
 				ref={twitterRef}
 				href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-					title,
+					title
 				)}&url=${encodeURIComponent(url)}`}
 				target="_blank"
 				rel="noopener noreferrer"
@@ -45,7 +45,7 @@ export function ShareButtons({ url, title }: ShareButtonsProps) {
 			<a
 				ref={linkedinRef}
 				href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-					url,
+					url
 				)}`}
 				target="_blank"
 				rel="noopener noreferrer"
@@ -56,7 +56,7 @@ export function ShareButtons({ url, title }: ShareButtonsProps) {
 			<a
 				ref={blueskyRef}
 				href={`https://bsky.app/intent/compose?text=${encodeURIComponent(
-					`${title}\n\n${url}`,
+					`${title}\n\n${url}`
 				)}`}
 				target="_blank"
 				rel="noopener noreferrer"
@@ -65,5 +65,5 @@ export function ShareButtons({ url, title }: ShareButtonsProps) {
 				Share on Bluesky
 			</a>
 		</div>
-	);
+	)
 }

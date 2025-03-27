@@ -1,39 +1,39 @@
-import humanizeUrl from 'humanize-url';
+import humanizeUrl from 'humanize-url'
 import {
 	type LoaderFunctionArgs,
 	type MetaFunction,
 	useLoaderData,
-} from 'react-router';
-import { z } from 'zod';
-import { getProject } from '~/.server/notion';
+} from 'react-router'
+import { z } from 'zod'
+import { getProject } from '~/.server/notion'
 
 export async function loader({ params, context }: LoaderFunctionArgs) {
-	const { slug } = z.object({ slug: z.string() }).parse(params);
+	const { slug } = z.object({ slug: z.string() }).parse(params)
 
 	// const project = await getContentMeta<ProjectSchema>('project', slug);
-	const project = await getProject(context, slug);
+	const project = await getProject(context, slug)
 
 	if (!project) {
-		throw new Response('Not found', { status: 404 });
+		throw new Response('Not found', { status: 404 })
 	}
 
-	return { project };
+	return { project }
 }
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
 	return createMeta({
 		title: data?.project.properties?.title as string,
 		url: `/projects/${data?.project.properties?.slug ?? data?.project.id}`,
-	});
-};
+	})
+}
 
 export default function ProjectPage() {
-	const { project } = useLoaderData<typeof loader>();
+	const { project } = useLoaderData<typeof loader>()
 
 	const { title, externalUrl, technologies, coverImage, slug } =
-		project.properties;
+		project.properties
 
-	const url = `/projects/${slug}`;
+	const url = `/projects/${slug}`
 
 	return (
 		<Container className="grid gap-4 py-4">
@@ -75,5 +75,5 @@ export default function ProjectPage() {
 				</div>
 			</article>
 		</Container>
-	);
+	)
 }

@@ -1,6 +1,6 @@
-import type { LoaderFunctionArgs } from 'react-router';
-import { type MetaFunction, useLoaderData } from 'react-router';
-import { getPosts } from '~/.server/notion';
+import type { LoaderFunctionArgs } from 'react-router'
+import { type MetaFunction, useLoaderData } from 'react-router'
+import { getPosts } from '~/.server/notion'
 
 // https:remix-blog-mdx/blob/main/app/.server/posts.tsx
 
@@ -8,9 +8,9 @@ import { getPosts } from '~/.server/notion';
 // const posts = await getCollection('post');
 
 export async function loader(args: LoaderFunctionArgs) {
-	const posts = await getPosts(args.context);
+	const posts = await getPosts(args.context)
 
-	return { posts: posts };
+	return { posts: posts }
 	// const db = createDrizzle(args.context.cloudflare.env.DB);
 	// const posts = await db.query.post.findMany({
 	// 	columns: {
@@ -24,11 +24,11 @@ export async function loader(args: LoaderFunctionArgs) {
 }
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
-	return createMeta({ title: 'Blog | Patrick Miller', url: '/posts' });
-};
+	return createMeta({ title: 'Blog | Patrick Miller', url: '/posts' })
+}
 
 export default function PostsPage() {
-	const { posts } = useLoaderData<typeof loader>();
+	const { posts } = useLoaderData<typeof loader>()
 
 	return (
 		<Container className="grid gap-4 py-4">
@@ -47,5 +47,5 @@ export default function PostsPage() {
 				</div>
 			</section>
 		</Container>
-	);
+	)
 }

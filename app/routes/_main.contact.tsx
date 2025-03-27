@@ -1,14 +1,14 @@
-import type { MetaFunction } from 'react-router';
-import IoLogoGithub from '~icons/ion/logo-github';
-import IoLogoLinkedin from '~icons/ion/logo-linkedin';
-import IoMail from '~icons/ion/mail';
-import { Container } from '../components/Container';
+import type { MetaFunction } from 'react-router'
+import IoLogoGithub from '~icons/ion/logo-github'
+import IoLogoLinkedin from '~icons/ion/logo-linkedin'
+import IoMail from '~icons/ion/mail'
+import { Container } from '../components/Container'
 
 // size="1.5em"
 
 export const meta: MetaFunction = ({ data }) => {
-	return createMeta({ title: 'Contact | Patrick Miller', url: '/contact' });
-};
+	return createMeta({ title: 'Contact | Patrick Miller', url: '/contact' })
+}
 
 export default function Contact() {
 	return (
@@ -44,5 +44,5 @@ export default function Contact() {
 				</a>
 			</div>
 		</Container>
-	);
+	)
 }

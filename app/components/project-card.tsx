@@ -4,9 +4,9 @@ import {
 	ExternalLinkIcon,
 	GitHubLogoIcon,
 	RocketIcon,
-} from '@radix-ui/react-icons';
-import { Badge } from '~/components/ui/badge';
-import { Button } from '~/components/ui/button';
+} from '@radix-ui/react-icons'
+import { Badge } from '~/components/ui/badge'
+import { Button } from '~/components/ui/button'
 import {
 	Card,
 	CardContent,
@@ -14,15 +14,15 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from '~/components/ui/card';
+} from '~/components/ui/card'
 
 type ProjectCardProps = {
-	title: string;
-	coverImage?: string;
-	excerpt?: string | null;
-	href: string;
-	icon?: 'code' | 'beaker' | 'rocket';
-};
+	title: string
+	coverImage?: string
+	excerpt?: string | null
+	href: string
+	icon?: 'code' | 'beaker' | 'rocket'
+}
 
 export function ProjectCard({
 	title,
@@ -65,18 +65,18 @@ export function ProjectCard({
 				</Button>
 			</CardFooter>
 		</Card>
-	);
+	)
 }
 
 type Project = {
-	title: string;
-	description: string;
-	image?: string;
-	tags: string[];
-	githubUrl?: string;
-	liveUrl?: string;
-	icon?: 'code' | 'beaker' | 'rocket';
-};
+	title: string
+	description: string
+	image?: string
+	tags: string[]
+	githubUrl?: string
+	liveUrl?: string
+	icon?: 'code' | 'beaker' | 'rocket'
+}
 
 const projects: Project[] = [
 	{
@@ -124,20 +124,20 @@ const projects: Project[] = [
 		githubUrl: 'https://github.com/yourusername/motor-controller',
 		icon: 'beaker',
 	},
-];
+]
 
 const IconComponent = ({ icon }: { icon: Project['icon'] }) => {
 	switch (icon) {
 		case 'code':
-			return <CodeIcon className="w-12 h-12" />;
+			return <CodeIcon className="w-12 h-12" />
 		case 'beaker':
-			return <BeakerIcon className="w-12 h-12" />;
+			return <BeakerIcon className="w-12 h-12" />
 		case 'rocket':
-			return <RocketIcon className="w-12 h-12" />;
+			return <RocketIcon className="w-12 h-12" />
 		default:
-			return null;
+			return null
 	}
-};
+}
 
 const getInitials = (title: string) => {
 	return title
@@ -145,8 +145,8 @@ const getInitials = (title: string) => {
 		.map((word) => word[0])
 		.join('')
 		.toUpperCase()
-		.slice(0, 2);
-};
+		.slice(0, 2)
+}
 
 export function ProjectsPage() {
 	return (
@@ -217,5 +217,5 @@ export function ProjectsPage() {
 				))}
 			</div>
 		</div>
-	);
+	)
 }

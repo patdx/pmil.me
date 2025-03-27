@@ -1,5 +1,5 @@
-import type { FC } from 'react';
-import { HeaderLink } from './HeaderLink';
+import type { FC } from 'react'
+import { HeaderLink } from './HeaderLink'
 
 export const NavHeader: FC = () => {
 	return (
@@ -10,8 +10,8 @@ export const NavHeader: FC = () => {
 				</div>
 			))}
 		</div>
-	);
-};
+	)
+}
 
 const LINKS = [
 	{
@@ -30,4 +30,4 @@ const LINKS = [
 		title: 'Contact',
 		url: '/contact',
 	},
-];
+]

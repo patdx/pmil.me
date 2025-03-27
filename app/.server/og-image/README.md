@@ -1,7 +1,6 @@
 # og-image
 
-I spent a very long time trying to figure out how to get this to work on Cloudflare Pages
-with Remix/Vite. I finally got it to compile but it says the server size is larger than 1mb.
+I spent a very long time trying to figure out how to get this to work on Cloudflare Pages with Remix/Vite. I finally got it to compile but it says the server size is larger than 1mb.
 
 I think I will need to split the OG image generation into a separate worker.
 

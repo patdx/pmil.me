@@ -1,5 +1,5 @@
-import { sql } from 'drizzle-orm';
-import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
+import { sql } from 'drizzle-orm'
+import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core'
 
 export const post = sqliteTable('post', {
 	id: text('id').primaryKey(),
@@ -12,6 +12,6 @@ export const post = sqliteTable('post', {
 		.$type<string[]>()
 		.default(sql`'[]'`)
 		.notNull(),
-});
+})
 
 // TODO: indexes

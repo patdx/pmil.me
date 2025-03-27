@@ -1,28 +1,28 @@
-import type { FC } from 'react';
+import type { FC } from 'react'
 import {
 	type LoaderFunctionArgs,
 	type MetaFunction,
 	useLoaderData,
-} from 'react-router';
-import { getProjects, type NormalizedPage } from '~/.server/notion';
+} from 'react-router'
+import { getProjects, type NormalizedPage } from '~/.server/notion'
 
 export async function loader(args: LoaderFunctionArgs) {
-	const projects = await getProjects(args.context);
+	const projects = await getProjects(args.context)
 
-	return { projects };
+	return { projects }
 }
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
-	return createMeta({ title: 'Projects | Patrick Miller', url: '/projects' });
-};
+	return createMeta({ title: 'Projects | Patrick Miller', url: '/projects' })
+}
 
 export default function ProjectsPage() {
-	const { projects } = useLoaderData<typeof loader>();
-	return <Projects projects={projects} />;
+	const { projects } = useLoaderData<typeof loader>()
+	return <Projects projects={projects} />
 }
 
 const Projects: FC<{
-	projects: NormalizedPage[]; // really the coverImage is the GetImageResult
+	projects: NormalizedPage[] // really the coverImage is the GetImageResult
 }> = (props) => {
 	return (
 		<Container className="grid gap-4 py-4">
@@ -44,5 +44,5 @@ const Projects: FC<{
 				</div>
 			</section>
 		</Container>
-	);
-};
+	)
+}

@@ -3,18 +3,18 @@ import {
 	Outlet,
 	isRouteErrorResponse,
 	useRouteError,
-} from 'react-router';
+} from 'react-router'
 
 export const meta: MetaFunction = ({ error }) => {
 	if (error) {
-		return createMeta({ title: 'Error | Patrick Miller' });
+		return createMeta({ title: 'Error | Patrick Miller' })
 	} else {
-		return [];
+		return []
 	}
-};
+}
 
 export default function Main() {
-	return <Outlet />;
+	return <Outlet />
 }
 
 export function ErrorBoundary() {
@@ -25,15 +25,15 @@ export function ErrorBoundary() {
 				<ErrorBoundaryInner />
 			</Container>
 		</>
-	);
+	)
 }
 
 function ErrorBoundaryInner() {
-	const error = useRouteError();
+	const error = useRouteError()
 
 	if (isRouteErrorResponse(error)) {
 		if (error.status === 404) {
-			return <h1>This page could not be found.</h1>;
+			return <h1>This page could not be found.</h1>
 		}
 
 		return (
@@ -43,7 +43,7 @@ function ErrorBoundaryInner() {
 				</h1>
 				<p>{error.data}</p>
 			</>
-		);
+		)
 	}
 
 	return (
@@ -51,5 +51,5 @@ function ErrorBoundaryInner() {
 			<h1>Error!</h1>
 			<p>{error?.message ?? 'Unknown error'}</p>
 		</>
-	);
+	)
 }

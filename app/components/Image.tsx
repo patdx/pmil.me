@@ -1,44 +1,44 @@
-import { type FC, use } from 'react';
-import type { OutputMetadata } from '~/shared/utils';
+import { type FC, use } from 'react'
+import type { OutputMetadata } from '~/shared/utils'
 
-type SrcProp = string | OutputMetadata | { default: string | OutputMetadata };
+type SrcProp = string | OutputMetadata | { default: string | OutputMetadata }
 
 function useSrc(src: SrcProp | Promise<SrcProp>): Partial<OutputMetadata> {
-	let unwrapped: SrcProp;
+	let unwrapped: SrcProp
 
 	// first unwrap promise
 	if (src instanceof Promise) {
-		unwrapped = use(src);
+		unwrapped = use(src)
 	} else {
-		unwrapped = src;
+		unwrapped = src
 	}
 
 	if (typeof unwrapped === 'string') {
-		return { src: unwrapped };
+		return { src: unwrapped }
 	}
 
-	const undefaulted = 'default' in unwrapped ? unwrapped.default : unwrapped;
+	const undefaulted = 'default' in unwrapped ? unwrapped.default : unwrapped
 
-	return typeof undefaulted === 'string' ? { src: undefaulted } : undefaulted;
+	return typeof undefaulted === 'string' ? { src: undefaulted } : undefaulted
 }
 
 export const Image3: FC<{
-	className?: string;
-	src: SrcProp | Promise<SrcProp>;
-	style?: any;
-	alt?: string;
+	className?: string
+	src: SrcProp | Promise<SrcProp>
+	style?: any
+	alt?: string
 	/** @deprecated not currently used */
-	sizes?: string;
+	sizes?: string
 	/** @deprecated not currently used */
-	fit?: string;
+	fit?: string
 }> = ({ className, style, src: imageMaybePromise, alt }) => {
 	if (imageMaybePromise instanceof Promise) {
-		const unwrapped = use(imageMaybePromise);
+		const unwrapped = use(imageMaybePromise)
 	}
 
-	const image = useSrc(imageMaybePromise);
+	const image = useSrc(imageMaybePromise)
 
-	const { src, width, height, format } = image;
+	const { src, width, height, format } = image
 
 	return (
 		<img
@@ -49,5 +49,5 @@ export const Image3: FC<{
 			style={style}
 			alt={alt}
 		/>
-	);
-};
+	)
+}

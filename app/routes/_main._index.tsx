@@ -1,10 +1,10 @@
-import type { MetaFunction } from 'react-router';
-import { Image3 } from '~/components/Image';
-import patrickJpg from '../assets/patrick.jpg?w=400&h=400&rotate=90&as=metadata';
+import type { MetaFunction } from 'react-router'
+import { Image3 } from '~/components/Image'
+import patrickJpg from '../assets/patrick.jpg?w=400&h=400&rotate=90&as=metadata'
 
 export const meta: MetaFunction = ({ data }) => {
-	return createMeta({ title: 'Patrick Miller', url: '/' });
-};
+	return createMeta({ title: 'Patrick Miller', url: '/' })
+}
 
 export default function Index() {
 	return (
@@ -36,5 +36,5 @@ export default function Index() {
 				</div>
 			</div>
 		</Container>
-	);
+	)
 }

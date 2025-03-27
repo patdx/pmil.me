@@ -1,7 +1,7 @@
-import fs from 'node:fs';
-import { renderToStaticMarkup } from 'react-dom/server';
+import fs from 'node:fs'
+import { renderToStaticMarkup } from 'react-dom/server'
 
-const CLASSES = 'overflow-x-auto w-full min-w-0 max-w-full';
+const CLASSES = 'overflow-x-auto w-full min-w-0 max-w-full'
 
 export const AndroidTable = () => {
 	return (
@@ -168,8 +168,8 @@ export const AndroidTable = () => {
 				</tbody>
 			</table>
 		</div>
-	);
-};
+	)
+}
 
 export const IosTable = () => {
 	return (
@@ -313,15 +313,15 @@ export const IosTable = () => {
 				</tbody>
 			</table>
 		</div>
-	);
-};
+	)
+}
 
 fs.writeFileSync(
 	'./app/components/android.html',
-	renderToStaticMarkup(<AndroidTable />),
-);
+	renderToStaticMarkup(<AndroidTable />)
+)
 
 fs.writeFileSync(
 	'./app/components/ios.html',
-	renderToStaticMarkup(<IosTable />),
-);
+	renderToStaticMarkup(<IosTable />)
+)

@@ -9,4 +9,4 @@
 //     items: import.meta.glob("./projects/**/*.{md,mdx}"),
 //   });
 
-export {};
+export {}

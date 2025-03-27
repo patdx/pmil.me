@@ -1,26 +1,26 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
-import { Client } from '@notionhq/client';
-import { markdownToBlocks } from '@tryfabric/martian';
-import matter from 'gray-matter';
-import { cache } from './utils';
+import fs from 'node:fs/promises'
+import path from 'node:path'
+import { Client } from '@notionhq/client'
+import { markdownToBlocks } from '@tryfabric/martian'
+import matter from 'gray-matter'
+import { cache } from './utils'
 
-console.log('process.env.NOTION_TOKEN', process.env.NOTION_TOKEN);
+console.log('process.env.NOTION_TOKEN', process.env.NOTION_TOKEN)
 
 // https://www.notion.so/2fcde11879144b4cb75362e72893e6d8?v=8ce588db69964d318b9e460f24fd22e9&pvs=4
-const DATABASE_ID = '2fcde11879144b4cb75362e72893e6d8'; // replace with your actual projects database ID
+const DATABASE_ID = '2fcde11879144b4cb75362e72893e6d8' // replace with your actual projects database ID
 
 const notion = new Client({
 	auth: process.env.NOTION_TOKEN,
-});
+})
 
 console.log(
 	await cache('notion-projects', () =>
 		notion.databases.retrieve({
 			database_id: DATABASE_ID,
-		}),
-	),
-);
+		})
+	)
+)
 
 await notion.databases.update({
 	database_id: DATABASE_ID,
@@ -61,32 +61,32 @@ await notion.databases.update({
 			files: {},
 		},
 	},
-});
+})
 
 type Project = {
-	title: string;
-	date?: string;
-	slug?: string;
-	excerpt?: string;
-	externalUrl?: string;
-	technologies?: string;
-	coverImage?: string;
-};
+	title: string
+	date?: string
+	slug?: string
+	excerpt?: string
+	externalUrl?: string
+	technologies?: string
+	coverImage?: string
+}
 
 async function extractMarkdownContent(dir: string) {
-	const results: Project[] = [];
+	const results: Project[] = []
 
 	// Read all files in the directory
-	const files = await fs.readdir(dir);
+	const files = await fs.readdir(dir)
 
 	for (const file of files) {
-		const extname = path.extname(file);
+		const extname = path.extname(file)
 		if (extname === '.md' || extname === '.mdx') {
-			const filePath = path.join(dir, file);
-			const fileContent = await fs.readFile(filePath, 'utf8');
+			const filePath = path.join(dir, file)
+			const fileContent = await fs.readFile(filePath, 'utf8')
 
 			// Parse the file content using gray-matter
-			const { data, content } = matter(fileContent);
+			const { data, content } = matter(fileContent)
 
 			results.push({
 				date: data.date,
@@ -96,23 +96,23 @@ async function extractMarkdownContent(dir: string) {
 				technologies: data.technologies,
 				externalUrl: data.externalUrl,
 				coverImage: data.coverImage,
-			});
+			})
 		}
 	}
 
-	return results;
+	return results
 }
 
-const projects = await extractMarkdownContent('./app/content/project');
+const projects = await extractMarkdownContent('./app/content/project')
 
-console.log(projects);
+console.log(projects)
 
 for (const project of projects) {
-	console.log(`Beginning import of ${project.title}`);
+	console.log(`Beginning import of ${project.title}`)
 
-	const blocks = markdownToBlocks(project.excerpt || '');
+	const blocks = markdownToBlocks(project.excerpt || '')
 
-	console.log(JSON.stringify(blocks, null, 2));
+	console.log(JSON.stringify(blocks, null, 2))
 
 	await notion.pages.create({
 		parent: {
@@ -168,7 +168,7 @@ for (const project of projects) {
 				: undefined,
 		},
 		children: blocks as any,
-	});
+	})
 
-	console.log(`added ${project.title}`);
+	console.log(`added ${project.title}`)
 }

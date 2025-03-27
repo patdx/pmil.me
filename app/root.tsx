@@ -1,11 +1,11 @@
-import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
-import type { Route } from './+types/root';
+import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router'
+import type { Route } from './+types/root'
 // import stylesheet from './tailwind.css?url';
-import './tailwind.css';
+import './tailwind.css'
 
 export const meta: Route.MetaFunction = () => {
-	return createMeta();
-};
+	return createMeta()
+}
 
 // export const link: Route.LinksFunction = () => [
 // 	{
@@ -47,7 +47,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 				<Scripts />
 			</body>
 		</html>
-	);
+	)
 }
 
 export default function App() {
@@ -56,5 +56,5 @@ export default function App() {
 			<NavHeader />
 			<Outlet />
 		</>
-	);
+	)
 }

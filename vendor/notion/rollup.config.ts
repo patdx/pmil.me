@@ -3,16 +3,16 @@
 // work with the current dev mode. This is a custom Rollup
 // config to build the Notion API for the browser.
 
-import alias from '@rollup/plugin-alias';
-import commonjs from '@rollup/plugin-commonjs';
-import inject from '@rollup/plugin-inject';
-import json from '@rollup/plugin-json';
-import { nodeResolve } from '@rollup/plugin-node-resolve';
-import replace from '@rollup/plugin-replace';
-import { defineConfig } from 'rollup';
-import * as unenv from 'unenv';
+import alias from '@rollup/plugin-alias'
+import commonjs from '@rollup/plugin-commonjs'
+import inject from '@rollup/plugin-inject'
+import json from '@rollup/plugin-json'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
+import replace from '@rollup/plugin-replace'
+import { defineConfig } from 'rollup'
+import * as unenv from 'unenv'
 
-const env = unenv.env(unenv.nodeless);
+const env = unenv.env(unenv.nodeless)
 
 export default defineConfig({
 	input: 'vendor/notion/notion.src.js',
@@ -61,25 +61,25 @@ export default defineConfig({
 		}),
 		inject(env.inject),
 	],
-});
+})
 
 export function resolveAliases(_aliases: Record<string, string>) {
 	// Sort aliases from specific to general (ie. fs/promises before fs)
 	const aliases = Object.fromEntries(
 		Object.entries(_aliases).sort(
 			([a], [b]) =>
-				b.split('/').length - a.split('/').length || b.length - a.length,
-		),
-	);
+				b.split('/').length - a.split('/').length || b.length - a.length
+		)
+	)
 
 	// Resolve alias values in relation to each other
 	for (const key in aliases) {
 		for (const alias in aliases) {
 			if (aliases[key]!.startsWith(alias)) {
-				aliases[key] = aliases[alias] + aliases[key]!.slice(alias.length);
+				aliases[key] = aliases[alias] + aliases[key]!.slice(alias.length)
 			}
 		}
 	}
 
-	return aliases;
+	return aliases
 }

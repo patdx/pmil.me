@@ -1,4 +1,3 @@
-
 # @patdx/site
 
 My personal website built with React, Remix, and deployed on Cloudflare Pages.
@@ -14,9 +13,7 @@ Posts are maintained in Notion and fetched using the Notion API.
 
 Clone the repository and install dependencies:
 
-git clone <repository-url>
-cd @patdx/site
-pnpm install
+git clone <repository-url> cd @patdx/site pnpm install
 
 ## Development
 
@@ -43,8 +40,7 @@ This project uses Drizzle ORM with Cloudflare D1. To manage your database:
 
 To deploy the website to Cloudflare Pages:
 
-pnpm run build
-pnpm run deploy
+pnpm run build pnpm run deploy
 
 ## Development Dependencies
 

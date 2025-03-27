@@ -1,10 +1,10 @@
-import clsx from 'clsx';
-import type { FC } from 'react';
+import clsx from 'clsx'
+import type { FC } from 'react'
 
 export const CoverImage: FC<{
-	src: string;
-	title: string;
-	href?: string;
+	src: string
+	title: string
+	href?: string
 }> = (props) => {
 	return props.href ? (
 		<Link className="block sm:mx-0" to={props.href} aria-label={props.title}>
@@ -14,16 +14,16 @@ export const CoverImage: FC<{
 		<div className="sm:mx-0">
 			<CoverImageInner {...props} />
 		</div>
-	);
-};
+	)
+}
 
 const CoverImageInner: FC<{
-	src: string;
-	title: string;
-	href?: string;
+	src: string
+	title: string
+	href?: string
 }> = (props) => {
 	// const src = loadProjectImage(props.src);
-	return null;
+	return null
 
 	return (
 		<Image3
@@ -32,8 +32,8 @@ const CoverImageInner: FC<{
 			fit="fill"
 			className={clsx(
 				'shadow-small',
-				props.href && 'hover:shadow-medium transition-shadow duration-200',
+				props.href && 'hover:shadow-medium transition-shadow duration-200'
 			)}
 		/>
-	);
-};
+	)
+}

@@ -1,5 +1,5 @@
-import type { PlatformProxy } from 'wrangler';
-import { createRequestHandler } from 'react-router';
+import type { PlatformProxy } from 'wrangler'
+import { createRequestHandler } from 'react-router'
 
 // When using `wrangler.toml` to configure bindings,
 // `wrangler types` will generate types for those bindings
@@ -8,24 +8,24 @@ import { createRequestHandler } from 'react-router';
 // even if no `wrangler.toml` exists.
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Env {
-	KV: KVNamespace;
-	NOTION_TOKEN: string;
-	DB: D1Database;
+	KV: KVNamespace
+	NOTION_TOKEN: string
+	DB: D1Database
 }
 
-type Cloudflare = Pick<PlatformProxy<Env>, 'env' | 'cf' | 'ctx'>;
+type Cloudflare = Pick<PlatformProxy<Env>, 'env' | 'cf' | 'ctx'>
 
 declare module 'react-router' {
 	interface AppLoadContext {
-		cloudflare: Cloudflare;
+		cloudflare: Cloudflare
 	}
 }
 
 const requestHandler = createRequestHandler(
 	// @ts-expect-error - virtual module provided by React Router at build time
 	() => import('virtual:react-router/server-build'),
-	import.meta.env.MODE,
-);
+	import.meta.env.MODE
+)
 
 export default {
 	fetch(request, env, ctx) {
@@ -33,10 +33,10 @@ export default {
 			env,
 			cf: request.cf as any,
 			ctx,
-		};
+		}
 
 		return requestHandler(request, {
 			cloudflare,
-		});
+		})
 	},
-} satisfies ExportedHandler<Env>;
+} satisfies ExportedHandler<Env>

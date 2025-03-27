@@ -1,86 +1,86 @@
 {
-	"object": "page",
-	"id": "3d4661cb-f77a-42e5-8986-69584c4eba48",
-	"created_time": "2024-08-30T01:40:00.000Z",
-	"last_edited_time": "2024-08-30T01:40:00.000Z",
-	"created_by": {
-		"object": "user",
-		"id": "fd7ea6bb-9ecf-4195-ab14-447102f50e65"
-	},
-	"last_edited_by": {
-		"object": "user",
-		"id": "fd7ea6bb-9ecf-4195-ab14-447102f50e65"
-	},
-	"cover": null,
-	"icon": null,
-	"parent": {
-		"type": "database_id",
-		"database_id": "c733986f-2b63-4490-9f8d-81c12332892c"
-	},
-	"archived": false,
-	"in_trash": false,
-	"properties": {
-		"tags": {
-			"id": "%3Fs~%7C",
-			"type": "multi_select",
-			"multi_select": []
-		},
-		"date": {
-			"id": "jc%5BP",
-			"type": "date",
-			"date": {
-				"start": "2023-02-18",
-				"end": null,
-				"time_zone": null
-			}
-		},
-		"slug": {
-			"id": "sqYI",
-			"type": "rich_text",
-			"rich_text": [
-				{
-					"type": "text",
-					"text": {
-						"content": "reactivity-in-swift",
-						"link": null
-					},
-					"annotations": {
-						"bold": false,
-						"italic": false,
-						"strikethrough": false,
-						"underline": false,
-						"code": false,
-						"color": "default"
-					},
-					"plain_text": "reactivity-in-swift",
-					"href": null
-				}
-			]
-		},
-		"title": {
-			"id": "title",
-			"type": "title",
-			"title": [
-				{
-					"type": "text",
-					"text": {
-						"content": "Reactivity in Swift?",
-						"link": null
-					},
-					"annotations": {
-						"bold": false,
-						"italic": false,
-						"strikethrough": false,
-						"underline": false,
-						"code": false,
-						"color": "default"
-					},
-					"plain_text": "Reactivity in Swift?",
-					"href": null
-				}
-			]
-		}
-	},
-	"url": "https://www.notion.so/Reactivity-in-Swift-3d4661cbf77a42e5898669584c4eba48",
-	"public_url": null
+  "object": "page",
+  "id": "3d4661cb-f77a-42e5-8986-69584c4eba48",
+  "created_time": "2024-08-30T01:40:00.000Z",
+  "last_edited_time": "2024-08-30T01:40:00.000Z",
+  "created_by": {
+    "object": "user",
+    "id": "fd7ea6bb-9ecf-4195-ab14-447102f50e65"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "fd7ea6bb-9ecf-4195-ab14-447102f50e65"
+  },
+  "cover": null,
+  "icon": null,
+  "parent": {
+    "type": "database_id",
+    "database_id": "c733986f-2b63-4490-9f8d-81c12332892c"
+  },
+  "archived": false,
+  "in_trash": false,
+  "properties": {
+    "tags": {
+      "id": "%3Fs~%7C",
+      "type": "multi_select",
+      "multi_select": []
+    },
+    "date": {
+      "id": "jc%5BP",
+      "type": "date",
+      "date": {
+        "start": "2023-02-18",
+        "end": null,
+        "time_zone": null
+      }
+    },
+    "slug": {
+      "id": "sqYI",
+      "type": "rich_text",
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "reactivity-in-swift",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "reactivity-in-swift",
+          "href": null
+        }
+      ]
+    },
+    "title": {
+      "id": "title",
+      "type": "title",
+      "title": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Reactivity in Swift?",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Reactivity in Swift?",
+          "href": null
+        }
+      ]
+    }
+  },
+  "url": "https://www.notion.so/Reactivity-in-Swift-3d4661cbf77a42e5898669584c4eba48",
+  "public_url": null
 }

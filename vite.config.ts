@@ -1,11 +1,11 @@
-import { reactRouter } from '@react-router/dev/vite';
-import AutoImport from 'unplugin-auto-import/vite';
-import Icons from 'unplugin-icons/vite';
-import { defineConfig } from 'vite';
-import type { Plugin } from 'vite';
-import { imagetools } from 'vite-imagetools';
-import tsconfigPaths from 'vite-tsconfig-paths';
-import { cloudflareDevProxy } from '@react-router/dev/vite/cloudflare';
+import { reactRouter } from '@react-router/dev/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import Icons from 'unplugin-icons/vite'
+import { defineConfig } from 'vite'
+import type { Plugin } from 'vite'
+import { imagetools } from 'vite-imagetools'
+import tsconfigPaths from 'vite-tsconfig-paths'
+import { cloudflareDevProxy } from '@react-router/dev/vite/cloudflare'
 
 // import { vitePluginViteNodeMiniflare } from '@hiogawa/vite-node-miniflare';
 // import { cjsInterop } from 'vite-plugin-cjs-interop';
@@ -16,15 +16,15 @@ function makeWasmLoader(wasmPath: string) {
 	const code = /* js */ `import fs from "fs";
 
 const wasmModule = new WebAssembly.Module(fs.readFileSync(${JSON.stringify(
-		wasmPath,
+		wasmPath
 	)}));
 export default wasmModule;
-`;
-	return code;
+`
+	return code
 }
 
 const cloudflareStyleWasmLoader = () => {
-	let isDev = false;
+	let isDev = false
 
 	return {
 		name: 'cloudflare-style-wasm-loader',
@@ -32,35 +32,35 @@ const cloudflareStyleWasmLoader = () => {
 		config(config, env) {
 			return {
 				build: { rollupOptions: { external: [/.+\.wasm$/i] } },
-			};
+			}
 		},
 		configResolved(config) {
-			isDev = config.command === 'serve';
+			isDev = config.command === 'serve'
 		},
 		resolveId(id) {
-			if (isDev) return;
+			if (isDev) return
 			// prod only
 
 			if (id.endsWith('.wasm?module')) {
-				console.log('Resolving WASM file:', id);
+				console.log('Resolving WASM file:', id)
 				return {
 					id: id.slice(0, -1 * '?module'.length),
 					external: true,
-				};
+				}
 			}
 		},
 		load(id) {
-			if (!isDev) return;
+			if (!isDev) return
 			// dev only
 
 			if (id.endsWith('.wasm?module')) {
-				const actualId = id.slice(0, -1 * '?module'.length);
-				console.log('Loading WASM file:', id);
-				return makeWasmLoader(actualId);
+				const actualId = id.slice(0, -1 * '?module'.length)
+				console.log('Loading WASM file:', id)
+				return makeWasmLoader(actualId)
 			}
 		},
-	} satisfies Plugin;
-};
+	} satisfies Plugin
+}
 
 export default defineConfig(({ isSsrBuild }) => ({
 	plugins: [
@@ -165,4 +165,4 @@ export default defineConfig(({ isSsrBuild }) => ({
 			],
 		},
 	},
-}));
+}))
