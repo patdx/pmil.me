@@ -1,7 +1,5 @@
 import { cachified, verboseReporter } from '@epic-web/cachified'
-import type * as INotion from '@notionhq/client'
-// import * as _Notion from '../../vendor/notion/notion.js';
-import * as _Notion from '@notionhq/client'
+import * as Notion from '@notionhq/client'
 import type {
 	BlockObjectResponse,
 	PageObjectResponse,
@@ -12,15 +10,13 @@ import { cloudflareKvCacheAdapter } from 'cachified-adapter-cloudflare-kv'
 import { first } from 'lodash-es'
 import { z } from 'zod'
 
-const Notion = _Notion as typeof INotion
-
 // A nice referencing for using Notion API:
 // https://www.coryetzkorn.com/blog/how-the-notion-api-powers-my-blog
 
 const POSTS_DATABASE_ID = 'c733986f-2b63-4490-9f8d-81c12332892c'
 const PROJECTS_DATABASE_ID = '2fcde118-7914-4b4c-b753-62e72893e6d8'
 
-function getNotion(context: AppLoadContext): INotion.Client {
+export function getNotion(context: AppLoadContext): Notion.Client {
 	return new Notion.Client({
 		auth: context.cloudflare.env.NOTION_TOKEN,
 	})
@@ -42,10 +38,10 @@ function getCachifiedDefaults(context: AppLoadContext) {
 		cache: getCacheAdapter(context),
 		waitUntil: getWaitUntil(context),
 		// ttl: 1000, // 1 second
-		ttl: 1000 * 60 * 60, // 1 hour
+		ttl: 1000 * 60 * 30, // 30 minutes
 		// if cached longer than 1 day the images will get out of date
-		staleWhileRevalidate: 1000 * 60 * 60, // 1 hour
-		// forceFresh: import.meta.env.DEV,
+		staleWhileRevalidate: 1000 * 60 * 30, // 30 minutes
+		forceFresh: import.meta.env.DEV,
 		// forceFresh: false,
 	}
 }
@@ -395,11 +391,13 @@ function normalizePage(page: PageObjectResponse): NormalizedPage {
 		} else if (value.type === 'url') {
 			properties[key] = value.url
 		} else if (value.type === 'files') {
+			// console.log('files', JSON.stringify(value, null, 2))
 			const file = first(value.files)
 			if (file?.type === 'external') {
 				properties[key] = file.external.url
 			} else if (file?.type === 'file') {
-				properties[key] = file.file.url
+				properties[key] =
+					`/file/page/${page.id}/properties/${key}?version=${page.last_edited_time}`
 			}
 		} else {
 			console.warn('unknown property type', value.type)
