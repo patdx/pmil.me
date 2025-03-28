@@ -9,6 +9,7 @@ import type { AppLoadContext } from 'react-router'
 import { cloudflareKvCacheAdapter } from 'cachified-adapter-cloudflare-kv'
 import { first } from 'lodash-es'
 import { z } from 'zod'
+import { MyNotionClient } from './my-notion-client'
 
 // A nice referencing for using Notion API:
 // https://www.coryetzkorn.com/blog/how-the-notion-api-powers-my-blog
@@ -16,8 +17,8 @@ import { z } from 'zod'
 const POSTS_DATABASE_ID = 'c733986f-2b63-4490-9f8d-81c12332892c'
 const PROJECTS_DATABASE_ID = '2fcde118-7914-4b4c-b753-62e72893e6d8'
 
-export function getNotion(context: AppLoadContext): Notion.Client {
-	return new Notion.Client({
+export function getNotion(context: AppLoadContext): MyNotionClient {
+	return new MyNotionClient({
 		auth: context.cloudflare.env.NOTION_TOKEN,
 	})
 }

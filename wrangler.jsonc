@@ -2,8 +2,9 @@
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "pmil-me",
 	"send_metrics": false,
-	"main": "./build/server/index.js",
-	"compatibility_date": "2024-10-22",
+	"main": "./workers/app.ts",
+	"compatibility_date": "2025-03-20",
+	"compatibility_flags": ["nodejs_compat"],
 	"d1_databases": [
 		{
 			"binding": "DB",

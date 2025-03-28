@@ -6,27 +6,32 @@
     "**/.server/**/*.tsx",
     "**/.client/**/*.ts",
     "**/.client/**/*.tsx",
-    ".react-router/types/**/*"
+    ".react-router/types/**/*",
+    "worker-configuration.d.ts"
+  ],
+  "exclude": [
+    "scripts",
+    "og-worker"
   ],
   "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
     "lib": [
       "DOM",
       "DOM.Iterable",
-      "ES2022"
+      "ES2022",
+      "ESNext"
     ],
     "types": [
       "@react-router/node",
       "vite/client",
-      "unplugin-icons/types/react",
-      "@cloudflare/workers-types/experimental"
+      "unplugin-icons/types/react"
     ],
     "isolatedModules": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
-    "module": "ESNext",
     "moduleResolution": "Bundler",
     "resolveJsonModule": true,
-    "target": "ES2022",
     "strict": true,
     "allowJs": true,
     "skipLibCheck": true,

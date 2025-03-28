@@ -2,9 +2,10 @@ import { getNotion } from '~/.server/notion'
 import type { Route } from './+types/file.$'
 import { z } from 'zod'
 import * as Notion from '@notionhq/client'
-import type { CacheStorage } from '@cloudflare/workers-types/experimental'
+import { cfCacher } from '~/.server/cf-cacher'
 
 // https://github.com/justjake/monorepo/blob/main/packages/notion-api/src/lib/assets.ts#L43
+
 // export type AssetRequest =
 //   | { object: 'page'; id: string; field: 'icon' }
 //   | { object: 'page'; id: string; field: 'cover' }
@@ -76,50 +77,4 @@ export async function loader(args: Route.LoaderArgs) {
 		useCfFetch: false, // or true depending on your needs
 		cacheTtl: 31536000,
 	})
-}
-
-export type CfCacherProps = {
-	cacheKey: string
-	// getFreshValue returns a Request
-	getFreshValue: () => Promise<Request>
-	useCfFetch?: boolean
-	cacheTtl?: number // seconds; default is 1 year (31536000)
-	executionCtx: ExecutionContext
-}
-
-export async function cfCacher({
-	cacheKey,
-	getFreshValue,
-	useCfFetch = false,
-	cacheTtl = 31536000,
-	executionCtx,
-}: CfCacherProps): Promise<Response> {
-	const cache = (caches as unknown as CacheStorage).default
-
-	if (useCfFetch) {
-		console.log(`Using built-in CF caching for: ${cacheKey}.`)
-		const request = await getFreshValue()
-		return fetch(request, { cf: { cacheKey, cacheEverything: true, cacheTtl } })
-	} else {
-		let response = (await cache.match(cacheKey)) as unknown as Response
-
-		if (!response) {
-			console.log(
-				`Response for request url: ${cacheKey} not present in cache. Fetching and caching request.`
-			)
-			const request = await getFreshValue()
-			response = await fetch(request)
-			// Must use Response constructor to inherit all of response's fields
-			response = new Response(response.body, response)
-
-			// Set Cache-Control header to instruct the cache to store the response for cacheTtl seconds
-			response.headers.set('Cache-Control', `s-maxage=${cacheTtl}`)
-
-			executionCtx.waitUntil(cache.put(cacheKey, response.clone() as any))
-		} else {
-			console.log(`Cache hit for: ${cacheKey}.`)
-		}
-
-		return response
-	}
 }

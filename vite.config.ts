@@ -5,62 +5,11 @@ import { defineConfig } from 'vite'
 import type { Plugin } from 'vite'
 import { imagetools } from 'vite-imagetools'
 import tsconfigPaths from 'vite-tsconfig-paths'
-import { cloudflareDevProxy } from '@react-router/dev/vite/cloudflare'
+import { cloudflare } from '@cloudflare/vite-plugin'
+import tailwindcss from '@tailwindcss/vite'
 
-// import { vitePluginViteNodeMiniflare } from '@hiogawa/vite-node-miniflare';
-// import { cjsInterop } from 'vite-plugin-cjs-interop';
-// import commonjs from 'vite-plugin-commonjs';
-// import { builtinModules } from 'node:module';
-
-function makeWasmLoader(wasmPath: string) {
-	const code = /* js */ `import fs from "fs";
-
-const wasmModule = new WebAssembly.Module(fs.readFileSync(${JSON.stringify(
-		wasmPath
-	)}));
-export default wasmModule;
-`
-	return code
-}
-
-const cloudflareStyleWasmLoader = () => {
-	let isDev = false
-
-	return {
-		name: 'cloudflare-style-wasm-loader',
-		enforce: 'pre',
-		config(config, env) {
-			return {
-				build: { rollupOptions: { external: [/.+\.wasm$/i] } },
-			}
-		},
-		configResolved(config) {
-			isDev = config.command === 'serve'
-		},
-		resolveId(id) {
-			if (isDev) return
-			// prod only
-
-			if (id.endsWith('.wasm?module')) {
-				console.log('Resolving WASM file:', id)
-				return {
-					id: id.slice(0, -1 * '?module'.length),
-					external: true,
-				}
-			}
-		},
-		load(id) {
-			if (!isDev) return
-			// dev only
-
-			if (id.endsWith('.wasm?module')) {
-				const actualId = id.slice(0, -1 * '?module'.length)
-				console.log('Loading WASM file:', id)
-				return makeWasmLoader(actualId)
-			}
-		},
-	} satisfies Plugin
-}
+// https://github.com/cloudflare/workers-sdk/issues/8108
+// https://github.com/cloudflare/workers-sdk/issues/8121
 
 export default defineConfig(({ isSsrBuild }) => ({
 	plugins: [
@@ -87,8 +36,10 @@ export default defineConfig(({ isSsrBuild }) => ({
 		// 		options.d1Databases;
 		// 	},
 		// }),
-		cloudflareDevProxy(),
-		cloudflareStyleWasmLoader(),
+		// cloudflareDevProxy(),
+		// cloudflareStyleWasmLoader(),
+		cloudflare({ viteEnvironment: { name: 'ssr' } }),
+		tailwindcss(),
 		AutoImport({
 			include: [
 				/\.[jt]sx?$/,
@@ -166,3 +117,58 @@ export default defineConfig(({ isSsrBuild }) => ({
 		},
 	},
 }))
+
+// import { vitePluginViteNodeMiniflare } from '@hiogawa/vite-node-miniflare';
+// import { cjsInterop } from 'vite-plugin-cjs-interop';
+// import commonjs from 'vite-plugin-commonjs';
+// import { builtinModules } from 'node:module';
+
+function makeWasmLoader(wasmPath: string) {
+	const code = /* js */ `import fs from "fs";
+
+const wasmModule = new WebAssembly.Module(fs.readFileSync(${JSON.stringify(
+		wasmPath
+	)}));
+export default wasmModule;
+`
+	return code
+}
+
+const cloudflareStyleWasmLoader = () => {
+	let isDev = false
+
+	return {
+		name: 'cloudflare-style-wasm-loader',
+		enforce: 'pre',
+		config(config, env) {
+			return {
+				build: { rollupOptions: { external: [/.+\.wasm$/i] } },
+			}
+		},
+		configResolved(config) {
+			isDev = config.command === 'serve'
+		},
+		resolveId(id) {
+			if (isDev) return
+			// prod only
+
+			if (id.endsWith('.wasm?module')) {
+				console.log('Resolving WASM file:', id)
+				return {
+					id: id.slice(0, -1 * '?module'.length),
+					external: true,
+				}
+			}
+		},
+		load(id) {
+			if (!isDev) return
+			// dev only
+
+			if (id.endsWith('.wasm?module')) {
+				const actualId = id.slice(0, -1 * '?module'.length)
+				console.log('Loading WASM file:', id)
+				return makeWasmLoader(actualId)
+			}
+		},
+	} satisfies Plugin
+}
