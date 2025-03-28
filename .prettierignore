@@ -6,3 +6,4 @@
 auto-imports.d.ts
 .vercel
 .react-router
+worker-configuration.d.ts

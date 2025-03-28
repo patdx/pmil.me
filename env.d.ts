@@ -1,4 +1,4 @@
-/// <reference types="@cloudflare/workers-types/experimental" />
+/// <reference path="./worker-configuration.d.ts" />
 
 declare module '*as=metadata' {
 	const src: import('~/shared/utils').OutputMetadata
