@@ -4,7 +4,7 @@
 	"send_metrics": false,
 	"main": "./workers/app.ts",
 	"compatibility_date": "2025-03-20",
-	"compatibility_flags": ["nodejs_compat"],
+	"compatibility_flags": ["nodejs_als"],
 	"d1_databases": [
 		{
 			"binding": "DB",

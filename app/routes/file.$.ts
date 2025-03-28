@@ -1,7 +1,7 @@
 import { getNotion } from '~/.server/notion'
 import type { Route } from './+types/file.$'
 import { z } from 'zod'
-import * as Notion from '@notionhq/client'
+import * as Notion from '~/.server/my-notion-client'
 import { cfCacher } from '~/.server/cf-cacher'
 
 // https://github.com/justjake/monorepo/blob/main/packages/notion-api/src/lib/assets.ts#L43

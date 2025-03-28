@@ -1,5 +1,5 @@
 import { cachified, verboseReporter } from '@epic-web/cachified'
-import * as Notion from '@notionhq/client'
+import * as Notion from './my-notion-client'
 import type {
 	BlockObjectResponse,
 	PageObjectResponse,

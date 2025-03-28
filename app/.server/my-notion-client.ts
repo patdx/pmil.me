@@ -1,4 +1,23 @@
+import type {
+	PageObjectResponse,
+	PartialPageObjectResponse,
+	DatabaseObjectResponse,
+	PartialDatabaseObjectResponse,
+	BlockObjectResponse,
+	PartialBlockObjectResponse,
+} from '@notionhq/client/build/src/api-endpoints'
 import { ofetch, type $Fetch } from 'ofetch'
+
+export class APIResponseError extends Error {
+	code: string
+
+	constructor(code: string, message?: string) {
+		super(message)
+		this.code = code
+	}
+}
+
+export const APIErrorCode: Record<string, string> = {}
 
 // Define the options for database.query
 export type SortOption = {
@@ -11,6 +30,33 @@ export type DatabaseQueryOptions = {
 	sorts?: SortOption[]
 	filter?: any
 	page_size?: number
+}
+
+export function isFullPage(
+	response:
+		| PageObjectResponse
+		| PartialPageObjectResponse
+		| DatabaseObjectResponse
+		| PartialDatabaseObjectResponse
+		| BlockObjectResponse
+		| PartialBlockObjectResponse
+): response is PageObjectResponse {
+	return response.object === 'page' && 'url' in response
+}
+
+/**
+ * @returns `true` if `response` is a full `BlockObjectResponse`.
+ */
+export function isFullBlock(
+	response:
+		| PageObjectResponse
+		| PartialPageObjectResponse
+		| DatabaseObjectResponse
+		| PartialDatabaseObjectResponse
+		| BlockObjectResponse
+		| PartialBlockObjectResponse
+): response is BlockObjectResponse {
+	return response.object === 'block' && 'type' in response
 }
 
 export class MyNotionClient {
