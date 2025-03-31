@@ -1,4 +1,8 @@
-import { cachified, verboseReporter } from '@epic-web/cachified'
+import {
+	cachified,
+	verboseReporter,
+	type CachifiedOptions,
+} from '@epic-web/cachified'
 import * as Notion from './my-notion-client'
 import type {
 	BlockObjectResponse,
@@ -14,8 +18,8 @@ import { MyNotionClient } from './my-notion-client'
 // A nice referencing for using Notion API:
 // https://www.coryetzkorn.com/blog/how-the-notion-api-powers-my-blog
 
-const POSTS_DATABASE_ID = 'c733986f-2b63-4490-9f8d-81c12332892c'
-const PROJECTS_DATABASE_ID = '2fcde118-7914-4b4c-b753-62e72893e6d8'
+export const POSTS_DATABASE_ID = 'c733986f-2b63-4490-9f8d-81c12332892c'
+export const PROJECTS_DATABASE_ID = '2fcde118-7914-4b4c-b753-62e72893e6d8'
 
 export function getNotion(context: AppLoadContext): MyNotionClient {
 	return new MyNotionClient({
@@ -39,12 +43,21 @@ function getCachifiedDefaults(context: AppLoadContext) {
 		cache: getCacheAdapter(context),
 		waitUntil: getWaitUntil(context),
 		// ttl: 1000, // 1 second
-		ttl: 1000 * 60 * 30, // 30 minutes
-		// if cached longer than 1 day the images will get out of date
-		staleWhileRevalidate: 1000 * 60 * 30, // 30 minutes
+		// ttl: 1000 * 60 * 30, // 30 minutes
+		// 30 days
+		ttl: 1000 * 60 * 60 * 24 * 30, // 30 days
+		// if cached longer than 1 hour the images will get out of date
+		// but we have a separate fetcher for the images so we can cache
+		// the page for longer
+		// staleWhileRevalidate: 1000 * 60 * 30, // 30 minutes
+		// 1 day
+		staleWhileRevalidate: 1000 * 60 * 60 * 24, // 1 day
 		forceFresh: import.meta.env.DEV,
 		// forceFresh: false,
-	}
+	} satisfies Pick<
+		CachifiedOptions<unknown>,
+		'cache' | 'waitUntil' | 'ttl' | 'staleWhileRevalidate' | 'forceFresh'
+	>
 }
 
 export async function getPosts(context: AppLoadContext) {
@@ -136,6 +149,7 @@ export async function getPost(context: AppLoadContext, slugOrId: string) {
 					const isPost =
 						post.parent.type === 'database_id' &&
 						post.parent.database_id === POSTS_DATABASE_ID
+
 					if (!isPost) {
 						console.log(`Not a post: ${slugOrId}`)
 						return null
@@ -321,6 +335,11 @@ export async function getBlocks(
 							// 1 + 1;
 						}
 					}
+				}
+			} else if (block.type === 'image') {
+				console.log('image', block.image)
+				if (block.image.type === 'file') {
+					block.image.file.url = `/file/block/${block.id}/image`
 				}
 			}
 			// block.children = await getBlocks(context, block.id);

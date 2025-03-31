@@ -5,6 +5,9 @@ import type {
 	PartialDatabaseObjectResponse,
 	BlockObjectResponse,
 	PartialBlockObjectResponse,
+	GetPageResponse,
+	ListBlockChildrenResponse,
+	GetBlockResponse,
 } from '@notionhq/client/build/src/api-endpoints'
 import { ofetch, type $Fetch } from 'ofetch'
 
@@ -93,10 +96,14 @@ export class MyNotionClient {
 	}
 
 	pages = {
-		retrieve: async (options: { page_id: string }): Promise<any> => {
+		retrieve: async (options: {
+			page_id: string
+		}): Promise<GetPageResponse> => {
 			console.log('pages.retrieve called with:', options)
 
-			const response = await this.fetcher(`/pages/${options.page_id}`)
+			const response = await this.fetcher<GetPageResponse>(
+				`/pages/${options.page_id}`
+			)
 			return response
 		},
 	}
@@ -106,14 +113,14 @@ export class MyNotionClient {
 			list: async (options: {
 				block_id: string
 				page_size?: number
-			}): Promise<{ results: any[] }> => {
+			}): Promise<ListBlockChildrenResponse> => {
 				console.log('blocks.children.list called with:', options)
 				const { block_id, page_size } = options
 				const queryParams: Record<string, string | number> = {}
 				if (page_size) {
 					queryParams.page_size = page_size
 				}
-				const response = await this.fetcher<{ results: any[] }>(
+				const response = await this.fetcher<ListBlockChildrenResponse>(
 					`/blocks/${block_id}/children`,
 					{
 						query: queryParams,
@@ -121,6 +128,17 @@ export class MyNotionClient {
 				)
 				return response
 			},
+		},
+		retrieve: async (options: {
+			block_id: string
+		}): Promise<GetBlockResponse> => {
+			console.log('blocks.children.retrieve called with:', options)
+			const { block_id } = options
+
+			const response = await this.fetcher<GetBlockResponse>(
+				`/blocks/${block_id}`
+			)
+			return response
 		},
 	}
 }
