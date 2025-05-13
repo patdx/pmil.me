@@ -90,18 +90,20 @@ export default defineConfig(({ isSsrBuild }) => ({
 		],
 	},
 	ssr: {
-		...(isSsrBuild
-			? {
-					target: 'webworker',
-					noExternal: true,
-				}
-			: {}),
-		external: [
-			'node:async_hooks', //  '@notionhq/client'
-			// ...builtinModules,
-			// 'stream',
-			// 'node:stream',
-		],
+		// ...(isSsrBuild
+		// 	? {
+		// 			target: 'webworker',
+		// 			noExternal: true,
+		// 		}
+		// 	: {}),
+		// external: [
+		// 	//
+		// 	// 'node:async_hooks',
+		// 	//  '@notionhq/client'
+		// 	// ...builtinModules,
+		// 	// 'stream',
+		// 	// 'node:stream',
+		// ],
 		resolve: {
 			conditions: ['workerd', 'browser'],
 		},
