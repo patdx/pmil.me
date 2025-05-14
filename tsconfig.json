@@ -25,7 +25,8 @@
     "types": [
       "@react-router/node",
       "vite/client",
-      "unplugin-icons/types/react"
+      "unplugin-icons/types/react",
+      "node"
     ],
     "isolatedModules": true,
     "esModuleInterop": true,
