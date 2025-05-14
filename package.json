@@ -59,8 +59,8 @@
     "zod": "3.24.2"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "0.1.19",
-    "@cloudflare/workers-types": "4.20250327.0",
+    "@cloudflare/vite-plugin": "0.1.21",
+    "@cloudflare/workers-types": "4.20250514.0",
     "@epic-web/cachified": "5.5.1",
     "@iconify-json/ion": "1.2.2",
     "@libsql/client": "0.15.1",
@@ -103,7 +103,7 @@
     "vite-plugin-commonjs": "0.10.4",
     "vite-plugin-wasm": "3.4.1",
     "vite-tsconfig-paths": "5.1.4",
-    "wrangler": "4.6.0",
+    "wrangler": "4.14.4",
     "zx": "8.4.1"
   },
   "engines": {
