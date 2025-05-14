@@ -1,8 +1,11 @@
 import type {
 	BlockObjectResponse,
+	RichTextItemResponse,
 	TextRichTextItemResponse,
 } from '@notionhq/client/build/src/api-endpoints'
 import { Link } from 'react-router'
+import { Fragment } from 'react/jsx-runtime'
+import { cn } from '~/lib/utils'
 
 const styles = {} as any
 
@@ -51,25 +54,25 @@ export function Block({ block }: BlockProps) {
 		case 'paragraph':
 			return (
 				<p>
-					<Text title={block.paragraph.rich_text} />
+					<Text value={block.paragraph.rich_text} />
 				</p>
 			)
 		case 'heading_1':
 			return (
 				<h1>
-					<Text title={value.rich_text} />
+					<Text value={value.rich_text} />
 				</h1>
 			)
 		case 'heading_2':
 			return (
 				<h2>
-					<Text title={value.rich_text} />
+					<Text value={value.rich_text} />
 				</h2>
 			)
 		case 'heading_3':
 			return (
 				<h3>
-					<Text title={value.rich_text} />
+					<Text value={value.rich_text} />
 				</h3>
 			)
 		case 'bulleted_list':
@@ -88,7 +91,7 @@ export function Block({ block }: BlockProps) {
 		case 'numbered_list_item':
 			return (
 				<li key={block.id}>
-					<Text title={value.rich_text} />
+					<Text value={value.rich_text} />
 					{!!value.children && renderNestedList(block)}
 				</li>
 			)
@@ -97,7 +100,7 @@ export function Block({ block }: BlockProps) {
 				<div>
 					<label htmlFor={id}>
 						<input type="checkbox" id={id} defaultChecked={value.checked} />{' '}
-						<Text title={value.rich_text} />
+						<Text value={value.rich_text} />
 					</label>
 				</div>
 			)
@@ -105,7 +108,7 @@ export function Block({ block }: BlockProps) {
 			return (
 				<details>
 					<summary>
-						<Text title={value.rich_text} />
+						<Text value={value.rich_text} />
 					</summary>
 					<Blocks blocks={block.children} />
 				</details>
@@ -179,7 +182,7 @@ export function Block({ block }: BlockProps) {
 								<tr key={child.id}>
 									{child.table_row?.cells?.map((cell, i) => (
 										<RowElement key={`${cell.plain_text}-${i}`}>
-											<Text title={cell} />
+											<Text value={cell} />
 										</RowElement>
 									))}
 								</tr>
@@ -207,33 +210,91 @@ export function Block({ block }: BlockProps) {
 	}
 }
 
-function Text({ title }: { title: TextRichTextItemResponse[] }) {
-	if (!title) {
+function Text({ value }: { value: RichTextItemResponse[] }) {
+	if (!value) {
 		return null
 	}
-	return title.map((value, index) => {
-		const {
-			annotations: { bold, code, color, italic, strikethrough, underline },
-			text,
-		} = value
-		return (
-			<span
-				className={[
-					bold ? styles.bold : '',
-					code ? styles.code : '',
-					italic ? styles.italic : '',
-					strikethrough ? styles.strikethrough : '',
-					underline ? styles.underline : '',
-				].join(' ')}
-				style={color !== 'default' ? { color } : {}}
-				key={index}
-			>
-				{text.link ? (
-					<Link to={text.link.url}>{text.content}</Link>
-				) : (
-					text.content
-				)}
-			</span>
-		)
+
+	return value.map((item, index) => {
+		if (item.type === 'text') {
+			const {
+				annotations: { bold, code, color, italic, strikethrough, underline },
+				text,
+			} = item
+
+			if (text == null || text.content.length === 0) {
+				console.log(`found a null text at index ${index}`)
+				console.log(item)
+				return <Fragment key={index} />
+			}
+
+			return (
+				<span
+					key={index}
+					className={cn(
+						bold && 'font-bold',
+						code && 'font-mono bg-gray-100 px-1 py-0.5 rounded',
+						italic && 'italic',
+						strikethrough && 'line-through',
+						underline && 'underline'
+					)}
+					// data-comment="text-segment"
+					// data-text={JSON.stringify(text)}
+					style={color !== 'default' ? { color } : {}}
+				>
+					{text.link ? (
+						<Link to={text.link.url}>{text.content}</Link>
+					) : (
+						text.content
+					)}
+				</span>
+			)
+		} else if (item.type === 'mention') {
+			// {
+			// 	type: 'mention',
+			// 	mention: {
+			// 		type: 'link_mention',
+			// 		link_mention: {
+			// 			href: 'https://min.io/docs/minio/linux/integrations/setup-nginx-proxy-with-minio.html',
+			// 			title: 'Configure NGINX Proxy for MinIO Server — MinIO Object Storage for Linux',
+			// 			icon_url: 'https://min.io/docs/minio/linux/_static/favicon.png',
+			// 			description: 'The following documentation provides a baseline for configuring NGINX to proxy requests to MinIO in a Linux environment.\n' +
+			// 				'It is not intended as a comprehensive approach to NGINX, proxying, or reverse proxying in general.\n' +
+			// 				'Modify the configuration as necessary for your infrastructure.'
+			// 		}
+			// 	},
+			// 	annotations: {
+			// 		bold: false,
+			// 		italic: false,
+			// 		strikethrough: false,
+			// 		underline: false,
+			// 		code: false,
+			// 		color: 'default'
+			// 	},
+			// 	plain_text: 'https://min.io/docs/minio/linux/integrations/setup-nginx-proxy-with-minio.html',
+			// 	href: 'https://min.io/docs/minio/linux/integrations/setup-nginx-proxy-with-minio.html'
+			// }
+			const { mention, href } = item
+			const title =
+				mention?.type === 'link_mention'
+					? mention.link_mention?.title
+					: item.plain_text
+
+			return (
+				<a
+					key={index}
+					// TODO: other types of mentions?
+					href={href!}
+					target="_blank"
+					rel="noopener noreferrer"
+					className="border border-gray-300 rounded py-0.5 px-0.5 mx-0.5 bg-gray-50 text-gray-800 no-underline"
+				>
+					{title}
+				</a>
+			)
+		} else if (item.type === 'equation') {
+			console.warn('equation not implemented')
+			return null
+		}
 	})
 }

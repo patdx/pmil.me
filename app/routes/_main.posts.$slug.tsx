@@ -32,6 +32,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 export function ErrorBoundary() {
 	const error = useRouteError()
 
+	console.log('post error:')
 	console.error(error)
 
 	return (
