@@ -5,9 +5,9 @@ import {
 } from '~/.server/notion'
 import type { Route } from './+types/file.$'
 import { z } from 'zod'
-import * as Notion from '~/.server/my-notion-client'
+import * as Notion from '@notionhq/client'
 import { cfCacher } from '~/.server/cf-cacher'
-import { isFullBlock, isFullPage } from '~/.server/my-notion-client'
+import { isFullBlock, isFullPage } from '@notionhq/client'
 
 // https://github.com/justjake/monorepo/blob/main/packages/notion-api/src/lib/assets.ts#L43
 
@@ -154,7 +154,7 @@ type ParentInfo =
 	| { type: 'workspace'; workspace: true } // Added workspace type
 
 async function isParentAllowed(
-	notion: Notion.MyNotionClient,
+	notion: Notion.Client,
 	initialParent: ParentInfo,
 	depth = 0
 ): Promise<boolean> {
