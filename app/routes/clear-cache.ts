@@ -10,6 +10,7 @@ export async function loader(args: Route.LoaderArgs) {
 			await args.context.cloudflare.env.KV.delete(key.name)
 		})
 	)
+
 	console.log('Cache cleared successfully')
 
 	return Response.json(
