@@ -28,7 +28,7 @@ export const createMeta = ({
 
 	image =
 		image ||
-		new URL(`/og?title=${encodeURIComponent(title)}`, canonicalUrl).toString()
+		new URL(`/og?title=${encodeURIComponent(title)}`, BASE_URL).toString()
 	// `https://pmil-me-og.vercel.app/api/og?title=${encodeURIComponent(title)}`
 
 	const items: MetaDescriptor[] = [
