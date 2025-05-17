@@ -5,7 +5,12 @@ declare module '*as=metadata' {
 	export default src
 }
 
-declare module '*.wasm?module' {
-	const src: WebAssembly.Module
-	export default src
+// declare module '*.wasm?module' {
+// 	const src: WebAssembly.Module
+// 	export default src
+// }
+
+declare module '*.wasm' {
+	const value: WebAssembly.Module
+	export default value
 }

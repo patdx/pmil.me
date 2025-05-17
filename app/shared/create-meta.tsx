@@ -26,11 +26,10 @@ export const createMeta = ({
 
 	const canonicalUrl = url ? new URL(url, BASE_URL).toString() : undefined
 
-	// I can't get Vercel OG or similar to run in Cloudflare Pages so hosting it
-	// seperately at pmil-me-og.vercel.app
 	image =
 		image ||
-		`https://pmil-me-og.vercel.app/api/og?title=${encodeURIComponent(title)}`
+		new URL(`/og?title=${encodeURIComponent(title)}`, canonicalUrl).toString()
+	// `https://pmil-me-og.vercel.app/api/og?title=${encodeURIComponent(title)}`
 
 	const items: MetaDescriptor[] = [
 		{ title: title },

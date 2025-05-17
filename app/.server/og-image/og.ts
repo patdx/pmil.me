@@ -1,10 +1,10 @@
 import { Resvg, initWasm as initResvg } from '@resvg/resvg-wasm'
-import resvgModule from '@resvg/resvg-wasm/index_bg.wasm?module'
+import resvgModule from '../../../node_modules/@resvg/resvg-wasm/index_bg.wasm'
 import type { ReactElement } from 'react'
 import type { SatoriOptions } from 'satori'
 import satori, { init as initSatori } from 'satori/wasm'
 import initYoga from 'yoga-wasm-web'
-import yogaModule from 'yoga-wasm-web/dist/yoga.wasm?module'
+import yogaModule from '../../../node_modules/yoga-wasm-web/dist/yoga.wasm'
 import { type EmojiType, getIconCode, loadEmoji } from './emoji'
 
 // import yogaModule from 'yoga-wasm-web/dist/yoga.wasm';
