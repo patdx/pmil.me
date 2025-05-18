@@ -34,6 +34,7 @@
     "drizzle-orm": "0.43.1",
     "humanize-url": "3.0.0",
     "isbot": "5.1.28",
+    "itty-time": "2.0.1",
     "lodash-es": "4.17.21",
     "lucide-react": "0.511.0",
     "notion-client": "7.3.0",

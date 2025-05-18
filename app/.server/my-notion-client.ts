@@ -9,7 +9,8 @@ import type {
 	ListBlockChildrenResponse,
 	GetBlockResponse,
 } from '@notionhq/client/build/src/api-endpoints'
-import { ofetch, type $Fetch } from 'ofetch'
+import * as ofetch from 'ofetch'
+import { createCustomFetch } from './cf-cacher'
 
 export class APIResponseError extends Error {
 	code: string
@@ -64,19 +65,26 @@ export function isFullBlock(
 
 export class MyNotionClient {
 	auth: string
-	constructor(options: { auth: string }) {
+	executionCtx?: ExecutionContext
+	constructor(options: { auth: string; executionCtx?: ExecutionContext }) {
 		this.auth = options.auth
-		this.fetcher = ofetch.create({
-			baseURL: 'https://api.notion.com/v1',
-			headers: {
-				Authorization: `Bearer ${this.auth}`,
-				'Notion-Version': '2022-06-28',
-				'Content-Type': 'application/json', // Added Content-Type for POST requests
+		this.executionCtx = options.executionCtx
+		this.fetcher = ofetch.createFetch({
+			fetch: createCustomFetch({
+				executionCtx: options.executionCtx,
+			}),
+			defaults: {
+				baseURL: 'https://api.notion.com/v1',
+				headers: {
+					Authorization: `Bearer ${this.auth}`,
+					'Notion-Version': '2022-06-28',
+					'Content-Type': 'application/json', // Added Content-Type for POST requests
+				},
 			},
 		})
 	}
 
-	fetcher: $Fetch
+	fetcher: ofetch.$Fetch
 
 	databases = {
 		query: async (

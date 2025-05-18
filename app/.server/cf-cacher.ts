@@ -1,13 +1,45 @@
 // https://github.com/helloimalastair/FlareUtils/blob/main/src/BetterKV/index.ts
 
+// export function fetchToCache(
+// 	request: Request,
+// 	response: Response,
+// 	cacheTtl: number = 31536000
+// ): Response {
+// 	// Set Cache-Control header to instruct the cache to store the response for cacheTtl seconds
+// 	// For now I'm using CDN-cache-control to avoid overwriting other client side
+// 	// caching logic
+// 	response.headers.set('CDN-Cache-Control', `public, s-maxage=${cacheTtl}`)
+// 	return new Response(response.body, response)
+// }
+
+import { seconds } from 'itty-time'
+
+export const createCustomFetch = (createFetchOptions: {
+	executionCtx?: ExecutionContext
+}): typeof globalThis.fetch => {
+	return (resource, options) => {
+		const request = new Request(resource, options)
+
+		return cfCacher({
+			cacheKey: request.url,
+			getRequest: () => request as any,
+			cacheTtl: seconds('1 hour'),
+			executionCtx: createFetchOptions.executionCtx,
+		})
+	}
+}
+
 export type CfCacherProps = {
 	cacheKey: string
 	// Required for fetch-cache
-	getRequest?: () => Promise<Request>
+	getRequest?: () => Request | Promise<Request>
 	getResponse?: () => Promise<Response>
 	cacheMethod?: 'fetch-cache' | 'cache-api' | 'kv' | 'none'
-	cacheTtl?: number // seconds; default is 1 year (31536000)
-	executionCtx: ExecutionContext
+	/**
+	 * seconds; default is 1 year (31536000)
+	 */
+	cacheTtl?: number
+	executionCtx?: ExecutionContext
 	kv?: KVNamespace
 }
 
@@ -29,6 +61,10 @@ export async function cfCacher({
 			cacheMethod = 'cache-api'
 		}
 	}
+
+	console.log(
+		`Executing cfCacher for ${cacheKey} with ${cacheMethod} ttl ${cacheTtl} seconds`
+	)
 
 	if (cacheMethod === 'fetch-cache') {
 		if (!getRequest) {
@@ -67,7 +103,15 @@ export async function cfCacher({
 			// For now I'm using CDN-cache-control to avoid overwriting other client side
 			// caching logic
 			response.headers.set('CDN-Cache-Control', `public, s-maxage=${cacheTtl}`)
-			executionCtx.waitUntil(cache.put(cacheKey, response.clone() as any))
+			const cachePutPromise = cache.put(cacheKey, response.clone() as any)
+			if (executionCtx) {
+				// Use waitUntil to ensure the cache put is completed before the response is sent
+				executionCtx.waitUntil(cachePutPromise)
+			} else {
+				// If executionCtx is not available, we can't use waitUntil
+				// but we can still cache the response
+				void cachePutPromise
+			}
 			response.headers.set('x-cache-method', cacheMethod)
 		} else {
 			console.log(`Cache hit for: ${cacheKey}.`)
