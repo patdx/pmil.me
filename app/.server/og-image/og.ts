@@ -15,9 +15,12 @@ const fallbackFont = () =>
 		'https://cdn.jsdelivr.net/npm/@vercel/og@0.1.0/vendor/noto-sans-v27-latin-regular.ttf'
 	).then((a) => a.arrayBuffer())
 
+let resvgIsReady = false
 const initResvgWasm = async () => {
+	if (resvgIsReady) return
 	try {
 		await initResvg(resvgModule)
+		resvgIsReady = true
 	} catch (err) {
 		console.log(err)
 		if (err instanceof Error && err.message.includes('Already initialized')) {
@@ -27,9 +30,12 @@ const initResvgWasm = async () => {
 	}
 }
 
+let yogaIsReady = false
 const initYogaWasm = async () => {
+	if (yogaIsReady) return
 	const yoga = await initYoga(yogaModule)
 	initSatori(yoga)
+	yogaIsReady = true
 }
 
 const isDev = process.env.NODE_ENV === 'development'
@@ -173,6 +179,7 @@ export class ImageResponse {
 			},
 			options
 		)
+
 		const stream = new ReadableStream({
 			async start(controller) {
 				await Promise.allSettled([initResvgWasm(), initYogaWasm()])

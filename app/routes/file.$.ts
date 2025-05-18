@@ -32,7 +32,7 @@ export async function loader(args: Route.LoaderArgs) {
 	return await cfCacher({
 		cacheKey,
 		executionCtx: args.context.cloudflare.ctx as any,
-		getFreshValue: async () => {
+		getRequest: async () => {
 			// TODO: handle security hole of being able to access any file/block
 			const { params } = args
 			const segments = params['*'].split('/')
@@ -139,7 +139,7 @@ export async function loader(args: Route.LoaderArgs) {
 				throw new Response('Invalid object type', { status: 400 })
 			}
 		},
-		useCfFetch: false, // Keep false as we are proxying the final fetch
+		cacheMethod: 'fetch-cache', // Keep false as we are proxying the final fetch
 		cacheTtl: 31536000,
 	})
 }
