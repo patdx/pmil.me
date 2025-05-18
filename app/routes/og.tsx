@@ -4,7 +4,7 @@ import { ImageResponse } from '~/.server/og-image/og'
 // import { ImageResponse } from '@cf-wasm/og'
 
 import type { Route } from './+types/og'
-import { cfCacher } from '~/.server/cf-cacher'
+import { cfCacher } from '~/.server/cf-cacher/cf-cacher'
 
 export async function loader(args: Route.LoaderArgs) {
 	const request = args.request
@@ -39,6 +39,7 @@ export async function loader(args: Route.LoaderArgs) {
 				}
 			) as any
 		},
-		executionCtx: args.context.cloudflare.ctx as any,
+		executionCtx: args.context.cloudflare.ctx,
+		cacheMode: 'cache-api',
 	})
 }

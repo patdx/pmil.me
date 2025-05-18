@@ -6,7 +6,7 @@ import {
 import type { Route } from './+types/file.$'
 import { z } from 'zod'
 import * as Notion from '~/.server/my-notion-client'
-import { cfCacher } from '~/.server/cf-cacher'
+import { cfCacher } from '~/.server/cf-cacher/cf-cacher'
 import { isFullBlock, isFullPage } from '~/.server/my-notion-client'
 
 // https://github.com/justjake/monorepo/blob/main/packages/notion-api/src/lib/assets.ts#L43
@@ -139,7 +139,7 @@ export async function loader(args: Route.LoaderArgs) {
 				throw new Response('Invalid object type', { status: 400 })
 			}
 		},
-		cacheMethod: 'fetch-cache', // Keep false as we are proxying the final fetch
+		cacheMode: 'cache-api',
 		cacheTtl: 31536000,
 	})
 }

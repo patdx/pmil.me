@@ -10,7 +10,7 @@ import type {
 	GetBlockResponse,
 } from '@notionhq/client/build/src/api-endpoints'
 import * as ofetch from 'ofetch'
-import { createCustomFetch } from './cf-cacher'
+import { createCustomFetch } from './cf-cacher/cf-cacher'
 
 export class APIResponseError extends Error {
 	code: string
