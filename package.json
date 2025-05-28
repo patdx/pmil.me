@@ -97,6 +97,7 @@
     "remark-mdx-frontmatter": "5.1.0",
     "rollup": "4.40.2",
     "sharp": "0.34.1",
+    "tw-animate-css": "1.3.0",
     "typescript": "5.8.3",
     "unenv": "1.10.0",
     "unplugin-auto-import": "19.2.0",

@@ -4,9 +4,9 @@
   "rsc": false,
   "tsx": true,
   "tailwind": {
-    "config": "tailwind.config.ts",
+    "config": "",
     "css": "app/tailwind.css",
-    "baseColor": "zinc",
+    "baseColor": "slate",
     "cssVariables": true,
     "prefix": ""
   },
@@ -16,5 +16,6 @@
     "ui": "~/components/ui",
     "lib": "~/lib",
     "hooks": "~/hooks"
-  }
+  },
+  "iconLibrary": "lucide"
 }
