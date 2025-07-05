@@ -9,6 +9,7 @@ declare global {
   const AndroidTable: typeof import('./app/components/ConversionTables')['AndroidTable']
   const Block: typeof import('./app/components/notion')['Block']
   const Blocks: typeof import('./app/components/notion')['Blocks']
+  const ContactCard: typeof import('./app/components/ContactCard')['ContactCard']
   const Container: typeof import('./app/components/Container')['Container']
   const CoverImage: typeof import('./app/components/CoverImage')['CoverImage']
   const For: typeof import('./app/components/For')['For']
